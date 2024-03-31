@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
+  "name": "dream-site",
   "private": true,
   "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -12,7 +13,8 @@
     "checklint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "reviselint": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "pre-commit": "lint-staged",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
+    "release": "release-it"
   },
   "dependencies": {
     "nuxt": "^3.11.1",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
+    "@release-it/conventional-changelog": "^8.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -30,6 +33,7 @@
     "eslint-plugin-vue": "^9.24.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "release-it": "^17.1.1"
   }
 }
