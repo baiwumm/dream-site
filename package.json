@@ -12,6 +12,7 @@
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:style": "stylelint src/**/*.{css,less,vue} --fix",
     "pre-commit": "lint-staged",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
     "release": "release-it"
@@ -25,10 +26,15 @@
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/stylelint-module": "^5.2.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "release-it": "^17.1.1"
+    "prettier": "^3.2.5",
+    "release-it": "^17.1.1",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4"
   }
 }
