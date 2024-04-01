@@ -5,10 +5,7 @@ module.exports = {
     es2021: true, // 支持es2021语法的检测
     node: true // 支持node环境的检测
   },
-  extends: [
-    'eslint:recommended', // 使用eslint推荐的配置进行检测
-    'plugin:vue/vue3-essential' // 支持vue3相关语法的检测
-  ],
+  extends: ['@nuxt/eslint-config'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest', // 解析文件的时候使用最新的ecmaVersion
