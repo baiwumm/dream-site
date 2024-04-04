@@ -15,7 +15,7 @@
     "lint:style": "stylelint src/**/*.{css,less,vue} --fix",
     "pre-commit": "lint-staged",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "release": "release-it"
+    "release": "release-it patch"
   },
   "dependencies": {
     "nuxt": "^3.11.1",
