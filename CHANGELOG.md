@@ -1,5 +1,12 @@
 
 
+## [1.2.1](https://github.com/baiwumm/dream-site/compare/1.2.0...1.2.1) (2024-04-04)
+
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更改 release-it 自动修订版本号 ([04e0490](https://github.com/baiwumm/dream-site/commit/04e0490d5db2bf9ab4afd15146881c3e19f8ec87))
+
 ## 1.2.0 (2024-04-01)
 
 
