@@ -1,5 +1,13 @@
 
 
+## [1.2.2](https://github.com/baiwumm/dream-site/compare/1.2.1...1.2.2) (2024-04-08)
+
+
+### ✨ Features | 新功能
+
+* 安装 Nuxt UI 和配置 Typescript 类型检查 ([46221ff](https://github.com/baiwumm/dream-site/commit/46221ff696b68c2878132e05f5bbb2fc4c6d59e5))
+* 安装 stylelint-config-recommended-vue ，修复 vue 文件中 stylelint 导致的报错 ([6e75e1d](https://github.com/baiwumm/dream-site/commit/6e75e1db276a5b73e703a2d6b1f5ee7fc3e70f95))
+
 ## [1.2.1](https://github.com/baiwumm/dream-site/compare/1.2.0...1.2.1) (2024-04-04)
 
 
