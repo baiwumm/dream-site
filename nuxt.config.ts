@@ -9,15 +9,17 @@ export default defineNuxtConfig({
       meta: [
         { name: 'keywords', content: '程序员,梦中情站,工具,AI' },
         { name: 'description', content: '程序员的梦中情站，致力于开发一个能提高程序员开发效率的网站' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
       ]
     }
   },
   // 源目录
   srcDir: 'src/',
   // 引入模块
-  modules: ['@nuxtjs/stylelint-module', '@nuxt/ui'],
-  // 构建时启动类型检查
-  typescript: {
-    typeCheck: true
+  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-icons'],
+  experimental: {
+    viewTransition: true
   }
 })
