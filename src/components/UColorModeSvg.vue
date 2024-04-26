@@ -22,8 +22,8 @@ const isDark = colorMode.preference === 'dark'
 
 <style>
 .nuxt-icon svg {
-  width: auto;
-  height: auto;
+  width: auto !important;
+  height: auto !important;
   margin-bottom: 0;
 }
 </style>
