@@ -1,5 +1,12 @@
 
 
+## [1.2.3](https://github.com/baiwumm/dream-site/compare/1.2.2...1.2.3) (2024-04-26)
+
+
+### ✨ Features | 新功能
+
+* **layouts:** 实现顶部 Header 布局 ([9317bd7](https://github.com/baiwumm/dream-site/commit/9317bd756e81df74ffc12fb64d1b1ece9d1147b6))
+
 ## [1.2.2](https://github.com/baiwumm/dream-site/compare/1.2.1...1.2.2) (2024-04-08)
 
 
