@@ -1,5 +1,20 @@
 
 
+## [1.2.4](https://github.com/baiwumm/dream-site/compare/1.2.3...1.2.4) (2024-04-29)
+
+
+### ✨ Features | 新功能
+
+* **AppFooter:** 底部布局开发 ([5254241](https://github.com/baiwumm/dream-site/commit/52542410e9e77f2b61188a4deb0a83072547226c))
+* **ColorMode:** 新增亮暗模式切换过渡动画 ([646c11f](https://github.com/baiwumm/dream-site/commit/646c11f276e1121efa63f6d786e7c59b9989e7b2))
+
+
+### 💄 Styles | 风格
+
+* 设置 SVG 图片样式 ([3940563](https://github.com/baiwumm/dream-site/commit/39405635f22005ee3e50fb7fa6b463d55c4d9bab))
+* 设置 SVG 图片样式 ([33bc640](https://github.com/baiwumm/dream-site/commit/33bc64019e3e466e3daae8ffd0bb58220200dfa1))
+* 设置 SVG 图片样式 ([b219fc9](https://github.com/baiwumm/dream-site/commit/b219fc9584e44cbc7d28e15ad885dc1128c76b0c))
+
 ## [1.2.3](https://github.com/baiwumm/dream-site/compare/1.2.2...1.2.3) (2024-04-26)
 
 
