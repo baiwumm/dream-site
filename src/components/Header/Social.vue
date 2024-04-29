@@ -3,16 +3,10 @@
     <!-- 夜间模式 -->
     <AppColorMode />
     <!-- github -->
-    <HeaderSocialButton
+    <SocialButton
       icon="i-simple-icons-github"
-      url="https://github.com/baiwumm"
+      url="https://github.com/baiwumm/dream-site"
       tip="Github"
-    />
-    <!-- 博客 -->
-    <HeaderSocialButton
-      icon="i-ri-quill-pen-line"
-      url="https://baiwumm.com"
-      tip="访问博客"
     />
   </div>
 </template>
