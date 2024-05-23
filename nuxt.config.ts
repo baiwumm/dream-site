@@ -18,7 +18,10 @@ export default defineNuxtConfig({
   // 源目录
   srcDir: 'src/',
   // 引入模块
-  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-icons'],
+  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase'],
+  supabase: {
+    redirect: false // https://supabase.nuxtjs.org/get-started#redirect
+  },
   experimental: {
     viewTransition: true
   }

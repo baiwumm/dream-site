@@ -19,11 +19,12 @@
     "lint:style": "stylelint src/**/*.{css,less,vue} --fix",
     "pre-commit": "lint-staged",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "release": "release-it patch"
+    "release": "release-it"
   },
   "dependencies": {
     "@iconify/json": "^2.2.200",
     "@nuxt/ui": "^2.15.1",
+    "@supabase/supabase-js": "^2.43.2",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
@@ -34,6 +35,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/image": "^1.6.0",
     "@nuxtjs/stylelint-module": "^5.2.0",
+    "@nuxtjs/supabase": "^1.2.2",
     "@release-it/conventional-changelog": "^8.0.1",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
