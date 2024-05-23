@@ -1,5 +1,12 @@
 
 
+## [1.2.5](https://github.com/baiwumm/dream-site/compare/1.2.4...1.2.5) (2024-05-23)
+
+
+### ✨ Features | 新功能
+
+* 添加 @nuxtjs/supabase 依赖库连接数据库 ([c6a722e](https://github.com/baiwumm/dream-site/commit/c6a722e34a284d87b5a7bfc427c8ad1df91c2547))
+
 ## [1.2.4](https://github.com/baiwumm/dream-site/compare/1.2.3...1.2.4) (2024-04-29)
 
 
