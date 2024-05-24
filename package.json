@@ -24,7 +24,7 @@
   "dependencies": {
     "@iconify/json": "^2.2.200",
     "@nuxt/ui": "^2.15.1",
-    "@supabase/supabase-js": "^2.43.2",
+    "@supabase/supabase-js": "^2.43.4",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
