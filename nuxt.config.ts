@@ -3,12 +3,12 @@ export default defineNuxtConfig({
   // SEO 和 Meta
   app: {
     head: {
-      title: '程序员的梦中情站',
+      title: process.env.SITE_TITLE,
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'keywords', content: '程序员,梦中情站,工具,AI' },
-        { name: 'description', content: '程序员的梦中情站，致力于开发一个能提高程序员开发效率的网站' }
+        { name: 'keywords', content: process.env.SITE_KEYWORDS },
+        { name: 'description', content: process.env.SITE_DESCRIPTION }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
@@ -18,11 +18,15 @@ export default defineNuxtConfig({
   // 源目录
   srcDir: 'src/',
   // 引入模块
-  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase'],
+  modules: ['@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxtjs/color-mode', 'nuxt-icon'],
   supabase: {
     redirect: false // https://supabase.nuxtjs.org/get-started#redirect
   },
+  colorMode: {
+    classSuffix: ''
+  },
   experimental: {
     viewTransition: true
-  }
+  },
+  css: ['element-plus/theme-chalk/dark/css-vars.css', '~/assets/scss/main.scss']
 })

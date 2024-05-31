@@ -1,3 +1,10 @@
+<!--
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-04-11 08:40:47
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-05-30 13:51:17
+ * @Description: 主题模式切换
+-->
 <script setup lang="ts">
 const colorMode = useColorMode()
 
@@ -45,15 +52,21 @@ async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
 </script>
 
 <template>
-  <UTooltip :text="`切换${$colorMode.value === 'dark' ? '白天' : '黑夜'}模式`">
-    <UButton
-      :icon="$colorMode.value === 'dark' ? 'i-heroicons-moon-solid' : ' i-heroicons-sun-solid'"
-      size="sm"
-      variant="ghost"
-      class="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+  <el-tooltip
+    :content="`切换${$colorMode.value === 'dark' ? '白天' : '黑夜'}模式`"
+    placement="bottom"
+  >
+    <el-button
+      circle
+      text
       @click="toggleDark"
-    />
-  </UTooltip>
+    >
+      <Icon
+        :name="$colorMode.value === 'dark' ? 'i-heroicons-moon-solid' : 'i-heroicons-sun-solid'"
+        class="h-5 w-5"
+      />
+    </el-button>
+  </el-tooltip>
 </template>
 
 <style>

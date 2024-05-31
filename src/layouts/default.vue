@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <el-container direction="vertical">
     <!-- header -->
-    <AppHeader />
+    <Header />
     <!-- main -->
-    <slot />
+    <el-main>
+      <slot />
+    </el-main>
     <!-- footer -->
-    <AppFooter />
-  </div>
+    <Footer />
+  </el-container>
 </template>

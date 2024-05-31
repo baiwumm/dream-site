@@ -1,3 +1,10 @@
+<!--
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-05-30 13:47:24
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-05-30 13:47:58
+ * @Description: SVG图标主题
+-->
 <script setup lang="ts">
 const colorMode = useColorMode()
 

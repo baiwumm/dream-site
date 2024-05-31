@@ -1,15 +1,16 @@
 <template>
   <div
     class="flex justify-center items-center font-black text-5xl flex-col"
-    style="height: calc(100vh - 8rem)"
+    style="height: calc(100vh - 10rem)"
   >
     Hello World!
     <div class="flex gap-4 mt-4">
-      <UButton
+      <el-button
         v-for="item in data"
         :key="item.id"
-        :label="item.name"
-      />
+      >
+        {{ item.name }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -18,5 +19,5 @@
 import type { CategoryList } from '~/types'
 const supabase = useSupabaseClient<CategoryList>()
 
-const { data } = await supabase.from('site_category').select()
+const { data } = await supabase.from('categorys').select()
 </script>
