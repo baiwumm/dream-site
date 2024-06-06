@@ -22,6 +22,17 @@ module.exports = {
     'no-extra-parens': 2, // 禁止非必要的括号
     'no-extra-semi': 2, // 禁止多余的冒号
     'comma-dangle': [2, 'never'], // 键值对最后一个不能有,
-    'spaced-comment': ['error', 'always'] // 注释必须空格
+    'spaced-comment': ['error', 'always'], // 注释必须空格
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 8,
+        multiline: {
+          max: 10
+        }
+      }
+    ],
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off'
   }
 }

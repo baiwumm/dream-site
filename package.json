@@ -33,7 +33,7 @@
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@element-plus/nuxt": "^1.0.9",
-    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/eslint-config": "^0.3.13",
     "@nuxt/image": "^1.6.0",
     "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/stylelint-module": "^5.2.0",
