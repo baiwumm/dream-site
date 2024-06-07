@@ -20,7 +20,11 @@ export default defineNuxtConfig({
   // 引入模块
   modules: ['@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxtjs/color-mode', 'nuxt-icon'],
   supabase: {
-    redirect: false // https://supabase.nuxtjs.org/get-started#redirect
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/']
+    }
   },
   colorMode: {
     classSuffix: ''
