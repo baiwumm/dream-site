@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-04-10 16:25:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-07 08:53:30
+ * @LastEditTime: 2024-06-07 10:38:05
  * @Description: 顶部布局
 -->
 <template>
@@ -32,3 +32,8 @@
     </div>
   </el-header>
 </template>
+<style scoped>
+:deep(.el-button + .el-button) {
+  margin-left: 2px;
+}
+</style>

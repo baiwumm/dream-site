@@ -2,17 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-30 13:52:19
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-05-31 08:41:09
+ * @LastEditTime: 2024-06-07 10:44:24
  * @Description: 底部布局
 -->
 <template>
   <el-footer>
     <el-divider style="margin: 12px 0">
-      <NuxtImg
-        src="/logo.svg"
-        alt="logo"
-        class="w-5"
-      />
+      <NuxtImg src="/logo.svg" alt="logo" class="w-5" />
     </el-divider>
     <div class="flex justify-between items-center max-sm:flex-col">
       <div class="flex items-center gap-0.5 max-sm:flex-col">
@@ -26,11 +22,7 @@
           size="small"
         >
           <div class="flex items-center gap-2">
-            <NuxtImg
-              :src="`/${icon}`"
-              :alt="tip"
-              class="w-4"
-            />
+            <NuxtImg :src="`/${icon}`" :alt="tip" class="w-4" />
             {{ tip }}
           </div>
         </el-button>
@@ -52,3 +44,8 @@
 <script setup lang="ts">
 import { FooterSocial, FooterRecord } from '@/const'
 </script>
+<style scoped>
+:deep(.el-button + .el-button) {
+  margin-left: 2px;
+}
+</style>

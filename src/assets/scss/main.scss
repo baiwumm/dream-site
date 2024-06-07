@@ -9,10 +9,6 @@
   --scrollbar-hover: rgba(255, 255, 255, .25);
 }
 
-.el-button+.el-button{
-  margin-left: 2px !important;
-}
-
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
   width: 5px;
