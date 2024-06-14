@@ -14,6 +14,6 @@ watch(
 
 <template>
   <div>
-    <p class="u-text-black">Redirecting...</p>
+    <p class="u-text-black">正在登录...</p>
   </div>
 </template>
