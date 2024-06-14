@@ -1,5 +1,32 @@
 
 
+## [1.3.0](https://github.com/baiwumm/dream-site/compare/1.2.5...1.3.0) (2024-06-14)
+
+
+### ✨ Features | 新功能
+
+* 添加 Github 登录身份鉴权 ([d486823](https://github.com/baiwumm/dream-site/commit/d486823d0990cfb090da1a55959dd530f9eea894))
+* **categorys:** 完成网站分类 RESTFUL 风格 API 接口和实现 CURD 操作 ([ad776f3](https://github.com/baiwumm/dream-site/commit/ad776f3a4e27af19a0f9da83ea8b46ec01066afc))
+* Element-plus 组件设置默认中文 ([1295c6a](https://github.com/baiwumm/dream-site/commit/1295c6a69c92abb63b1bfad6a135746b9ddc6f87))
+* **Header:** 顶部添加跳转管理界面和登录按钮 ([2ea51ca](https://github.com/baiwumm/dream-site/commit/2ea51ca0e73b002d8181a6e7f19360d573fc0ac3))
+
+
+### 💄 Styles | 风格
+
+* 样式调整 ([544e582](https://github.com/baiwumm/dream-site/commit/544e5821ee7e838f72dcabd8a1923539770d1426))
+* 样式调整 ([e9ec05e](https://github.com/baiwumm/dream-site/commit/e9ec05ed41dd39217030dca831b416626ecd06b0))
+
+
+### ♻ Code Refactoring | 代码重构
+
+* 更换 UI 组件库为 Element-plus，优化代码结构 ([8edc7bd](https://github.com/baiwumm/dream-site/commit/8edc7bdbd3f425d8fbe60289d3b68ae5cd7f4844))
+
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新 @nuxt/eslint-config 包，修改 eslint 配置 ([98227fe](https://github.com/baiwumm/dream-site/commit/98227fe95657fb23b4667ee3569d981769c6790a))
+* 更新 @supabase/supabase-js 版本 ([35fdf65](https://github.com/baiwumm/dream-site/commit/35fdf65630a97635fa4b245e4c9e10e330c6e47c))
+
 ## [1.2.5](https://github.com/baiwumm/dream-site/compare/1.2.4...1.2.5) (2024-05-23)
 
 
