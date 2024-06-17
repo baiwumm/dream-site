@@ -51,6 +51,38 @@ export type CategoryEdit = Pick<CategoryList, 'name' | 'sort'> &
   Partial<Pick<CategoryList, 'id' | 'desc'>>
 
 /**
+ * @description: 站点列表
+ */
+export type WebsiteList = {
+  id: string // uuid
+  category_id: string // 所属分类
+  name: string // 站点名称
+  desc: string // 站点描述
+  url: string // 站点 url
+  logo: string // logo url
+  tags: string[] // 站点标签
+  user_id: string // 用户 id
+  email: string // 用户邮箱
+  sort: number // 排序
+  created_at: Date // 创建时间
+  updated_at: Date // 更新时间
+}
+
+/**
+ * @description: 站点查询参数
+ */
+export type WebsiteParams = PaginationParams & Partial<Pick<WebsiteList, 'name' | 'category_id'>>
+
+/**
+ * @description: 新增/编辑参数
+ */
+export type WebsiteEdit = Pick<
+  WebsiteList,
+  'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'sort'
+> &
+  Partial<Pick<CategoryList, 'id' | 'desc'>>
+
+/**
  * @description: 社交图标类型
  */
 export type Social = {
