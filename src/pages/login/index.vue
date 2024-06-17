@@ -3,8 +3,6 @@ const colorMode = useColorMode()
 const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
 
-const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`
-
 watchEffect(() => {
   if (user.value) {
     navigateTo('/')
@@ -22,7 +20,12 @@ watchEffect(() => {
         size="large"
         :dark="colorMode.value === 'dark'"
         class="w-full"
-        @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })"
+        @click="
+          auth.signInWithOAuth({
+            provider: 'github',
+            options: { redirectTo: 'https://dream-site.cn/confirm' }
+          })
+        "
       >
         <Icon name="i-simple-icons-github" class="h-5 w-5 mr-2" />
         Github

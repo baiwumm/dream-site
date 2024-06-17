@@ -5,7 +5,7 @@ watch(
   user,
   () => {
     if (user.value) {
-      return navigateTo('/')
+      return navigateTo('https://dream-site.cn/')
     }
   },
   { immediate: true }
