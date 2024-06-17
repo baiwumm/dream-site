@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      baseUrl: 'https://dream-site.cn'
+    }
+  },
   // SEO 和 Meta
   app: {
     head: {
@@ -20,6 +25,7 @@ export default defineNuxtConfig({
   // 引入模块
   modules: ['@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxtjs/color-mode', 'nuxt-icon'],
   supabase: {
+    url: 'https://dream-site.cn',
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
