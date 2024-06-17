@@ -2,18 +2,18 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: 'https://dream-site.cn'
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000'
     }
   },
   // SEO 和 Meta
   app: {
     head: {
-      title: process.env.SITE_TITLE,
+      title: '程序员的梦中情站',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'keywords', content: process.env.SITE_KEYWORDS },
-        { name: 'description', content: process.env.SITE_DESCRIPTION }
+        { name: 'keywords', content: 'Nuxt.js,导航,网站' },
+        { name: 'description', content: '致力于打造程序员的梦中情站' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
