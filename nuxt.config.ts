@@ -25,7 +25,6 @@ export default defineNuxtConfig({
   // 引入模块
   modules: ['@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxtjs/color-mode', 'nuxt-icon'],
   supabase: {
-    url: 'https://dream-site.cn',
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
