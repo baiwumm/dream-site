@@ -1,5 +1,25 @@
 
 
+## [1.4.1](https://github.com/baiwumm/dream-site/compare/1.4.0...1.4.1) (2024-06-17)
+
+
+### ✨ Features | 新功能
+
+* 修改 Nuxt 配置文件 ([9338437](https://github.com/baiwumm/dream-site/commit/933843732f4f6ad89dda48dbf46b000c052334d9))
+* 修改 Nuxt 配置文件 ([7262805](https://github.com/baiwumm/dream-site/commit/7262805555a70feddc0e334d3700677581a73f25))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复登录后跳转地址错误的问题 ([9873aba](https://github.com/baiwumm/dream-site/commit/9873aba0b85c369767e4c96c97bf65d3bd35c726))
+* 修改 Github 重定向地址 ([22f32fa](https://github.com/baiwumm/dream-site/commit/22f32fa4234bf840bea37d0dd6090ef333f98319))
+
+
+### ⚡ Performance Improvements | 性能优化
+
+* 删除 LoginCard 组件 ([6226e01](https://github.com/baiwumm/dream-site/commit/6226e01373ede0c6dc699aab56279064f0cb3bf1))
+* 重命名表名，统一 ds 前缀 ([d7d2763](https://github.com/baiwumm/dream-site/commit/d7d2763f424dc8b8e4a6af8c2928ac8e0cd6de49))
+
 ## [1.4.0](https://github.com/baiwumm/dream-site/compare/1.3.0...1.4.0) (2024-06-17)
 
 
