@@ -1,5 +1,5 @@
 <template>
-  <el-space direction="vertical" alignment="start" fill class="w-full">
+  <div class="flex flex-col gap-4">
     <el-space wrap>
       <el-input v-model="name" style="width: 240px" placeholder="输入关键词搜索" />
       <el-button type="primary" :loading="pending" @click="handleSearch"> 查询 </el-button>
@@ -8,15 +8,25 @@
     <!-- 表格列表 -->
     <table-template
       :pending="pending"
-      :data="data?.data"
-      :page-size="pageSize"
+      :data-source="data?.data?.list || []"
       @handle-edit="handleEdit"
       @handle-delete="handleDelete"
-      @handle-change-page="handleChangePage"
     />
+    <!-- 分页 -->
+    <el-row justify="end">
+      <el-pagination
+        v-model:current-page="current"
+        small
+        background
+        layout="total,prev, pager, next"
+        :total="data?.data?.total || 0"
+        :page-size="pageSize"
+        @change="handleChangePage"
+      />
+    </el-row>
     <!-- 新增/编辑弹窗 -->
     <edit-modal ref="modalRef" @refresh="refresh" />
-  </el-space>
+  </div>
 </template>
 <script setup lang="ts">
 import type { PageResponse, CategoryList, Response } from '~/types'
@@ -57,6 +67,7 @@ const handleChangePage = (currentPage: number, page: number) => {
 // 查询回调
 const handleSearch = () => {
   current.value = 1
+  refresh()
 }
 
 // 新增回调

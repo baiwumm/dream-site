@@ -2,16 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-14 10:03:07
+ * @LastEditTime: 2024-06-17 11:32:20
  * @Description: 新增/编辑弹窗
 -->
 <template>
-  <el-dialog
-    :model-value="open"
-    :title="categoryId ? `编辑分类: ${name}` : '新增分类'"
-    width="500"
-    @close="handleClose"
-  >
+  <el-dialog :model-value="open" width="500" @close="handleClose">
     <template #header>
       {{ categoryId ? `编辑分类: ` : '新增分类' }}
       <el-tag v-if="name" type="primary">
@@ -68,10 +63,10 @@ defineExpose({ open, name, form, categoryId })
 
 // 关闭回调
 const handleClose = () => {
-  ruleFormRef.value?.resetFields()
   open.value = false
   name.value = ''
   categoryId.value = undefined
+  ruleFormRef.value?.resetFields()
 }
 
 // 确定回调
