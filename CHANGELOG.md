@@ -1,5 +1,22 @@
 
 
+## [1.4.0](https://github.com/baiwumm/dream-site/compare/1.3.0...1.4.0) (2024-06-17)
+
+
+### ✨ Features | 新功能
+
+* **websites:** 完成分类站点 RestFul 风格 CURD 接口 ([088aad3](https://github.com/baiwumm/dream-site/commit/088aad3800b8270b4c31638b261e7d271d12f5b7))
+
+
+### 💄 Styles | 风格
+
+* **categorys:** 优化代码结构 ([b5b846a](https://github.com/baiwumm/dream-site/commit/b5b846a1a6b24b3c0b19d781ebd24ad51d752199))
+
+
+### 🔧 Continuous Integration | CI 配置
+
+* 关闭 eslint camelcase 属性检测规则 ([4f8e297](https://github.com/baiwumm/dream-site/commit/4f8e2974f6fd672e687d04cea34775f94f24df13))
+
 ## [1.3.0](https://github.com/baiwumm/dream-site/compare/1.2.5...1.3.0) (2024-06-14)
 
 
