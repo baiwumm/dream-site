@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-29 14:39:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-17 14:21:07
+ * @LastEditTime: 2024-06-17 17:45:24
  * @Description: 获取分类列表
  */
 import type { Response, PageResponse, CategoryList, CategoryParams } from '~/types'
@@ -24,8 +24,8 @@ export default defineEventHandler(async (event): Promise<Response<PageResponse<C
 
   // 查询 sql
   let sqlQuery = client
-    .from('categorys')
-    .select('*,websites(*)', { count: 'exact' })
+    .from('ds_categorys')
+    .select('*,ds_websites(*)', { count: 'exact' })
     .range(start, end)
     .order('sort', {
       ascending: false

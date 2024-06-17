@@ -17,7 +17,7 @@ export default defineEventHandler(async (event): Promise<Response<WebsiteList[]>
 
   // 插入数据
   const { data, error } = await client
-    .from('websites')
+    .from('ds_websites')
     .insert({ ...body, email: user?.email })
     .select()
 

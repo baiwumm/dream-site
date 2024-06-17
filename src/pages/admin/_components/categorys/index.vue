@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-4">
     <el-space wrap>
-      <el-input v-model="name" style="width: 240px" placeholder="输入关键词搜索" />
+      <el-input v-model="name" style="width: 240px" placeholder="输入分类名称搜索" />
       <el-button type="primary" :loading="pending" @click="handleSearch"> 查询 </el-button>
       <el-button type="primary" @click="handleAdd"> 新增 </el-button>
     </el-space>

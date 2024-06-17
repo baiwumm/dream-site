@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-12 17:45:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-14 15:28:54
+ * @LastEditTime: 2024-06-17 17:43:27
  * @Description: 更新站点列表
  */
 import type { Response, WebsiteEdit, WebsiteList } from '~/types'
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event): Promise<Response<WebsiteList[]>
 
   // 插入数据
   const { data, error } = await client
-    .from('websites')
+    .from('ds_websites')
     .update({ ...body, updated_at: new Date() })
     .eq('id', id)
     .select()

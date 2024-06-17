@@ -54,7 +54,7 @@
       min-width="100"
     >
       <template #default="{ row }">
-        <el-tag type="success">{{ row.categorys.name }}</el-tag>
+        <el-tag type="success">{{ row.ds_categorys.name }}</el-tag>
       </template>
     </el-table-column>
     <el-table-column prop="sort" label="排序" align="center" sortable min-width="100" />

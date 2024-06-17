@@ -23,7 +23,7 @@ export default defineEventHandler(async (event): Promise<Response<CategoryList[]
 
   // 插入数据
   const { data, error } = await client
-    .from('categorys')
+    .from('ds_categorys')
     .update({ ...body, updated_at: new Date() })
     .eq('id', id)
     .select()

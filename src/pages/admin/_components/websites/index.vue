@@ -3,7 +3,7 @@
     <el-space wrap>
       <el-form :model="form" inline class="searchForm">
         <el-form-item prop="name">
-          <el-input v-model="form.name" style="width: 240px" placeholder="输入关键词搜索" />
+          <el-input v-model="form.name" style="width: 240px" placeholder="输入站点名称搜索" />
         </el-form-item>
         <el-form-item prop="category_id">
           <el-select

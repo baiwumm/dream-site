@@ -24,8 +24,8 @@ export default defineEventHandler(async (event): Promise<Response<PageResponse<W
 
   // 查询 sql
   let sqlQuery = client
-    .from('websites')
-    .select('*,categorys(*)', { count: 'exact' })
+    .from('ds_websites')
+    .select('*,ds_categorys(*)', { count: 'exact' })
     .range(start, end)
     .order('sort', {
       ascending: false

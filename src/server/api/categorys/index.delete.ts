@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-13 13:39:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-17 10:35:31
+ * @LastEditTime: 2024-06-17 17:41:43
  * @Description: 删除网站分类
  */
 import type { Response, CategoryEdit, CategoryList } from '~/types'
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event): Promise<Response<CategoryList[]
   }
 
   // 删除数据
-  const { error } = await client.from('categorys').delete().eq('id', id)
+  const { error } = await client.from('ds_categorys').delete().eq('id', id)
 
   // 判断请求结果
   if (error) {

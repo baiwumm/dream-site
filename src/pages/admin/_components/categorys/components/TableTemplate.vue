@@ -10,7 +10,7 @@
     >
       <template #default="{ row }">
         <div class="py-2.5">
-          <el-badge :value="row.websites.length" :max="99" :hidden="!row.websites.length">
+          <el-badge :value="row.ds_websites.length" :max="99" :hidden="!row.ds_websites.length">
             <el-tag type="primary">{{ row.name }}</el-tag>
           </el-badge>
         </div>

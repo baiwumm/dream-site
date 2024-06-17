@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-13 13:39:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-13 13:43:03
+ * @LastEditTime: 2024-06-17 17:42:48
  * @Description: 删除站点
  */
 import type { Response, WebsiteEdit, WebsiteList } from '~/types'
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event): Promise<Response<WebsiteList[]>
   }
 
   // 删除数据
-  const { error } = await client.from('websites').delete().eq('id', id)
+  const { error } = await client.from('ds_websites').delete().eq('id', id)
 
   // 判断请求结果
   if (error) {

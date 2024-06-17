@@ -17,7 +17,7 @@ export default defineEventHandler(async (event): Promise<Response<CategoryList[]
 
   // 插入数据
   const { data, error } = await client
-    .from('categorys')
+    .from('ds_categorys')
     .insert({ ...body, email: user?.email })
     .select()
 
