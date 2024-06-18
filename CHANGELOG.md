@@ -1,5 +1,12 @@
 
 
+## [1.4.2](https://github.com/baiwumm/dream-site/compare/1.4.1...1.4.2) (2024-06-18)
+
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新依赖包 ([df94bba](https://github.com/baiwumm/dream-site/commit/df94bba3d22fbbd5a2382ff50bb78d91c4dd0bcd))
+
 ## [1.4.1](https://github.com/baiwumm/dream-site/compare/1.4.0...1.4.1) (2024-06-17)
 
 
