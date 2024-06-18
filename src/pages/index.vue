@@ -5,10 +5,7 @@
   >
     Hello World!
     <div class="flex gap-4 mt-4">
-      <el-button
-        v-for="item in data"
-        :key="item.id"
-      >
+      <el-button v-for="item in data" :key="item.id">
         {{ item.name }}
       </el-button>
     </div>
@@ -19,5 +16,5 @@
 import type { CategoryList } from '~/types'
 const supabase = useSupabaseClient<CategoryList>()
 
-const { data } = await supabase.from('categorys').select()
+const { data } = await supabase.from('ds_categorys').select()
 </script>
