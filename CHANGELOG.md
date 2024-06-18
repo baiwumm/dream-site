@@ -1,5 +1,12 @@
 
 
+## [1.4.3](https://github.com/baiwumm/dream-site/compare/1.4.2...1.4.3) (2024-06-18)
+
+
+### ✨ Features | 新功能
+
+* 首页渲染分类和网站列表 ([0c72bf2](https://github.com/baiwumm/dream-site/commit/0c72bf24e90c1b5f50e21c72071b02c204837fca))
+
 ## [1.4.2](https://github.com/baiwumm/dream-site/compare/1.4.1...1.4.2) (2024-06-18)
 
 
