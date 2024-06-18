@@ -1,0 +1,40 @@
+<template>
+  <el-card class="cursor-pointer" shadow="hover" @click="handleClick">
+    <div class="flex flex-col gap-3">
+      <div class="flex gap-1 items-center">
+        <el-avatar shape="square" :size="40" fit="cover" :src="websiteInfo.logo" />
+        <div class="flex flex-col gap-0.5">
+          <div class="text-lg">{{ websiteInfo.name }}</div>
+          <div class="flex gap-1 items-center text-xs text-slate-400 font-thin">
+            <template v-for="(tag, index) in websiteInfo.tags" :key="index">
+              <span>
+                {{ tag }}
+              </span>
+              <template v-if="index !== websiteInfo.tags.length - 1">
+                <el-divider direction="vertical" />
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="text-sm text-slate-600 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
+    </div>
+  </el-card>
+</template>
+<script setup lang="ts">
+import type { WebsiteList } from '~/types'
+// 父组件传递参数
+const props = defineProps<{
+  websiteInfo: WebsiteList
+}>()
+
+// 点击卡片回调
+const handleClick = () => {
+  window.open(props.websiteInfo.url)
+}
+</script>
+<style lang="scss" scoped>
+:deep(.el-avatar) {
+  background-color: transparent;
+}
+</style>

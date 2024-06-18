@@ -2,12 +2,14 @@
   <div class="flex flex-col gap-4">
     <el-space wrap>
       <el-input v-model="name" style="width: 240px" placeholder="输入分类名称搜索" />
-      <el-button type="primary" :loading="pending" @click="handleSearch"> 查询 </el-button>
+      <el-button type="primary" :loading="status === 'pending'" @click="handleSearch">
+        查询
+      </el-button>
       <el-button type="primary" @click="handleAdd"> 新增 </el-button>
     </el-space>
     <!-- 表格列表 -->
     <table-template
-      :pending="pending"
+      :pending="status === 'pending'"
       :data-source="data?.data?.list || []"
       @handle-edit="handleEdit"
       @handle-delete="handleDelete"
@@ -43,7 +45,7 @@ const name = ref('') // 分类名称
 const modalRef = ref<InstanceType<typeof EditModal>>()
 
 // 请求列表
-const { data, pending, refresh } = await useFetch<Response<PageResponse<CategoryList>>>(
+const { data, refresh, status } = await useFetch<Response<PageResponse<CategoryList>>>(
   '/api/categorys',
   {
     query: { current, pageSize, name },

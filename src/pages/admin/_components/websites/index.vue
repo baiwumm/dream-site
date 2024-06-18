@@ -10,7 +10,7 @@
             v-model="form.category_id"
             clearable
             filterable
-            :loading="categoryLoading"
+            :loading="categoryLoading === 'pending'"
             placeholder="请选择所属分类"
             style="width: 240px"
           >
@@ -23,12 +23,14 @@
           </el-select>
         </el-form-item>
       </el-form>
-      <el-button type="primary" :loading="pending" @click="handleSearch"> 查询 </el-button>
+      <el-button type="primary" :loading="status === 'pending'" @click="handleSearch">
+        查询
+      </el-button>
       <el-button type="primary" @click="handleAdd"> 新增 </el-button>
     </el-space>
     <!-- 表格列表 -->
     <table-template
-      :pending="pending"
+      :pending="status === 'pending'"
       :data-source="data?.data?.list || []"
       @handle-edit="handleEdit"
       @handle-delete="handleDelete"
@@ -69,14 +71,14 @@ const form = reactive({
 const modalRef = ref<InstanceType<typeof EditModal>>()
 
 // 请求分类列表
-const { data: categoryData, pending: categoryLoading } = await useFetch<
+const { data: categoryData, status: categoryLoading } = await useFetch<
   Response<PageResponse<CategoryList>>
 >('/api/categorys', {
   query: { current: 1, pageSize: 9999 } // 这里请求全部分类
 })
 
 // 请求站点列表
-const { data, pending, refresh } = await useFetch<Response<PageResponse<WebsiteList>>>(
+const { data, status, refresh } = await useFetch<Response<PageResponse<WebsiteList>>>(
   '/api/websites',
   {
     query: Object.assign(form, {
