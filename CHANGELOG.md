@@ -1,5 +1,12 @@
 
 
+## [1.4.5](https://github.com/baiwumm/dream-site/compare/1.4.4...1.4.5) (2024-06-19)
+
+
+### ✨ Features | 新功能
+
+* ds_websites 表添加 pinned 和 vpn 字段，优化样式 ([5ff90ac](https://github.com/baiwumm/dream-site/commit/5ff90ac39c7e015b7c7ca160c34a2fed5eacad8c))
+
 ## [1.4.4](https://github.com/baiwumm/dream-site/compare/1.4.3...1.4.4) (2024-06-19)
 
 
