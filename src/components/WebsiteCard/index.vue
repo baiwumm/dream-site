@@ -7,7 +7,7 @@
           <div class="text-lg">{{ websiteInfo.name }}</div>
           <div class="flex gap-1 items-center text-xs text-slate-400 font-thin">
             <template v-for="(tag, index) in websiteInfo.tags" :key="index">
-              <span>
+              <span class="line-clamp-1">
                 {{ tag }}
               </span>
               <template v-if="index !== websiteInfo.tags.length - 1">
@@ -36,5 +36,8 @@ const handleClick = () => {
 <style lang="scss" scoped>
 :deep(.el-avatar) {
   background-color: transparent;
+}
+:deep(.el-divider--vertical) {
+  margin: 0 4px;
 }
 </style>

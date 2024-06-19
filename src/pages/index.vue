@@ -1,10 +1,9 @@
 <template>
-  <div
-    class="flex justify-center items-center font-black text-5xl flex-col gap-2"
-    style="min-height: calc(100vh - 10rem)"
-  >
-    Hello World!
+  <div class="flex flex-col gap-2 px-4" style="min-height: calc(100vh - 10rem)">
     <ClientOnly>
+      <template #fallback>
+        <PageLoading />
+      </template>
       <el-button-group v-loading="categoryStatus === 'pending'">
         <el-button text :bg="!category_id" @click="category_id = ''">全部</el-button>
         <el-button
@@ -17,7 +16,7 @@
       </el-button-group>
       <div
         v-loading="websiteStatus === 'pending'"
-        class="grid gap-5 w-full px-4 justify-center"
+        class="grid gap-5 w-full justify-center"
         style="grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr))"
       >
         <template v-if="websiteList?.data?.list?.length">
