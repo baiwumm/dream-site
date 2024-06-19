@@ -127,6 +127,8 @@ const handleEdit = (row: WebsiteList) => {
       url: row.url,
       logo: row.logo,
       tags: row.tags,
+      pinned: row.pinned,
+      vpn: row.vpn,
       desc: row.desc,
       sort: row.sort
     })

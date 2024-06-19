@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 px-4" style="min-height: calc(100vh - 10rem)">
+  <div class="flex flex-col gap-2" style="min-height: calc(100vh - 10rem)">
     <ClientOnly>
       <template #fallback>
         <PageLoading />

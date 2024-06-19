@@ -1,10 +1,17 @@
 <template>
-  <el-card class="cursor-pointer" shadow="hover" @click="handleClick">
+  <el-card class="relative cursor-pointer" shadow="hover" @click="handleClick">
     <div class="flex flex-col gap-3">
-      <div class="flex gap-1 items-center">
-        <el-avatar shape="square" :size="40" fit="cover" :src="websiteInfo.logo" />
+      <div class="flex gap-2 items-center">
+        <el-avatar shape="square" :size="40" fit="contain" :src="websiteInfo.logo" />
         <div class="flex flex-col gap-0.5">
-          <div class="text-lg">{{ websiteInfo.name }}</div>
+          <div class="flex gap-1 items-center">
+            <div class="text-base">{{ websiteInfo.name }}</div>
+            <template v-if="websiteInfo.vpn">
+              <el-tooltip effect="dark" content="访问需要开启 VPN 服务" placement="bottom">
+                <Icon name="ri:error-warning-line" class="text-slate-400" />
+              </el-tooltip>
+            </template>
+          </div>
           <div class="flex gap-1 items-center text-xs text-slate-400 font-thin">
             <template v-for="(tag, index) in websiteInfo.tags" :key="index">
               <span class="line-clamp-1">
@@ -17,7 +24,13 @@
           </div>
         </div>
       </div>
-      <div class="text-sm text-slate-600 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
+      <div class="text-sm text-slate-500 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
+    </div>
+    <!-- 置顶标签 -->
+    <div class="absolute top-1 right-1.5">
+      <template v-if="websiteInfo.pinned">
+        <el-tag type="success" effect="light"> 置顶 </el-tag>
+      </template>
     </div>
   </el-card>
 </template>

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-17 14:32:12
+ * @LastEditTime: 2024-06-19 17:02:29
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -41,7 +41,19 @@
       <el-form-item label="站点标签" prop="tags">
         <dynamic-tag v-model="form.tags" />
       </el-form-item>
-      <el-form-item label="分类描述" prop="desc">
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="置顶" prop="pinned">
+            <el-switch v-model="form.pinned" inline-prompt active-text="是" inactive-text="否" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="18">
+          <el-form-item label="vpn" prop="vpn">
+            <el-switch v-model="form.vpn" inline-prompt active-text="是" inactive-text="否" />
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-form-item label="站点描述" prop="desc">
         <el-input v-model="form.desc" type="textarea" :rows="3" maxlength="100" show-word-limit />
       </el-form-item>
       <el-form-item label="排序" prop="sort">
@@ -74,6 +86,8 @@ const form = reactive<WebsiteEdit>({
   url: '',
   logo: '',
   tags: [],
+  pinned: false,
+  vpn: false,
   desc: undefined,
   sort: 1
 })

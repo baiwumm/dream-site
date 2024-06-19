@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-29 14:39:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-17 14:15:51
+ * @LastEditTime: 2024-06-19 16:30:24
  * @Description: 获取站点列表
  */
 import type { Response, PageResponse, WebsiteList, WebsiteParams } from '~/types'
@@ -27,6 +27,9 @@ export default defineEventHandler(async (event): Promise<Response<PageResponse<W
     .from('ds_websites')
     .select('*,ds_categorys(*)', { count: 'exact' })
     .range(start, end)
+    .order('pinned', {
+      ascending: false
+    })
     .order('sort', {
       ascending: false
     })

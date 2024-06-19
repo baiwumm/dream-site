@@ -6,29 +6,23 @@
       label="站点名称"
       align="center"
       show-overflow-tooltip
-      min-width="160"
+      min-width="200"
     >
       <template #default="{ row }">
         <el-space wrap>
           <el-tag type="primary">{{ row.name }}</el-tag>
           <el-link :href="row.url" target="_blank">
-            <Icon name="ri:share-box-fill" class="h-5 w-5" />
+            <Icon name="ri:share-box-fill" class="h-4 w-4" />
           </el-link>
         </el-space>
       </template>
     </el-table-column>
     <el-table-column prop="logo" label="Logo" align="center" min-width="100">
       <template #default="{ row }">
-        <NuxtImg :src="row.logo" alt="logo" class="w-10 h-10 m-auto" />
+        <NuxtImg :src="row.logo" alt="logo" class="w-8 h-8 m-auto" />
       </template>
     </el-table-column>
-    <el-table-column
-      prop="tags"
-      label="站点标签"
-      align="center"
-      show-overflow-tooltip
-      min-width="200"
-    >
+    <el-table-column prop="tags" label="站点标签" align="center" min-width="200">
       <template #default="{ row }">
         <el-space wrap>
           <el-tag v-for="(tag, index) in row.tags" :key="index" type="info">{{ tag }}</el-tag>
@@ -40,7 +34,7 @@
       label="分类描述"
       align="center"
       show-overflow-tooltip
-      min-width="100"
+      min-width="160"
     >
       <template #default="{ row }">
         {{ row.desc || '--' }}
@@ -55,6 +49,24 @@
     >
       <template #default="{ row }">
         <el-tag type="success">{{ row.ds_categorys.name }}</el-tag>
+      </template>
+    </el-table-column>
+    <el-table-column prop="pinned" label="置顶" align="center" width="80">
+      <template #default="{ row }">
+        <el-button :type="row.pinned ? 'success' : 'danger'" circle size="small">
+          <template #icon>
+            <Icon :name="row.pinned ? 'ri:check-fill' : 'ri:close-fill'" />
+          </template>
+        </el-button>
+      </template>
+    </el-table-column>
+    <el-table-column prop="vpn" label="VPN" align="center" width="80">
+      <template #default="{ row }">
+        <el-button :type="row.vpn ? 'success' : 'danger'" circle size="small">
+          <template #icon>
+            <Icon :name="row.vpn ? 'ri:check-fill' : 'ri:close-fill'" />
+          </template>
+        </el-button>
       </template>
     </el-table-column>
     <el-table-column prop="sort" label="排序" align="center" sortable min-width="100" />
