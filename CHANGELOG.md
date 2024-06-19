@@ -1,5 +1,13 @@
 
 
+## [1.4.4](https://github.com/baiwumm/dream-site/compare/1.4.3...1.4.4) (2024-06-19)
+
+
+### ✨ Features | 新功能
+
+* 更改本地开发地址 ([bcf81a9](https://github.com/baiwumm/dream-site/commit/bcf81a998bf1ecb522179d7d3f6bc70bd8a1c66f))
+* 添加 PageLoading 加载组件 ([5239d36](https://github.com/baiwumm/dream-site/commit/5239d364b792162e98c1a8d45994d0c2e18a5ee2))
+
 ## [1.4.3](https://github.com/baiwumm/dream-site/compare/1.4.2...1.4.3) (2024-06-18)
 
 
