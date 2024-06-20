@@ -1,5 +1,17 @@
 
 
+## [1.4.7](https://github.com/baiwumm/dream-site/compare/1.4.6...1.4.7) (2024-06-20)
+
+
+### 💄 Styles | 风格
+
+* 优化首页站点无数据显示样式 ([547f2e7](https://github.com/baiwumm/dream-site/commit/547f2e7aed97894ec1450e4c97e8ff784248fe9c))
+
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化代码结构 ([0361951](https://github.com/baiwumm/dream-site/commit/03619510dfed9267e9cc16ba6b09b7818cd5cb08))
+
 ## [1.4.6](https://github.com/baiwumm/dream-site/compare/1.4.5...1.4.6) (2024-06-20)
 
 
