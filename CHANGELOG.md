@@ -1,5 +1,12 @@
 
 
+## [1.4.6](https://github.com/baiwumm/dream-site/compare/1.4.5...1.4.6) (2024-06-20)
+
+
+### ✨ Features | 新功能
+
+* 添加路由过渡效果，首屏加载动画，页面进度条 ([7ff5901](https://github.com/baiwumm/dream-site/commit/7ff5901cb73eb8467fef86e398088d4608e83418))
+
 ## [1.4.5](https://github.com/baiwumm/dream-site/compare/1.4.4...1.4.5) (2024-06-19)
 
 
