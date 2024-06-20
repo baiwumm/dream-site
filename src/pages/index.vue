@@ -1,9 +1,6 @@
 <template>
-  <div class="flex flex-col gap-2" style="min-height: calc(100vh - 10rem)">
+  <div class="flex flex-col gap-2">
     <ClientOnly>
-      <template #fallback>
-        <PageLoading />
-      </template>
       <el-button-group v-loading="categoryStatus === 'pending'">
         <el-button text :bg="!category_id" @click="category_id = ''">全部</el-button>
         <el-button

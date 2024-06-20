@@ -18,7 +18,8 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
       ]
-    }
+    },
+    pageTransition: { name: 'blur', mode: 'out-in' }, // 页面过渡效果
   },
   // 源目录
   srcDir: 'src/',
