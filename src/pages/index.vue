@@ -23,7 +23,15 @@
             :website-info="item"
           />
         </template>
-        <el-empty v-else description="此分类暂无站点，请前往后台添加数据!" />
+      </div>
+      <div
+        v-if="!websiteList?.data?.list?.length"
+        class="flex justify-center items-center flex-col"
+      >
+        <el-empty description="此分类暂无站点，请前往后台添加数据！" />
+        <NuxtLink to="/admin">
+          <el-button color="#626aef" plain :dark="colorMode.value === 'dark'">前往后台</el-button>
+        </NuxtLink>
       </div>
     </ClientOnly>
   </div>
@@ -31,6 +39,8 @@
 
 <script setup lang="ts">
 import type { PageResponse, CategoryList, Response, WebsiteList } from '~/types'
+
+const colorMode = useColorMode()
 
 const category_id = ref('')
 
