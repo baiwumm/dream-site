@@ -45,10 +45,10 @@
       label="所属分类"
       align="center"
       show-overflow-tooltip
-      min-width="100"
+      min-width="160"
     >
       <template #default="{ row }">
-        <el-tag type="success">{{ row.ds_categorys.name }}</el-tag>
+        <el-tag type="success"><Icon name="ri:menu-5-line" class="h-5 w-5" />{{ row.ds_categorys.name }}</el-tag>
       </template>
     </el-table-column>
     <el-table-column prop="pinned" label="置顶" align="center" width="80">
@@ -80,10 +80,20 @@
         <div>{{ formatDateTime(row.updated_at) }}</div>
       </template>
     </el-table-column>
-    <el-table-column label="操作" width="140" align="center" fixed="right">
+    <el-table-column label="操作" width="180" align="center" fixed="right">
       <template #default="{ row }">
-        <el-button size="small" @click="emit('handleEdit', row)"> 编辑 </el-button>
-        <el-button size="small" type="danger" @click="emit('handleDelete', row)"> 删除 </el-button>
+        <el-button size="small" @click="emit('handleEdit', row)">
+          <el-space :size="5">
+            <Icon name="ri:edit-box-line" class="h-4 w-4" />
+            <span>编辑</span>
+          </el-space>
+        </el-button>
+        <el-button size="small" type="danger" @click="emit('handleDelete', row)">
+          <el-space :size="5">
+            <Icon name="ri:delete-bin-line" class="h-4 w-4" />
+            <span>删除</span>
+          </el-space>
+        </el-button>
       </template>
     </el-table-column>
   </el-table>

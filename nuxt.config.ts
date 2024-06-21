@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL || 'https://dream-site.cn'
+      baseUrl: 'https://dream-site.cn'
     }
   },
   // SEO 和 Meta

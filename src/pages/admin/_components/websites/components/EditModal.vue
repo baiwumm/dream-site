@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-19 17:02:29
+ * @LastEditTime: 2024-06-21 14:25:06
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -26,7 +26,12 @@
             :key="item.id"
             :label="item.name"
             :value="item.id"
-          />
+          >
+            <el-space :size="5">
+              <Icon name="ri:menu-5-line" class="h-4 w-4" />
+              <span>{{ item.name }}</span>
+            </el-space>
+          </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="网站名称" prop="name">
@@ -73,6 +78,9 @@ const name = ref('') // 当前数据
 const confirmLoading = ref(false)
 const websiteId = ref()
 
+// 图片正则
+const logoReg = /^https:\/\/.*\.(jpg|jpeg|png|gif|bmp|svg)(\?|$)/i
+
 const emit = defineEmits(['refresh'])
 
 // 父组件传递参数
@@ -102,8 +110,7 @@ const validatorLogo = (
   if (!value) {
     callback(new Error('请输入站点logo'))
   } else {
-    const reg = /^https:\/\/.*\.(jpg|jpeg|png|gif|bmp|svg)(\?|$)/i
-    if (reg.test(value)) {
+    if (logoReg.test(value)) {
       callback()
     } else {
       callback(new Error('请输入正确的url'))

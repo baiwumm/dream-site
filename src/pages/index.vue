@@ -2,14 +2,24 @@
   <div class="flex flex-col gap-2">
     <ClientOnly>
       <el-button-group v-loading="categoryStatus === 'pending'">
-        <el-button text :bg="!category_id" @click="category_id = ''">全部</el-button>
+        <el-button text :bg="!category_id" @click="category_id = ''">
+          <el-space :size="5">
+            <Icon name="ri:menu-5-line" class="h-4 w-4" />
+            <span>全部</span>
+          </el-space>
+        </el-button>
         <el-button
           v-for="item in categoryList?.data?.list || []"
           :key="item.id"
           text
           :bg="category_id === item.id"
           @click="category_id = item.id"
-        >{{ item.name }}</el-button>
+        >
+          <el-space :size="5">
+            <Icon name="ri:menu-5-line" class="h-4 w-4" />
+            <span>{{ item.name }}</span>
+          </el-space>
+        </el-button>
       </el-button-group>
       <div
         v-loading="websiteStatus === 'pending'"

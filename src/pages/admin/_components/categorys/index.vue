@@ -3,9 +3,17 @@
     <el-space wrap>
       <el-input v-model="name" style="width: 240px" placeholder="输入分类名称搜索" />
       <el-button type="primary" :loading="status === 'pending'" @click="handleSearch">
-        查询
+        <el-space :size="5">
+          <Icon name="ri:search-line" class="h-4 w-4" />
+          <span>查询</span>
+        </el-space>
       </el-button>
-      <el-button type="primary" @click="handleAdd"> 新增 </el-button>
+      <el-button type="primary" @click="handleAdd">
+        <el-space :size="5">
+          <Icon name="ri:add-fill" class="h-4 w-4" />
+          <span>新增</span>
+        </el-space>
+      </el-button>
     </el-space>
     <!-- 表格列表 -->
     <table-template
@@ -39,7 +47,7 @@ import TableTemplate from './components/TableTemplate.vue'
 
 // 请求参数
 const current = ref(1) // 当前页
-const pageSize = ref(5) // 每页条数
+const pageSize = ref(10) // 每页条数
 const name = ref('') // 分类名称
 
 const modalRef = ref<InstanceType<typeof EditModal>>()
