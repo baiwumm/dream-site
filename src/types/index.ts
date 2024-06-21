@@ -63,6 +63,7 @@ export type WebsiteList = {
   tags: string[] // 站点标签
   pinned: boolean // 是否置顶
   vpn: boolean // 是否需要 vpn
+  recommend: boolean // 是否推荐
   user_id: string // 用户 id
   email: string // 用户邮箱
   sort: number // 排序
@@ -80,7 +81,7 @@ export type WebsiteParams = PaginationParams & Partial<Pick<WebsiteList, 'name' 
  */
 export type WebsiteEdit = Pick<
   WebsiteList,
-  'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'pinned' | 'vpn' | 'sort'
+  'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'pinned' | 'vpn' | 'recommend' | 'sort'
 > &
   Partial<Pick<CategoryList, 'id' | 'desc'>>
 

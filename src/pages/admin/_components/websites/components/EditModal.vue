@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-21 14:25:06
+ * @LastEditTime: 2024-06-21 15:53:44
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -47,14 +47,19 @@
         <dynamic-tag v-model="form.tags" />
       </el-form-item>
       <el-row>
-        <el-col :span="6">
+        <el-col :span="8">
           <el-form-item label="置顶" prop="pinned">
             <el-switch v-model="form.pinned" inline-prompt active-text="是" inactive-text="否" />
           </el-form-item>
         </el-col>
-        <el-col :span="18">
+        <el-col :span="8">
           <el-form-item label="vpn" prop="vpn">
             <el-switch v-model="form.vpn" inline-prompt active-text="是" inactive-text="否" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="推荐" prop="recommend">
+            <el-switch v-model="form.recommend" inline-prompt active-text="是" inactive-text="否" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -96,6 +101,7 @@ const form = reactive<WebsiteEdit>({
   tags: [],
   pinned: false,
   vpn: false,
+  recommend: false,
   desc: undefined,
   sort: 1
 })

@@ -26,10 +26,14 @@
       </div>
       <div class="text-sm text-slate-500 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
     </div>
-    <!-- 置顶标签 -->
     <div class="absolute top-1 right-1.5">
+      <!-- 置顶标签 -->
       <template v-if="websiteInfo.pinned">
         <el-tag type="success" effect="light"> 置顶 </el-tag>
+      </template>
+      <!-- 是否推荐 -->
+      <template v-if="websiteInfo.recommend">
+        <el-tag type="info" effect="light"> 推荐 </el-tag>
       </template>
     </div>
   </el-card>
