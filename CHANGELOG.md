@@ -1,5 +1,17 @@
 
 
+## [1.4.8](https://github.com/baiwumm/dream-site/compare/1.4.7...1.4.8) (2024-06-21)
+
+
+### ✨ Features | 新功能
+
+* 新增是否推荐字段 ([67b862d](https://github.com/baiwumm/dream-site/commit/67b862d02d0de8ce755dbdef1361b69453bf4ec9))
+
+
+### 💄 Styles | 风格
+
+* 调整样式和添加图标 ([c805fd0](https://github.com/baiwumm/dream-site/commit/c805fd0f42c5763dd9bfab8c9925b1ce9227ab2a))
+
 ## [1.4.7](https://github.com/baiwumm/dream-site/compare/1.4.6...1.4.7) (2024-06-20)
 
 
