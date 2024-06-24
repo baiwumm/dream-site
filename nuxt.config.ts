@@ -38,5 +38,6 @@ export default defineNuxtConfig({
   experimental: {
     viewTransition: true
   },
-  css: ['element-plus/theme-chalk/dark/css-vars.css', '~/assets/scss/main.scss']
+  css: ['element-plus/theme-chalk/dark/css-vars.css', '~/assets/scss/main.scss'],
+  extends: ['nuxt-umami']
 })

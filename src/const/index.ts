@@ -20,6 +20,11 @@ export const FooterRecord: Social[] = [
  * @description: 社交图标
  */
 export const FooterSocial: Social[] = [
+  {
+    icon: 'ri:bar-chart-2-line',
+    url: 'https://umami.baiwumm.com/share/FCiIDToq8NxwjhIJ',
+    tip: '网站统计'
+  },
   { icon: 'i-ri-github-line', url: 'https://github.com/baiwumm', tip: 'Github' },
   { icon: 'i-ri-wechat-line', url: 'https://wechat.baiwumm.com/', tip: '微信' },
   { icon: 'i-ri-mail-line', url: 'mailto:baiwumm@foxmail.com', tip: 'Email' },

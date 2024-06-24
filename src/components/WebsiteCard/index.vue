@@ -1,5 +1,10 @@
 <template>
-  <el-card class="relative cursor-pointer" shadow="hover" @click="handleClick">
+  <el-card
+    v-umami="{ name: websiteInfo.name, url: websiteInfo.url }"
+    class="relative cursor-pointer"
+    shadow="hover"
+    @click="handleClick"
+  >
     <div class="flex flex-col gap-3">
       <div class="flex gap-2 items-center">
         <el-avatar shape="square" :size="40" fit="contain" :src="websiteInfo.logo" />
