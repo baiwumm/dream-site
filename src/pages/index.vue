@@ -67,4 +67,8 @@ const { data: categoryList, status: categoryStatus } = await useFetch<
 >('/api/categorys', {
   query: { current: 1, pageSize: 999 }
 })
+
+definePageMeta({
+  title: '程序员的梦中情站'
+})
 </script>

@@ -11,6 +11,14 @@ nuxtApp.hook('page:start', () => {
 nuxtApp.hook('page:finish', () => {
   isFullLoading.value = false
 })
+
+useHead({
+  link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
+  meta: [
+    { name: 'keywords', content: 'Nuxt.js,导航,网站' },
+    { name: 'description', content: '致力于打造程序员的梦中情站' }
+  ]
+})
 </script>
 
 <template>

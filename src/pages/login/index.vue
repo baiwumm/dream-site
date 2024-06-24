@@ -10,6 +10,10 @@ watchEffect(() => {
     navigateTo('/')
   }
 })
+
+definePageMeta({
+  title: '用户登录'
+})
 </script>
 
 <template>

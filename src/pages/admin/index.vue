@@ -30,4 +30,8 @@ import Categorys from './_components/categorys/index.vue'
 import Websites from './_components/websites/index.vue'
 
 const activeName = ref('categorys')
+
+definePageMeta({
+  title: '后台管理'
+})
 </script>

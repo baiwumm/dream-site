@@ -22,6 +22,7 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@nuxtjs/seo": "2.0.0-rc.11",
     "@supabase/supabase-js": "^2.43.4",
     "@vue/shared": "^3.4.27",
     "element-plus": "^2.7.5",

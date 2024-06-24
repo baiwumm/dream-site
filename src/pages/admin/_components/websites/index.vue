@@ -52,7 +52,7 @@
     <el-row justify="end">
       <el-pagination
         v-model:current-page="current"
-        small
+        size="small"
         background
         layout="total,prev, pager, next"
         :total="data?.data?.total || 0"

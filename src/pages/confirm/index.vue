@@ -10,6 +10,10 @@ watch(
   },
   { immediate: true }
 )
+
+definePageMeta({
+  title: '登录确认'
+})
 </script>
 
 <template>
