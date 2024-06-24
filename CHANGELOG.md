@@ -1,5 +1,16 @@
 
 
+## [1.4.9](https://github.com/baiwumm/dream-site/compare/1.4.8...1.4.9) (2024-06-24)
+
+
+### ✨ Features | 新功能
+
+* 添加  Google Analytics 统计代码 ([2301593](https://github.com/baiwumm/dream-site/commit/2301593c2ffef8203179170f56b43ed28b91b4ea))
+* 添加  Microsoft Clarity 统计代码 ([652862b](https://github.com/baiwumm/dream-site/commit/652862bc3e0ec771c74bad1f8c1096f6a470c700))
+* 添加 Umami 统计代码 ([bae0c54](https://github.com/baiwumm/dream-site/commit/bae0c540dd9812b14099c0f0d38fd5dd75445174))
+* 优化 SEO 配置 ([1fbdf5a](https://github.com/baiwumm/dream-site/commit/1fbdf5a7399d63324ad033215ea9fc36e1f18ad1))
+* update README.md ([60e78cc](https://github.com/baiwumm/dream-site/commit/60e78cc4fae4c58d649dc2664286815025b92476))
+
 ## [1.4.8](https://github.com/baiwumm/dream-site/compare/1.4.7...1.4.8) (2024-06-21)
 
 
