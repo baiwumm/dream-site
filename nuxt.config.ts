@@ -24,7 +24,17 @@ export default defineNuxtConfig({
   // 源目录
   srcDir: 'src/',
   // 引入模块
-  modules: ['@nuxt/image', 'nuxt-icons', '@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxtjs/color-mode', 'nuxt-icon', 'nuxt-clarity-analytics'],
+  modules: [
+    '@nuxt/image',
+    'nuxt-icons',
+    '@nuxtjs/supabase',
+    '@nuxtjs/tailwindcss',
+    '@element-plus/nuxt',
+    '@nuxtjs/color-mode',
+    'nuxt-icon',
+    'nuxt-clarity-analytics',
+    "nuxt-gtag"
+  ],
   supabase: {
     redirectOptions: {
       login: '/login',
