@@ -2,11 +2,11 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: 'https://dream-site.cn'
+      baseUrl: process.env.BASE_URL || 'https://dream-site.cn'
     }
   },
   app: {
-    pageTransition: { name: 'blur', mode: 'out-in' }, // 页面过渡效果
+    pageTransition: { name: 'blur', mode: 'out-in' } // 页面过渡效果
   },
   // 源目录
   srcDir: 'src/',
@@ -20,8 +20,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-icon',
     'nuxt-clarity-analytics',
-    "nuxt-gtag",
-    "@nuxtjs/seo"
+    'nuxt-gtag',
+    '@nuxtjs/seo'
   ],
   supabase: {
     redirectOptions: {
@@ -46,10 +46,10 @@ export default defineNuxtConfig({
     defaultLocale: 'zh-cn',
     exclude: ['/admin/_components/**'], // 过滤不需要的 url
     cacheMaxAgeSeconds: 24 * 3600, // 缓存时间一天
-    autoLastmod: true, // 自动检测每个 URL 的 lastmod 日期
+    autoLastmod: true // 自动检测每个 URL 的 lastmod 日期
   },
   routeRules: {
     // Don't add any /secret/** URLs to the sitemap.xml
-    '/admin/_components/**': { robots: false },
+    '/admin/_components/**': { robots: false }
   }
 })

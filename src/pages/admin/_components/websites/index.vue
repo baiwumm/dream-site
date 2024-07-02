@@ -144,7 +144,8 @@ const handleEdit = (row: WebsiteList) => {
       vpn: row.vpn,
       recommend: row.recommend,
       desc: row.desc,
-      sort: row.sort
+      sort: row.sort,
+      color: row.color
     })
   }
 }

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-21 15:53:44
+ * @LastEditTime: 2024-07-02 14:03:48
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -42,6 +42,9 @@
       </el-form-item>
       <el-form-item label="Logo" prop="logo">
         <el-input v-model="form.logo" type="text" />
+      </el-form-item>
+      <el-form-item label="图标颜色" prop="color">
+        <el-input v-model="form.color" type="text" />
       </el-form-item>
       <el-form-item label="站点标签" prop="tags">
         <dynamic-tag v-model="form.tags" />
@@ -83,9 +86,6 @@ const name = ref('') // 当前数据
 const confirmLoading = ref(false)
 const websiteId = ref()
 
-// 图片正则
-const logoReg = /^https:\/\/.*\.(jpg|jpeg|png|gif|bmp|svg)(\?|$)/i
-
 const emit = defineEmits(['refresh'])
 
 // 父组件传递参数
@@ -98,6 +98,7 @@ const form = reactive<WebsiteEdit>({
   name: '',
   url: '',
   logo: '',
+  color: '',
   tags: [],
   pinned: false,
   vpn: false,
@@ -107,22 +108,6 @@ const form = reactive<WebsiteEdit>({
 })
 
 const ruleFormRef = ref<FormInstance>()
-// 校验 logo url
-const validatorLogo = (
-  _: any,
-  value: any,
-  callback: (error?: string | Error | undefined) => void
-) => {
-  if (!value) {
-    callback(new Error('请输入站点logo'))
-  } else {
-    if (logoReg.test(value)) {
-      callback()
-    } else {
-      callback(new Error('请输入正确的url'))
-    }
-  }
-}
 // 校验网站 url
 const validatorUrl = (
   _: any,
@@ -149,7 +134,7 @@ const rules = reactive<FormRules<WebsiteEdit>>({
     { min: 1, max: 12, message: '长度1-12个字符', trigger: 'blur' }
   ],
   url: [{ required: true, validator: validatorUrl, trigger: 'blur' }],
-  logo: [{ required: true, validator: validatorLogo, trigger: 'blur' }],
+  logo: [{ required: true, message: '请输入站点 Logo', trigger: 'blur' }],
   tags: [{ required: true, message: '请输入站点标签', trigger: 'blur' }]
 })
 

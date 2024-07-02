@@ -19,7 +19,7 @@
     </el-table-column>
     <el-table-column prop="logo" label="Logo" align="center" min-width="100">
       <template #default="{ row }">
-        <NuxtImg :src="row.logo" alt="logo" class="w-8 h-8 m-auto" />
+        <SiteImage :url="row.logo" :size="32" :color="row.color" class="m-auto" />
       </template>
     </el-table-column>
     <el-table-column prop="tags" label="站点标签" align="center" min-width="200">

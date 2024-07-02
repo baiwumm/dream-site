@@ -60,6 +60,7 @@ export type WebsiteList = {
   desc: string // 站点描述
   url: string // 站点 url
   logo: string // logo url
+  color: string // 图标颜色
   tags: string[] // 站点标签
   pinned: boolean // 是否置顶
   vpn: boolean // 是否需要 vpn
@@ -83,7 +84,7 @@ export type WebsiteEdit = Pick<
   WebsiteList,
   'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'pinned' | 'vpn' | 'recommend' | 'sort'
 > &
-  Partial<Pick<CategoryList, 'id' | 'desc'>>
+  Partial<Pick<WebsiteList, 'id' | 'desc' | 'color'>>
 
 /**
  * @description: 社交图标类型
