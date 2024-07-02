@@ -1,5 +1,12 @@
 
 
+## [1.4.11](https://github.com/baiwumm/dream-site/compare/1.4.10...1.4.11) (2024-07-02)
+
+
+### ✨ Features | 新功能
+
+* **category:** 增加分类图标字段 ([c1ec2f8](https://github.com/baiwumm/dream-site/commit/c1ec2f8c0535606116211ee76f85fab025f67efc))
+
 ## [1.4.10](https://github.com/baiwumm/dream-site/compare/1.4.9...1.4.10) (2024-07-02)
 
 
