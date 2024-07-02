@@ -1,5 +1,12 @@
 
 
+## [1.4.10](https://github.com/baiwumm/dream-site/compare/1.4.9...1.4.10) (2024-07-02)
+
+
+### ✨ Features | 新功能
+
+* **website:** 新增 color 字段，完善图标配置 ([62ccdfd](https://github.com/baiwumm/dream-site/commit/62ccdfd8f116ea3ae39d63ea75dfa4dadb18dfde))
+
 ## [1.4.9](https://github.com/baiwumm/dream-site/compare/1.4.8...1.4.9) (2024-06-24)
 
 
