@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-07-02 14:03:48
+ * @LastEditTime: 2024-07-02 15:34:10
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -28,7 +28,7 @@
             :value="item.id"
           >
             <el-space :size="5">
-              <Icon name="ri:menu-5-line" class="h-4 w-4" />
+              <Icon :name="item.icon || 'ri:menu-5-line'" class="h-4 w-4" />
               <span>{{ item.name }}</span>
             </el-space>
           </el-option>

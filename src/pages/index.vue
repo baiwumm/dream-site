@@ -16,7 +16,7 @@
           @click="category_id = item.id"
         >
           <el-space :size="5">
-            <Icon name="ri:menu-5-line" class="h-4 w-4" />
+            <Icon :name="item.icon || 'ri:menu-5-line'" class="h-4 w-4" />
             <span>{{ item.name }}</span>
           </el-space>
         </el-button>

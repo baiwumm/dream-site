@@ -25,6 +25,11 @@
     >
       <template #default="{ row }">{{ row.desc || '--' }} </template>
     </el-table-column>
+    <el-table-column prop="icon" label="分类图标" align="center">
+      <template #default="{ row }">
+        <Icon :name="row.icon || 'ri:menu-5-line'" class="h-6 w-6" />
+      </template>
+    </el-table-column>
     <el-table-column prop="sort" label="排序" align="center" sortable min-width="100" />
     <el-table-column prop="created_at" label="创建时间" align="center" width="180" sortable>
       <template #default="{ row }">

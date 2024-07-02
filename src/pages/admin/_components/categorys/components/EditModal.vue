@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-05 10:47:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-17 11:32:20
+ * @LastEditTime: 2024-07-02 15:30:06
  * @Description: 新增/编辑弹窗
 -->
 <template>
@@ -25,6 +25,9 @@
       <el-form-item label="分类描述" prop="desc">
         <el-input v-model="form.desc" type="textarea" :rows="3" maxlength="100" show-word-limit />
       </el-form-item>
+      <el-form-item label="分类图标" prop="icon">
+        <el-input v-model="form.icon" maxlength="50" show-word-limit />
+      </el-form-item>
       <el-form-item label="排序" prop="sort">
         <el-input-number v-model="form.sort" :min="1" :max="99" :style="{ width: '100%' }" />
       </el-form-item>
@@ -46,6 +49,7 @@ const emit = defineEmits(['refresh'])
 const form = reactive<CategoryEdit>({
   name: '',
   desc: undefined,
+  icon: '',
   sort: 1
 })
 

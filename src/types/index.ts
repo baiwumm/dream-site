@@ -32,6 +32,7 @@ export type CategoryList = {
   id: string // uuid
   name: string // 分类名称
   desc: string // 分类描述
+  icon: string // 分类图标
   user_id: string // 用户 id
   email: string // 用户邮箱
   sort: number // 排序
@@ -48,7 +49,7 @@ export type CategoryParams = PaginationParams & Partial<Pick<CategoryList, 'name
  * @description: 新增/编辑参数
  */
 export type CategoryEdit = Pick<CategoryList, 'name' | 'sort'> &
-  Partial<Pick<CategoryList, 'id' | 'desc'>>
+  Partial<Pick<CategoryList, 'id' | 'desc' | 'icon'>>
 
 /**
  * @description: 站点列表

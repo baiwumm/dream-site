@@ -96,6 +96,7 @@ const handleEdit = (row: CategoryList) => {
     Object.assign(modalRef.value.form, {
       name: row.name,
       desc: row.desc,
+      icon: row.icon,
       sort: row.sort
     })
   }

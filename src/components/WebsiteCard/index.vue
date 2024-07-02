@@ -7,7 +7,7 @@
   >
     <div class="flex flex-col gap-3">
       <div class="flex gap-2 items-center">
-        <SiteImage :url="websiteInfo.logo" :color="row.color" />
+        <SiteImage :url="websiteInfo.logo" :color="websiteInfo.color" />
         <div class="flex flex-col gap-0.5">
           <div class="flex gap-1 items-center">
             <div class="text-base">{{ websiteInfo.name }}</div>
