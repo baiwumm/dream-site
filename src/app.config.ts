@@ -7,7 +7,7 @@ export default defineAppConfig({
   },
   // umami 配置
   umami: {
-    id: '95653e90-7b8b-4541-b6de-ea5e544d8c2d',
+    id: '96eadfe8-9796-4281-9d75-40f949b69a43',
     host: 'https://umami.baiwumm.com',
     useDirective: true,
     version: 2,

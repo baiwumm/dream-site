@@ -22,7 +22,7 @@ export const FooterRecord: Social[] = [
 export const FooterSocial: Social[] = [
   {
     icon: 'ri:bar-chart-2-line',
-    url: 'https://umami.baiwumm.com/share/FCiIDToq8NxwjhIJ',
+    url: 'https://umami.baiwumm.com/share/Iix2XdhjDrSCcKA4',
     tip: '网站统计'
   },
   { icon: 'i-ri-github-line', url: 'https://github.com/baiwumm', tip: 'Github' },
