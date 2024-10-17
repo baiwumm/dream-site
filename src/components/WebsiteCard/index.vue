@@ -31,7 +31,7 @@
       </div>
       <div class="text-sm text-slate-500 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
     </div>
-    <div class="absolute top-1 right-1.5">
+    <div class="flex gap-1 absolute top-1 right-1.5">
       <!-- 置顶标签 -->
       <template v-if="websiteInfo.pinned">
         <el-tag type="success" effect="light"> 置顶 </el-tag>
