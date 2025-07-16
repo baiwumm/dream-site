@@ -1,3 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes border-spin {
+  0% {
+    clip-path: inset(0 100% 100% 0);
+    opacity: 0;
+  }
+  50% {
+    clip-path: inset(0 0 100% 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes border-unspin {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  50% {
+    clip-path: inset(100% 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(100% 0 0 100%);
+    opacity: 0;
+  }
+}
+
+/* 添加通用卡片样式 */
+@layer components {
+  /* 基础卡片样式 */
+  .card-base {
+    @apply p-4 rounded-xl bg-white dark:bg-gray-800/50 
+      border border-gray-200/60 dark:border-gray-700/60 
+      transition-all duration-300;
+  }
+  
+  /* 统一的边框动画样式 */
+  .animated-border {
+    @apply relative;
+  }
+
+  .animated-border::after {
+    @apply absolute inset-0 rounded-xl border-2 opacity-0 pointer-events-none;
+    content: '';
+  }
+
+  /* 只在悬浮时显示进入动画 */
+  .animated-border:hover::after {
+    animation: border-spin 0.5s ease-out forwards;
+  }
+  
+  /* 只在悬浮后的元素显示退出动画 */
+  .animated-border.hovered:not(:hover)::after {
+    animation: border-unspin 0.5s ease-out forwards;
+  }
+  
+  .inner-card {
+    @apply bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4
+      border border-gray-100/60 dark:border-gray-700/60;
+  }
+}
+
 :root {
   --scrollbar-bg:rgba(0, 0, 0, .15);
   --scrollbar-hover: rgba(0, 0, 0, .25);

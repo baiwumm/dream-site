@@ -7,11 +7,11 @@ export default defineAppConfig({
   },
   // umami 配置
   umami: {
-    id: '96eadfe8-9796-4281-9d75-40f949b69a43',
+    id: '4eb40830-3733-4175-8a7b-e8991c5329a8',
     host: 'https://umami.baiwumm.com',
     useDirective: true,
     version: 2,
-    domains: ['dream-site.cn'],
+    domains: ['site.baiwumm.com'],
     ignoreLocalhost: true
   }
 })

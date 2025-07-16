@@ -48,7 +48,12 @@
       min-width="160"
     >
       <template #default="{ row }">
-        <el-tag type="success"><Icon name="ri:menu-5-line" class="h-5 w-5" />{{ row.ds_categorys.name }}</el-tag>
+        <el-tag type="success">
+          <div class="flex items-center gap-1">
+            <Icon :name="row.ds_categorys.icon || 'ri:menu-5-line'" class="h-5 w-5" />
+            <span>{{ row.ds_categorys.name }}</span>
+          </div>
+        </el-tag>
       </template>
     </el-table-column>
     <el-table-column prop="pinned" label="置顶" align="center" width="80">

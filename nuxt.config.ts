@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL || 'https://dream-site.cn'
+      baseUrl: process.env.NODE_ENV === 'production' ? process.env.SITE_URL : 'http://localhost:3000'
     }
   },
   app: {
@@ -40,9 +40,9 @@ export default defineNuxtConfig({
   extends: ['nuxt-umami'],
   // SEO 配置
   site: {
-    url: 'https://dream-site.cn',
+    url: 'https://site.baiwumm.com',
     name: 'Dream Site',
-    description: '致力于打造程序员的梦中情站',
+    description: '个人常用站点收录',
     defaultLocale: 'zh-cn',
     exclude: ['/admin/_components/**'], // 过滤不需要的 url
     cacheMaxAgeSeconds: 24 * 3600, // 缓存时间一天

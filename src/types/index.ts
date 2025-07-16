@@ -26,32 +26,6 @@ export type PaginationParams = {
 }
 
 /**
- * @description: 分类列表
- */
-export type CategoryList = {
-  id: string // uuid
-  name: string // 分类名称
-  desc: string // 分类描述
-  icon: string // 分类图标
-  user_id: string // 用户 id
-  email: string // 用户邮箱
-  sort: number // 排序
-  created_at: Date // 创建时间
-  updated_at: Date // 更新时间
-}
-
-/**
- * @description: 分类查询参数
- */
-export type CategoryParams = PaginationParams & Partial<Pick<CategoryList, 'name'>>
-
-/**
- * @description: 新增/编辑参数
- */
-export type CategoryEdit = Pick<CategoryList, 'name' | 'sort'> &
-  Partial<Pick<CategoryList, 'id' | 'desc' | 'icon'>>
-
-/**
  * @description: 站点列表
  */
 export type WebsiteList = {
@@ -72,6 +46,33 @@ export type WebsiteList = {
   created_at: Date // 创建时间
   updated_at: Date // 更新时间
 }
+
+/**
+ * @description: 分类列表
+ */
+export type CategoryList = {
+  id: string // uuid
+  name: string // 分类名称
+  desc: string // 分类描述
+  icon: string // 分类图标
+  user_id: string // 用户 id
+  email: string // 用户邮箱
+  sort: number // 排序
+  ds_websites: WebsiteList[]; // 网站列表
+  created_at: Date // 创建时间
+  updated_at: Date // 更新时间
+}
+
+/**
+ * @description: 分类查询参数
+ */
+export type CategoryParams = PaginationParams & Partial<Pick<CategoryList, 'name'>>
+
+/**
+ * @description: 新增/编辑参数
+ */
+export type CategoryEdit = Pick<CategoryList, 'name' | 'sort'> &
+  Partial<Pick<CategoryList, 'id' | 'desc' | 'icon'>>
 
 /**
  * @description: 站点查询参数

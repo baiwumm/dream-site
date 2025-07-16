@@ -22,11 +22,11 @@ export const FooterRecord: Social[] = [
 export const FooterSocial: Social[] = [
   {
     icon: 'ri:bar-chart-2-line',
-    url: 'https://umami.baiwumm.com/share/Iix2XdhjDrSCcKA4',
+    url: 'https://umami.baiwumm.com/share/UHoy3xMybN92HMxF',
     tip: '网站统计'
   },
   { icon: 'i-ri-github-line', url: 'https://github.com/baiwumm', tip: 'Github' },
   { icon: 'i-ri-wechat-line', url: 'https://wechat.baiwumm.com/', tip: '微信' },
-  { icon: 'i-ri-mail-line', url: 'mailto:baiwumm@foxmail.com', tip: 'Email' },
+  { icon: 'i-ri-mail-line', url: 'mailto:me@baiwumm.com', tip: 'Email' },
   { icon: 'i-ri-quill-pen-line', url: 'https://baiwumm.com', tip: '博客' }
 ]

@@ -1,16 +1,17 @@
 <template>
-  <el-card
+  <div
     v-umami="{ name: websiteInfo.name, url: websiteInfo.url }"
-    class="relative cursor-pointer"
+    class="relative cursor-pointer card-base animated-border animate-fade after:border-green-500/50 dark:after:border-green-400/50"
     shadow="hover"
     @click="handleClick"
+    @mouseenter="$event.target?.classList.add('hovered')"
   >
     <div class="flex flex-col gap-3">
       <div class="flex gap-2 items-center">
         <SiteImage :url="websiteInfo.logo" :color="websiteInfo.color" />
         <div class="flex flex-col gap-0.5">
           <div class="flex gap-1 items-center">
-            <div class="text-base">{{ websiteInfo.name }}</div>
+            <div class="text-lg font-semibold">{{ websiteInfo.name }}</div>
             <template v-if="websiteInfo.vpn">
               <el-tooltip effect="dark" content="访问需要开启 VPN 服务" placement="bottom">
                 <Icon name="ri:error-warning-line" class="text-slate-400" />
@@ -19,29 +20,26 @@
           </div>
           <div class="flex gap-1 items-center text-xs text-slate-400 font-thin">
             <template v-for="(tag, index) in websiteInfo.tags" :key="index">
-              <span class="line-clamp-1">
-                {{ tag }}
-              </span>
-              <template v-if="index !== websiteInfo.tags.length - 1">
-                <el-divider direction="vertical" />
-              </template>
+              <el-tag effect="light" type="success" size="small" round>{{ tag }}</el-tag>
             </template>
           </div>
         </div>
       </div>
-      <div class="text-sm text-slate-500 font-medium line-clamp-2">{{ websiteInfo.desc }}</div>
+      <div class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-6">
+        {{ websiteInfo.desc }}
+      </div>
     </div>
-    <div class="flex gap-1 absolute top-1 right-1.5">
+    <div class="flex gap-1 absolute top-2 right-2">
       <!-- 置顶标签 -->
       <template v-if="websiteInfo.pinned">
-        <el-tag type="success" effect="light"> 置顶 </el-tag>
+        <el-tag type="success" effect="dark" size="small"> 置顶 </el-tag>
       </template>
       <!-- 是否推荐 -->
       <template v-if="websiteInfo.recommend">
-        <el-tag type="info" effect="light"> 推荐 </el-tag>
+        <el-tag type="info" effect="dark" size="small"> 推荐 </el-tag>
       </template>
     </div>
-  </el-card>
+  </div>
 </template>
 <script setup lang="ts">
 import type { WebsiteList } from '~/types'
@@ -55,11 +53,4 @@ const handleClick = () => {
   window.open(props.websiteInfo.url)
 }
 </script>
-<style lang="scss" scoped>
-:deep(.el-avatar) {
-  background-color: transparent;
-}
-:deep(.el-divider--vertical) {
-  margin: 0 4px;
-}
-</style>
+<style lang="scss" scoped></style>

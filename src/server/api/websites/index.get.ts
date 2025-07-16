@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-29 14:39:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-21 15:53:04
+ * @LastEditTime: 2025-07-15 17:54:40
  * @Description: 获取站点列表
  */
 import type { Response, PageResponse, WebsiteList, WebsiteParams } from '~/types'
@@ -30,10 +30,10 @@ export default defineEventHandler(async (event): Promise<Response<PageResponse<W
     .order('pinned', {
       ascending: false
     })
-    .order('recommend', {
+    .order('sort', {
       ascending: false
     })
-    .order('sort', {
+    .order('recommend', {
       ascending: false
     })
     .order('created_at', {
