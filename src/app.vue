@@ -47,6 +47,8 @@ useHead({
       :BACK_COLOR="{ r: 0.5, g: 0, b: 0 }"
       :TRANSPARENT="true"
     />
+    <!-- 回到顶部按钮 -->
+    <el-backtop :right="50" :bottom="50" />
   </div>
 </template>
 
