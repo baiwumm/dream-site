@@ -18,7 +18,8 @@ withDefaults(defineProps<Props>(), {
 
 // 判断地址是否是合法的图片地址
 const isValidImageUrl = (url: string) => {
-  const urlPattern = /^(https?:\/\/)[\da-z.-]+\.([a-z.]{2,6})([/\w .-]*\.(jpg|jpeg|png|gif|svg))$/i
+  const urlPattern =
+    /^(https?:\/\/)[\da-z.-]+\.([a-z.]{2,6})([/\w .-]*\.(jpg|jpeg|png|gif|svg|ico|webp))$/i
   return urlPattern.test(url)
 }
 </script>
