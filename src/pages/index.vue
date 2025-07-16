@@ -7,14 +7,23 @@
     >
       <div class="flex items-center gap-2">
         <Icon :name="item.icon || 'ri:menu-5-line'" class="h-6 w-6" />
-        <h2 class="text-xl font-semibold">{{ item.name }}</h2>
+        <BlurText
+          :text="item.name"
+          :delay="200"
+          class-name="text-xl font-semibold"
+          animate-by="letters"
+          direction="top"
+          :threshold="0.1"
+          root-margin="0px"
+          :step-duration="0.35"
+        />
       </div>
       <div
         v-if="item.ds_websites?.length"
         class="grid gap-5 w-full justify-center grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] mt-2"
       >
         <AnimatedContent
-          :distance="50"
+          :distance="20"
           direction="vertical"
           :reverse="false"
           :duration="1.2"
