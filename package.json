@@ -27,6 +27,7 @@
     "@vue/shared": "^3.4.27",
     "element-plus": "^2.7.5",
     "gsap": "^3.13.0",
+    "motion-v": "^1.5.0",
     "nuxt": "^3.12.2",
     "nuxt-gtag": "^2.0.6",
     "nuxt-umami": "^2.6.2",
