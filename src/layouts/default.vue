@@ -4,7 +4,7 @@
       <!-- header -->
       <Header />
       <!-- main -->
-      <el-main style="min-height: calc(100vh - 8rem)">
+      <el-main style="min-height: calc(100vh - 8rem)" class="!overflow-y-hidden">
         <slot />
       </el-main>
       <!-- footer -->

@@ -13,7 +13,22 @@
         v-if="item.ds_websites?.length"
         class="grid gap-5 w-full justify-center grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] mt-2"
       >
-        <WebsiteCard v-for="child in item.ds_websites" :key="child.id" :website-info="child" />
+        <AnimatedContent
+          :distance="50"
+          direction="vertical"
+          :reverse="false"
+          :duration="1.2"
+          ease="power3.out"
+          :initial-opacity="0"
+          :animate-opacity="true"
+          :scale="0.9"
+          :threshold="0.1"
+          :delay="0"
+          v-for="child in item.ds_websites"
+          :key="child.id"
+        >
+          <WebsiteCard :website-info="child" />
+        </AnimatedContent>
       </div>
       <div v-else class="flex justify-center items-center flex-col">
         <el-empty description="此分类暂无站点，请前往后台添加数据！" :image-size="100" />

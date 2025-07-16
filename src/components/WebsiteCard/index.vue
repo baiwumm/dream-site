@@ -1,7 +1,7 @@
 <template>
   <div
     v-umami="{ name: websiteInfo.name, url: websiteInfo.url }"
-    class="relative cursor-pointer card-base animated-border animate-fade after:border-green-500/50 dark:after:border-green-400/50"
+    class="relative h-full cursor-pointer card-base animated-border animate-fade after:border-green-500/50 dark:after:border-green-400/50"
     shadow="hover"
     @click="handleClick"
     @mouseenter="$event.target?.classList.add('hovered')"
