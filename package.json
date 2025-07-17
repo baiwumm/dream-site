@@ -2,11 +2,11 @@
   "name": "dream-site",
   "private": true,
   "type": "module",
-  "version": "1.4.11",
+  "version": "1.5.0",
   "author": {
     "name": "baiwumm",
     "email": "me@baiwumm.com",
-    "url":"https://baiwumm.com"
+    "url": "https://baiwumm.com"
   },
   "scripts": {
     "build": "nuxt build",

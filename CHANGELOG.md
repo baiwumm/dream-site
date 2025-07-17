@@ -1,5 +1,29 @@
 
 
+## [1.5.0](https://github.com/baiwumm/dream-site/compare/1.4.11...1.5.0) (2025-07-17)
+
+
+### ✨ Features | 新功能
+
+* 更改 package.json 信息 ([6e70a24](https://github.com/baiwumm/dream-site/commit/6e70a24ff530a4b739feb980c2e0bced3b5d11c9))
+* 更改 Umami 统计代码 ([ec9ca33](https://github.com/baiwumm/dream-site/commit/ec9ca33a69dfeefcb97bb45de17a091445268bc1))
+* 更新网站信息，重构首页排版布局 ([73401fe](https://github.com/baiwumm/dream-site/commit/73401fef7aa667c267c5cf16cb81f3e00e5a49fb))
+* 添加 SplashCursor 鼠标特效组件 ([f68fde2](https://github.com/baiwumm/dream-site/commit/f68fde205e63a64b00e56eb207d4a364e3cd6289))
+* 新增 AnimatedContent 组件，新增站点卡片淡出效果 ([4242958](https://github.com/baiwumm/dream-site/commit/42429581a1a4f8b1f64a41ae55987f7f12a89c80))
+* 新增 BlurText 组件，优化分类标题淡出效果 ([0770a92](https://github.com/baiwumm/dream-site/commit/0770a92496c8980d2d6d7ea8b90cfadd3483700f))
+* 新增 gsap 包 ([c5e2ae2](https://github.com/baiwumm/dream-site/commit/c5e2ae26ee962ad8ee72edeef40a2764a4f14a6f))
+* 新增 motion-v 包 ([678b7dc](https://github.com/baiwumm/dream-site/commit/678b7dc38db94ba2fb2ffdbeea717fcc7d36cd33))
+* 新增 Squares 背景动画组件 ([5adf4c8](https://github.com/baiwumm/dream-site/commit/5adf4c888dc001ee38963229cd91f0580d2ac795))
+* 新增回到顶部按钮 ([ae51b21](https://github.com/baiwumm/dream-site/commit/ae51b217220f94aa4e38af93d209f443d3f9434c))
+* 修改图片地址判断 ([b75a05a](https://github.com/baiwumm/dream-site/commit/b75a05ac5c6994711a9c4b30d48cbe269b96e1ac))
+* 修改网站搜索分类图标 ([7723fd5](https://github.com/baiwumm/dream-site/commit/7723fd50e4d5469f3dc5565ee373e55d9bab416b))
+
+
+### 💄 Styles | 风格
+
+* 优化站点卡片阴影显示 ([409ecb4](https://github.com/baiwumm/dream-site/commit/409ecb4e5d2d1e917835c73d72a15cee2ff228fa))
+* **WebsiteCard:** 标签样式修改 ([3799a9f](https://github.com/baiwumm/dream-site/commit/3799a9f3dfd936575ce5f77b2d8f6acb3be7db07))
+
 ## [1.4.11](https://github.com/baiwumm/dream-site/compare/1.4.10...1.4.11) (2024-07-02)
 
 
