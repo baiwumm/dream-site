@@ -1,5 +1,7 @@
 
 
+## [1.5.1](https://github.com/baiwumm/dream-site/compare/1.5.0...1.5.1) (2025-07-17)
+
 ## [1.5.0](https://github.com/baiwumm/dream-site/compare/1.4.11...1.5.0) (2025-07-17)
 
 
