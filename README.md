@@ -1,11 +1,11 @@
 <div align="center">
 <img alt="logo" src="./src/public/logo.svg" width="80"/>
-<h2>梦中情站</h2>
-<p>致力于打造程序员的梦中情站</p>
+<h2>Dream Site</h2>
+<p>个人常用站点收录</p>
 </div>
 
 ## 🪴 项目信息
-* 😝 项目预览：https://dream-site.cn/
+* 😝 项目预览：https://site.baiwumm.com/
 * 🎯 技术栈：[Nuxt3](https://nuxt.com/)、[Vue.js](https://cn.vuejs.org/)、[Tailwindcss](https://www.tailwindcss.cn/)、[Supabase](https://supabase.com/)、[Element-plus](https://element-plus.org/)
 
 ## ✨ 特性
@@ -60,7 +60,6 @@ vercel
 // 挂载生产
 vercel --prod
 ```
-> 具体教程可参考文章：[如何使用 Vercel 托管静态网站](https://baiwumm.com/p/5zzij7bt)
 
 ## ✅ TODO
 ◻️ 首页添加每日一图 `Banner`
