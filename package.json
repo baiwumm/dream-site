@@ -5,7 +5,8 @@
   "version": "1.4.11",
   "author": {
     "name": "baiwumm",
-    "email": "baiwumm@foxmail.com"
+    "email": "me@baiwumm.com",
+    "url":"https://baiwumm.com"
   },
   "scripts": {
     "build": "nuxt build",
