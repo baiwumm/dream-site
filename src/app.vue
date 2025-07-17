@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const nuxtApp = useNuxtApp()
+const colorMode = useColorMode()
 
 // 是否首次加载
 const isFullLoading = ref(true)
@@ -47,6 +48,16 @@ useHead({
       :BACK_COLOR="{ r: 0.5, g: 0, b: 0 }"
       :TRANSPARENT="true"
     />
+    <!-- 背景动画 -->
+    <div class="fixed top-0 left-0 w-full h-full -z-[1]">
+      <Squares
+        direction="diagonal"
+        :speed="0.2"
+        :squareSize="40"
+        :borderColor="$colorMode.value === 'dark' ? '#1F1F1F' : '#E8EAED'"
+        hoverFillColor="#F3F4F6"
+      />
+    </div>
     <!-- 回到顶部按钮 -->
     <el-backtop :right="50" :bottom="50" />
   </div>
