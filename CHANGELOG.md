@@ -1,5 +1,15 @@
 
 
+## [1.5.2](https://github.com/baiwumm/dream-site/compare/1.5.1...1.5.2) (2025-07-18)
+
+
+### ✨ Features | 新功能
+
+* 更新 element-plus 包版本 ([d9ed8c5](https://github.com/baiwumm/dream-site/commit/d9ed8c59b97a2eae80dae4e5fd7f245028bf77ff))
+* 网站点击更新访问量 ([d8fdf24](https://github.com/baiwumm/dream-site/commit/d8fdf2489b0afa6d7d4f0e427d1b9de5801e75e7))
+* 站点列表新增commonlyUsed、visitCount字段 ([dea2ada](https://github.com/baiwumm/dream-site/commit/dea2adaf3c081e1163d91c9ef6063475767eaf6c))
+* update README.md ([1d1ca72](https://github.com/baiwumm/dream-site/commit/1d1ca72121241c3b085531919f7f175647d6d588))
+
 ## [1.5.1](https://github.com/baiwumm/dream-site/compare/1.5.0...1.5.1) (2025-07-17)
 
 ## [1.5.0](https://github.com/baiwumm/dream-site/compare/1.4.11...1.5.0) (2025-07-17)
