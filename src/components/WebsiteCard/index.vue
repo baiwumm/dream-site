@@ -48,9 +48,15 @@ const props = defineProps<{
   websiteInfo: WebsiteList
 }>()
 
+const client = useSupabaseClient<WebsiteList>()
+
 // 点击卡片回调
-const handleClick = () => {
+const handleClick = async () => {
   window.open(props.websiteInfo.url)
+  await client.rpc('increment_visit_count', {
+    row_id: props.websiteInfo.id,
+    increment_value: Math.floor(Math.random() * 100) + 1
+  })
 }
 </script>
 <style lang="scss" scoped></style>
