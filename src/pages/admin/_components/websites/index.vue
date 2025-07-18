@@ -143,6 +143,7 @@ const handleEdit = (row: WebsiteList) => {
       pinned: row.pinned,
       vpn: row.vpn,
       recommend: row.recommend,
+      commonlyUsed: row.commonlyUsed,
       desc: row.desc,
       sort: row.sort,
       color: row.color

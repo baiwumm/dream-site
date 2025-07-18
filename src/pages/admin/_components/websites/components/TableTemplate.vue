@@ -83,6 +83,15 @@
         </el-button>
       </template>
     </el-table-column>
+    <el-table-column prop="commonlyUsed" label="常用" align="center" width="80">
+      <template #default="{ row }">
+        <el-button :type="row.commonlyUsed ? 'success' : 'danger'" circle size="small">
+          <template #icon>
+            <Icon :name="row.commonlyUsed ? 'ri:check-fill' : 'ri:close-fill'" />
+          </template>
+        </el-button>
+      </template>
+    </el-table-column>
     <el-table-column prop="sort" label="排序" align="center" sortable min-width="100" />
     <el-table-column prop="created_at" label="创建时间" align="center" width="180" sortable>
       <template #default="{ row }">

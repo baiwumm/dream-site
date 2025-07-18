@@ -50,19 +50,29 @@
         <dynamic-tag v-model="form.tags" />
       </el-form-item>
       <el-row>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-form-item label="置顶" prop="pinned">
             <el-switch v-model="form.pinned" inline-prompt active-text="是" inactive-text="否" />
           </el-form-item>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-form-item label="vpn" prop="vpn">
             <el-switch v-model="form.vpn" inline-prompt active-text="是" inactive-text="否" />
           </el-form-item>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-form-item label="推荐" prop="recommend">
             <el-switch v-model="form.recommend" inline-prompt active-text="是" inactive-text="否" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="常用" prop="commonlyUsed">
+            <el-switch
+              v-model="form.commonlyUsed"
+              inline-prompt
+              active-text="是"
+              inactive-text="否"
+            />
           </el-form-item>
         </el-col>
       </el-row>
@@ -103,6 +113,7 @@ const form = reactive<WebsiteEdit>({
   pinned: false,
   vpn: false,
   recommend: false,
+  commonlyUsed: false,
   desc: undefined,
   sort: 1
 })

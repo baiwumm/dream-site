@@ -43,6 +43,8 @@ export type WebsiteList = {
   user_id: string // 用户 id
   email: string // 用户邮箱
   sort: number // 排序
+  commonlyUsed: boolean; // 是否常用
+  visitCount: number; // 访问量
   created_at: Date // 创建时间
   updated_at: Date // 更新时间
 }
