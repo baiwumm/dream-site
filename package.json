@@ -26,7 +26,7 @@
     "@nuxtjs/seo": "2.0.0-rc.11",
     "@supabase/supabase-js": "^2.43.4",
     "@vue/shared": "^3.4.27",
-    "element-plus": "^2.7.5",
+    "element-plus": "^2.10.4",
     "gsap": "^3.13.0",
     "motion-v": "^1.5.0",
     "nuxt": "^3.12.2",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@element-plus/nuxt": "^1.0.9",
+    "@element-plus/nuxt": "^1.1.4",
     "@nuxt/eslint-config": "^0.3.13",
     "@nuxt/image": "^1.6.0",
     "@nuxtjs/color-mode": "^3.4.1",
