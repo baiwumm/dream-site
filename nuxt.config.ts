@@ -20,11 +20,10 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/supabase',
     '@nuxtjs/color-mode',
-    '@element-plus/nuxt',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/seo',
     'nuxt-umami',
     'dayjs-nuxt',
+    '@nuxt/ui'
   ],
   supabase: {
     redirectOptions: {
@@ -55,8 +54,11 @@ export default defineNuxtConfig({
       },
     ],
   },
+  ui: {
+    fonts: false
+  },
   experimental: {
     viewTransition: true
   },
-  css: ['element-plus/theme-chalk/dark/css-vars.css', '~/assets/scss/main.scss']
+  css: ['~/assets/css/main.css']
 })

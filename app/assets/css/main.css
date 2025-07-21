@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
 
 @keyframes border-spin {
   0% {
@@ -76,6 +75,10 @@
 .dark{
   --scrollbar-bg:rgba(255, 255, 255, .45);
   --scrollbar-hover: rgba(255, 255, 255, .25);
+}
+
+.iconify{
+  font-size: 20px !important;
 }
 
 /* 修改滚动条样式 */
