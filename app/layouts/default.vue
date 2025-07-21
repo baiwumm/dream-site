@@ -1,17 +1,12 @@
 <template>
-  <el-config-provider :locale="zhCn">
-    <el-container direction="vertical">
-      <!-- header -->
-      <Header />
-      <!-- main -->
-      <el-main style="min-height: calc(100vh - 8rem)" class="!overflow-y-hidden">
-        <slot />
-      </el-main>
-      <!-- footer -->
-      <Footer />
-    </el-container>
-  </el-config-provider>
+  <div>
+    <!-- header -->
+    <Header />
+    <!-- main -->
+    <main style="min-height: calc(100vh - 9rem)" class="!overflow-y-hidden p-4">
+      <slot />
+    </main>
+    <!-- footer -->
+    <Footer />
+  </div>
 </template>
-<script lang="ts" setup>
-import zhCn from "element-plus/dist/locale/zh-cn.mjs";
-</script>

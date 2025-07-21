@@ -2,71 +2,62 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-04-11 08:40:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-05-30 13:51:17
+ * @LastEditTime: 2025-07-21 11:06:10
  * @Description: 主题模式切换
 -->
 <script setup lang="ts">
-const colorMode = useColorMode()
+const colorMode = useColorMode();
 
 // 切换模式
 const setColorMode = () => {
-  colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark'
-}
+  colorMode.value = colorMode.value === "dark" ? "light" : "dark";
+};
 
 // 判断是否支持 startViewTransition API
 const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  "startViewTransition" in document && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
 // 切换动画
 async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
-  const isDark = colorMode.value === 'dark'
+  const isDark = colorMode.value === "dark";
 
   if (!enableTransitions()) {
-    setColorMode()
-    return
+    setColorMode();
+    return;
   }
 
   const clipPath = [
     `circle(0px at ${x}px ${y}px)`,
-    `circle(${Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`
-  ]
+    `circle(${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))}px at ${x}px ${y}px)`,
+  ];
 
   await document.startViewTransition(async () => {
-    setColorMode()
-    await nextTick()
-  }).ready
+    setColorMode();
+    await nextTick();
+  }).ready;
 
   document.documentElement.animate(
     { clipPath: !isDark ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${!isDark ? 'old' : 'new'}(root)`
+      easing: "ease-in",
+      pseudoElement: `::view-transition-${!isDark ? "old" : "new"}(root)`,
     }
-  )
+  );
 }
 </script>
 
 <template>
-  <el-tooltip
-    :content="`切换${$colorMode.value === 'dark' ? '白天' : '黑夜'}模式`"
-    placement="bottom"
-  >
-    <el-button
-      circle
-      text
+  <UTooltip :text="`切换${$colorMode.value === 'dark' ? '白天' : '黑夜'}模式`">
+    <UButton
+      :icon="$colorMode.value === 'dark' ? 'i-heroicons-moon-solid' : 'i-heroicons-sun-solid'"
+      size="lg"
+      color="neutral"
+      variant="ghost"
       @click="toggleDark"
-    >
-      <Icon
-        :name="$colorMode.value === 'dark' ? 'i-heroicons-moon-solid' : 'i-heroicons-sun-solid'"
-        class="h-5 w-5"
-      />
-    </el-button>
-  </el-tooltip>
+      class="cursor-pointer"
+    />
+  </UTooltip>
 </template>
 
 <style>

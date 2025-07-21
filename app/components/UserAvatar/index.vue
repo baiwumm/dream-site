@@ -2,27 +2,30 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-06 17:53:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-11 09:22:58
+ * @LastEditTime: 2025-07-21 11:19:06
  * @Description: 当前登录用户头像
 -->
 <template>
   <client-only>
     <template v-if="user">
-      <el-button circle text>
-        <el-avatar :src="user.user_metadata.avatar_url" :size="20" />
-      </el-button>
+      <UButton
+        :avatar="{
+          src: user.user_metadata.avatar_url,
+        }"
+        color="neutral"
+        variant="ghost"
+        size="lg"
+      />
     </template>
     <template v-else>
-      <el-tooltip content="登录">
+      <UTooltip text="登录">
         <NuxtLink to="/login">
-          <el-button circle text>
-            <Icon name="ri:user-3-line" class="h-5 w-5" />
-          </el-button>
+          <UButton icon="ri:user-3-line" color="neutral" variant="ghost" size="lg" class="cursor-pointer" />
         </NuxtLink>
-      </el-tooltip>
+      </UTooltip>
     </template>
   </client-only>
 </template>
 <script setup lang="ts">
-const user = useSupabaseUser()
+const user = useSupabaseUser();
 </script>

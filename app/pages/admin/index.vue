@@ -1,37 +1,28 @@
 <template>
-  <el-tabs v-model="activeName" type="card">
-    <el-tab-pane name="categorys">
-      <template #label>
-        <div class="flex items-center justify-center gap-1">
-          <Icon name="ri:menu-5-line" class="h-5 w-5" />
-          <span>网站分类</span>
-        </div>
-      </template>
-      <template v-if="activeName === 'categorys'">
-        <Categorys />
-      </template>
-    </el-tab-pane>
-    <el-tab-pane name="websites">
-      <template #label>
-        <div class="flex items-center justify-center gap-1">
-          <Icon name="ri:planet-line" class="h-5 w-5" />
-          <span>分类站点</span>
-        </div>
-      </template>
-      <template v-if="activeName === 'websites'">
-        <Websites />
-      </template>
-    </el-tab-pane>
-  </el-tabs>
+  <UTabs :items="items" class="w-full" />
 </template>
 
 <script lang="ts" setup>
-import Categorys from './_components/categorys/index.vue'
-import Websites from './_components/websites/index.vue'
+import type { TabsItem } from "@nuxt/ui";
+import Categorys from "./_components/categorys/index.vue";
+import Websites from "./_components/websites/index.vue";
 
-const activeName = ref('categorys')
+const activeName = ref("categorys");
+
+const items = ref<TabsItem[]>([
+  {
+    label: "网站分类",
+    icon: "ri:menu-5-line",
+    content: "This is the account content.",
+  },
+  {
+    label: "分类站点",
+    icon: "ri:planet-line",
+    content: "This is the password content.",
+  },
+]);
 
 definePageMeta({
-  title: '后台管理'
-})
+  title: "后台管理",
+});
 </script>

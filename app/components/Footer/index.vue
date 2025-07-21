@@ -2,30 +2,32 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-30 13:52:19
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-06-07 10:44:24
+ * @LastEditTime: 2025-07-21 12:10:32
  * @Description: 底部布局
 -->
 <template>
-  <el-footer>
-    <el-divider style="margin: 12px 0">
-      <NuxtImg src="/logo.svg" alt="logo" class="w-5" />
-    </el-divider>
+  <footer class="p-4">
+    <USeparator
+      :avatar="{
+        src: '/logo.svg',
+      }"
+    />
     <div class="flex justify-between items-center max-sm:flex-col">
-      <div class="flex items-center gap-0.5 max-sm:flex-col">
-        <el-button
+      <div class="flex items-center max-sm:flex-col">
+        <UButton
           v-for="({ icon, url, tip }, index) in FooterRecord"
           :key="index"
-          :href="url"
+          :to="url"
           target="_blank"
-          link
-          tag="a"
-          size="small"
+          variant="link"
+          size="sm"
+          color="neutral"
         >
           <div class="flex items-center gap-2">
             <NuxtImg :src="`/${icon}`" :alt="tip" class="w-4" />
             {{ tip }}
           </div>
-        </el-button>
+        </UButton>
       </div>
       <!-- 社交图标 -->
       <div class="max-sm:order-first">
@@ -39,13 +41,8 @@
         />
       </div>
     </div>
-  </el-footer>
+  </footer>
 </template>
 <script setup lang="ts">
 import { FooterSocial, FooterRecord } from "~/lib/constant";
 </script>
-<style scoped>
-:deep(.el-button + .el-button) {
-  margin-left: 2px;
-}
-</style>

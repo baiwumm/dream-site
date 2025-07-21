@@ -2,11 +2,13 @@
   <div>
     <!-- 首页加载全屏动画 -->
     <FullLoading v-if="isFullLoading" />
-    <NuxtLayout>
-      <!-- 在页面导航之间显示一个进度条 -->
-      <NuxtLoadingIndicator />
-      <NuxtPage />
-    </NuxtLayout>
+    <UApp>
+      <NuxtLayout>
+        <!-- 在页面导航之间显示一个进度条 -->
+        <NuxtLoadingIndicator />
+        <NuxtPage />
+      </NuxtLayout>
+    </UApp>
     <!-- 鼠标特效 -->
     <SplashCursor
       :SIM_RESOLUTION="128"
@@ -34,8 +36,6 @@
         hoverFillColor="#F3F4F6"
       />
     </div>
-    <!-- 回到顶部按钮 -->
-    <el-backtop :right="50" :bottom="50" />
   </div>
 </template>
 <script setup lang="ts">
