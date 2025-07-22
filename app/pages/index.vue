@@ -50,7 +50,7 @@
                       <div class="text-lg font-semibold">{{ child.name }}</div>
                       <template v-if="child.vpn">
                         <UTooltip text="访问需要开启 VPN 服务">
-                          <Icon name="ri:error-warning-line" class="text-slate-400" />
+                          <UIcon name="ri:error-warning-line" class="text-slate-400" />
                         </UTooltip>
                       </template>
                     </div>

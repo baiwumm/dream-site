@@ -1,6 +1,6 @@
 <template>
   <NuxtImg v-if="isValidImageUrl(url)" :src="url" alt="logo" :width="size" :height="size" />
-  <Icon v-else :name="url" :size="String(size)" :style="{ color }" />
+  <UIcon v-else :name="url" :size="String(size)" :style="{ color }" />
 </template>
 
 <script setup lang="ts">
