@@ -150,6 +150,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         toast.add({
           title: isAdd ? "编辑成功" : "新增成功",
           color: "success",
+          icon: "ri:checkbox-circle-line",
         });
         emit("success");
         closeModal();
@@ -157,6 +158,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         toast.add({
           title: msg,
           color: "error",
+          icon: "ri:close-circle-line",
         });
       }
     });
@@ -165,6 +167,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     toast.add({
       title: "操作失败",
       color: "error",
+      icon: "ri:close-circle-line",
     });
   } finally {
     loading.value = false;

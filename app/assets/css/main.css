@@ -71,14 +71,9 @@
   --scrollbar-hover: rgba(0, 0, 0, .25);
 }
 
-// 黑夜模式
 .dark{
   --scrollbar-bg:rgba(255, 255, 255, .45);
   --scrollbar-hover: rgba(255, 255, 255, .25);
-}
-
-.iconify{
-  font-size: 20px !important;
 }
 
 /* 修改滚动条样式 */

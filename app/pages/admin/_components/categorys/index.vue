@@ -154,12 +154,14 @@ const handleDelete = async (id: string) => {
           toast.add({
             title: "删除成功",
             color: "success",
+            icon: "ri:checkbox-circle-line",
           });
           refresh();
         } else {
           toast.add({
             title: msg,
             color: "error",
+            icon: "ri:close-circle-line",
           });
         }
       })
@@ -170,6 +172,7 @@ const handleDelete = async (id: string) => {
     toast.add({
       title: "操作失败",
       color: "error",
+      icon: "ri:close-circle-line",
     });
   }
 };

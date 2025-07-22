@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-04-10 16:25:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-07-21 11:57:24
+ * @LastEditTime: 2025-07-22 16:58:08
  * @Description: 顶部布局
 -->
 <template>
@@ -16,7 +16,7 @@
         <NuxtImg src="/logo.svg" alt="logo" class="w-8 h-8" />
         <SplitText
           :text="$config.public.siteTitle"
-          class-name="text-2xl font-semibold"
+          class-name="text-lg font-semibold md:text-2xl"
           :delay="100"
           :duration="0.6"
           ease="power3.out"
@@ -30,7 +30,7 @@
       </div>
     </NuxtLink>
     <!-- 右侧 社交图标 -->
-    <div class="flex">
+    <div class="flex items-center">
       <!-- 夜间模式 -->
       <ColorMode />
       <!-- github -->
