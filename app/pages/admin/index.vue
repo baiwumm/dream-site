@@ -1,5 +1,14 @@
 <template>
-  <UTabs :items="items" class="w-full" />
+  <UCard variant="subtle">
+    <UTabs :items="items" class="w-full" color="neutral" :unmount-on-hide="false">
+      <template #categorys>
+        <Categorys />
+      </template>
+      <template #websites>
+        <Websites />
+      </template>
+    </UTabs>
+  </UCard>
 </template>
 
 <script lang="ts" setup>
@@ -7,18 +16,16 @@ import type { TabsItem } from "@nuxt/ui";
 import Categorys from "./_components/categorys/index.vue";
 import Websites from "./_components/websites/index.vue";
 
-const activeName = ref("categorys");
-
 const items = ref<TabsItem[]>([
   {
     label: "网站分类",
     icon: "ri:menu-5-line",
-    content: "This is the account content.",
+    slot: "categorys" as const,
   },
   {
     label: "分类站点",
     icon: "ri:planet-line",
-    content: "This is the password content.",
+    slot: "websites" as const,
   },
 ]);
 

@@ -26,6 +26,22 @@ export type PaginationParams = {
 }
 
 /**
+ * @description: 分类列表
+ */
+export type CategoryList = {
+  id: string // uuid
+  name: string // 分类名称
+  desc: string // 分类描述
+  icon: string // 分类图标
+  user_id: string // 用户 id
+  email: string // 用户邮箱
+  sort: number // 排序
+  ds_websites: WebsiteList[]; // 网站列表
+  created_at: Date // 创建时间
+  updated_at: Date // 更新时间
+}
+
+/**
  * @description: 站点列表
  */
 export type WebsiteList = {
@@ -47,22 +63,7 @@ export type WebsiteList = {
   visitCount: number; // 访问量
   created_at: Date // 创建时间
   updated_at: Date // 更新时间
-}
-
-/**
- * @description: 分类列表
- */
-export type CategoryList = {
-  id: string // uuid
-  name: string // 分类名称
-  desc: string // 分类描述
-  icon: string // 分类图标
-  user_id: string // 用户 id
-  email: string // 用户邮箱
-  sort: number // 排序
-  ds_websites: WebsiteList[]; // 网站列表
-  created_at: Date // 创建时间
-  updated_at: Date // 更新时间
+  ds_categorys: CategoryList;
 }
 
 /**
@@ -86,7 +87,7 @@ export type WebsiteParams = PaginationParams & Partial<Pick<WebsiteList, 'name' 
  */
 export type WebsiteEdit = Pick<
   WebsiteList,
-  'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'pinned' | 'vpn' | 'recommend' | 'sort'
+  'category_id' | 'name' | 'url' | 'logo' | 'tags' | 'pinned' | 'vpn' | 'recommend' | 'commonlyUsed' | 'sort'
 > &
   Partial<Pick<WebsiteList, 'id' | 'desc' | 'color'>>
 
