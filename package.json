@@ -17,8 +17,6 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@element-plus/icons-vue": ">=0.2.6",
-    "@element-plus/nuxt": "1.1.4",
     "@nuxt/eslint": "1.6.0",
     "@nuxt/icon": "1.15.0",
     "@nuxt/image": "1.10.0",
@@ -29,12 +27,10 @@
     "@nuxtjs/supabase": "1.5.3",
     "@unhead/vue": "^2.0.3",
     "dayjs-nuxt": "2.1.11",
-    "element-plus": ">=2",
     "eslint": "^9.0.0",
     "gsap": "^3.13.0",
     "motion-v": "^1.5.0",
     "nuxt": "^4.0.0",
-    "nuxt-icons": "^3.2.1",
     "nuxt-umami": "3.2.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
