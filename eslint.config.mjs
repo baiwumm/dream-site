@@ -8,6 +8,16 @@ export default withNuxt(
     plugins: {
       import: importPlugin,
     },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: "./tsconfig.json",
+        },
+        node: {
+          extensions: [".js", ".ts", ".vue", ".tsx"],
+        },
+      },
+    },
     rules: {
       // 核心验证规则
       "import/no-unresolved": "error",
