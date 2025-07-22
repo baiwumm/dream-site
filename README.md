@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="logo" src="./src/public/logo.svg" width="80"/>
+<img alt="logo" src="./public/logo.svg" width="80"/>
 <h2>Dream Site</h2>
 <p>一个精美的个人站点导航</p>
 </div>
