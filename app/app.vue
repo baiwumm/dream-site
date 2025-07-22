@@ -36,6 +36,8 @@
         hoverFillColor="#F3F4F6"
       />
     </div>
+    <!-- 回到顶部按钮 -->
+    <BackTop />
   </div>
 </template>
 <script setup lang="ts">
