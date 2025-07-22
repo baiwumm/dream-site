@@ -1,12 +1,12 @@
 <div align="center">
 <img alt="logo" src="./src/public/logo.svg" width="80"/>
 <h2>Dream Site</h2>
-<p>个人常用站点收录</p>
+<p>一个精美的个人站点导航</p>
 </div>
 
 ## 🪴 项目信息
-* 😝 项目预览：https://site.baiwumm.com/
-* 🎯 技术栈：[Nuxt3](https://nuxt.com/)、[Vue.js](https://cn.vuejs.org/)、[Tailwindcss](https://www.tailwindcss.cn/)、[Supabase](https://supabase.com/)、[Element-plus](https://element-plus.org/)
+* 😝 在线体验：https://site.baiwumm.com/
+* 🎯 技术栈：[Nuxt4.0](https://nuxt.com/)、[Vue.js](https://cn.vuejs.org/)、[Tailwindcss](https://www.tailwindcss.cn/)、[Supabase](https://supabase.com/)、[NuxtUI](https://ui.nuxt.com/)
 
 ## ✨ 特性
 * 使用前端最新技术栈开发
@@ -19,8 +19,13 @@
 ## 💻 演示图
 
 <div style="display:flex;justify-content:space-between;">
-<img alt="亮色模式" src="./src/assets/images/light.png" style="width:49%;"/>
-<img alt="暗色模式" src="./src/assets/images/dark.png" style="width:49%;"/>
+<img alt="亮色模式" src="./app/assets/images/light.png" style="width:49%;"/>
+<img alt="暗色模式" src="./app/assets/images/dark.png" style="width:49%;"/>
+</div>
+
+<div style="display:flex;justify-content:space-between;">
+<img alt="分类列表" src="./app/assets/images/caretorys.png" style="width:49%;"/>
+<img alt="站点列表" src="./app/assets/images/websites.png" style="width:49%;"/>
 </div>
 
 ## 🧑‍💻 项目运行
@@ -43,7 +48,7 @@ pnpm dev
 3. `PROJECT NAME`自己填，`FRAMEWORK PRESET` 选 `Other` 然后直接点 `Deploy` 接着等部署完成即可
 
 <a href="https://vercel.com/dashboard" target="_blank">
-<img alt="vercel 部署" src="./src/assets/images/vercel.svg" />
+<img alt="vercel 部署" src="./app/assets/images/vercel.svg" />
 </a>
 
 ## ⚙️ Vecel 本地部署
