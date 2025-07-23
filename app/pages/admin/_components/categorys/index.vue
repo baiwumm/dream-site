@@ -14,6 +14,15 @@
           >查询</UButton
         >
         <UButton
+          icon="ri:reset-left-line"
+          size="md"
+          variant="outline"
+          color="neutral"
+          class="cursor-pointer"
+          @click="handleReset"
+          >重置</UButton
+        >
+        <UButton
           icon="ri:add-line"
           size="md"
           color="secondary"
@@ -116,13 +125,17 @@ const { data, refresh, status } = await useFetch<Response<PageResponse<CategoryL
 // 查询回调
 const handleSearch = () => {
   current.value = 1;
-  refresh();
+};
+
+// 重置回调
+const handleReset = () => {
+  name.value = "";
+  current.value = 1;
 };
 
 // 分页切换回调
 const handlePageChange = (page: number) => {
   current.value = page;
-  refresh();
 };
 
 // 编辑模态框状态
