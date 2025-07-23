@@ -23,7 +23,7 @@
           class="grid gap-5 w-full justify-center grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] mt-2"
         >
           <AnimatedContent
-            :distance="50"
+            :distance="15"
             direction="vertical"
             :reverse="false"
             :duration="1.2"
