@@ -9,6 +9,9 @@
         variant="solid"
         class="fixed bottom-8 right-8 z-50 shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer rounded-full"
         @click="scrollToTop"
+        :ui="{
+          leadingIcon: '!size-5',
+        }"
       />
     </div>
   </Transition>

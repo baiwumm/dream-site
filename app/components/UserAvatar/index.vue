@@ -15,12 +15,24 @@
         color="neutral"
         variant="ghost"
         size="lg"
+        :ui="{
+          leadingAvatarSize: 'xs',
+        }"
       />
     </template>
     <template v-else>
       <UTooltip text="登录">
         <NuxtLink to="/login">
-          <UButton icon="ri:user-3-line" color="neutral" variant="ghost" size="lg" class="cursor-pointer" />
+          <UButton
+            icon="ri:user-3-line"
+            color="neutral"
+            variant="ghost"
+            size="lg"
+            class="cursor-pointer"
+            :ui="{
+              leadingIcon: '!size-5',
+            }"
+          />
         </NuxtLink>
       </UTooltip>
     </template>

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-06-06 18:00:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-07-21 14:36:43
+ * @LastEditTime: 2025-07-23 08:49:18
  * @Description: 注销用户
 -->
 <template>
@@ -17,6 +17,9 @@
         class="cursor-pointer"
         @click="logout"
         :loading="loading"
+        :ui="{
+          leadingIcon: '!size-5',
+        }"
       />
     </UTooltip>
   </client-only>

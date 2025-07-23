@@ -110,7 +110,7 @@ const toast = useToast();
 // 请求列表
 const { data, refresh, status } = await useFetch<Response<PageResponse<CategoryList>>>("/api/categorys", {
   query: { current, pageSize, name },
-  watch: [current, pageSize],
+  // watch: [current, pageSize],
   // 处理响应数据
   onResponse: ({ response }) => {
     const { code, msg } = response._data;
@@ -246,7 +246,7 @@ const columns: TableColumn<CategoryList>[] = [
       },
     },
     cell: ({ row }) => {
-      return h(UIcon, { name: row.getValue("icon") }, () => row.getValue("icon"));
+      return h(UIcon, { name: row.getValue("icon"), size: "30" }, () => row.getValue("icon"));
     },
   },
   {

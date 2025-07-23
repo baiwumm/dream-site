@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-04-11 08:40:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-07-21 11:06:10
+ * @LastEditTime: 2025-07-23 08:45:21
  * @Description: 主题模式切换
 -->
 <script setup lang="ts">
@@ -56,6 +56,9 @@ async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
       variant="ghost"
       @click="toggleDark"
       class="cursor-pointer"
+      :ui="{
+        leadingIcon: '!size-5',
+      }"
     />
   </UTooltip>
 </template>
