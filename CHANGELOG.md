@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.1.1](https://github.com/baiwumm/dream-site/compare/2.1.0...2.1.1) (2025-07-23)
+
+### ✨ Features | 新功能
+
+* 后台列表搜索添加重置按钮 ([077f365](https://github.com/baiwumm/dream-site/commit/077f36506aef294bed06c59bc11cf12bb6637619))
+* 添加 BackTop 回到顶部按钮组件 ([8ed86a4](https://github.com/baiwumm/dream-site/commit/8ed86a4795a5112729fad6902d884e777f86ed7e))
+* 修改社交图标不能跳转的问题 ([958edb9](https://github.com/baiwumm/dream-site/commit/958edb9f658fca3d42e887f47d5e809bc1806f71))
+* update README.md ([4b1e57e](https://github.com/baiwumm/dream-site/commit/4b1e57e4dae1b3c8ef36734a2dd404475f0fffc7))
+
+### 💄 Styles | 风格
+
+* 调整按钮图标大小 ([65b657f](https://github.com/baiwumm/dream-site/commit/65b657f7f13715081885d7a4f94ad0e4d1a872ee))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化首页元素初次加载没有铺满窗口的问题 ([904e835](https://github.com/baiwumm/dream-site/commit/904e835b69747c96d53f468e1c843b24dd509f48))
+
 ## [2.1.0](https://github.com/baiwumm/dream-site/compare/2.0.0...2.1.0) (2025-07-22)
 
 ### ✨ Features | 新功能
