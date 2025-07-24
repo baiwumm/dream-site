@@ -57,7 +57,7 @@ const githubLogin = async () => {
       });
   } catch (err: any) {
     toast.add({
-      title: "注册失败",
+      title: "登录失败",
       description: err.message,
       color: "error",
     });
@@ -68,7 +68,30 @@ const githubLogin = async () => {
 
 // 谷歌登录
 const googleLogin = async () => {
-  toast.add({ title: "此功能正在开发中，敬请期待." });
+  try {
+    loading.value = true;
+    await auth
+      .signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
+      })
+      .then(() => {
+        toast.add({
+          title: "登录成功",
+          description: "正在为您跳转...",
+          color: "success",
+        });
+        loading.value = false;
+      });
+  } catch (err: any) {
+    toast.add({
+      title: "登录失败",
+      description: err.message,
+      color: "error",
+    });
+  } finally {
+    loading.value = false;
+  }
 };
 
 const isRegister = ref(false);
