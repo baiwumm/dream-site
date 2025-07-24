@@ -47,6 +47,9 @@ dependencies:
   nuxt:
     specifier: ^4.0.0
     version: 4.0.0(@vue/compiler-sfc@3.5.17)(eslint@9.31.0)(sass@1.89.2)(typescript@5.8.3)(vite@7.0.5)(vue-tsc@3.0.2)
+  nuxt-clarity-analytics:
+    specifier: 0.0.9
+    version: 0.0.9
   nuxt-gtag:
     specifier: 3.0.3
     version: 3.0.3
@@ -9435,6 +9438,14 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+    dev: false
+
+  /nuxt-clarity-analytics@0.0.9:
+    resolution: {integrity: sha512-H5w+B5XOm9hdoVn3CnDCKIcnZli48UwuD8fP1bOogse0NVxNDUKhW0pdqOMRkniL/oORiqIwMrEZh12YE+23KQ==}
+    dependencies:
+      '@nuxt/kit': 3.17.7(magicast@0.3.5)
+    transitivePeerDependencies:
+      - magicast
     dev: false
 
   /nuxt-gtag@3.0.3:

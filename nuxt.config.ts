@@ -24,7 +24,8 @@ export default defineNuxtConfig({
     'nuxt-umami',
     'dayjs-nuxt',
     '@nuxt/ui',
-    'nuxt-gtag'
+    'nuxt-gtag',
+    'nuxt-clarity-analytics'
   ],
   // supabase Auth
   supabase: {
