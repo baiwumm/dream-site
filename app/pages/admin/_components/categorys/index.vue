@@ -125,6 +125,7 @@ const { data, refresh, status } = await useFetch<Response<PageResponse<CategoryL
 // 查询回调
 const handleSearch = () => {
   current.value = 1;
+  refresh();
 };
 
 // 重置回调
