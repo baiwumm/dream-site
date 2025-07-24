@@ -4,10 +4,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.NODE_ENV === 'production' ? process.env.SITE_URL : 'http://localhost:3000',
-      siteTitle: process.env.SITE_TITLE,
-      siteDescription: process.env.SITE_DESCRIPTION,
-      siteKeywords: process.env.SITE_KEYWORDS,
+      baseUrl: process.env.NODE_ENV === 'production' ? process.env.NUXT_SITE_URL : 'http://localhost:3000',
+      siteTitle: process.env.NUXT_SITE_NAME,
+      siteDescription: process.env.NUXT_SITE_DESCRIPTION,
+      siteKeywords: process.env.NUXT_SITE_KEYWORDS,
     }
   },
   app: {
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     enabled: process.env.NODE_ENV === 'production',
     id: 'G-76RP7KMHMQ',
     config: {
-      page_title: process.env.SITE_TITLE
+      page_title: process.env.NUXT_SITE_NAME
     },
   },
   // dayjs 插件
@@ -72,6 +72,15 @@ export default defineNuxtConfig({
   // @nuxt/ui 配置
   ui: {
     fonts: false
+  },
+  // 站点地图配置
+  sitemap: {
+    xslColumns: [
+      { label: 'URL', width: '50%' },
+      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
+      { label: 'Priority', select: 'sitemap:priority', width: '12.5%' },
+      { label: 'Change Frequency', select: 'sitemap:changefreq', width: '12.5%' },
+    ],
   },
   experimental: {
     viewTransition: true

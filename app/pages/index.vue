@@ -56,7 +56,7 @@
                     </div>
                     <div class="flex gap-1 items-center text-xs text-slate-400 font-thin">
                       <template v-for="(tag, index) in child.tags" :key="index">
-                        <UBadge color="neutral" variant="soft" class="rounded-full">{{ tag }}</UBadge>
+                        <UBadge color="neutral" variant="soft" class="rounded-full" size="sm">{{ tag }}</UBadge>
                       </template>
                     </div>
                   </div>
@@ -67,9 +67,9 @@
               </div>
               <div class="flex gap-1 absolute top-2 right-2">
                 <!-- 置顶标签 -->
-                <UBadge variant="soft" v-if="child.pinned">置顶</UBadge>
+                <UBadge variant="soft" v-if="child.pinned" size="sm">置顶</UBadge>
                 <!-- 是否推荐 -->
-                <UBadge color="secondary" variant="soft" v-if="child.recommend">推荐</UBadge>
+                <UBadge color="secondary" variant="soft" v-if="child.recommend" size="sm">推荐</UBadge>
               </div>
             </div>
           </AnimatedContent>
@@ -92,6 +92,12 @@
 import type { PageResponse, CategoryList, Response, WebsiteList } from "~/lib/type";
 const client = useSupabaseClient<WebsiteList>();
 const toast = useToast();
+
+defineOgImageComponent("Nuxt", {
+  headline: "Greetings",
+  title: `${process.env.NUXT_SITE_NAME} 👋`,
+  description: "A beautiful personal site navigation!",
+});
 
 // 请求分类列表
 const { data: categoryList, status: categoryStatus } = await useFetch<Response<PageResponse<CategoryList>>>(
