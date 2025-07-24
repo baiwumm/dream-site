@@ -23,8 +23,10 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     'nuxt-umami',
     'dayjs-nuxt',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    'nuxt-gtag'
   ],
+  // supabase Auth
   supabase: {
     redirectOptions: {
       login: '/login',
@@ -32,20 +34,32 @@ export default defineNuxtConfig({
       exclude: ['/']
     }
   },
+  // nuxt-umami Umami 统计
   umami: {
     id: '4eb40830-3733-4175-8a7b-e8991c5329a8',
     host: 'https://umami.baiwumm.com',
     autoTrack: true
   },
+  // nuxt-gtag 谷歌统计
+  gtag: {
+    enabled: process.env.NODE_ENV === 'production',
+    id: 'G-76RP7KMHMQ',
+    config: {
+      page_title: process.env.SITE_TITLE
+    },
+  },
+  // dayjs 插件
   dayjs: {
     locales: ['zh-cn'],
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'zh-cn',
     defaultTimezone: 'Asia/Shanghai',
   },
+  // @nuxtjs/color-mode 配置
   colorMode: {
     classSuffix: ''
   },
+  // @nuxt/icon 配置
   icon: {
     customCollections: [
       {
@@ -54,6 +68,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+  // @nuxt/ui 配置
   ui: {
     fonts: false
   },

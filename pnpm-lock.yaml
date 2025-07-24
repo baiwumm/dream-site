@@ -47,6 +47,9 @@ dependencies:
   nuxt:
     specifier: ^4.0.0
     version: 4.0.0(@vue/compiler-sfc@3.5.17)(eslint@9.31.0)(sass@1.89.2)(typescript@5.8.3)(vite@7.0.5)(vue-tsc@3.0.2)
+  nuxt-gtag:
+    specifier: 3.0.3
+    version: 3.0.3
   nuxt-umami:
     specifier: 3.2.0
     version: 3.2.0
@@ -9432,6 +9435,17 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+    dev: false
+
+  /nuxt-gtag@3.0.3:
+    resolution: {integrity: sha512-1XZc9I3DiF2GC07P7uQOlGN4v1cbnLwWHaQUIlayp4pg0h7wOrna5Nl733/2rXq7ktPL3fT8NBJR7OsV9BtJRA==}
+    dependencies:
+      '@nuxt/kit': 3.17.7(magicast@0.3.5)
+      defu: 6.1.4
+      pathe: 2.0.3
+      ufo: 1.6.1
+    transitivePeerDependencies:
+      - magicast
     dev: false
 
   /nuxt-link-checker@4.3.1(vite@7.0.5)(vue@3.5.17):
