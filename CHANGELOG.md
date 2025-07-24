@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.2.0](https://github.com/baiwumm/dream-site/compare/2.1.1...2.2.0) (2025-07-24)
+
+### ✨ Features | 新功能
+
+* 添加 OgImage ([5ad0743](https://github.com/baiwumm/dream-site/commit/5ad07437d3811f792857d1561f41eaa18c862c60))
+* 添加邮箱注册登录 ([923f545](https://github.com/baiwumm/dream-site/commit/923f5455ad2d10563901d1e86aee68ad2e4c3491))
+* 完成谷歌登录逻辑 ([62997aa](https://github.com/baiwumm/dream-site/commit/62997aadfabf1f8d36816e8da29ff18236a285b9))
+* 细节优化调整 ([530ce96](https://github.com/baiwumm/dream-site/commit/530ce96de6b2082b1211343a72653a227e39d13b))
+
 ## [2.1.1](https://github.com/baiwumm/dream-site/compare/2.1.0...2.1.1) (2025-07-23)
 
 ### ✨ Features | 新功能
