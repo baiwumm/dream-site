@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/baiwumm/dream-site/compare/2.2.0...2.2.1) (2025-07-29)
+
+### ✨ Features | 新功能
+
+* 修复编辑成功后没有清空数据的问题 ([3ecf0b1](https://github.com/baiwumm/dream-site/commit/3ecf0b1054b877bc41b6e5ba034126e707a2903d))
+* 修复新增时数据没有清空的问题 ([cbacdba](https://github.com/baiwumm/dream-site/commit/cbacdbae67ef61a6a96f18a2a255ecf152b87e18))
+
 ## [2.2.0](https://github.com/baiwumm/dream-site/compare/2.1.1...2.2.0) (2025-07-24)
 
 ### ✨ Features | 新功能
