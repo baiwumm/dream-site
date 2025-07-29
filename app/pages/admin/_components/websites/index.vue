@@ -152,12 +152,17 @@ const handleSearch = () => {
   refresh();
 };
 
+// 编辑模态框状态
+const showEditModal = ref(false);
+const currentWebsite = ref<WebsiteEdit | null>();
+
 // 重置回调
 const handleReset = () => {
   current.value = 1;
   name.value = "";
   category_id.value = "";
   deleteId.value = "";
+  currentWebsite.value = null;
 };
 
 // 分页切换回调
@@ -165,13 +170,9 @@ const handlePageChange = (page: number) => {
   current.value = page;
 };
 
-// 编辑模态框状态
-const showEditModal = ref(false);
-const currentWebsite = ref<WebsiteEdit | undefined>();
-
 // 新增回调
 const handleAdd = () => {
-  currentWebsite.value = undefined;
+  currentWebsite.value = null;
   showEditModal.value = true;
 };
 

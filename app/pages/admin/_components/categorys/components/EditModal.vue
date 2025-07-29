@@ -67,7 +67,7 @@ import { UIcon } from "#components";
 
 const props = defineProps<{
   modelValue: boolean;
-  category?: CategoryEdit;
+  category?: CategoryEdit | null;
 }>();
 
 const emit = defineEmits<{
@@ -92,6 +92,7 @@ type Schema = z.output<typeof schema>;
 
 // 定义一个默认值的函数
 const getDefaultState = (): Partial<Schema> => ({
+  id: undefined,
   name: undefined,
   sort: 1,
   desc: undefined,

@@ -132,7 +132,7 @@ const handleSearch = () => {
 const handleReset = () => {
   name.value = "";
   current.value = 1;
-  currentCategory.value = undefined;
+  currentCategory.value = null;
   deleteId.value = "";
 };
 
@@ -143,11 +143,11 @@ const handlePageChange = (page: number) => {
 
 // 编辑模态框状态
 const showEditModal = ref(false);
-const currentCategory = ref<CategoryEdit | undefined>();
+const currentCategory = ref<CategoryEdit | null>();
 
 // 新增回调
 const handleAdd = () => {
-  currentCategory.value = undefined;
+  currentCategory.value = null;
   showEditModal.value = true;
 };
 
@@ -250,7 +250,9 @@ const columns: TableColumn<CategoryList>[] = [
       },
     },
     cell: ({ row }) => {
-      return h(UIcon, { name: row.getValue("icon"), size: "30" }, () => row.getValue("icon"));
+      return row.original.icon
+        ? h(UIcon, { name: row.getValue("icon"), size: "30" }, () => row.getValue("icon"))
+        : "--";
     },
   },
   {
