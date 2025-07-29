@@ -132,6 +132,8 @@ const handleSearch = () => {
 const handleReset = () => {
   name.value = "";
   current.value = 1;
+  currentCategory.value = undefined;
+  deleteId.value = "";
 };
 
 // 分页切换回调
@@ -193,6 +195,7 @@ const handleDelete = async (id: string) => {
 
 // 操作成功回调
 const handleSuccess = () => {
+  handleReset();
   refresh();
 };
 
