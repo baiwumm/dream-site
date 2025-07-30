@@ -1,46 +1,88 @@
 <div align="center">
 <img alt="logo" src="./public/logo.svg" width="80"/>
 <h2>Dream Site</h2>
-<p>一个精美的个人站点导航</p>
+<p>一个精美、现代化的个人站点导航</p>
 </div>
 
-## 🪴 项目信息
-* 😝 在线体验：https://site.baiwumm.com/
-* 🎯 技术栈：[Nuxt4.0](https://nuxt.com/)、[Vue.js](https://cn.vuejs.org/)、[Tailwindcss](https://www.tailwindcss.cn/)、[Supabase](https://supabase.com/)、[NuxtUI](https://ui.nuxt.com/)
+<div align="center">
+  <a href="https://vercel.com" target="_blank">
+    <img alt="Vercel" src="https://img.shields.io/badge/deployed%20on-Vercel-black?style=flat&logo=vercel">
+  </a>
+  <a href="https://nuxt.com/" target="_blank">
+    <img alt="Nuxt" src="https://img.shields.io/badge/Nuxt-4.0-black?style=flat&logo=Nuxt">
+  </a>
+  <a href="https://supabase.com/" target="_blank">
+    <img alt="Supabase" src="https://img.shields.io/badge/Supabase-black?style=flat&logo=Supabase">
+  </a>
+  <a href="https://tailwindcss.com/" target="_blank">
+    <img alt="TaildwindCSS" src="https://img.shields.io/badge/TailwindCSS-black?style=flat&logo=tailwindcss">
+  </a>
+</div>
+
+## ☘️ 项目简介
+
+`Dream Site` 是一个现代化的个人站点导航系统，旨在为用户提供美观、高效的个人网站收藏与管理体验。无论你是开发者、设计师还是内容创作者，都可以用它来组织和展示你喜爱的网站资源。
+
+## 🌿 在线体验
+
+➡️ [点击打开](https://site.baiwumm.com/)
+
+## 🪴 技术栈
+
+- **前端框架**: [Nuxt 4.0](https://nuxt.com/) (基于Vue 3)
+- **UI组件**: [NuxtUI](https://ui.nuxt.com/)
+- **样式方案**: [Tailwind CSS](https://www.tailwindcss.cn/)
+- **后端服务**: [Supabase](https://supabase.com/) (开源Firebase替代品)
+- **部署平台**: 支持 `Vercel` 等多种部署方式
 
 ## ✨ 特性
-* 使用前端最新技术栈开发
-* 极快响应、便于开发部署
-* 目录结构清晰，轻量级，前后端一体
-* 支持多种部署方式，优先推荐 [Vercel](https://vercel.com/)
-* 支持暗黑模式
-* 支持 `SSR` 渲染，利于 `SEO` 优化 
+- 🚀 **高性能**: 基于最新前端技术栈，极速响应
+- 🌓 **主题切换**: 完善的亮色/暗黑模式支持
+- 🔍 **SEO友好**: 支持SSR渲染，优化搜索引擎收录
+- 📱 **响应式设计**: 适配各种设备屏幕
+- 🔒 **安全认证**: 基于Supabase的完整用户系统
+- 🧩 **模块化架构**: 清晰的目录结构，便于二次开发
 
-## 💻 演示图
+## 🪴 项目截图
 
-<div style="display:flex;justify-content:space-between;">
-<img alt="亮色模式" src="./app/assets/images/light.png" style="width:49%;"/>
-<img alt="暗色模式" src="./app/assets/images/dark.png" style="width:49%;"/>
-</div>
+| 亮色模式 | 暗色模式 |
+|----------|----------|
+| ![亮色模式](./app/assets/images/light.png) | ![暗色模式](./app/assets/images/dark.png) |
 
-<div style="display:flex;justify-content:space-between;">
-<img alt="分类列表" src="./app/assets/images/caretorys.png" style="width:49%;"/>
-<img alt="站点列表" src="./app/assets/images/websites.png" style="width:49%;"/>
-</div>
+| 分类管理 | 站点列表 |
+|----------|----------|
+| ![分类列表](./app/assets/images/caretorys.png) | ![站点列表](./app/assets/images/websites.png) |
 
-## 🧑‍💻 项目运行
-**环境：Node.js > 18.17**
+## 🚀 快速开始
 
-```powershell
-// 克隆项目
+### 🌳 环境要求
+- Node.js ≥ 18.17 (推荐最新LTS版本)
+- pnpm (推荐) 或 npm/yarn
+
+### 🧑‍💻 本地开发
+```bash
+# 克隆项目
 git clone https://github.com/baiwumm/dream-site.git
 
-// 安装依赖
+# 进入项目目录
+cd dream-site
+
+# 安装依赖
 pnpm install
 
-// 运行
+# 启动开发服务器
 pnpm dev
 ```
+
+### 📝 初始化数据库
+1. 进入 [supabase 控制台](https://supabase.com/dashboard)，创建项目，并获取`SUPABASE_URL`和`SUPABASE_KEY`
+2. 导入数据库结构，将 `initSupabase.sql` 导入到 `Supabase SQL` 编辑器中执行。
+3. 在根目录下创建`.env`文件，并添加以下内容：
+```env
+SUPABASE_URL="xxx"
+SUPABASE_KEY="xxx"
+```
+4. 进入 `Authentication` ，自行配置 `Policies` 和 `Sign In / Providers`
 
 ## ⚙️ Vercel 一键部署
 1. `Fork` 本项目，在 `Vercel` 官网点击 `New Project`
@@ -50,28 +92,6 @@ pnpm dev
 <a href="https://vercel.com/dashboard" target="_blank">
 <img alt="vercel 部署" src="./app/assets/images/vercel.svg" />
 </a>
-
-## ⚙️ Vecel 本地部署
-```powershell
-// 全局安装 vercel
-npm i -g vercel
-
-// 登录
-vercel login
-
-// 项目推送
-vercel
-
-// 挂载生产
-vercel --prod
-```
-
-## ✅ TODO
-◻️ 首页添加每日一图 `Banner`
-◻️ 添加全局资源搜索框
-◻️ 支持更多登录方式
-◻️ 优化 `UI` 展示
-...
 
 ## ⭐ Star History
 
