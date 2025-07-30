@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-05-30 13:52:19
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-07-21 12:10:32
+ * @LastEditTime: 2025-07-30 08:59:22
  * @Description: 底部布局
 -->
 <template>
-  <footer class="p-4">
+  <footer class="px-4 py-2">
     <USeparator
       :avatar="{
         src: '/logo.svg',
