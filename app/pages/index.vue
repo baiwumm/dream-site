@@ -131,6 +131,6 @@ const handleClick = async (record: WebsiteList) => {
 };
 
 definePageMeta({
-  title: "一个精美的个人站点导航！",
+  title: "一个简约、精美、现代化的个人站点导航！",
 });
 </script>

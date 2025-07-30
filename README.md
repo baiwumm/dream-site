@@ -1,7 +1,7 @@
 <div align="center">
 <img alt="logo" src="./public/logo.svg" width="80"/>
 <h2>Dream Site</h2>
-<p>一个精美、现代化的个人站点导航</p>
+<p>一个简约、精美、现代化的个人站点导航</p>
 </div>
 
 <div align="center">
@@ -16,6 +16,9 @@
   </a>
   <a href="https://tailwindcss.com/" target="_blank">
     <img alt="TaildwindCSS" src="https://img.shields.io/badge/TailwindCSS-black?style=flat&logo=tailwindcss">
+  </a>
+  <a href="./LICENSE" target="_blank">
+    <img alt="LICENSE" src="https://img.shields.io/badge/license-MIT-blue">
   </a>
 </div>
 

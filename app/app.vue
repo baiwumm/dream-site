@@ -59,7 +59,7 @@ useHead({
   link: [{ rel: "icon", type: "image/x-icon", href: "favicon.ico" }],
   meta: [
     { name: "keywords", content: "Nuxt.js,导航,网站,白雾茫茫丶,谜叶象限" },
-    { name: "description", content: "一个精美的个人站点导航！" },
+    { name: "description", content: "一个简约、精美、现代化的个人站点导航！" },
   ],
 });
 </script>
