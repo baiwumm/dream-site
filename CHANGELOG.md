@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.2](https://github.com/baiwumm/dream-site/compare/2.2.1...2.2.2) (2025-07-30)
+
+### ✨ Features | 新功能
+
+* update README.md ([dc0ec95](https://github.com/baiwumm/dream-site/commit/dc0ec9520db46b37cbff3c8d47f43cfb373d9ae8))
+
+### 💄 Styles | 风格
+
+* 细节优化 ([122a89c](https://github.com/baiwumm/dream-site/commit/122a89c4733b269f7f4e38210cbfe1a91f9f5cd7))
+
 ## [2.2.1](https://github.com/baiwumm/dream-site/compare/2.2.0...2.2.1) (2025-07-29)
 
 ### ✨ Features | 新功能
