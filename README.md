@@ -93,6 +93,9 @@ SUPABASE_KEY="xxx"
 <img alt="vercel 部署" src="./app/assets/images/vercel.svg" />
 </a>
 
+## 📜 许可证
+本项目采用 [MIT](LICENSE) 许可证。
+
 ## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=baiwumm/dream-site&type=Date)](https://star-history.com/#baiwumm/dream-site&Date)
