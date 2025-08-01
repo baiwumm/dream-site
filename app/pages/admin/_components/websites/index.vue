@@ -378,7 +378,9 @@ const columns: TableColumn<WebsiteList>[] = [
     },
     cell: ({ row }) => {
       const pinned = row.original.pinned;
-      return h(UCheckbox, { disabled: true, defaultValue: pinned || "indeterminate" });
+      return h("div", { class: "flex justify-center" }, [
+        h(UCheckbox, { disabled: true, defaultValue: pinned || "indeterminate" }),
+      ]);
     },
   },
   {
@@ -392,7 +394,9 @@ const columns: TableColumn<WebsiteList>[] = [
     },
     cell: ({ row }) => {
       const vpn = row.original.vpn;
-      return h(UCheckbox, { disabled: true, defaultValue: vpn || "indeterminate" });
+      return h("div", { class: "flex justify-center" }, [
+        h(UCheckbox, { disabled: true, defaultValue: vpn || "indeterminate" }),
+      ]);
     },
   },
   {
@@ -406,7 +410,9 @@ const columns: TableColumn<WebsiteList>[] = [
     },
     cell: ({ row }) => {
       const recommend = row.original.recommend;
-      return h(UCheckbox, { disabled: true, defaultValue: recommend || "indeterminate" });
+      return h("div", { class: "flex justify-center" }, [
+        h(UCheckbox, { disabled: true, defaultValue: recommend || "indeterminate" }),
+      ]);
     },
   },
   {
@@ -420,7 +426,9 @@ const columns: TableColumn<WebsiteList>[] = [
     },
     cell: ({ row }) => {
       const commonlyUsed = row.original.commonlyUsed;
-      return h(UCheckbox, { disabled: true, defaultValue: commonlyUsed || "indeterminate" });
+      return h("div", { class: "flex justify-center" }, [
+        h(UCheckbox, { disabled: true, defaultValue: commonlyUsed || "indeterminate" }),
+      ]);
     },
   },
   {

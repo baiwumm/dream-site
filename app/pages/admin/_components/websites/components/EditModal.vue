@@ -54,7 +54,7 @@
           />
         </UFormField>
 
-        <div class="grid grid-cols-4">
+        <div class="grid grid-cols-4 place-items-center">
           <UFormField label="置顶" name="pinned">
             <USwitch unchecked-icon="i-lucide-x" checked-icon="i-lucide-check" v-model="state.pinned" />
           </UFormField>
