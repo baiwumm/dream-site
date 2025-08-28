@@ -303,7 +303,10 @@ const columns: TableColumn<CategoryList>[] = [
         th: "text-center",
       },
     },
-    cell: ({ row }) => dayjs(row.original.updated_at).format("YYYY-MM-DD HH:mm:ss"),
+    cell: ({ row }) => {
+      const updated_at = row.original.updated_at;
+      return updated_at ? dayjs(row.original.updated_at).format("YYYY-MM-DD HH:mm:ss") : "--";
+    },
   },
   {
     accessorKey: "actions",
