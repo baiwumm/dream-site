@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.5](https://github.com/baiwumm/dream-site/compare/2.2.4...2.2.5) (2025-08-28)
+
+### 💄 Styles | 风格
+
+* 新增全站字体 ([cdc2f98](https://github.com/baiwumm/dream-site/commit/cdc2f982dba0b4ad860204ce0d038a3deaacd9bc))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 细节优化 ([02cfc11](https://github.com/baiwumm/dream-site/commit/02cfc11056240559c10a5ea6a33a7c7717b37ebe))
+
 ## [2.2.4](https://github.com/baiwumm/dream-site/compare/2.2.3...2.2.4) (2025-08-01)
 
 ### 💄 Styles | 风格
