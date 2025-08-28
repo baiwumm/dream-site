@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+body {
+  font-family: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 @keyframes border-spin {
   0% {
     clip-path: inset(0 100% 100% 0);

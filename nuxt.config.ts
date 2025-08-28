@@ -2,9 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  devServer: {
+    port: 5173
+  },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.NODE_ENV === 'production' ? process.env.NUXT_SITE_URL : 'http://localhost:3000',
+      baseUrl: process.env.NODE_ENV === 'production' ? process.env.NUXT_SITE_URL : 'http://localhost:5173',
       siteTitle: process.env.NUXT_SITE_NAME,
       siteDescription: process.env.NUXT_SITE_DESCRIPTION,
       siteKeywords: process.env.NUXT_SITE_KEYWORDS,
@@ -12,6 +15,14 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: 'blur', mode: 'out-in' }, // 页面过渡效果
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css"
+        }
+      ]
+    }
   },
   modules: [
     '@nuxt/eslint',
