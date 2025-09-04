@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.6](https://github.com/baiwumm/dream-site/compare/2.2.5...2.2.6) (2025-09-04)
+
+### ✨ Features | 新功能
+
+* 细节调整 ([f3b79f6](https://github.com/baiwumm/dream-site/commit/f3b79f6967345c7e65ec4bf56bb18c0113e53b38))
+
 ## [2.2.5](https://github.com/baiwumm/dream-site/compare/2.2.4...2.2.5) (2025-08-28)
 
 ### 💄 Styles | 风格
