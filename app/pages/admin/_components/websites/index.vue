@@ -134,7 +134,7 @@ const { data: categoryData, status: categoryLoading } = await useFetch<Response<
 // 请求列表
 const { data, refresh, status } = await useFetch<Response<PageResponse<WebsiteList>>>("/api/websites", {
   query: { current, pageSize, name, category_id },
-  watch: [current, pageSize],
+  watch: false,
   // 处理响应数据
   onResponse: ({ response }) => {
     const { code, msg } = response._data;
@@ -163,11 +163,13 @@ const handleReset = () => {
   category_id.value = "";
   deleteId.value = "";
   currentWebsite.value = null;
+  refresh();
 };
 
 // 分页切换回调
 const handlePageChange = (page: number) => {
   current.value = page;
+  refresh();
 };
 
 // 新增回调
@@ -235,7 +237,6 @@ const handleDelete = async (id: string) => {
 // 操作成功回调
 const handleSuccess = () => {
   handleReset();
-  refresh();
 };
 
 function getHeader(column: Column<WebsiteList>, label: string, position: "left" | "right") {

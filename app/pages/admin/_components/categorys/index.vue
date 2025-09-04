@@ -110,7 +110,7 @@ const toast = useToast();
 // 请求列表
 const { data, refresh, status } = await useFetch<Response<PageResponse<CategoryList>>>("/api/categorys", {
   query: { current, pageSize, name },
-  // watch: [current, pageSize],
+  watch: false,
   // 处理响应数据
   onResponse: ({ response }) => {
     const { code, msg } = response._data;
@@ -134,11 +134,13 @@ const handleReset = () => {
   current.value = 1;
   currentCategory.value = null;
   deleteId.value = "";
+  refresh();
 };
 
 // 分页切换回调
 const handlePageChange = (page: number) => {
   current.value = page;
+  refresh();
 };
 
 // 编辑模态框状态
@@ -196,7 +198,6 @@ const handleDelete = async (id: string) => {
 // 操作成功回调
 const handleSuccess = () => {
   handleReset();
-  refresh();
 };
 
 function getHeader(column: Column<CategoryList>, label: string, position: "left" | "right") {
