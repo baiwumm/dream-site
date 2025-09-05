@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    pageTransition: { name: 'blur', mode: 'out-in' }, // 页面过渡效果
+    pageTransition: { name: 'page', mode: 'out-in' }, // 页面过渡效果
     head: {
       link: [
         {
