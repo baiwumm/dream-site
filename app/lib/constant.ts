@@ -26,7 +26,6 @@ export const FooterSocial: Social[] = [
     tip: '网站统计'
   },
   { icon: 'i-ri-github-line', url: 'https://github.com/baiwumm', tip: 'Github' },
-  { icon: 'i-ri-wechat-line', url: 'https://wechat.baiwumm.com/', tip: '微信' },
   { icon: 'i-ri-mail-line', url: 'mailto:me@baiwumm.com', tip: 'Email' },
   { icon: 'i-ri-quill-pen-line', url: 'https://baiwumm.com', tip: '博客' },
   { icon: 'mdi:api', url: 'https://api.baiwumm.com', tip: 'Easy Api' }
