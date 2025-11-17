@@ -32,6 +32,9 @@ dependencies:
   '@unhead/vue':
     specifier: ^2.0.3
     version: 2.0.12(vue@3.5.17)
+  '@vercel/analytics':
+    specifier: ^1.5.0
+    version: 1.5.0(vue-router@4.5.1)(vue@3.5.17)
   dayjs-nuxt:
     specifier: 2.1.11
     version: 2.1.11
@@ -4482,6 +4485,36 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@vercel/analytics@1.5.0(vue-router@4.5.1)(vue@3.5.17):
+    resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
+    peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      vue: 3.5.17(typescript@5.8.3)
+      vue-router: 4.5.1(vue@3.5.17)
+    dev: false
 
   /@vercel/nft@0.29.4(rollup@4.45.1):
     resolution: {integrity: sha512-6lLqMNX3TuycBPABycx7A9F1bHQR7kiQln6abjFbPrf5C/05qHM9M5E4PeTE59c7z8g6vHnx1Ioihb2AQl7BTA==}

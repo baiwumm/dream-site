@@ -38,9 +38,13 @@
     </div>
     <!-- 回到顶部按钮 -->
     <BackTop />
+    <!-- Vercel 统计 -->
+    <Analytics />
   </div>
 </template>
 <script setup lang="ts">
+import { Analytics } from "@vercel/analytics/nuxt";
+
 const nuxtApp = useNuxtApp();
 const colorMode = useColorMode();
 

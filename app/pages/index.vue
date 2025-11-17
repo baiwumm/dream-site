@@ -89,6 +89,7 @@
 </template>
 
 <script setup lang="ts">
+import { track } from "@vercel/analytics";
 import type { PageResponse, CategoryList, Response, WebsiteList } from "~/lib/type";
 const client = useSupabaseClient<WebsiteList>();
 const toast = useToast();
@@ -118,6 +119,7 @@ const handleClick = async (record: WebsiteList) => {
   try {
     window.open(record.url);
     umTrackEvent(record.name, record);
+    track(record.name);
     await client.rpc("increment_visit_count", {
       row_id: record.id,
       increment_value: Math.floor(Math.random() * 100) + 1,
