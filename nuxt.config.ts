@@ -48,8 +48,8 @@ export default defineNuxtConfig({
   },
   // nuxt-umami Umami 统计
   umami: {
-    id: '4eb40830-3733-4175-8a7b-e8991c5329a8',
-    host: 'https://umami.baiwumm.com',
+    id: '87f94791-c0a5-424f-a3f4-e0171d82352b',
+    host: 'https://um.baiwumm.com',
     autoTrack: true
   },
   // nuxt-gtag 谷歌统计
