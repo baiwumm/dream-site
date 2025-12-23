@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/baiwumm/dream-site/compare/2.2.6...3.0.0) (2025-12-23)
+
+### ✨ Features | 新功能
+
+* 更新 Umami 统计代码 ([2b3cb87](https://github.com/baiwumm/dream-site/commit/2b3cb871b7d5655f83f7f9a3dd6c4afab538a335))
+* 添加页面过渡效果 ([a94d3a9](https://github.com/baiwumm/dream-site/commit/a94d3a99a37878f458e9df292182d2fdf49c16d6))
+* 新增 Vercel 统计代码 ([60aaf4f](https://github.com/baiwumm/dream-site/commit/60aaf4faf0843eb6c7f59effbf13462f4bcfa97a))
+* 修改底部社交信息 ([a190e01](https://github.com/baiwumm/dream-site/commit/a190e01922d7c32710ff32f785ec1c00777bb9ab))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新依赖到最新版本 ([e4dce01](https://github.com/baiwumm/dream-site/commit/e4dce0101f6746626657c0da1417253865c8f1cd))
+
 ## [2.2.6](https://github.com/baiwumm/dream-site/compare/2.2.5...2.2.6) (2025-09-04)
 
 ### ✨ Features | 新功能
