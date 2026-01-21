@@ -1,43 +1,55 @@
-// @ts-check
-import withNuxt from "./.nuxt/eslint.config.mjs";
-import importPlugin from "eslint-plugin-import";
+import tsParser from "@typescript-eslint/parser";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
-export default withNuxt(
-  // Your custom configs here
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+  // TypeScript + import 排序
   {
-    plugins: {
-      import: importPlugin,
-    },
-    settings: {
-      "import/resolver": {
-        typescript: {
-          project: "./tsconfig.json",
-        },
-        node: {
-          extensions: [".js", ".ts", ".vue", ".tsx"],
+    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
         },
       },
     },
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    },
     rules: {
-      // 核心验证规则
-      "import/no-unresolved": "error",
-      "import/named": "error",
-      "import/default": "error",
-      "import/namespace": "error",
-      "import/export": "error",
-
-      // 代码风格规则
-      "import/order": [
+      "import/order": "off",
+      "simple-import-sort/imports": [
         "error",
         {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
+          groups: [
+            ["^node:"], // Node 内置模块
+            ["^@?\\w"], // 第三方模块
+            ["^@nestjs/"], // Nest.js 模块
+            ["^src/"], // 内部 alias
+            ["^\\."], // 相对路径
+          ],
         },
       ],
-      "import/no-duplicates": "error",
-      "import/no-absolute-path": "error",
-      "import/no-cycle": "warn",
+      "simple-import-sort/exports": "error",
+      "no-duplicate-imports": "error",
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     },
-  }
-);
+  },
+]);
+
+export default eslintConfig;

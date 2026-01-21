@@ -8,46 +8,34 @@
     "email": "me@baiwumm.com",
     "url": "https://baiwumm.com"
   },
+  "git": {
+    "url": "https://github.com/baiwumm/dream-site",
+    "issues": "https://github.com/baiwumm/dream-site/issues"
+  },
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "dev": "next dev -p 5173",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.12.1",
-    "@nuxt/icon": "2.1.1",
-    "@nuxt/image": "2.0.0",
-    "@nuxt/scripts": "0.13.2",
-    "@nuxt/ui": "^4.3.0",
-    "@nuxtjs/color-mode": "4.0.0",
-    "@nuxtjs/seo": "3.3.0",
-    "@nuxtjs/supabase": "1.5.3",
-    "@unhead/vue": "^2.0.19",
-    "@vercel/analytics": "^1.6.1",
-    "dayjs-nuxt": "2.1.11",
-    "eslint": "^9.39.2",
-    "gsap": "^3.14.2",
-    "motion-v": "^1.7.4",
-    "nuxt": "^4.2.2",
-    "nuxt-clarity-analytics": "0.0.9",
-    "nuxt-gtag": "4.1.0",
-    "nuxt-umami": "3.2.1",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4",
-    "zod": "^4.2.1"
+    "next": "16.1.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
-  "packageManager": "pnpm@8.15.5+sha1.a58c038faac410c947dbdb93eb30994037d0fce2",
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.82",
-    "@iconify-json/ri": "^1.2.6",
     "@release-it/conventional-changelog": "^10.0.4",
-    "eslint-plugin-import": "^2.32.0",
-    "release-it": "^19.1.0",
-    "sass": "^1.97.1",
-    "typescript": "^5.9.3",
-    "vue-tsc": "^3.2.1"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/parser": "^8.53.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "release-it": "^19.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
