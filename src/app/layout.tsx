@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from 'next-themes';
+
+import Provider from './Provider';
 
 import "./globals.css";
+import FullLoading from '@/components/FullLoading';
 import pkg from '#/package.json';
 
 export const metadata: Metadata = {
@@ -48,13 +52,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="version" content={pkg.version} />
         <link rel="stylesheet" href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css" />
       </head>
       <body>
-        {children}
+        <ThemeProvider attribute="class" enableSystem={false}>
+          <FullLoading>
+            <Provider>
+              {children}
+            </Provider>
+          </FullLoading>
+        </ThemeProvider>
       </body>
     </html>
   );
