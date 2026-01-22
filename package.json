@@ -20,8 +20,13 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@bprogress/next": "^3.2.12",
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.91.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.19",
     "enum-plus": "^3.1.6",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.12",
@@ -30,7 +35,10 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.4.0"
+    "react-hook-form": "^7.71.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.4",

@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 11:22:02
+ * @LastEditTime: 2026-01-22 16:29:15
  * @Description: 底部版权
  */
+import dayjs from 'dayjs';
 import Image from 'next/image';
 import { type FC, type ReactNode } from 'react';
 
@@ -59,7 +60,7 @@ const Footer: FC = () => {
             </Status>
           </div>
           <p className="text-center text-xs text-slate-500/75 dark:text-slate-300/75">
-            &copy; {(new Date().getFullYear())} {" "}
+            &copy; {dayjs().year()} {" "}
             <a
               href={pkg.author.url}
               target="_blank"

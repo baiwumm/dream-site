@@ -54,7 +54,7 @@ function ThemeTogglerButton({
           <TooltipTrigger asChild>
             <RippleButton
               aria-label="ThemeToggle"
-              variant="ghost"
+              variant="outline"
               radius="full"
               mode="icon"
               size='sm'
@@ -91,9 +91,7 @@ function ThemeTogglerButton({
               </AnimatePresence>
             </RippleButton>
           </TooltipTrigger>
-          <TooltipContent>
-            <p>主题模式</p>
-          </TooltipContent>
+          <TooltipContent>主题模式</TooltipContent>
         </Tooltip>
       )}
     </ThemeTogglerPrimitive>

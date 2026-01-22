@@ -215,3 +215,48 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* 路由切换动画 */
+@theme {
+  --view-duration-enter: 500ms;
+  --view-duration-exit: 500ms;
+  --view-delay-enter: var(--view-duration-exit);
+  /* 新视图的延迟 = 旧视图的持续时间 */
+}
+
+/* 默认动画，左右模糊渐变 */
+@keyframes blur-slide-enter {
+  from {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blur-slide-exit {
+  from {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+::view-transition-new(blur-slide) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both blur-slide-enter;
+}
+
+::view-transition-old(blur-slide) {
+  animation: var(--view-duration-exit) ease-in both blur-slide-exit;
+}
