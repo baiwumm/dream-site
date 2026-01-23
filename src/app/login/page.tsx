@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 11:07:56
+ * @LastEditTime: 2026-01-23 15:01:30
  * @Description: 登录页
  */
 "use client";
@@ -138,7 +138,7 @@ export default function Login() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${window.location.origin}/api/auth/callback`,
+          redirectTo: process.env.NEXT_PUBLIC_APP_URL,
         },
       })
       if (error) {
