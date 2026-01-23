@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 16:24:30
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 16:32:03
+ * @LastEditTime: 2026-01-23 13:59:25
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
 
-import { getSupabaseServerClient } from '@/lib/supabaseServer'
+import { getSupabaseServerClient } from '@/lib/supabase/server'
 import { responseMessage } from '@/lib/utils'
 
 export default async function proxy(req: NextRequest) {
@@ -15,9 +15,13 @@ export default async function proxy(req: NextRequest) {
   const supabase = await getSupabaseServerClient() // ✅ 这里也要 await
   // 获取当前会话
   const { data: { session } } = await supabase.auth.getSession()
-
   const path = req.nextUrl.pathname;
   const method = req.method
+
+  // 首页直接放行
+  if (path == '/') {
+    return NextResponse.next()
+  }
 
   // 针对 Api 路由
   if (path.startsWith('/api/')) {
@@ -32,14 +36,9 @@ export default async function proxy(req: NextRequest) {
     return NextResponse.next()
   }
 
-  // 首页直接放行
-  if (path === '/') {
-    return res
-  }
-
-  // 规则1: 如果用户已登录，且访问的是 /login，则重定向到 /admin
+  // 规则1: 如果用户已登录，且访问的是 / 或 /login，则重定向到 /dashboard
   if (session && path === '/login') {
-    return NextResponse.redirect(new URL('/admin', req.url))
+    return NextResponse.redirect(new URL('/', req.url))
   }
 
   // 规则2: 如果用户未登录，且访问的不是 /login，则重定向到 /login
@@ -47,7 +46,7 @@ export default async function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
-  // 规则3: 如果用户未登录且访问 /login，或者已登录且访问 /admin 或其他受保护路由，则放行
+  // 规则3: 如果用户未登录且访问 /login，或者已登录且访问 /dashboard 或其他受保护路由，则放行
   return res
 }
 

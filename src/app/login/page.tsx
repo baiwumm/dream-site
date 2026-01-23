@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 16:37:30
+ * @LastEditTime: 2026-01-23 11:07:56
  * @Description: 登录页
  */
 "use client";
@@ -23,7 +23,7 @@ import { Input, InputWrapper } from "@/components/ui/input"
 import { Spinner } from '@/components/ui/spinner';
 import { OAUTH_PROVIDERS } from '@/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
-import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 
 export default function Login() {
   const supabase = getSupabaseBrowserClient();

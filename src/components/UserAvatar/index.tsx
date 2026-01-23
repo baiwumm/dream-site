@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 15:44:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 17:02:37
+ * @LastEditTime: 2026-01-23 10:21:55
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -33,14 +33,13 @@ import { Spinner } from '@/components/ui/spinner';
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useControlledState } from '@/hooks/use-controlled-state';
 import { useSupabaseUser } from '@/hooks/use-supabase-user';
-import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 
 const UserAvatar: FC = () => {
   const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   // 获取登录用户信息
   const { user, loading } = useSupabaseUser();
-  console.log('user', user)
   // 注销 Loading
   const [logoutLoading, setLogoutLoading] = useState(false);
   // 退出确认弹窗
@@ -62,7 +61,7 @@ const UserAvatar: FC = () => {
       await supabase.auth.signOut().then(() => {
         setIsOpen(false);
         // 返回首页
-        router.push('/');
+        router.push('/login');
       })
     } finally {
       setLogoutLoading(false);
