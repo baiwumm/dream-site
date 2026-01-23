@@ -24,3 +24,11 @@ export const OAUTH_PROVIDERS = Enum({
   GOOGLE: { value: 'google', label: '使用 Google 登录' },
   GITHUB: { value: 'github', label: '使用 Github 登录' },
 })
+
+/**
+ * @description: Admin Tabs
+ */
+export const ADMIN_TABS = Enum({
+  CATEGOTYS: { value: 'categorys', label: '网站分类' },
+  WEBSITES: { value: 'websites', label: '网站列表' },
+})
