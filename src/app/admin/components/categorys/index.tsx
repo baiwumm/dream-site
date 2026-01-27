@@ -2,12 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 18:09:02
+ * @LastEditTime: 2026-01-27 16:11:21
  * @Description: 网站分类
  */
 "use client"
+import { Magnifier } from '@gravity-ui/icons';
+import { Button, Card, Input, Spinner } from "@heroui/react";
 import {
-  ColumnDef,
+  flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -18,21 +20,13 @@ import {
   type VisibilityState
 } from '@tanstack/react-table';
 import { useRequest } from 'ahooks';
-import { Search } from 'lucide-react';
-import { type Dispatch, type FC, type SetStateAction, useEffect, useMemo, useState } from 'react';
+import { type Dispatch, type FC, type SetStateAction, useEffect, useState } from 'react';
 
-import { RippleButton } from "@/components/animate-ui/components/buttons/ripple";
-import { Badge } from '@/components/ui/badge';
-import { Card, CardFooter, CardHeader, CardTable, CardTitle, CardToolbar } from '@/components/ui/card';
-import { DataGrid } from '@/components/ui/data-grid'
-import { DataGridColumnHeader } from '@/components/ui/data-grid-column-header'
-import { DataGridColumnVisibility } from '@/components/ui/data-grid-column-visibility'
-import { DataGridPagination } from '@/components/ui/data-grid-pagination';
-import { DataGridTable } from '@/components/ui/data-grid-table';
-import { Input } from '@/components/ui/input';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Spinner } from '@/components/ui/spinner';
+import { columns } from './components/columns'
+
+import ColumnsVisibility from '@/components/ColumnsVisibility';
+import EmptyContent from '@/components/EmptyContent';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { get } from '@/lib/utils';
 import { getCategorysList } from '@/services/categorys';
 
@@ -81,25 +75,6 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
     run({ name: '', ...pagination })
   }
 
-  // 列配置项
-  const columns = useMemo<ColumnDef<App.Category>[]>(() => [
-    {
-      accessorKey: "index",
-      header: '序号',
-      cell: ({ row }) => <Badge shape="circle">{pagination.pageIndex * pagination.pageSize + row.index + 1}</Badge>,
-      meta: {
-        headerClassName: 'text-center min-w-20',
-        cellClassName: 'text-center',
-        headerTitle: '序号',
-        skeleton: (
-          <div className="flex justify-center items-center">
-            <Skeleton className="size-6.5 rounded-full" />
-          </div>
-        ),
-      },
-    }
-  ], [pagination.pageIndex, pagination.pageSize])
-
   // 表格实例
   const table = useReactTable({
     data: categorysList,
@@ -125,46 +100,78 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
     run({ name, ...pagination })
   }, [pagination, run]);
   return (
-    <DataGrid
-      table={table}
-      recordCount={total || 0}
-      isLoading={loading}
-      tableLayout={{
-        columnsVisibility: true,
-        cellBorder: true,
-        headerSticky: true,
-        width: 'auto',
-      }}
-    >
-      <Card className="rounded-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <div className="w-60">
-              <Input placeholder="分类名称" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <RippleButton onClick={handleSearch}>
-              {loading ? <Spinner variant='circle' /> : <Search />}
-              查询
-            </RippleButton>
-            <RippleButton variant="secondary" onClick={handleReset} disabled={loading}>
-              重置
-            </RippleButton>
-          </CardTitle>
-          <CardToolbar>
-            <DataGridColumnVisibility table={table} />
-          </CardToolbar>
-        </CardHeader>
-        <CardTable>
-          <ScrollArea>
-            <DataGridTable />
-            <ScrollBar />
-          </ScrollArea>
-        </CardTable>
-        <CardFooter>
-          <DataGridPagination />
-        </CardFooter>
-      </Card>
-    </DataGrid>
+    <Card >
+      <Card.Header className="flex justify-between items-center w-full flex-col sm:flex-row gap-2">
+        <Card.Title className="flex items-center gap-2 flex-wrap">
+          <div className="w-60">
+            <Input variant='secondary' placeholder="分类名称" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <Button isPending={loading} size='sm' onPress={handleSearch}>
+            {({ isPending }) => (
+              <>
+                {isPending ? <Spinner color="current" size='sm' /> : <Magnifier />}
+                查询
+              </>
+            )}
+          </Button>
+          <Button variant="secondary" size='sm' onPress={handleReset} isDisabled={loading}>
+            重置
+          </Button>
+        </Card.Title>
+        <ColumnsVisibility table={table} />
+      </Card.Header>
+      <Card.Content className="relative">
+        <Table className="border border-default">
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                    </TableHead>
+                  )
+                })}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length}>
+                  <EmptyContent />
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+        {loading ? (
+          <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center z-10">
+            <Spinner />
+          </div>
+        ) : null}
+      </Card.Content>
+      <Card.Footer>
+      </Card.Footer>
+    </Card>
   )
 }
 export default Categorys;

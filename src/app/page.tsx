@@ -5,11 +5,11 @@
  * @LastEditTime: 2026-01-23 10:24:04
  * @Description: 首页
  */
-import { RippleButton } from "@/components/animate-ui/components/buttons/ripple";
+import { Button } from '@heroui/react';
 export default function Home() {
   return (
     <div className="w-full flex-1 flex justify-center items-center">
-      <RippleButton>项目重构中...</RippleButton>
+      <Button>项目重构中...</Button>
     </div>
   );
 }

@@ -2,18 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 16:50:34
+ * @LastEditTime: 2026-01-27 15:56:06
  * @Description: Axios 请求封装
  */
-
+import { Xmark } from '@gravity-ui/icons';
+import { toast } from "@heroui/react";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { CircleX } from 'lucide-react';
 import queryString from 'query-string';
-import { toast } from 'sonner';
 
 import { finishLoading, startLoading } from './nprogress';
 
-import { Alert, AlertIcon, AlertTitle } from '@/components/ui/alert';
 import { RESPONSE } from '@/enums';
 import { get, isSuccess } from '@/lib/utils';
 
@@ -36,16 +34,10 @@ request.interceptors.request.use(
     return config;
   },
   (error: AxiosError) => {
-    toast.custom(
-      (t) => (
-        <Alert variant="destructive" appearance="outline" onClose={() => toast.dismiss(t)}>
-          <AlertIcon>
-            <CircleX />
-          </AlertIcon>
-          <AlertTitle>{error.message}</AlertTitle>
-        </Alert>
-      )
-    )
+    toast.danger(error.message, {
+      indicator: <Xmark />,
+      timeout: 3000
+    })
     return Promise.reject(error);
   },
 );
@@ -66,16 +58,10 @@ request.interceptors.response.use(
     // 配置 skipErrorHandler 会跳过默认的错误处理，用于项目中部分特殊的接口
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
       // 其它状态码统一提示错误信息
-      toast.custom(
-        (t) => (
-          <Alert variant="destructive" appearance="outline" onClose={() => toast.dismiss(t)}>
-            <AlertIcon>
-              <CircleX />
-            </AlertIcon>
-            <AlertTitle>{msg || RESPONSE.label(1)}</AlertTitle>
-          </Alert>
-        )
-      )
+      toast.danger(msg || RESPONSE.label(1), {
+        indicator: <Xmark />,
+        timeout: 3000
+      })
     }
     return response.data;
   },

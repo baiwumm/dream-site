@@ -1,13 +1,11 @@
+import { cn } from "@heroui/react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Slot } from "radix-ui";
 import type * as React from "react";
 
-import { cn } from "@/lib/utils";
-
-interface DivProps extends React.ComponentProps<"div"> { }
+type DivProps = React.ComponentProps<"div">;
 
 const statusVariants = cva(
-  "inline-flex w-fit shrink-0 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full border px-3 py-1.5 font-medium text-xs transition-colors",
+  "inline-flex w-fit shrink-0 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full border px-1.5 py-1 font-medium text-xs transition-colors",
   {
     variants: {
       variant: {
@@ -33,12 +31,9 @@ interface StatusProps extends VariantProps<typeof statusVariants>, DivProps {
 }
 
 function Status(props: StatusProps) {
-  const { className, variant = "default", asChild, ...rootProps } = props;
-
-  const RootPrimitive = asChild ? Slot : "div";
-
+  const { className, variant = "default", ...rootProps } = props;
   return (
-    <RootPrimitive
+    <div
       data-slot="status"
       data-variant={variant}
       {...rootProps}
@@ -57,7 +52,7 @@ function StatusIndicator(props: DivProps) {
       className={cn(
         "relative flex size-2 shrink-0 rounded-full",
         "before:absolute before:inset-0 before:animate-ping before:rounded-full before:bg-inherit",
-        "after:absolute after:inset-[2px] after:rounded-full after:bg-inherit",
+        "after:absolute after:inset-0.5 after:rounded-full after:bg-inherit",
         className,
       )}
     />
@@ -80,6 +75,5 @@ export {
   Status,
   StatusIndicator,
   StatusLabel,
-  //
   statusVariants,
 };

@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 16:29:15
+ * @LastEditTime: 2026-01-27 16:15:57
  * @Description: 底部版权
  */
+import { Separator } from "@heroui/react";
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { type FC, type ReactNode } from 'react';
 
 import { ShimmeringText } from '@/components/ShimmeringText';
-import { Separator } from "@/components/ui/separator";
 import { Status, StatusIndicator, StatusLabel } from "@/components/ui/status";
 import pkg from '#/package.json';
 
@@ -49,30 +49,30 @@ const Footer: FC = () => {
                 className="text-sm font-black"
                 duration={1.5}
                 repeatDelay={1}
-                color="var(--color-primary)"
-                shimmerColor="var(--color-primary-foreground)"
+                color="var(--accent)"
+                shimmerColor="var(--accent-foreground)"
               />
             </div>
             <Separator className="h-4" orientation="vertical" />
-            <Status variant="success" className="px-1.5 py-1 text-[10px]">
+            <Status variant="success" className="text-[10px]">
               <StatusIndicator />
               <StatusLabel>服务状态正常</StatusLabel>
             </Status>
           </div>
-          <p className="text-center text-xs text-slate-500/75 dark:text-slate-300/75">
+          <p className="text-center text-xs text-muted">
             &copy; {dayjs().year()} {" "}
             <a
               href={pkg.author.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
+              className="hover:text-accent transition-colors"
             >
               {process.env.NEXT_PUBLIC_COPYRIGHT}
             </a>
             . All rights reserved.
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-2 items-center text-xs text-slate-500/75 dark:text-slate-300/75 ">
+        <div className="flex flex-col md:flex-row gap-2 items-center text-xs text-muted">
           {IcpLinks.map(({ image, url, label }) => (
             <div key={url} className="flex items-center gap-1">
               <Image src={image!} alt={label} width={14} height={14} />
@@ -80,7 +80,7 @@ const Footer: FC = () => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-center hover:text-primary transition-colors"
+                className="hover:text-accent transition-colors"
               >
                 {label}
               </a>

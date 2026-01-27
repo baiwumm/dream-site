@@ -2,28 +2,24 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 15:01:30
+ * @LastEditTime: 2026-01-27 13:43:50
  * @Description: 登录页
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Check, Eye, EyeOff, Lock, Mail, OctagonAlert, TriangleAlert } from 'lucide-react'
+import { Check, CircleInfo, CircleXmark, Envelope, Eye, EyeSlash, Lock } from '@gravity-ui/icons';
+import { Button, Card, Description, FieldError, Form, InputGroup, Label, Link, Separator, Spinner, TextField, toast } from '@heroui/react';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Controller, useForm } from "react-hook-form"
-import { toast } from 'sonner';
-import { z } from "zod"
+import { type FormEvent, useState } from 'react';
 
-import { RippleButton } from "@/components/animate-ui/components/buttons/ripple";
-import { Alert, AlertContent, AlertDescription, AlertIcon, AlertTitle } from '@/components/ui/alert';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
-import { Input, InputWrapper } from "@/components/ui/input"
-import { Spinner } from '@/components/ui/spinner';
 import { OAUTH_PROVIDERS } from '@/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
+
+type EmailForm = {
+  email: string;
+  password: string;
+}
 
 export default function Login() {
   const supabase = getSupabaseBrowserClient();
@@ -35,39 +31,25 @@ export default function Login() {
   // 是否显示密码
   const [showPassword, setShowPassword] = useState(false);
 
-  // 字段验证规则
-  const formSchema = z.object({
-    email: z.email('请输入有效的邮箱地址'),
-    password: z
-      .string("请输入长度为6-12的字符串.")
-      .min(6, "密码长度至少为6个字符")
-      .max(12, "密码长度不能超过12个字符")
-      .regex(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
-        '密码必须包含大小写字母和数字'
-      )
-  })
-
-  // 创建表单实例
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: ""
-    },
-  })
-
   // 表单提交
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data: Partial<EmailForm> = {};
+    formData.forEach((value, key) => {
+      data[key as keyof EmailForm] = value.toString();
+    });
+
     setEmailLoading(true);
 
     // ✅ 提取公共 Supabase 调用逻辑
     const authPromise = (async () => {
       let result;
       if (isSignup) {
-        result = await supabase.auth.signUp(values);
+        result = await supabase.auth.signUp(data as EmailForm);
       } else {
-        result = await supabase.auth.signInWithPassword(values);
+        result = await supabase.auth.signInWithPassword(data as EmailForm);
       }
 
       if (result.error) {
@@ -76,62 +58,46 @@ export default function Login() {
       return result.data;
     })();
 
-    // ✅ Toast 配置根据 action 动态生成
-    const toastConfig = {
+    toast.promise(authPromise, {
       loading: isSignup ? '注册中...' : '登录中...',
       success: () => {
+        setEmailLoading(false);
         if (isSignup) {
           form.reset();
           setIsSignup(false);
-          return '提交成功，请到邮箱验证后登录"';
+          return '提交成功，请到邮箱验证后登录';
         } else {
           router.refresh();
           return '登录成功，欢迎回来！';
         }
       },
-      error: (err: { message: string }) => `${isSignup ? '注册失败，请稍后重试' : '登录失败，请稍后重试'}：${err.message}`,
-      // ✅ 使用 finally 确保 loading 状态正确关闭
-      finally: () => {
+      error: (err: { message: string }) => {
         setEmailLoading(false);
-      }
-    };
+        return `${isSignup ? '注册失败，请稍后重试' : '登录失败，请稍后重试'}：${err.message}`
+      },
+    });
 
-    toast.promise(authPromise, toastConfig);
+    setTimeout(() => {
+      toast.clear();
+    }, 2000)
   };
 
   // 谷歌或者 Github 登录
   const handleOAuthLogin = async (provider: typeof OAUTH_PROVIDERS.valueType) => {
     setOauthLoading(true);
     // 加一个短提示，避免跳转等待时间过长无反馈
-    toast.custom(
-      (id) => (
-        <Alert appearance="outline" onClose={() => toast.dismiss(id)}>
-          <AlertIcon>
-            <TriangleAlert />
-          </AlertIcon>
-          <AlertTitle>登录中...</AlertTitle>
-        </Alert>
-      ),
-      {
-        duration: 2000,
-      },
-    )
+    toast("登录中...", {
+      timeout: 2000,
+      indicator: <CircleInfo />,
+    });
 
     // 错误提示
     const errorToast = (msg: string) => {
-      toast.custom(
-        (id) => (
-          <Alert variant="destructive" appearance="outline" onClose={() => toast.dismiss(id)}>
-            <AlertIcon>
-              <OctagonAlert />
-            </AlertIcon>
-            <AlertContent>
-              <AlertTitle>登录失败，请稍后重试</AlertTitle>
-              <AlertDescription>{msg}</AlertDescription>
-            </AlertContent>
-          </Alert>
-        )
-      )
+      toast.danger("登录失败，请稍后重试", {
+        description: msg,
+        timeout: 2000,
+        indicator: <CircleXmark />,
+      })
     }
 
     try {
@@ -152,9 +118,9 @@ export default function Login() {
   }
   return (
     <div className="flex justify-center items-center flex-1">
-      <Card className="w-lg max-w-md">
-        <CardHeader>
-          <div className="flex items-center justify-center gap-3">
+      <Card className="w-lg max-w-md shadow-md">
+        <Card.Header>
+          <div className="flex items-center gap-3">
             <Image
               src="/logo.svg"
               width={42}
@@ -164,92 +130,115 @@ export default function Login() {
             />
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-              <p className="text-sm text-default-500">从这里开始，马上登录！</p>
+              <p className="text-sm text-muted">从这里开始，马上登录！</p>
             </div>
           </div>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FieldGroup>
-              <Controller
-                control={form.control}
-                name="email"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel>
-                      <span className="text-red-500">*</span>
-                      邮箱地址
-                    </FieldLabel>
-                    <InputWrapper>
-                      <Mail />
-                      <Input placeholder='请输入邮箱地址' {...field} />
-                    </InputWrapper>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
-              <Controller
-                control={form.control}
-                name="password"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel>
-                      <span className="text-red-500">*</span>
-                      密码
-                    </FieldLabel>
-                    <InputWrapper>
-                      <Lock />
-                      <Input placeholder='请输入密码' type={showPassword ? 'text' : 'password'} {...field} />
-                      <div onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <EyeOff /> : <Eye />}
-                      </div>
-                    </InputWrapper>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
-              <RippleButton type="submit" disabled={oauthLoading || emailLoading} className="w-full">
-                {emailLoading ? <Spinner /> : <Check />}
-                {emailLoading ? '登录中...' : isSignup ? '注册' : '登录'}
-              </RippleButton>
-            </FieldGroup>
-          </form>
-          <div className="flex justify-end items-center w-full">
+        </Card.Header>
+        <Separator />
+        <Card.Content>
+          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+            <TextField
+              isRequired
+              name="email"
+              type="email"
+              validate={(value) => {
+                if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                  return "请输入合法的邮箱地址!";
+                }
+                return null;
+              }}
+            >
+              <Label>邮箱地址</Label>
+              <InputGroup variant="secondary">
+                <InputGroup.Prefix>
+                  <Envelope className="size-4 text-muted" />
+                </InputGroup.Prefix>
+                <InputGroup.Input aria-label="Email" placeholder="请输入邮箱地址" />
+              </InputGroup>
+              <FieldError />
+            </TextField>
+            <TextField
+              isRequired
+              minLength={6}
+              maxLength={12}
+              name="password"
+              type="password"
+              validate={(value) => {
+                if (value.length < 6 || value.length > 12) {
+                  return "请输入长度为6-12的字符串.";
+                }
+                if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(value)) {
+                  return "密码必须包含大小写字母和数字";
+                }
+                return null;
+              }}
+            >
+              <Label>密码</Label>
+              <InputGroup variant="secondary">
+                <InputGroup.Prefix>
+                  <Lock className="size-4 text-muted" />
+                </InputGroup.Prefix>
+                <InputGroup.Input type={showPassword ? 'text' : 'password'} aria-label="Password" placeholder="请输入密码" />
+                <InputGroup.Suffix className="pr-0">
+                  <Button
+                    isIconOnly
+                    aria-label={showPassword ? "隐藏密码" : "显示密码"}
+                    size="sm"
+                    variant="ghost"
+                    onPress={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <Eye className="size-4" /> : <EyeSlash className="size-4" />}
+                  </Button>
+                </InputGroup.Suffix>
+              </InputGroup>
+              <Description>密码必须包含大小写字母和数字.</Description>
+              <FieldError />
+            </TextField>
+            <Button type="submit" isDisabled={oauthLoading || emailLoading} isPending={emailLoading} className="w-full">
+              {({ isPending }) => (
+                <>
+                  {isPending ? <Spinner color="current" size="sm" /> : <Check />}
+                  {isPending ? (isSignup ? '注册中...' : '登录中...') : (isSignup ? '注册' : '登录')}
+                </>
+              )}
+            </Button>
+          </Form>
+          <div className="flex justify-end items-center w-full mt-2">
             {isSignup ? (
               <p className="text-sm text-center">
                 已经有账户？
-                <RippleButton variant="dim" onClick={() => setIsSignup(false)}>立即登录</RippleButton>
+                <Link className="underline-offset-4 hover:underline" onClick={() => setIsSignup(false)}>立即登录</Link>
               </p>
             ) : (
               <p className="text-sm text-center">
                 需要创建一个账户？
-                <RippleButton variant="dim" onClick={() => setIsSignup(true)}>立即注册</RippleButton>
+                <Link className="underline-offset-4 hover:underline" onClick={() => setIsSignup(true)}>立即注册</Link>
               </p>
             )}
           </div>
-        </CardContent>
-        <CardFooter className="flex-col gap-2">
+        </Card.Content>
+        <Separator />
+        <Card.Footer className="flex-col gap-2">
           <div className="flex w-full flex-col gap-3">
             {OAUTH_PROVIDERS.items.map(({ value, label }) => (
-              <RippleButton
+              <Button
                 key={value}
                 className="w-full"
                 variant="outline"
-                disabled={oauthLoading || emailLoading}
-                onClick={() => handleOAuthLogin(value)}
+                isDisabled={oauthLoading || emailLoading}
+                isPending={oauthLoading}
+                onPress={() => handleOAuthLogin(value)}
               >
-                <>
-                  {oauthLoading ? <Spinner /> : value === OAUTH_PROVIDERS.GITHUB ? <GithubIcon /> : <GoogleIcon />}
-                  {label}
-                </>
-              </RippleButton>
+                {({ isPending }) => (
+                  <>
+                    {isPending ? <Spinner size='sm' /> : value === OAUTH_PROVIDERS.GITHUB ? <GithubIcon /> : <GoogleIcon />}
+                    {label}
+                  </>
+                )}
+              </Button>
             ))}
           </div>
-        </CardFooter>
+        </Card.Footer>
       </Card>
     </div>
   )

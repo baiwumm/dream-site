@@ -2,19 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 16:50:51
+ * @LastEditTime: 2026-01-27 09:57:16
  * @Description: 顶部导航
  */
 "use client"
-import { House } from "lucide-react"
+import { House } from '@gravity-ui/icons';
+import { Button, Tooltip } from '@heroui/react';
 import Image from 'next/image';
 import Link from "next/link";
 import { type FC, type ReactNode } from 'react';
 
-import { RippleButton } from "@/components/animate-ui/components/buttons/ripple"
-import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons/theme-toggler';
 import { ShimmeringText } from '@/components/ShimmeringText';
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 import UserAvatar from '@/components/UserAvatar';
 import { GithubIcon } from '@/lib/icons';
 import pkg from '#/package.json';
@@ -46,36 +45,37 @@ const Header: FC = () => {
               className="text-2xl font-black"
               duration={1.5}
               repeatDelay={1}
-              color="var(--color-primary)"
-              shimmerColor="var(--color-primary-foreground)"
+              color="var(--accent)"
+              shimmerColor="var(--accent-foreground)"
             />
           </div>
         </Link>
         {/* 右侧区域 */}
         <div className="flex items-center gap-2">
-          <ThemeTogglerButton />
+          <ThemeSwitcher />
           {socials.map(({ name, url, icon }) => (
-            <Tooltip key={name}>
-              <TooltipTrigger asChild>
-                <Link href={url} aria-label={name} target="_blank">
-                  <RippleButton variant="outline" radius="full" mode="icon" size='sm'>
-                    {icon}
-                  </RippleButton>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>{name}</TooltipContent>
+            <Tooltip key={name} delay={0}>
+              <Link href={url} aria-label={name} target="_blank">
+                <Button variant="outline" isIconOnly size='sm' className="rounded-full">
+                  {icon}
+                </Button>
+              </Link>
+              <Tooltip.Content showArrow>
+                <Tooltip.Arrow />
+                {name}
+              </Tooltip.Content>
             </Tooltip>
           ))}
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Link href={pkg.author.url} aria-label="主页" target="_blank">
-                <RippleButton variant="outline" radius="full" mode="icon" size='sm'>
-                  <House />
-                </RippleButton>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>博客
-            </TooltipContent>
+            <Link href={pkg.author.url} aria-label="主页" target="_blank">
+              <Button variant="outline" isIconOnly size='sm' className="rounded-full">
+                <House />
+              </Button>
+            </Link>
+            <Tooltip.Content showArrow>
+              <Tooltip.Arrow />
+              博客
+            </Tooltip.Content>
           </Tooltip>
           {/* 登录用户信息 */}
           <UserAvatar />

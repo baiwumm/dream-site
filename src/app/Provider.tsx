@@ -2,11 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-22 16:41:50
+ * @LastEditTime: 2026-01-27 12:19:13
  * @Description: 上下文提供者
  */
 "use client"
 import { AppProgressProvider as ProgressProvider } from '@bprogress/next';
+import { Toast } from '@heroui/react';
 import { MotionConfig } from 'motion/react';
 import { useTheme } from "next-themes";
 import { type FC, type PropsWithChildren, ViewTransition } from 'react';
@@ -15,7 +16,6 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SplashCursor from '@/components/SplashCursor';
 import Squares from '@/components/Squares';
-import { Toaster } from '@/components/ui/sonner';
 import { THEME_MODE } from '@/enums';
 import { useAvailableHeight } from '@/hooks/use-available-height';
 
@@ -31,7 +31,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
   return (
     <MotionConfig reducedMotion="user">
       <ProgressProvider
-        color="var(--primary)"
+        color="var(--accent)"
         options={{ showSpinner: true }}
         shallowRouting
       >
@@ -56,8 +56,8 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
           />
         </div>
         {/* 鼠标动画 */}
-        <SplashCursor />
-        <Toaster position="top-center" />
+        {/* <SplashCursor /> */}
+        <Toast.Container placement='top' />
       </ProgressProvider>
     </MotionConfig>
   );

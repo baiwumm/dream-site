@@ -2,24 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-11 14:06:31
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 16:07:14
+ * @LastEditTime: 2026-01-27 14:47:09
  * @Description: 空数据
  */
-import { Inbox } from "lucide-react";
+import { Tray } from '@gravity-ui/icons';
 import { type FC } from 'react';
-
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@/components/ui/empty';
 
 const EmptyContent: FC = () => {
   return (
-    <Empty>
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Inbox />
-        </EmptyMedia>
-        <EmptyDescription>暂无数据</EmptyDescription>
-      </EmptyHeader>
-    </Empty>
+    <div className="flex flex-col gap-2 justify-center items-center text-muted py-5">
+      <Tray className="size-10" />
+      <span className="text-xs">暂无数据</span>
+    </div>
   )
 }
 export default EmptyContent;
