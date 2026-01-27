@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 16:11:21
+ * @LastEditTime: 2026-01-27 16:39:49
  * @Description: 网站分类
  */
 "use client"
@@ -120,7 +120,7 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
         </Card.Title>
         <ColumnsVisibility table={table} />
       </Card.Header>
-      <Card.Content className="relative">
+      <Card.Content>
         <Table className="border border-default">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -140,7 +140,7 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="relative">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
@@ -161,13 +161,13 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
                 </TableCell>
               </TableRow>
             )}
+            {loading ? (
+              <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center z-10">
+                <Spinner />
+              </div>
+            ) : null}
           </TableBody>
         </Table>
-        {loading ? (
-          <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center z-10">
-            <Spinner />
-          </div>
-        ) : null}
       </Card.Content>
       <Card.Footer>
       </Card.Footer>
