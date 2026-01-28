@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 15:56:06
+ * @LastEditTime: 2026-01-28 14:01:47
  * @Description: Axios 请求封装
  */
-import { Xmark } from '@gravity-ui/icons';
+import { CircleXmarkFill } from '@gravity-ui/icons';
 import { toast } from "@heroui/react";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import queryString from 'query-string';
@@ -35,7 +35,7 @@ request.interceptors.request.use(
   },
   (error: AxiosError) => {
     toast.danger(error.message, {
-      indicator: <Xmark />,
+      indicator: <CircleXmarkFill />,
       timeout: 3000
     })
     return Promise.reject(error);
@@ -59,7 +59,7 @@ request.interceptors.response.use(
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
       // 其它状态码统一提示错误信息
       toast.danger(msg || RESPONSE.label(1), {
-        indicator: <Xmark />,
+        indicator: <CircleXmarkFill />,
         timeout: 3000
       })
     }

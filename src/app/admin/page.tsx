@@ -2,10 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 16:01:46
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 16:08:59
+ * @LastEditTime: 2026-01-28 14:50:11
  * @Description: 管理后台
  */
 "use client"
+import { Folder, Globe } from "@gravity-ui/icons";
 import { Tabs } from "@heroui/react";
 import { type FC, useState } from 'react';
 
@@ -21,11 +22,13 @@ const Admin: FC = () => {
     <Tabs>
       <Tabs.ListContainer>
         <Tabs.List aria-label="后台管理">
-          <Tabs.Tab id={ADMIN_TABS.CATEGOTYS}>
+          <Tabs.Tab id={ADMIN_TABS.CATEGOTYS} className="flex items-center gap-1">
+            <Folder />
             {ADMIN_TABS.label(ADMIN_TABS.CATEGOTYS)}
             <Tabs.Indicator />
           </Tabs.Tab>
-          <Tabs.Tab id={ADMIN_TABS.WEBSITES}>
+          <Tabs.Tab id={ADMIN_TABS.WEBSITES} className="flex items-center gap-1">
+            <Globe />
             {ADMIN_TABS.label(ADMIN_TABS.WEBSITES)}
             <Tabs.Indicator />
           </Tabs.Tab>

@@ -3,6 +3,8 @@ declare namespace App {
   type PaginatingResponse<T = unknown> = {
     total: number; // 总条数
     list: T[];
+    page: number; // 页码
+    pageSize: number; // 每页条数
   } & import('@tanstack/react-table').PaginationState;
 
   /** @description: 响应体 */

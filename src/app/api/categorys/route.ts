@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:08:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-23 17:55:34
+ * @LastEditTime: 2026-01-28 14:42:23
  * @Description: 网站分类模块
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -83,7 +83,9 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(responseMessage({
       list: data,
-      total: count
+      total: count,
+      page: pageIndex + 1,
+      pageSize,
     }));
   } catch (err) {
     return NextResponse.json(responseMessage(null, (err as Error).message, -1));

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:01:56
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 09:14:29
+ * @LastEditTime: 2026-01-28 14:22:40
  * @Description: 数据表格
  */
 import { Spinner } from "@heroui/react";
@@ -61,7 +61,7 @@ const DataTable: FC<DataTableProps> = ({ table, colSpan, loading = false }) => {
           </TableRow>
         )}
         {loading ? (
-          <TableRow className="absolute inset-0 z-10 pointer-events-none">
+          <TableRow className="absolute inset-0 z-10">
             <TableCell colSpan={colSpan} className="p-0">
               <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center">
                 <Spinner />

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:23:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 10:26:28
+ * @LastEditTime: 2026-01-28 13:36:38
  * @Description: 渲染分页
  */
 import { ChevronLeft, ChevronRight } from '@gravity-ui/icons';
@@ -49,6 +49,7 @@ function DataTablePagination<TData>({ table, total = 0 }: DataTablePaginationPro
       <div className="justify-self-start flex items-center gap-1 text-sm text-muted">
         <span>每页条数:</span>
         <Select
+          aria-label="分页选择框"
           variant='secondary'
           className="w-30"
           value={table.getState().pagination.pageSize}
