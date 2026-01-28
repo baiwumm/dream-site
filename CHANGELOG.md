@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.0](https://github.com/baiwumm/dream-site/compare/3.1.0...3.2.0) (2026-01-28)
+
+### ✨ Features | 新功能
+
+* **Categorys:** 完成《网站分类》的 CURD 逻辑 ([8254ff5](https://github.com/baiwumm/dream-site/commit/8254ff5a8c6255dd4e3f43928fc3e35dcb977dfd))
+* **Categorys:** 完善网站分类列表排版逻辑 ([0a13aef](https://github.com/baiwumm/dream-site/commit/0a13aef83b90ecc8d553b2568ebb3163bcbfba9c))
+* **DataTablePagination:** 新增表格分页组件 ([c93ba97](https://github.com/baiwumm/dream-site/commit/c93ba97e4f6872e68ccf821422de55fc2c80b9a2))
+
+### 💄 Styles | 风格
+
+* 主题配色调整 ([2b34cfd](https://github.com/baiwumm/dream-site/commit/2b34cfd7e51198d7e86aef88d2b7ad9249d6a68b))
+
 ## [3.1.0](https://github.com/baiwumm/dream-site/compare/3.0.0...3.1.0) (2026-01-27)
 
 ### ✨ Features | 新功能
