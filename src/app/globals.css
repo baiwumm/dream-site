@@ -11,13 +11,6 @@
  * @see https://v3.heroui.com/docs/react/getting-started/theming
  */
 
-/*
- * HeroUI Theme Customization
- * Add this to your global.css after importing @heroui/styles
- * Only includes base variables from variables.css
- * @see https://v3.heroui.com/docs/react/getting-started/theming
- */
-
 :root,
 .light,
 .default,
@@ -52,7 +45,7 @@
   --warning-foreground: oklch(21.03% 0.0059 71.19);
 
   /* Border Radius */
-  --radius: 0.25rem;
+  --radius: 0.125rem;
   --field-radius: 0.25rem;
 
   /* Font Family */
