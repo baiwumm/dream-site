@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 14:35:38
+ * @LastEditTime: 2026-01-29 14:49:59
  * @Description: 网站分类
  */
 "use client"
@@ -100,7 +100,7 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
           timeout: 2000,
           indicator: <CircleCheckFill />,
         });
-        handleReset();
+        handleSearch();
       }
     },
   });
@@ -199,7 +199,7 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
         </Card.Footer>
       </Card>
       {/* 保存弹窗 */}
-      <SaveModal state={saveModalState} initialValues={editData} handleRefresh={handleReset} />
+      <SaveModal state={saveModalState} initialValues={editData} handleRefresh={handleSearch} />
       {/* 删除弹窗 */}
       <DeleteDialog state={delDialogState} loading={delLoading} handleDelConfirm={handleDelConfirm} />
     </>

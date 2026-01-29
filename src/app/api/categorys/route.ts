@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:08:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 14:42:23
+ * @LastEditTime: 2026-01-29 14:48:12
  * @Description: 网站分类模块
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json(); // 如果是 JSON 数据
 
     // 插入数据
-    const { data, error } = await supabase.from('ds_categorys').insert(body);
+    const { data, error } = await supabase.from('ds_categorys').insert(body).select().single();
 
     // 如果插入失败
     if (error) {

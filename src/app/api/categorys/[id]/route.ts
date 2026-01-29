@@ -20,7 +20,9 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const { data, error } = await supabase
       .from('ds_categorys')
       .update(body)
-      .eq('id', id);
+      .eq('id', id)
+      .select()
+      .single();
 
     // 如果插入失败
     if (error) {
@@ -34,7 +36,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     // 返回更新后的菜单数据
-    return NextResponse.json(responseMessage(data ? data[0] : data));
+    return NextResponse.json(responseMessage(data));
   } catch (err) {
     return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
@@ -53,14 +55,16 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     const { data, error } = await supabase
       .from('ds_categorys')
       .delete()
-      .eq('id', id);
+      .eq('id', id)
+      .select()
+      .single();
 
     if (error) {
       return NextResponse.json(responseMessage(null, error.message, RESPONSE.ERROR));
     }
 
     // 返回成功响应
-    return NextResponse.json(responseMessage(data ? data[0] : data));
+    return NextResponse.json(responseMessage(data));
   } catch (err) {
     return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
