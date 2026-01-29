@@ -51,6 +51,18 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     const supabase = await getSupabaseServerClient();
     const { id } = await params;
 
+    // 获取用户信息
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json(
+        responseMessage(null, '未登录', -1)
+      )
+    }
+
+    // 文件路径
+    const logoPath = `${user.id}/${id}`
+
     // 删除分类
     const { data, error } = await supabase
       .from('ds_websites')
@@ -62,6 +74,9 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     if (error) {
       return NextResponse.json(responseMessage(null, error.message, RESPONSE.ERROR));
     }
+
+    // 删除 Logo
+    await supabase.storage.from('logos').remove([logoPath]);
 
     // 返回成功响应
     return NextResponse.json(responseMessage(data));

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-29 14:51:48
+ * @LastEditTime: 2026-01-29 16:38:02
  * @Description: 网站列表
  */
 "use client"
@@ -29,6 +29,7 @@ import SaveModal from './components/save-modal';
 import ColumnsVisibility from '@/components/ColumnsVisibility';
 import DataTablePagination from '@/components/DataTablePagination';
 import { RESPONSE } from '@/enums';
+import { type FileWithPreview } from '@/hooks/use-file-upload';
 import { get } from '@/lib/utils';
 import { delWebsite, getWebsitesList } from '@/services/websites';
 
@@ -61,6 +62,8 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
   const [editData, setEditData] = useState<App.Website | null>(null);
   // 站点标签
   const [tags, setTags] = useState<string[]>([]);
+  // Logo
+  const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null);
 
   // 请求网站列表
   const { data, loading, run } = useRequest(async (params) => get(await getWebsitesList(params), 'data', {}), {
@@ -223,6 +226,8 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
         tags={tags}
         setTags={setTags}
         categorysList={categorysList}
+        logoFile={logoFile}
+        setLogoFile={setLogoFile}
       />
       {/* 删除弹窗 */}
       <DeleteDialog state={delDialogState} loading={delLoading} handleDelConfirm={handleDelConfirm} />

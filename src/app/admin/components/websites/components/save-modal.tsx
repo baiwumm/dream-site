@@ -21,10 +21,13 @@ import {
 import { useRequest } from "ahooks";
 import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef } from 'react';
 
+import LogoUpload from './logo-upload';
+
 import TagInputs from "@/components/ui/tag-inputs";
 import { RESPONSE } from '@/enums';
+import { type FileWithPreview } from '@/hooks/use-file-upload';
 import { get } from '@/lib/utils'
-import { addWebsite, updateWebsite } from '@/services/websites';
+import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites';
 
 const SwitchOptions: { name: string, label: string }[] = [
   { name: 'pinned', label: '是否置顶' },
@@ -40,14 +43,26 @@ type SaveModalProps = {
   tags: string[];
   setTags: Dispatch<SetStateAction<string[]>>;
   categorysList: App.Category[];
+  logoFile: FileWithPreview['file'] | null;
+  setLogoFile: Dispatch<SetStateAction<FileWithPreview['file'] | null>>;
 }
 
-const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, tags = [], setTags, categorysList = [] }) => {
+const SaveModal: FC<SaveModalProps> = ({
+  state,
+  initialValues,
+  handleRefresh,
+  tags = [],
+  setTags,
+  categorysList = [],
+  logoFile,
+  setLogoFile
+}) => {
   // 表单实例
   const formRef = useRef<HTMLFormElement>(null);
   const actionText = initialValues ? '编辑' : '新增';
-  // 保存表单
-  const { loading, run } = useRequest(initialValues?.id ? updateWebsite : addWebsite, {
+
+  // 上传 Logo
+  const { loading: uploadLoading, run: fetchUploadLogo } = useRequest(uploadLogo, {
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
@@ -57,6 +72,18 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, ta
           indicator: <CircleCheckFill />,
         });
         handleRefresh?.();
+      }
+    },
+  });
+
+  // 保存表单
+  const { loading, run } = useRequest(initialValues?.id ? updateWebsite : addWebsite, {
+    manual: true,
+    onSuccess: ({ code, data }) => {
+      if (code === RESPONSE.SUCCESS && data?.id && logoFile) {
+        const formData = new FormData();
+        formData.append('file', logoFile as File);
+        fetchUploadLogo({ id: data.id, formData })
       }
     },
   });
@@ -111,7 +138,13 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, ta
         data[key] = value;
       }
     });
-    console.log({ ...data, id: initialValues?.id, tags })
+    if (!logoFile) {
+      toast.danger("请上传网站logo", {
+        timeout: 2000,
+        indicator: <Xmark />,
+      });
+      return
+    }
     run({ ...data, id: initialValues?.id, tags });
   };
 
@@ -119,8 +152,9 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, ta
     if (!state.isOpen && formRef.current) {
       formRef.current.reset();
       setTags([]);
+      setLogoFile(null);
     }
-  }, [state.isOpen, setTags]);
+  }, [state.isOpen, setTags, setLogoFile]);
   return (
     <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen}>
       <Modal.Container placement="auto">
@@ -187,6 +221,10 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, ta
                   <Input aria-label="网站链接" fullWidth variant="secondary" placeholder="请输入网站链接" />
                   <FieldError />
                 </TextField>
+                <div className="flex flex-col gap-1">
+                  <Label isRequired htmlFor="logo">Logo</Label>
+                  <LogoUpload onFileChange={(value) => setLogoFile(value?.file || null)} />
+                </div>
                 <TagInputs value={tags} onChange={setTags} />
                 <TextField name="desc" maxLength={500} defaultValue={initialValues?.desc ?? ""}>
                   <Label>网站描述</Label>
@@ -242,7 +280,7 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, ta
             <Button slot="close" variant="outline" isDisabled={loading}>
               取消
             </Button>
-            <Button type="submit" form="category-form" isPending={loading}>
+            <Button type="submit" form="category-form" isPending={loading || uploadLoading}>
               {({ isPending }) => (
                 <>
                   {isPending ? <Spinner color="current" size="sm" /> : null}
