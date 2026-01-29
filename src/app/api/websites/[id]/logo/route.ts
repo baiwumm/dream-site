@@ -32,12 +32,11 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     // 文件路径
-    const logoPath = `${user.id}/${id}`
+    const ext = file.name.split('.').pop()
+    const logoPath = `${user.id}/${id}/${crypto.randomUUID()}.${ext}`
 
     // 上传 logo
-    const { error: uploadError } = await supabase.storage.from('logos').upload(logoPath, file, {
-      upsert: false, // 允许覆盖文件
-    })
+    const { error: uploadError } = await supabase.storage.from('logos').upload(logoPath, file)
     if (uploadError) {
       // ❗兜底：logo 失败，站点已创建，但不影响使用
       return NextResponse.json(

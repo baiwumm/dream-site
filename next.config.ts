@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    remotePatterns: [new URL('https://api.baiwumm.com/**'), new URL('https://cdn.baiwumm.com/**')],
+    remotePatterns: [
+      new URL('https://api.baiwumm.com/**'),
+      new URL('https://cdn.baiwumm.com/**'),
+      new URL('https://athbiwlqrieaoetfapxd.supabase.co/**')
+    ]
   },
 };
 

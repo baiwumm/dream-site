@@ -38,30 +38,40 @@ export const getColumns = ({ handleEdit, handleDel, page = 1, pageSize = 10 }: C
       header: 'Logo',
       cell: ({ getValue, row }) => {
         const url = getValue<string>();
-        return (
-          <div className="flex justify-center">
-            {url.startsWith('https://') ? (
-              <Image src={getValue<string>()} width={32} height={32} alt={row.original.name} />
-            ) : url || '--'}
-          </div>
-        )
+        const logoUrl = url ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${url}` : null;
+        if (logoUrl) {
+          return (
+            <div className="flex justify-center">
+              <Image src={logoUrl} width={32} height={32} alt={row.original.name} />
+            </div>
+          )
+        }
+        return '--'
       }
     },
     {
       accessorKey: "tags",
       header: '标签',
-      cell: ({ getValue }) => (
-        <div className="flex justify-center items-center gap-1">
-          {getValue<string[]>().map(tag => (
-            <Chip key={tag} color="accent" variant='soft' className="rounded-full">{tag}</Chip>
-          ))}
-        </div>
-      )
+      cell: ({ getValue }) => {
+        const tags = getValue<string[]>();
+        return tags?.length ? (
+          <div className="flex justify-center items-center gap-1">
+            {getValue<string[]>().map(tag => (
+              <Chip key={tag} color="accent" variant='soft' className="rounded-full">{tag}</Chip>
+            ))}
+          </div>
+        ) : '--'
+      }
     },
     {
       accessorKey: "category",
       header: '所属分类',
       cell: ({ row }) => <Chip color='success' variant='soft' className="rounded-full">{row.original.category.name}</Chip>
+    },
+    {
+      accessorKey: "visitCount",
+      header: '访问次数',
+      cell: ({ getValue }) => <Chip color="accent" variant='secondary' className="rounded-full">{getValue<number>()}</Chip>
     },
     {
       accessorKey: "sort",

@@ -1,5 +1,5 @@
 'use client';
-import { Person, Xmark } from '@gravity-ui/icons';
+import { Picture, Xmark } from '@gravity-ui/icons';
 import { Alert, Button, cn } from "@heroui/react";
 import Image from "next/image";
 import { type FC } from 'react';
@@ -42,7 +42,7 @@ const LogoUpload: FC<LogoUploadProps> = ({
   };
 
   return (
-    <div className={cn('flex flex-col items-center gap-4', className)}>
+    <div className={cn('flex flex-col items-center gap-3', className)}>
       <div className="relative">
         <div
           className={cn(
@@ -62,7 +62,7 @@ const LogoUpload: FC<LogoUploadProps> = ({
             <Image src={previewUrl} alt="Logo" fill className="object-cover" />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
-              <Person className="size-6 text-muted-foreground" />
+              <Picture className="size-8 text-muted-foreground" />
             </div>
           )}
         </div>
@@ -82,7 +82,7 @@ const LogoUpload: FC<LogoUploadProps> = ({
       </div>
 
       {/* Upload Instructions */}
-      <div className="text-center space-y-0.5 text-xs text-muted-foreground">
+      <div className="text-center text-xs text-muted-foreground">
         请上传小于 {formatBytes(maxSize)} 的图片
       </div>
 

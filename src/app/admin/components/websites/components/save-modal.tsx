@@ -60,18 +60,25 @@ const SaveModal: FC<SaveModalProps> = ({
   // 表单实例
   const formRef = useRef<HTMLFormElement>(null);
   const actionText = initialValues ? '编辑' : '新增';
+  // Logo 链接
+  const logoUrl = initialValues?.logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${initialValues.logo}` : undefined;
+
+  // 上传成功回调
+  const onSuccess = () => {
+    state.close();
+    toast.success("提交成功", {
+      timeout: 2000,
+      indicator: <CircleCheckFill />,
+    });
+    handleRefresh?.();
+  }
 
   // 上传 Logo
   const { loading: uploadLoading, run: fetchUploadLogo } = useRequest(uploadLogo, {
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
-        state.close();
-        toast.success("提交成功", {
-          timeout: 2000,
-          indicator: <CircleCheckFill />,
-        });
-        handleRefresh?.();
+        onSuccess();
       }
     },
   });
@@ -80,10 +87,14 @@ const SaveModal: FC<SaveModalProps> = ({
   const { loading, run } = useRequest(initialValues?.id ? updateWebsite : addWebsite, {
     manual: true,
     onSuccess: ({ code, data }) => {
-      if (code === RESPONSE.SUCCESS && data?.id && logoFile) {
-        const formData = new FormData();
-        formData.append('file', logoFile as File);
-        fetchUploadLogo({ id: data.id, formData })
+      if (code === RESPONSE.SUCCESS) {
+        if (data?.id && logoFile) {
+          const formData = new FormData();
+          formData.append('file', logoFile as File);
+          fetchUploadLogo({ id: data.id, formData })
+        } else {
+          onSuccess();
+        }
       }
     },
   });
@@ -138,7 +149,8 @@ const SaveModal: FC<SaveModalProps> = ({
         data[key] = value;
       }
     });
-    if (!logoFile) {
+    // 新增必须上传 Logo
+    if (!initialValues && !logoFile) {
       toast.danger("请上传网站logo", {
         timeout: 2000,
         indicator: <Xmark />,
@@ -223,7 +235,7 @@ const SaveModal: FC<SaveModalProps> = ({
                 </TextField>
                 <div className="flex flex-col gap-1">
                   <Label isRequired htmlFor="logo">Logo</Label>
-                  <LogoUpload onFileChange={(value) => setLogoFile(value?.file || null)} />
+                  <LogoUpload defaultAvatar={logoUrl} onFileChange={(value) => setLogoFile(value?.file || null)} />
                 </div>
                 <TagInputs value={tags} onChange={setTags} />
                 <TextField name="desc" maxLength={500} defaultValue={initialValues?.desc ?? ""}>

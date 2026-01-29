@@ -77,11 +77,11 @@ export const useFileUpload = (options: FileUploadOptions = {}): [FileUploadState
     (file: File | FileMetadata): string | null => {
       if (file instanceof File) {
         if (file.size > maxSize) {
-          return `File "${file.name}" exceeds the maximum size of ${formatBytes(maxSize)}.`;
+          return `文件 "${file.name}" 大小超过 ${formatBytes(maxSize)} 限制.`;
         }
       } else {
         if (file.size > maxSize) {
-          return `File "${file.name}" exceeds the maximum size of ${formatBytes(maxSize)}.`;
+          return `文件 "${file.name}" 大小超过 ${formatBytes(maxSize)} 限制.`;
         }
       }
 
@@ -102,7 +102,7 @@ export const useFileUpload = (options: FileUploadOptions = {}): [FileUploadState
         });
 
         if (!isAccepted) {
-          return `File "${file instanceof File ? file.name : file.name}" is not an accepted file type.`;
+          return `文件 "${file instanceof File ? file.name : file.name}" 类型不正确.`;
         }
       }
 
@@ -166,7 +166,7 @@ export const useFileUpload = (options: FileUploadOptions = {}): [FileUploadState
 
       // Check if adding these files would exceed maxFiles (only in multiple mode)
       if (multiple && maxFiles !== Number.POSITIVE_INFINITY && state.files.length + newFilesArray.length > maxFiles) {
-        errors.push(`You can only upload a maximum of ${maxFiles} files.`);
+        errors.push(`您每次只能上传最多 ${maxFiles} 个文件.`);
         onError?.(errors);
         setState((prev) => ({ ...prev, errors }));
         return;
@@ -191,8 +191,8 @@ export const useFileUpload = (options: FileUploadOptions = {}): [FileUploadState
         if (file.size > maxSize) {
           errors.push(
             multiple
-              ? `Some files exceed the maximum size of ${formatBytes(maxSize)}.`
-              : `File exceeds the maximum size of ${formatBytes(maxSize)}.`,
+              ? `有些文件的大小超过了 ${formatBytes(maxSize)} 的限制.`
+              : `文件大小超过了最大限制: ${formatBytes(maxSize)}.`,
           );
           continue;
         }

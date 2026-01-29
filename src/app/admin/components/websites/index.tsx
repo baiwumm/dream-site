@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-29 16:38:02
+ * @LastEditTime: 2026-01-29 17:30:31
  * @Description: 网站列表
  */
 "use client"
@@ -48,6 +48,8 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
   // 受控列
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     desc: false,
+    vpn: false,
+    commonlyUsed: false,
     updated_at: false
   })
   // 网站名称
