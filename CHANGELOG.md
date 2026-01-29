@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.3.0](https://github.com/baiwumm/dream-site/compare/3.2.0...3.3.0) (2026-01-29)
+
+### ✨ Features | 新功能
+
+* **categotys:** 细节优化 ([333a7da](https://github.com/baiwumm/dream-site/commit/333a7da85c7db2df24cc54503b7a50149edf38f4))
+* **config:** 添加 Images 配置 ([8f30bed](https://github.com/baiwumm/dream-site/commit/8f30bed41fd98b5574f5ca1bd6a44af96dbcb5c1))
+* **websites:** 完成 Logo 上传的功能 ([bbcdb85](https://github.com/baiwumm/dream-site/commit/bbcdb8520f1c204185219409e72dfe5b26118d9d))
+* **websites:** 完成《网站列表》模块的 CURD 功能开发 ([b3a2b68](https://github.com/baiwumm/dream-site/commit/b3a2b68485cc353c634b7f16567683d249e49df1))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 细节调整优化 ([9303b16](https://github.com/baiwumm/dream-site/commit/9303b166758b66c22618a370b60a11b6ce5ef75a))
+
 ## [3.2.0](https://github.com/baiwumm/dream-site/compare/3.1.0...3.2.0) (2026-01-28)
 
 ### ✨ Features | 新功能
