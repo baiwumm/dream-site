@@ -28,11 +28,26 @@ declare namespace App {
   /** @description: 网站列表 */
   type Website = Columns & {
     name: string; // 分类名称
+    desc?: string; // 描述
+    logo: string; // logo
+    url: string; // 链接
     tags: string[] // 站点标签
     pinned: boolean // 是否置顶
     recommend: boolean // 是否推荐
     vpn: boolean // 是否需要 vpn
+    visitCount: number; // 访问次数
+    commonlyUsed: boolean; // 是否常用
+    category_id: string; // 分类 id
+    category: Category;
   }
+
+  /** @description: 网站查询参数 */
+  type WebsiteQueryParams = PaginatingParams & Partial<Pick<Category, 'name'> & {
+    category_id: string;
+  }>;
+
+  /** @description: 网站列表表单 */
+  type WebsiteSaveParams = Omit<Website, keyof Columns> & Pick<Website, 'id' | 'sort'>;
 
   /** @description: 网站分类 */
   type Category = Columns & {

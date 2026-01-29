@@ -38,7 +38,7 @@ const Admin: FC = () => {
         <Categorys categorysList={categorysList} setCategorysList={setCategorysList} />
       </Tabs.Panel>
       <Tabs.Panel id={ADMIN_TABS.WEBSITES}>
-        <Websites />
+        <Websites categorysList={categorysList} />
       </Tabs.Panel>
     </Tabs>
   )
