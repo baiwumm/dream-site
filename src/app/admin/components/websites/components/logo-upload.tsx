@@ -2,7 +2,7 @@
 import { Picture, Xmark } from '@gravity-ui/icons';
 import { Alert, Button, cn } from "@heroui/react";
 import Image from "next/image";
-import { type FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import { type FileWithPreview, formatBytes, useFileUpload } from '@/hooks/use-file-upload';
 
@@ -19,6 +19,7 @@ const LogoUpload: FC<LogoUploadProps> = ({
   onFileChange,
   defaultAvatar,
 }) => {
+  const [innerFile, setInnerFile] = useState<FileWithPreview | null>(null);
   const [
     { files, isDragging, errors },
     { removeFile, handleDragEnter, handleDragLeave, handleDragOver, handleDrop, openFileDialog, getInputProps },
@@ -28,7 +29,8 @@ const LogoUpload: FC<LogoUploadProps> = ({
     accept: 'image/*',
     multiple: false,
     onFilesChange: (files) => {
-      onFileChange?.(files[0] || null);
+      // ✅ 只更新 LogoUpload 自己的 state
+      setInnerFile(files[0] ?? null);
     },
   });
 
@@ -40,6 +42,11 @@ const LogoUpload: FC<LogoUploadProps> = ({
       removeFile(currentFile.id);
     }
   };
+
+  // ✅ 副作用阶段再通知父组件
+  useEffect(() => {
+    onFileChange?.(innerFile);
+  }, [innerFile, onFileChange]);
 
   return (
     <div className={cn('flex flex-col items-center gap-3', className)}>
