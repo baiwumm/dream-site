@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 12:19:42
+ * @LastEditTime: 2026-01-30 13:44:48
  * @Description: 上下文提供者
  */
 "use client"
@@ -57,7 +57,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
           />
         </div>
         {/* 鼠标动画 */}
-        {/* <SplashCursor /> */}
+        <SplashCursor />
         <Toast.Container placement='top' />
         <BackTop />
       </ProgressProvider>

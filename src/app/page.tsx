@@ -2,15 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 12:10:41
+ * @LastEditTime: 2026-01-30 15:23:46
  * @Description: 首页
  */
 "use client";
 import { CircleInfo } from '@gravity-ui/icons';
-import { Card, Chip, Link, Spinner, Tooltip } from '@heroui/react';
+import { Card, Chip, cn, Link, Spinner, Tooltip } from '@heroui/react';
 import { useRequest } from 'ahooks';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { type CSSProperties } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
@@ -92,13 +93,23 @@ export default function Home() {
             <h1 className="text-xl font-black">{name}</h1>
             {websites?.length ?
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
-                {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url }, index) => {
+                {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url, logoAccent }, index) => {
                   const logoUrl = logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${logo}` : null;
                   return (
                     <BlurFade key={id} inView delay={index * 0.04}>
-                      <Card className="flex flex-col h-full relative overflow-hidden shadow-lg rounded-4xl transition-transform duration-300 hover:-translate-y-1.5">
+                      <Card
+                        className={cn("flex flex-col h-full relative overflow-hidden shadow-lg rounded-4xl transition-all duration-300 hover:-translate-y-1.5 animated-border animate-fade after:border-(--logo-border-color)")}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.classList.add('hovered');
+                        }}
+                        style={
+                          {
+                            '--logo-border-color': logoAccent ? logoAccent.replace('rgba(', 'rgb(').replace(')', ' , 0.85)') : `color-mix(in oklab, var(--color-accent) 85%, transparent)`
+                          } as CSSProperties
+                        }
+                      >
                         <Card.Header>
-                          <Card.Title className="flex items-center gap-1">
+                          <Card.Title className="flex items-center gap-2">
                             {logoUrl ? (
                               <Image src={logoUrl} width={40} height={40} alt={name} />
                             ) : null}

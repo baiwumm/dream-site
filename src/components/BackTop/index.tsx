@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-20 14:09:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 12:21:36
+ * @LastEditTime: 2026-01-30 13:42:43
  * @Description: 回到顶部
  */
 'use client';
@@ -72,8 +72,8 @@ const BackTop: FC<BackTopProps> = ({ visibilityHeight = 150 }) => {
             value={scrollPercentage}
             size={40}
             strokeWidth={3}
-            className="text-default-foreground/15"
-            indicatorClassName="text-default-foreground"
+            className="text-accent-soft"
+            indicatorClassName="text-accent"
           >
             <AnimatePresence mode="wait">
               {direction === 'up' ? (
@@ -84,7 +84,7 @@ const BackTop: FC<BackTopProps> = ({ visibilityHeight = 150 }) => {
                   exit={{ opacity: 0, y: 6, scale: 0.8 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <ArrowUp className="text-default-foreground" />
+                  <ArrowUp className="text-accent" />
                 </motion.div>
               ) : (
                 <motion.div
