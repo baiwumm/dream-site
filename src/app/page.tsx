@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 15:23:46
+ * @LastEditTime: 2026-01-30 15:57:09
  * @Description: 首页
  */
 "use client";
@@ -93,7 +93,7 @@ export default function Home() {
             <h1 className="text-xl font-black">{name}</h1>
             {websites?.length ?
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
-                {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url, logoAccent }, index) => {
+                {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url, logoAccent, commonlyUsed }, index) => {
                   const logoUrl = logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${logo}` : null;
                   return (
                     <BlurFade key={id} inView delay={index * 0.04}>
@@ -152,6 +152,10 @@ export default function Home() {
                           {/* 是否推荐 */}
                           {recommend ? (
                             <Chip color="warning" variant='soft' className="rounded-full text-[10px]/4">推荐</Chip>
+                          ) : null}
+                          {/* 是否常用 */}
+                          {commonlyUsed ? (
+                            <Chip variant='soft' className="rounded-full text-[10px]/4 text-blue-500 bg-blue-100 dark:bg-blue-200">常用</Chip>
                           ) : null}
                         </div>
                       </Card>
