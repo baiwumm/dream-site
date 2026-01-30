@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.4.0](https://github.com/baiwumm/dream-site/compare/3.3.0...3.4.0) (2026-01-30)
+
+### ✨ Features | 新功能
+
+* 动态设置边框动画颜色，细节调整 ([ad50774](https://github.com/baiwumm/dream-site/commit/ad507743da7c59f5a9f31a5e21f5d789b28e7677))
+* 完成首页网站卡片的渲染 ([9e562ce](https://github.com/baiwumm/dream-site/commit/9e562ce1e335ba7a7295aaf22b73107ea0c82d48))
+* **Home:** 添加“常用”标签 ([cbc832a](https://github.com/baiwumm/dream-site/commit/cbc832aa5136489341a60908cf8d507c841f946c))
+
+### ⚡ Performance Improvements | 性能优化
+
+* **LogoUpload:** 代码逻辑优化 ([47dd197](https://github.com/baiwumm/dream-site/commit/47dd197a1b489bec47c1a6742f60ca95c915a263))
+
 ## [3.3.0](https://github.com/baiwumm/dream-site/compare/3.2.0...3.3.0) (2026-01-29)
 
 ### ✨ Features | 新功能
