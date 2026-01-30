@@ -27,7 +27,7 @@ const FullLoading: FC<FullLoadingProps> = ({ children }) => {
       <div className="fixed inset-0 flex w-screen h-screen justify-center items-center flex-col z-999 overflow-hidden bg-accent-foreground">
         <div className="flex flex-col items-center gap-2">
           <Spinner />
-          <span className="text-xs text-muted font-bold">加载中...</span>
+          <span className="text-xs text-muted font-bold">加载中,请稍后...</span>
         </div>
       </div>
     );

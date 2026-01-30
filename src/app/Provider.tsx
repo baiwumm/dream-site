@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 12:19:13
+ * @LastEditTime: 2026-01-30 12:19:42
  * @Description: 上下文提供者
  */
 "use client"
@@ -12,6 +12,7 @@ import { MotionConfig } from 'motion/react';
 import { useTheme } from "next-themes";
 import { type FC, type PropsWithChildren, ViewTransition } from 'react';
 
+import BackTop from '@/components/BackTop';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SplashCursor from '@/components/SplashCursor';
@@ -58,6 +59,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
         {/* 鼠标动画 */}
         {/* <SplashCursor /> */}
         <Toast.Container placement='top' />
+        <BackTop />
       </ProgressProvider>
     </MotionConfig>
   );
