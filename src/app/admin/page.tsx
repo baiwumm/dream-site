@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 16:01:46
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 14:50:11
+ * @LastEditTime: 2026-02-02 18:03:41
  * @Description: 管理后台
  */
-"use client"
 import { Folder, Globe } from "@gravity-ui/icons";
 import { Tabs } from "@heroui/react";
-import { type FC, useState } from 'react';
+import { type FC } from 'react';
 
 import Categorys from './components/categorys'
 import Websites from './components/websites'
@@ -16,8 +15,6 @@ import Websites from './components/websites'
 import { ADMIN_TABS } from '@/enums';
 
 const Admin: FC = () => {
-  // 分类列表
-  const [categorysList, setCategorysList] = useState<App.Category[]>([]);
   return (
     <Tabs>
       <Tabs.ListContainer>
@@ -35,10 +32,10 @@ const Admin: FC = () => {
         </Tabs.List>
       </Tabs.ListContainer>
       <Tabs.Panel id={ADMIN_TABS.CATEGOTYS}>
-        <Categorys categorysList={categorysList} setCategorysList={setCategorysList} />
+        <Categorys />
       </Tabs.Panel>
       <Tabs.Panel id={ADMIN_TABS.WEBSITES}>
-        <Websites categorysList={categorysList} />
+        <Websites />
       </Tabs.Panel>
     </Tabs>
   )

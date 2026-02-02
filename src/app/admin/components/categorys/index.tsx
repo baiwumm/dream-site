@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 11:20:03
+ * @LastEditTime: 2026-02-02 18:07:58
  * @Description: 网站分类
  */
 "use client"
@@ -18,7 +18,7 @@ import {
   type VisibilityState
 } from '@tanstack/react-table';
 import { useRequest, useSetState } from 'ahooks';
-import { type Dispatch, type FC, type SetStateAction, useEffect, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table';
@@ -38,12 +38,7 @@ const InitialParams: App.WebsiteQueryParams = {
   name: '',
 };
 
-type CategorysProps = {
-  categorysList: App.Category[];
-  setCategorysList: Dispatch<SetStateAction<App.Category[]>>;
-}
-
-const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList }) => {
+const Categorys: FC = () => {
   // 搜索参数
   const [searchParams, setSearchParams] = useSetState<App.CategoryQueryParams>(InitialParams);
   // 排序
@@ -60,15 +55,12 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
   const [editData, setEditData] = useState<App.Category | null>(null);
 
   // 请求分类列表
-  const { data, loading, run } = useRequest(async (params) => {
-    const res = get(await getCategorysList(params), 'data', {});
-    const list = get(res, 'list', []);
-    setCategorysList(list)
-    return res;
-  }, {
+  const { data, loading, run } = useRequest(async (params) => get(await getCategorysList(params), 'data', {}), {
+    manual: true,
     defaultParams: [searchParams]
   });
   const total = get(data, 'total', 0);
+  const categorysList = get(data, 'list', []);
 
   // 发起请求
   const handleSearch = () => {

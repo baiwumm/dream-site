@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 11:12:26
+ * @LastEditTime: 2026-02-02 18:08:20
  * @Description: 网站列表
  */
 "use client"
@@ -30,6 +30,7 @@ import DataTablePagination from '@/components/DataTablePagination';
 import { RESPONSE } from '@/enums';
 import { type FileWithPreview } from '@/hooks/use-file-upload';
 import { get } from '@/lib/utils';
+import { getCategorysList } from '@/services/categorys';
 import { delWebsite, getWebsitesList } from '@/services/websites';
 
 // 初始参数
@@ -40,11 +41,7 @@ const InitialParams: App.WebsiteQueryParams = {
   category_id: '',
 };
 
-type WebsitesProps = {
-  categorysList: App.Category[];
-}
-
-const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
+const Websites: FC = () => {
   // 搜索参数
   const [searchParams, setSearchParams] = useSetState<App.WebsiteQueryParams>(InitialParams);
   // 排序
@@ -68,8 +65,14 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
   // Logo
   const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null);
 
+  // 请求分类列表
+  const { data: categorysList } = useRequest(async (params) => get<App.Category[]>(await getCategorysList(params), 'data.list', []), {
+    defaultParams: [{ pageIndex: 0, pageSize: 999 }]
+  });
+
   // 请求网站列表
   const { data, loading, run } = useRequest(async (params) => get(await getWebsitesList(params), 'data', {}), {
+    manual: true,
     defaultParams: [searchParams]
   });
   const total = get(data, 'total', 0);
@@ -167,7 +170,7 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
       <Card className="shadow-lg">
         <HeaderContent
           table={table}
-          categorysList={categorysList}
+          categorysList={categorysList || []}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
           loading={loading}
@@ -189,7 +192,7 @@ const Websites: FC<WebsitesProps> = ({ categorysList = [] }) => {
         handleRefresh={handleSearch}
         tags={tags}
         setTags={setTags}
-        categorysList={categorysList}
+        categorysList={categorysList || []}
         logoFile={logoFile}
         setLogoFile={setLogoFile}
       />
