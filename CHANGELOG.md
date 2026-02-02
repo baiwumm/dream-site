@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.3](https://github.com/baiwumm/dream-site/compare/3.4.2...3.4.3) (2026-02-02)
+
+### ⚡ Performance Improvements | 性能优化
+
+* **admin:** 优化分类接口请求逻辑 ([6b2a6e9](https://github.com/baiwumm/dream-site/commit/6b2a6e97a67dddb3c8705481d0726f0349cfb383))
+
 ## [3.4.2](https://github.com/baiwumm/dream-site/compare/3.4.1...3.4.2) (2026-02-02)
 
 ### 💄 Styles | 风格
