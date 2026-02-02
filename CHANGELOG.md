@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.2](https://github.com/baiwumm/dream-site/compare/3.4.1...3.4.2) (2026-02-02)
+
+### 💄 Styles | 风格
+
+* 调整卡片主题色 ([e1ba5d7](https://github.com/baiwumm/dream-site/commit/e1ba5d7c5cef44926330587f772054dc7a3a46e3))
+
 ## [3.4.1](https://github.com/baiwumm/dream-site/compare/3.4.0...3.4.1) (2026-02-02)
 
 ### ✨ Features | 新功能
