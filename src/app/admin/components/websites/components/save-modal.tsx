@@ -20,7 +20,7 @@ import {
   type UseOverlayStateReturn
 } from "@heroui/react";
 import { useRequest } from "ahooks";
-import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef } from 'react';
+import { type Dispatch, type FC, type FormEvent, Fragment, type SetStateAction, useEffect, useRef } from 'react';
 
 import LogoUpload from './logo-upload';
 
@@ -31,10 +31,10 @@ import { get } from '@/lib/utils'
 import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites';
 
 const SwitchOptions: { name: string, label: string }[] = [
-  { name: 'pinned', label: '是否置顶' },
-  { name: 'vpn', label: '是否需要VPN' },
-  { name: 'recommend', label: '是否推荐' },
-  { name: 'commonlyUsed', label: '是否常用' }
+  { name: 'pinned', label: '置顶' },
+  { name: 'vpn', label: 'VPN' },
+  { name: 'recommend', label: '推荐' },
+  { name: 'commonlyUsed', label: '常用' }
 ]
 
 type SaveModalProps = {
@@ -141,15 +141,16 @@ const SaveModal: FC<SaveModalProps> = ({
     const formData = new FormData(form);
     const data: Partial<App.CategorySaveParams> = {};
     formData.forEach((value, key) => {
-      if (SwitchOptions.map(item => item.name).includes(key)) {
-        data[key] = value === 'on' ? true : false;
-      } else if (key === 'sort') {
+      if (key === 'sort') {
         data[key] = Number(value);
       }
       else {
         data[key] = value;
       }
     });
+    SwitchOptions.map(item => item.name).forEach(key => {
+      data[key] = data[key] === 'on';
+    })
     // 新增必须上传 Logo
     if (!initialValues && !logoFile) {
       toast.danger("请上传网站logo", {
@@ -169,7 +170,7 @@ const SaveModal: FC<SaveModalProps> = ({
     }
   }, [state.isOpen, setTags, setLogoFile]);
   return (
-    <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen}>
+    <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen} isDismissable={false} isKeyboardDismissDisabled>
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-lg">
           <Modal.CloseTrigger />
@@ -248,27 +249,30 @@ const SaveModal: FC<SaveModalProps> = ({
                   <Label>网站描述</Label>
                   <TextArea aria-label="网站描述" fullWidth variant="secondary" rows={3} placeholder="请输入网站描述" />
                 </TextField>
-                <div className="grid grid-cols-2 items-center gap-4">
-                  {SwitchOptions.map(({ name, label }) => (
-                    <Switch key={name} name={name} defaultSelected={get(initialValues, name, false)}>
-                      {({ isSelected }) => (
-                        <>
-                          <Label className="text-sm">{label}</Label>
-                          <Switch.Control>
-                            <Switch.Thumb>
-                              <Switch.Icon>
-                                {isSelected ? (
-                                  <Check className="size-3 text-inherit opacity-100" />
-                                ) : (
-                                  <Xmark className="size-3 text-inherit opacity-70" />
-                                )}
-                              </Switch.Icon>
-                            </Switch.Thumb>
-                          </Switch.Control>
-                        </>
-                      )}
-                    </Switch>
-                  ))}
+                <div className="flex flex-col gap-1">
+                  <Label htmlFor="tags">网站属性</Label>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    {SwitchOptions.map(({ name, label }) => (
+                      <Switch key={name} name={name} defaultSelected={get(initialValues, name, false)} value="on">
+                        {({ isSelected }) => (
+                          <>
+                            <Label className="text-sm">{label}</Label>
+                            <Switch.Control>
+                              <Switch.Thumb>
+                                <Switch.Icon>
+                                  {isSelected ? (
+                                    <Check className="size-3 text-inherit opacity-100" />
+                                  ) : (
+                                    <Xmark className="size-3 text-inherit opacity-70" />
+                                  )}
+                                </Switch.Icon>
+                              </Switch.Thumb>
+                            </Switch.Control>
+                          </>
+                        )}
+                      </Switch>
+                    ))}
+                  </div>
                 </div>
                 <NumberField
                   isRequired

@@ -1,6 +1,6 @@
 "use client";
 import { Xmark } from "@gravity-ui/icons";
-import { Button, Input, Label } from "@heroui/react";
+import { Input, Label } from "@heroui/react";
 import { AnimatePresence, motion } from 'motion/react';
 import { type FC, KeyboardEvent, useRef, useState } from "react";
 
@@ -8,8 +8,6 @@ type TagInputsProps = {
   value: string[];
   onChange: (value: string[]) => void;
 }
-
-const MotionButton = motion.create(Button);
 
 const TagInputs: FC<TagInputsProps> = ({ value = [], onChange }) => {
   const [inputValue, setInputValue] = useState("");

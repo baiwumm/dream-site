@@ -1,11 +1,13 @@
 declare namespace App {
+  // 分页参数
+  type PaginatingParams = import('@tanstack/react-table').PaginationState;
   /** @description: 分页响应体 */
   type PaginatingResponse<T = unknown> = {
     total: number; // 总条数
     list: T[];
     page: number; // 页码
     pageSize: number; // 每页条数
-  } & import('@tanstack/react-table').PaginationState;
+  } & PaginatingParams;
 
   /** @description: 响应体 */
   type IResponse<T = unknown> = {
