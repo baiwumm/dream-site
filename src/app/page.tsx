@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 15:57:09
+ * @LastEditTime: 2026-02-02 16:27:39
  * @Description: 首页
  */
 "use client";
@@ -95,6 +95,7 @@ export default function Home() {
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
                 {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url, logoAccent, commonlyUsed }, index) => {
                   const logoUrl = logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${logo}` : null;
+                  const logoColor = logoAccent ? logoAccent.replace('rgba(', 'rgb(').replace(')', ' , 0.85)') : `color-mix(in oklab, var(--color-accent) 85%, transparent)`;
                   return (
                     <BlurFade key={id} inView delay={index * 0.04}>
                       <Card
@@ -104,7 +105,7 @@ export default function Home() {
                         }}
                         style={
                           {
-                            '--logo-border-color': logoAccent ? logoAccent.replace('rgba(', 'rgb(').replace(')', ' , 0.85)') : `color-mix(in oklab, var(--color-accent) 85%, transparent)`
+                            '--logo-border-color': logoColor
                           } as CSSProperties
                         }
                       >
@@ -115,7 +116,13 @@ export default function Home() {
                             ) : null}
                             <div className="flex flex-col gap-1">
                               <div className="flex items-center gap-2">
-                                <Link href={url} target='_blank' className="no-underline text-lg font-bold truncate transition ease-in duration-300 cursor-pointer relative after:absolute after:content-[''] after:h-0.5 after:w-0 after:left-0 after:bottom-0 after:bg-accent/30 after:transition-all after:duration-500 hover:translate-x-1 hover:after:w-full" onPress={() => handleClick(id)}>
+                                <Link href={url} target='_blank' className="no-underline text-lg font-bold truncate transition ease-in duration-300 cursor-pointer relative after:absolute after:content-[''] after:h-0.5 after:w-0 after:left-0 after:bottom-0 after:bg-(--hover-color) after:transition-all after:duration-500 hover:translate-x-1 hover:after:w-full" onPress={() => handleClick(id)}
+                                  style={
+                                    {
+                                      '--hover-color': logoColor
+                                    } as CSSProperties
+                                  }
+                                >
                                   {name}
                                   <Link.Icon />
                                 </Link>
