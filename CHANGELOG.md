@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.1](https://github.com/baiwumm/dream-site/compare/3.4.0...3.4.1) (2026-02-02)
+
+### ✨ Features | 新功能
+
+* 删除网站的同时，应该也删除该网站下的 logo 文件 ([3ce8f88](https://github.com/baiwumm/dream-site/commit/3ce8f885b080457c1c070264c4b867c6061a59be))
+* 修复中间件没有 过滤 Api 接口的问题 ([9a45213](https://github.com/baiwumm/dream-site/commit/9a45213a9d05294dd0acd0047a93a72e37f3ad1d))
+
 ## [3.4.0](https://github.com/baiwumm/dream-site/compare/3.3.0...3.4.0) (2026-01-30)
 
 ### ✨ Features | 新功能
