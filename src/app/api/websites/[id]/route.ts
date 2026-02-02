@@ -49,22 +49,81 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const supabase = await getSupabaseServerClient();
-    const { id } = await params;
+    const { id: siteId } = await params;
 
-    // 删除分类
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      return NextResponse.json(
+        responseMessage(null, '未登录', -1)
+      );
+    }
+
+    const uid = user.id;
+    const bucket = 'logos';
+    const folderPath = `${uid}/${siteId}`;
+
+    /* --------------------------------------------------
+     * 1. 列出该站点下所有 logo 文件
+     * -------------------------------------------------- */
+    const { data: files, error: listError } = await supabase.storage
+      .from(bucket)
+      .list(folderPath, {
+        limit: 100,
+      });
+
+    if (listError) {
+      return NextResponse.json(
+        responseMessage(null, listError.message, RESPONSE.ERROR)
+      );
+    }
+
+    /* --------------------------------------------------
+     * 2. 删除所有文件（如果存在）
+     * -------------------------------------------------- */
+    if (files && files.length > 0) {
+      const paths = files.map(
+        (file) => `${folderPath}/${file.name}`
+      );
+
+      const { error: removeError } = await supabase.storage
+        .from(bucket)
+        .remove(paths);
+
+      if (removeError) {
+        return NextResponse.json(
+          responseMessage(
+            null,
+            `删除 Logo 失败：${removeError.message}`,
+            RESPONSE.ERROR
+          )
+        );
+      }
+    }
+
+    /* --------------------------------------------------
+     * 3. 删除数据库中的网站记录
+     * -------------------------------------------------- */
     const { data, error } = await supabase
       .from('ds_websites')
       .delete()
-      .eq('id', id)
+      .eq('id', siteId)
       .select()
       .single();
 
     if (error) {
-      return NextResponse.json(responseMessage(null, error.message, RESPONSE.ERROR));
+      return NextResponse.json(
+        responseMessage(null, error.message, RESPONSE.ERROR)
+      );
     }
-    // 返回成功响应
+
     return NextResponse.json(responseMessage(data));
   } catch (err) {
-    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
+    return NextResponse.json(
+      responseMessage(null, (err as Error).message, RESPONSE.ERROR)
+    );
   }
 }
