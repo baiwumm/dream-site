@@ -2,35 +2,41 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-29 14:49:59
+ * @LastEditTime: 2026-02-02 11:20:03
  * @Description: 网站分类
  */
 "use client"
-import { ArrowRotateLeft, CircleCheckFill, CircleXmarkFill, Magnifier, Plus } from '@gravity-ui/icons';
-import { Button, Card, Input, Spinner, toast, useOverlayState } from "@heroui/react";
+import { CircleCheckFill, CircleXmarkFill } from '@gravity-ui/icons';
+import { Card, toast, useOverlayState } from "@heroui/react";
 import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  type PaginationState,
   SortingState,
   useReactTable,
   type VisibilityState
 } from '@tanstack/react-table';
-import { useRequest } from 'ahooks';
+import { useRequest, useSetState } from 'ahooks';
 import { type Dispatch, type FC, type SetStateAction, useEffect, useState } from 'react';
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table';
 import DeleteDialog from './components/delete-dialog';
+import HeaderContent from './components/header-content';
 import SaveModal from './components/save-modal';
 
-import ColumnsVisibility from '@/components/ColumnsVisibility';
 import DataTablePagination from '@/components/DataTablePagination';
 import { RESPONSE } from '@/enums';
 import { get } from '@/lib/utils';
 import { delCategory, getCategorysList } from '@/services/categorys';
+
+// 初始参数
+const InitialParams: App.WebsiteQueryParams = {
+  pageIndex: 0,
+  pageSize: 10,
+  name: '',
+};
 
 type CategorysProps = {
   categorysList: App.Category[];
@@ -38,19 +44,14 @@ type CategorysProps = {
 }
 
 const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList }) => {
-  // 分页参数
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
+  // 搜索参数
+  const [searchParams, setSearchParams] = useSetState<App.CategoryQueryParams>(InitialParams);
   // 排序
   const [sorting, setSorting] = useState<SortingState>([]);
   // 受控列
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     updated_at: false
   })
-  // 网站名称
-  const [name, setName] = useState('');
   // 保存弹窗
   const saveModalState = useOverlayState();
   // 删除弹窗
@@ -65,23 +66,19 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
     setCategorysList(list)
     return res;
   }, {
-    defaultParams: [{ name, ...pagination }]
+    defaultParams: [searchParams]
   });
   const total = get(data, 'total', 0);
 
   // 发起请求
   const handleSearch = () => {
-    run({ name, ...pagination })
+    run(searchParams)
   }
 
   // 重置
   const handleReset = () => {
-    setName('');
-    setPagination({
-      pageIndex: 0,
-      pageSize: 10,
-    });
-    run({ name: '', ...pagination })
+    setSearchParams(InitialParams)
+    run(InitialParams)
   }
 
   // 编辑回调
@@ -132,14 +129,17 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
   const table = useReactTable({
     data: categorysList,
     columns,
-    pageCount: Math.ceil((total || 0) / pagination.pageSize),
+    pageCount: Math.ceil((total || 0) / searchParams.pageSize),
     getRowId: (row: App.Category) => row.id,
     state: {
-      pagination,
+      pagination: {
+        pageIndex: searchParams.pageIndex,
+        pageSize: searchParams.pageSize,
+      },
       sorting,
       columnVisibility,
     },
-    onPaginationChange: setPagination,
+    onPaginationChange: setSearchParams,
     manualPagination: true,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
@@ -150,8 +150,8 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
   })
 
   useEffect(() => {
-    run({ name, ...pagination })
-  }, [pagination, run]);
+    run(searchParams)
+  }, [run, searchParams.pageIndex, searchParams.pageSize]);
 
   useEffect(() => {
     if (!saveModalState.isOpen) {
@@ -167,30 +167,15 @@ const Categorys: FC<CategorysProps> = ({ categorysList = [], setCategorysList })
   return (
     <>
       <Card className="shadow-lg">
-        <Card.Header className="flex justify-between items-start w-full flex-col sm:flex-row sm:items-center gap-2">
-          <Card.Title className="flex items-center gap-2 flex-wrap">
-            <div className="w-60">
-              <Input variant='secondary' placeholder="分类名称" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <Button isPending={loading} size='sm' onPress={handleSearch}>
-              {({ isPending }) => (
-                <>
-                  {isPending ? <Spinner color="current" size='sm' /> : <Magnifier />}
-                  查询
-                </>
-              )}
-            </Button>
-            <Button variant="secondary" size='sm' onPress={handleReset} isDisabled={loading}>
-              <ArrowRotateLeft />
-              重置
-            </Button>
-            <Button variant="outline" size='sm' onPress={() => saveModalState.open()}>
-              <Plus />
-              新增
-            </Button>
-          </Card.Title>
-          <ColumnsVisibility table={table} />
-        </Card.Header>
+        <HeaderContent
+          table={table}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          loading={loading}
+          handleSearch={handleSearch}
+          handleReset={handleReset}
+          saveModalState={saveModalState}
+        />
         <Card.Content>
           <DataTable table={table} colSpan={columns.length} loading={loading} />
         </Card.Content>
