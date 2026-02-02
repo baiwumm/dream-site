@@ -299,14 +299,14 @@ const SaveModal: FC<SaveModalProps> = ({
             </Surface>
           </Modal.Body>
           <Modal.Footer>
-            <Button slot="close" variant="outline" isDisabled={loading}>
+            <Button slot="close" variant="outline" isDisabled={loading || uploadLoading}>
               取消
             </Button>
             <Button type="submit" form="category-form" isPending={loading || uploadLoading}>
               {({ isPending }) => (
                 <>
                   {isPending ? <Spinner color="current" size="sm" /> : null}
-                  {isPending ? "正在提交..." : "确定"}
+                  {loading ? "正在提交..." : uploadLoading ? '正在上传 Logo...' : "确定"}
                 </>
               )}
             </Button>
