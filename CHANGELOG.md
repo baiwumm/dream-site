@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.4](https://github.com/baiwumm/dream-site/compare/3.4.3...3.4.4) (2026-02-03)
+
+### ✨ Features | 新功能
+
+* 添加统计代码 ([06f2471](https://github.com/baiwumm/dream-site/commit/06f24712611b721b0089a7159086ba336a310cd6))
+* update README.md ([ec5c534](https://github.com/baiwumm/dream-site/commit/ec5c534564894fabfddb36453fa87b1075e35b13))
+
 ## [3.4.3](https://github.com/baiwumm/dream-site/compare/3.4.2...3.4.3) (2026-02-02)
 
 ### ⚡ Performance Improvements | 性能优化
