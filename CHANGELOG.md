@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.5](https://github.com/baiwumm/dream-site/compare/3.4.4...3.4.5) (2026-02-03)
+
+### ✨ Features | 新功能
+
+* **NotFound:** 添加 404 页面 ([7feafa6](https://github.com/baiwumm/dream-site/commit/7feafa6da99ab871a59cc5f5e59d246b1a311fbd))
+
 ## [3.4.4](https://github.com/baiwumm/dream-site/compare/3.4.3...3.4.4) (2026-02-03)
 
 ### ✨ Features | 新功能
