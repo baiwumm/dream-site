@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.4.6](https://github.com/baiwumm/dream-site/compare/3.4.5...3.4.6) (2026-02-04)
+
+### ✨ Features | 新功能
+
+* 新增 AppSettings 组件 ([0bd9f9f](https://github.com/baiwumm/dream-site/commit/0bd9f9f795653a70ace8091f380ee255d11e3231))
+
+### 💄 Styles | 风格
+
+* 细节优化 ([3cfa41d](https://github.com/baiwumm/dream-site/commit/3cfa41d955b51ef20f0957bb4e2e38f382e5308a))
+
 ## [3.4.5](https://github.com/baiwumm/dream-site/compare/3.4.4...3.4.5) (2026-02-03)
 
 ### ✨ Features | 新功能
