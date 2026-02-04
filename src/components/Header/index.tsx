@@ -2,20 +2,22 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-04 09:10:27
+ * @LastEditTime: 2026-02-04 10:36:40
  * @Description: 顶部导航
  */
 "use client"
 import { House } from '@gravity-ui/icons';
-import { Button, Tooltip } from '@heroui/react';
+import { Button, cn, Tooltip } from '@heroui/react';
 import Image from 'next/image';
 import Link from "next/link";
 import { type FC, type ReactNode } from 'react';
 
+import AppSettings from '@/components/AppSettings';
 import { ShimmeringText } from '@/components/ShimmeringText';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import UserAvatar from '@/components/UserAvatar';
 import { GithubIcon } from '@/lib/icons';
+import { useAppStore } from '@/store/useAppStore';
 import pkg from '#/package.json';
 
 type Social = {
@@ -33,8 +35,9 @@ const socials: Social[] = [
 ]
 
 const Header: FC = () => {
+  const fixedHeader = useAppStore(state => state.fixedHeader);
   return (
-    <header className="sticky top-0 border-b border-default h-15 z-20 backdrop-blur-sm" id="header">
+    <header className={cn("top-0 border-b border-default h-15 z-20 backdrop-blur-sm", fixedHeader ? 'sticky' : 'static')} id="header">
       <div className="flex justify-between items-center container mx-auto h-full px-4">
         {/* 左侧 Logo */}
         <Link href="/">
@@ -52,6 +55,7 @@ const Header: FC = () => {
         </Link>
         {/* 右侧区域 */}
         <div className="flex items-center gap-2">
+          <AppSettings />
           <ThemeSwitcher />
           {socials.map(({ name, url, icon }) => (
             <Tooltip key={name} delay={0}>

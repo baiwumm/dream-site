@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-13 17:03:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 10:01:05
+ * @LastEditTime: 2026-02-04 13:53:00
  * @Description: 主题切换
  */
 "use client";
@@ -12,9 +12,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from 'next-themes';
 import { type FC } from "react";
 
-import { THEME_MODE } from '@/enums';
+import { THEME_MODE, TRANSITION_DIRECTION } from '@/enums';
+import { useAppStore } from '@/store/useAppStore';
 
 const ThemeSwitcher: FC = () => {
+  const direction = useAppStore(state => state.direction);
   const { theme, setTheme } = useTheme();
   const isDark = theme === THEME_MODE.DARK;
 
@@ -44,7 +46,7 @@ const ThemeSwitcher: FC = () => {
     // 自定义过渡动画
     document.documentElement.animate(
       {
-        clipPath: ['inset(0 100% 0 0)', 'inset(0 0 0 0)'],
+        clipPath: TRANSITION_DIRECTION.raw(direction).clipPath as unknown as string[],
       },
       {
         duration: 700,

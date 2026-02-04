@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-30 13:44:48
+ * @LastEditTime: 2026-02-04 10:56:21
  * @Description: 上下文提供者
  */
 "use client"
@@ -19,8 +19,11 @@ import SplashCursor from '@/components/SplashCursor';
 import Squares from '@/components/Squares';
 import { THEME_MODE } from '@/enums';
 import { useAvailableHeight } from '@/hooks/use-available-height';
+import { useAppStore } from '@/store/useAppStore';
 
 const Providers: FC<PropsWithChildren> = ({ children }) => {
+  const cursorEffect = useAppStore(state => state.cursorEffect);
+  const bgEffect = useAppStore(state => state.bgEffect);
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === THEME_MODE.DARK;
 
@@ -47,17 +50,21 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
         {/* 底部版权 */}
         <Footer />
         {/* 背景 */}
-        <div className="fixed inset-0 -z-10">
-          <Squares
-            speed={0.2}
-            squareSize={40}
-            direction="diagonal"
-            borderColor={isDark ? '#3A3A3A' : '#D1D1D1'}
-            hoverFillColor={isDark ? '#2C2C2C' : '#B0B0B0'}
-          />
-        </div>
+        {bgEffect ? (
+          <div className="fixed inset-0 -z-10">
+            <Squares
+              speed={0.2}
+              squareSize={40}
+              direction="diagonal"
+              borderColor={isDark ? '#3A3A3A' : '#D1D1D1'}
+              hoverFillColor={isDark ? '#2C2C2C' : '#B0B0B0'}
+            />
+          </div>
+        ) : null}
         {/* 鼠标动画 */}
-        <SplashCursor />
+        {cursorEffect ? (
+          <SplashCursor />
+        ) : null}
         <Toast.Container placement='top' />
         <BackTop />
       </ProgressProvider>
