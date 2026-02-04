@@ -10,7 +10,7 @@ import FullLoading from '@/components/FullLoading';
 import pkg from '#/package.json';
 
 export const metadata: Metadata = {
-  title: `从这里开始 | ${process.env.NEXT_PUBLIC_APP_NAME}`,
+  title: `梦开始的地方 | ${process.env.NEXT_PUBLIC_APP_NAME}`,
   description: process.env.NEXT_PUBLIC_APP_DESC,
   keywords: process.env.NEXT_PUBLIC_APP_KEYWORDS,
   authors: [{ name: process.env.NEXT_PUBLIC_COPYRIGHT, url: pkg.author.url }],

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 13:43:50
+ * @LastEditTime: 2026-02-03 18:07:28
  * @Description: 登录页
  */
 "use client";
@@ -130,7 +130,7 @@ export default function Login() {
             />
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-              <p className="text-sm text-muted">从这里开始，马上登录！</p>
+              <p className="text-sm text-muted">梦开始的地方，马上登录！</p>
             </div>
           </div>
         </Card.Header>

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 09:57:16
+ * @LastEditTime: 2026-02-04 09:10:27
  * @Description: 顶部导航
  */
 "use client"
@@ -42,7 +42,7 @@ const Header: FC = () => {
             <Image src='/logo.svg' width={36} height={36} alt="Logo" />
             <ShimmeringText
               text={process.env.NEXT_PUBLIC_APP_NAME!}
-              className="text-2xl font-black"
+              className="text-2xl font-black hidden sm:block"
               duration={1.5}
               repeatDelay={1}
               color="var(--accent)"
