@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-04 10:21:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-04 11:11:38
+ * @LastEditTime: 2026-02-05 09:38:43
  * @Description: 全局状态
  */
 'use client'
@@ -15,6 +15,9 @@ type AppState = {
   /** 过渡动画方向 */
   direction: typeof TRANSITION_DIRECTION.valueType;
   setDirection: (val: typeof TRANSITION_DIRECTION.valueType) => void;
+  /** 主题动画 */
+  themeEffect: boolean;
+  setThemeEffect: (val: boolean) => void;
   /** 固定头部 */
   fixedHeader: boolean;
   setFixedHeader: (val: boolean) => void;
@@ -33,6 +36,12 @@ export const useAppStore = create(
       direction: TRANSITION_DIRECTION.LTR,
       setDirection: (val) => {
         set({ direction: val })
+      },
+
+      /* ================= 主题动画 ================= */
+      themeEffect: true,
+      setThemeEffect: (val) => {
+        set({ themeEffect: val })
       },
 
       /* ================= 固定头部 ================= */

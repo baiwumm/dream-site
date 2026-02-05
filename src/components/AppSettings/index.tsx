@@ -2,8 +2,10 @@
 import { Check, Sparkles, Xmark } from '@gravity-ui/icons';
 import { Button, Popover, Switch, Tooltip } from '@heroui/react';
 import { type FC } from 'react';
+import { useShallow } from "zustand/react/shallow";
 
 import { TRANSITION_DIRECTION } from '@/enums'
+import { pick } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 
 type SwitchComponentProps = {
@@ -35,14 +37,31 @@ const SwitchComponent: FC<SwitchComponentProps> = ({ title, isSelected, setSelec
 )
 
 const AppSettings: FC = () => {
-  const direction = useAppStore(state => state.direction);
-  const setDirection = useAppStore(state => state.setDirection);
-  const fixedHeader = useAppStore(state => state.fixedHeader);
-  const setFixedHeader = useAppStore(state => state.setFixedHeader);
-  const cursorEffect = useAppStore(state => state.cursorEffect);
-  const setCursorEffect = useAppStore(state => state.setCursorEffect);
-  const bgEffect = useAppStore(state => state.bgEffect);
-  const setBgEffect = useAppStore(state => state.setBgEffect);
+  const {
+    direction,
+    setDirection,
+    themeEffect,
+    setThemeEffect,
+    fixedHeader,
+    setFixedHeader,
+    cursorEffect,
+    setCursorEffect,
+    bgEffect,
+    setBgEffect,
+  } = useAppStore(
+    useShallow((s) => pick(s, [
+      "direction",
+      "setDirection",
+      'themeEffect',
+      'setThemeEffect',
+      'fixedHeader',
+      'setFixedHeader',
+      'cursorEffect',
+      'setCursorEffect',
+      'bgEffect',
+      'setBgEffect'
+    ])
+    ));
   return (
     <Popover>
       <Tooltip>
@@ -82,6 +101,7 @@ const AppSettings: FC = () => {
                 ))}
               </div>
             </div>
+            <SwitchComponent title='主题动画' isSelected={themeEffect} setSelected={setThemeEffect} />
             <SwitchComponent title='固定头部' isSelected={fixedHeader} setSelected={setFixedHeader} />
             <SwitchComponent title='鼠标特效' isSelected={cursorEffect} setSelected={setCursorEffect} />
             <SwitchComponent title='背景动画' isSelected={bgEffect} setSelected={setBgEffect} />

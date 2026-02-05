@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-13 17:03:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-04 13:53:00
+ * @LastEditTime: 2026-02-05 09:40:40
  * @Description: 主题切换
  */
 "use client";
@@ -17,6 +17,7 @@ import { useAppStore } from '@/store/useAppStore';
 
 const ThemeSwitcher: FC = () => {
   const direction = useAppStore(state => state.direction);
+  const themeEffect = useAppStore(state => state.themeEffect);
   const { theme, setTheme } = useTheme();
   const isDark = theme === THEME_MODE.DARK;
 
@@ -30,7 +31,7 @@ const ThemeSwitcher: FC = () => {
     const root = document.documentElement;
 
     // 不支持动画，直接切
-    if (!enableTransitions()) {
+    if (!enableTransitions() || !themeEffect) {
       const next = isDark ? THEME_MODE.LIGHT : THEME_MODE.DARK;
       setTheme(next);
       return;
