@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.9) (2026-02-05)
+
+### 🎫 Chores | 其他更新
+
+* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/dream-site/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
+
 ## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.7...3.4.8) (2026-02-05)
 
 ### ✨ Features | 新功能
