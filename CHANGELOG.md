@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.7](https://github.com/baiwumm/dream-site/compare/3.4.6...3.4.7) (2026-02-05)
+
+### ✨ Features | 新功能
+
+* 更新 Logo 链接生成方式 ([20d6f81](https://github.com/baiwumm/dream-site/commit/20d6f81bcccb3cee6e9cbdbfa2954fd7a3cf59f9))
+
 ## [3.4.6](https://github.com/baiwumm/dream-site/compare/3.4.5...3.4.6) (2026-02-04)
 
 ### ✨ Features | 新功能
