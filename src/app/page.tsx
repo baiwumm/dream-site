@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 16:27:39
+ * @LastEditTime: 2026-02-05 09:27:31
  * @Description: 首页
  */
 "use client";
@@ -16,7 +16,7 @@ import { type CSSProperties } from 'react';
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
-import { get } from '@/lib/utils';
+import { generateLogoUrl, get } from '@/lib/utils';
 import { getCategorysList } from '@/services/categorys';
 
 export default function Home() {
@@ -94,7 +94,6 @@ export default function Home() {
             {websites?.length ?
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
                 {websites.map(({ id, name, desc, vpn, logo, tags, pinned, recommend, url, logoAccent, commonlyUsed }, index) => {
-                  const logoUrl = logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${logo}` : null;
                   const logoColor = logoAccent ? logoAccent.replace('rgba(', 'rgb(').replace(')', ' , 0.85)') : `color-mix(in oklab, var(--color-accent) 85%, transparent)`;
                   return (
                     <BlurFade key={id} inView delay={index * 0.04}>
@@ -111,8 +110,8 @@ export default function Home() {
                       >
                         <Card.Header>
                           <Card.Title className="flex items-center gap-2">
-                            {logoUrl ? (
-                              <Image src={logoUrl} width={40} height={40} alt={name} />
+                            {logo ? (
+                              <Image src={generateLogoUrl(logo)} width={40} height={40} alt={name} />
                             ) : null}
                             <div className="flex flex-col gap-1">
                               <div className="flex items-center gap-2">

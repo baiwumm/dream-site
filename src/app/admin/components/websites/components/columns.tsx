@@ -5,6 +5,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import dayjs from 'dayjs';
 import Image from 'next/image';
 
+import { generateLogoUrl } from '@/lib/utils';
+
 type ColumnsProps = {
   handleEdit: (row: App.Website) => void;
   handleDel: (row: App.Website) => void;
@@ -38,11 +40,10 @@ export const getColumns = ({ handleEdit, handleDel, page = 1, pageSize = 10 }: C
       header: 'Logo',
       cell: ({ getValue, row }) => {
         const url = getValue<string>();
-        const logoUrl = url ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${url}` : null;
-        if (logoUrl) {
+        if (url) {
           return (
             <div className="flex justify-center">
-              <Image src={logoUrl} width={32} height={32} alt={row.original.name} />
+              <Image src={generateLogoUrl(url)} width={32} height={32} alt={row.original.name} />
             </div>
           )
         }

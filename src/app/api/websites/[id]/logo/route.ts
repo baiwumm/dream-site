@@ -32,11 +32,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     // 文件路径
+    const bucket = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET!;
     const ext = file.name.split('.').pop()
     const logoPath = `${user.id}/${id}/${crypto.randomUUID()}.${ext}`
 
     // 上传 logo
-    const { error: uploadError } = await supabase.storage.from('logos').upload(logoPath, file)
+    const { error: uploadError } = await supabase.storage.from(bucket).upload(logoPath, file)
     if (uploadError) {
       // ❗兜底：logo 失败，站点已创建，但不影响使用
       return NextResponse.json(
@@ -59,7 +60,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     if (updateError) {
       // ❗兜底：回滚 Storage
       await supabase.storage
-        .from('logos')
+        .from(bucket)
         .remove([logoPath])
 
       return NextResponse.json(

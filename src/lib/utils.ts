@@ -39,3 +39,7 @@ export const get = <TDefault = unknown>(
   if (current === undefined) return defaultValue as TDefault
   return current
 }
+
+
+// 生成 Logo 链接
+export const generateLogoUrl = (path: string) => `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET}/${path}`

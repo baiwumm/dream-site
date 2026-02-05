@@ -63,7 +63,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     }
 
     const uid = user.id;
-    const bucket = 'logos';
+    const bucket = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET!;
     const folderPath = `${uid}/${siteId}`;
 
     /* --------------------------------------------------
