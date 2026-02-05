@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.7...3.4.8) (2026-02-05)
+
+### ✨ Features | 新功能
+
+* **store:** 添加“主题动画”配置开关 ([8df0798](https://github.com/baiwumm/dream-site/commit/8df0798a4984b196e46379bcbfe06f2b63328fa4))
+
 ## [3.4.7](https://github.com/baiwumm/dream-site/compare/3.4.6...3.4.7) (2026-02-05)
 
 ### ✨ Features | 新功能
