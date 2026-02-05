@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.4.9](https://github.com/baiwumm/dream-site/compare/3.4.7...3.4.9) (2026-02-05)
+
+### ✨ Features | 新功能
+
+* 拆分站点卡片 ([af6d1a7](https://github.com/baiwumm/dream-site/commit/af6d1a723981ef5addde575e6883fec74b3c2d12))
+* **store:** 添加“主题动画”配置开关 ([8df0798](https://github.com/baiwumm/dream-site/commit/8df0798a4984b196e46379bcbfe06f2b63328fa4))
+
+### 🎫 Chores | 其他更新
+
+* Release v3.4.8 ([e92100a](https://github.com/baiwumm/dream-site/commit/e92100a6353e2a9d040b5c24740f02c007f358da))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化暗黑主题切换动画卡顿 ([5346756](https://github.com/baiwumm/dream-site/commit/534675652c4937088d9df0bc7ac9e465f77556b5))
+
 ## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.7...3.4.8) (2026-02-05)
 
 ### ✨ Features | 新功能
