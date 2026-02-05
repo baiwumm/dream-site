@@ -2,14 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-05 15:23:18
+ * @LastEditTime: 2026-02-05 15:26:20
  * @Description: 首页
  */
 "use client";
 import { Spinner } from '@heroui/react';
 import { useRequest } from 'ahooks';
+import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { useMemo } from 'react'; // 👈 新增
+import { useMemo, useCallback } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
@@ -61,11 +62,11 @@ export default function Home() {
     router.push('/admin');
   };
 
-  const handleClick = async (id: string) => {
+  const handleClick = useCallback(async (id: string) => {
     await supabase.rpc("increment_visit_count", {
       row_id: id,
     });
-  };
+  }, [supabase]);
 
   if (loading) {
     return (
@@ -116,14 +117,25 @@ export default function Home() {
             {websites?.length ? (
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
                 {websites.map((item, idx) => (
-                  <BlurFade key={item.id} inView delay={idx * 0.04}>
+                  <motion.div
+                    key={item.id}
+                    variants={{
+                      hidden: { y: 20, opacity: 0, filter: 'blur(6px)' },
+                      visible: { y: 0, opacity: 1, filter: 'none' }
+                    }}
+                    transition={{
+                      delay: 0.04 * idx,
+                      duration: 0.4,
+                      ease: "easeOut"
+                    }}
+                  >
                     {/* 👇 传入预计算好的颜色 */}
                     <WebsiteCard
                       data={item}
                       logoColor={item.computedLogoColor!}
                       handleClick={handleClick}
                     />
-                  </BlurFade>
+                  </motion.div>
                 ))}
               </div>
             ) : (

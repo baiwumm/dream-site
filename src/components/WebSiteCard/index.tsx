@@ -9,7 +9,7 @@
 import { CircleInfo } from '@gravity-ui/icons';
 import { Card, Chip, cn, Link, Tooltip } from '@heroui/react';
 import Image from 'next/image';
-import { type CSSProperties, type FC, memo } from 'react';
+import { type CSSProperties, type FC, memo, useCallback, useMemo } from 'react';
 
 import { generateLogoUrl } from '@/lib/utils';
 
@@ -21,17 +21,26 @@ type WebsiteCardProps = {
 
 const WebsiteCard: FC<WebsiteCardProps> = memo(function WebsiteCard({ data, logoColor, handleClick }) {
   const { id, name, desc, vpn, logo, tags, pinned, recommend, url, commonlyUsed } = data || {};
+
+  const handleLinkPress = useCallback(() => {
+    handleClick(id);
+  }, [handleClick, id]);
+
+  const cardStyle = useMemo(() => ({
+    '--logo-border-color': logoColor
+  } as CSSProperties), [logoColor]);
+
+  const linkStyle = useMemo(() => ({
+    '--hover-color': logoColor
+  } as CSSProperties), [logoColor]);
+
   return (
     <Card
-      className={cn("flex flex-col h-full relative overflow-hidden shadow-lg rounded-4xl transition-all duration-300 hover:-translate-y-1.5 animated-border animate-fade after:border-(--logo-border-color)")}
+      className={cn("flex flex-col h-full relative overflow-hidden shadow-lg rounded-4xl transition-transform duration-300 hover:-translate-y-1.5 animated-border animate-fade after:border-(--logo-border-color)")}
       onMouseEnter={(e) => {
         e.currentTarget.classList.add('hovered');
       }}
-      style={
-        {
-          '--logo-border-color': logoColor
-        } as CSSProperties
-      }
+      style={cardStyle}
     >
       <Card.Header>
         <Card.Title className="flex items-center gap-2">
@@ -40,12 +49,8 @@ const WebsiteCard: FC<WebsiteCardProps> = memo(function WebsiteCard({ data, logo
           ) : null}
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
-              <Link href={url} target='_blank' className="no-underline text-lg font-bold truncate transition ease-in duration-300 cursor-pointer relative after:absolute after:content-[''] after:h-0.5 after:w-0 after:left-0 after:bottom-0 after:bg-(--hover-color) after:transition-all after:duration-500 hover:translate-x-1 hover:after:w-full" onPress={() => handleClick(id)}
-                style={
-                  {
-                    '--hover-color': logoColor
-                  } as CSSProperties
-                }
+              <Link href={url} target='_blank' className="no-underline text-lg font-bold truncate transition-transform ease-in duration-300 cursor-pointer relative after:absolute after:content-[''] after:h-0.5 after:w-0 after:left-0 after:bottom-0 after:bg-(--hover-color) after:transition-all after:duration-500 hover:translate-x-1 hover:after:w-full" onPress={handleLinkPress}
+                style={linkStyle}
               >
                 {name}
                 <Link.Icon />
