@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.4.10](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.10) (2026-02-07)
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **Websites:** 修复编辑时 Logo 回显报错的问题 ([1977817](https://github.com/baiwumm/dream-site/commit/197781708f4de91d26ec4a18388c9d35443de31e))
+
+### 🎫 Chores | 其他更新
+
+* Release v3.4.9 ([2ceeda7](https://github.com/baiwumm/dream-site/commit/2ceeda7a8fddafd332499cde487f03fea8a11fa1))
+## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.10) (2026-02-05)
+
+### 🎫 Chores | 其他更新
+
+* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/dream-site/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
+
 ## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.9) (2026-02-05)
 
 ### 🎫 Chores | 其他更新
