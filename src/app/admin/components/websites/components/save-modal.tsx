@@ -27,7 +27,7 @@ import LogoUpload from './logo-upload';
 import TagInputs from "@/components/ui/tag-inputs";
 import { RESPONSE } from '@/enums';
 import { type FileWithPreview } from '@/hooks/use-file-upload';
-import { get } from '@/lib/utils'
+import { generateLogoUrl, get } from '@/lib/utils'
 import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites';
 
 const SwitchOptions: { name: string, label: string }[] = [
@@ -62,7 +62,7 @@ const SaveModal: FC<SaveModalProps> = ({
   const formRef = useRef<HTMLFormElement>(null);
   const actionText = initialValues ? '编辑' : '新增';
   // Logo 链接
-  const logoUrl = initialValues?.logo ? `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL!}/${initialValues.logo}` : undefined;
+  const logoUrl = initialValues?.logo ? generateLogoUrl(initialValues.logo) : undefined;
 
   // 上传成功回调
   const onSuccess = () => {
