@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   publisher: process.env.NEXT_PUBLIC_COPYRIGHT,
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: process.env.NEXT_PUBLIC_APP_NAME,
