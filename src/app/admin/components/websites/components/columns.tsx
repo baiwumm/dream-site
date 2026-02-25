@@ -1,6 +1,6 @@
 "use client"
 import { Check, PencilToSquare, TrashBin, Xmark } from '@gravity-ui/icons';
-import { Button, Chip, Link, Switch } from "@heroui/react";
+import { Button, Chip, Link, Switch, Tooltip } from "@heroui/react";
 import { ColumnDef } from "@tanstack/react-table";
 import dayjs from 'dayjs';
 import Image from 'next/image';
@@ -33,7 +33,23 @@ export const getColumns = ({ handleEdit, handleDel, page = 1, pageSize = 10 }: C
     },
     {
       accessorKey: "desc",
-      header: '网站描述'
+      header: '网站描述',
+      cell: ({ getValue }) => {
+        const val = getValue<string>();
+        return val ? (
+          (
+            <Tooltip delay={0}>
+              <Tooltip.Trigger aria-label="Description">
+                <span className="truncate">{val.length > 15 ? `${val.slice(0, 15)}...` : val}</span>
+              </Tooltip.Trigger>
+              <Tooltip.Content showArrow>
+                <Tooltip.Arrow />
+                <p>{getValue<string>()}</p>
+              </Tooltip.Content>
+            </Tooltip>
+          )
+        ) : '--'
+      }
     },
     {
       accessorKey: "logo",

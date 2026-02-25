@@ -36,13 +36,14 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh }) 
   // 表单提交
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data: Partial<App.CategorySaveParams> = {};
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-    run({ ...data, id: initialValues?.id });
+    const formData = new FormData(e.currentTarget);
+
+    const data: App.CategorySaveParams = {
+      name: formData.get("name") as string,
+      sort: Number(formData.get("sort")),
+      id: initialValues?.id,
+    };
+    run(data);
   };
 
   useEffect(() => {

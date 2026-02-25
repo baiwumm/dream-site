@@ -50,7 +50,9 @@ declare namespace App {
   }>;
 
   /** @description: 网站列表表单 */
-  type WebsiteSaveParams = Omit<Website, keyof Columns> & Pick<Website, 'id' | 'sort'>;
+  type WebsiteSaveParams = Omit<Website, keyof Columns | 'visitCount' | 'category'> & Pick<Website, 'sort'> & {
+    id?: string;
+  };
 
   /** @description: 网站分类 */
   type Category = Columns & {
@@ -62,5 +64,7 @@ declare namespace App {
   type CategoryQueryParams = PaginatingParams & Partial<Pick<Category, 'name'>>;
 
   /** @description: 网站分类表单 */
-  type CategorySaveParams = Pick<Category, 'name', 'sort'>;
+  type CategorySaveParams = Pick<Category, 'name' | 'sort'> & {
+    id?: string;
+  };
 }

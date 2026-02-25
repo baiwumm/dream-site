@@ -137,20 +137,30 @@ const SaveModal: FC<SaveModalProps> = ({
   // 表单提交
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data: Partial<App.CategorySaveParams> = {};
-    formData.forEach((value, key) => {
-      if (key === 'sort') {
-        data[key] = Number(value);
-      }
-      else {
-        data[key] = value;
-      }
-    });
-    SwitchOptions.map(item => item.name).forEach(key => {
-      data[key] = data[key] === 'on';
-    })
+    const formData = new FormData(e.currentTarget);
+
+    const data: App.WebsiteSaveParams = {
+      id: initialValues?.id,
+
+      // string
+      category_id: formData.get("category_id") as string,
+      name: formData.get("name") as string,
+      desc: (formData.get("desc") as string) ?? "",
+      url: formData.get("url") as string,
+      logo: formData.get("logo") as string,
+      logoAccent: formData.get("logoAccent") as string,
+
+      // number
+      sort: Number(formData.get("sort")),
+
+      // boolean（checkbox 选中才会存在）
+      pinned: formData.has("pinned"),
+      vpn: formData.has("vpn"),
+      recommend: formData.has("recommend"),
+      commonlyUsed: formData.has("commonlyUsed"),
+
+      tags
+    };
     // 新增必须上传 Logo
     if (!initialValues && !logoFile) {
       toast.danger("请上传网站logo", {
