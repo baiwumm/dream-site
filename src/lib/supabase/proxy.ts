@@ -7,7 +7,7 @@ export async function updateSession(request: NextRequest) {
   })
   const path = request.nextUrl.pathname;
   // 首页或者 Api 接口直接放行
-  if (path === '/' || path.startsWith('/api/')) {
+  if (path === '/') {
     return supabaseResponse
   }
 
