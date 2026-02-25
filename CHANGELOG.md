@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.4.11](https://github.com/baiwumm/dream-site/compare/3.4.10...3.4.11) (2026-02-25)
+
+### ✨ Features | 新功能
+
+* 修改 apple 图标 ([5da1060](https://github.com/baiwumm/dream-site/commit/5da1060c2ae606b6e4ef3de7b1290f42dfd892ab))
+* TS 类型和细节优化 ([91e77b9](https://github.com/baiwumm/dream-site/commit/91e77b9f10258327a45781fcff8a071df62b2f8a))
+
+### 💄 Styles | 风格
+
+* import 排序 ([6091784](https://github.com/baiwumm/dream-site/commit/609178402affe93e83b7074f3e9a8bc63b550709))
+
+### ⚡ Performance Improvements | 性能优化
+
+* **proxy:** 中间件过滤 api 接口 ([761eaec](https://github.com/baiwumm/dream-site/commit/761eaec469080cc445fad32853508b36b02856cc))
+
 ## [3.4.10](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.10) (2026-02-07)
 
 ### 🐛 Bug Fixes | Bug 修复
