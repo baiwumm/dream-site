@@ -117,6 +117,11 @@
     animation: border-unspin 0.5s ease-out forwards;
   }
 
+  .bprogress .spinner {
+    width:auto !important;
+    height:auto !important;
+  }
+
   ::-webkit-scrollbar {
     width: 2px;
   }

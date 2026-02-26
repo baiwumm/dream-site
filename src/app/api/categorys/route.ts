@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
       pageIndex < 0 ||
       pageSize <= 0
     ) {
-      return responseMessage(null, '参数错误', RESPONSE.ERROR)
+      return NextResponse.json(responseMessage(null, '参数错误', RESPONSE.ERROR))
     }
 
     // 计算分页
@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(null, error.message, RESPONSE.ERROR)
+      return NextResponse.json(responseMessage(null, error.message, RESPONSE.ERROR))
     }
 
     if (data) {

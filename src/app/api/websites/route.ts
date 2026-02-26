@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:08:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-29 14:46:08
+ * @LastEditTime: 2026-02-26 09:31:06
  * @Description: 网站列表模块
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
       pageIndex < 0 ||
       pageSize <= 0
     ) {
-      return responseMessage(null, '参数错误', RESPONSE.ERROR)
+      return NextResponse.json(responseMessage(null, '参数错误', RESPONSE.ERROR))
     }
 
     // 计算分页
@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(null, error.message, RESPONSE.ERROR)
+      return NextResponse.json(responseMessage(null, error.message, RESPONSE.ERROR))
     }
 
     return NextResponse.json(responseMessage({
