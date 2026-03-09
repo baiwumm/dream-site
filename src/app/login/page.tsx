@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-03 18:07:28
+ * @LastEditTime: 2026-03-09 16:13:20
  * @Description: 登录页
  */
 "use client";
@@ -130,7 +130,7 @@ export default function Login() {
             />
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-              <p className="text-sm text-muted">梦开始的地方，马上登录！</p>
+              <Description>梦开始的地方，马上登录！</Description>
             </div>
           </div>
         </Card.Header>
@@ -205,15 +205,15 @@ export default function Login() {
           </Form>
           <div className="flex justify-end items-center w-full mt-2">
             {isSignup ? (
-              <p className="text-sm text-center">
+              <Description>
                 已经有账户？
-                <Link className="underline-offset-4 hover:underline" onClick={() => setIsSignup(false)}>立即登录</Link>
-              </p>
+                <Link className="underline-offset-4 hover:underline text-xs" onClick={() => setIsSignup(false)}>立即登录</Link>
+              </Description>
             ) : (
-              <p className="text-sm text-center">
+              <Description>
                 需要创建一个账户？
-                <Link className="underline-offset-4 hover:underline" onClick={() => setIsSignup(true)}>立即注册</Link>
-              </p>
+                <Link className="underline-offset-4 hover:underline text-xs" onClick={() => setIsSignup(true)}>立即注册</Link>
+              </Description>
             )}
           </div>
         </Card.Content>

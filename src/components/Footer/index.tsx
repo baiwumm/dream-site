@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 16:15:57
+ * @LastEditTime: 2026-03-09 15:58:36
  * @Description: 底部版权
  */
-import { Separator } from "@heroui/react";
+import { Description, Separator } from "@heroui/react";
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { type FC, type ReactNode } from 'react';
@@ -59,18 +59,13 @@ const Footer: FC = () => {
               <StatusLabel>服务状态正常</StatusLabel>
             </Status>
           </div>
-          <p className="text-center text-xs text-muted">
+          <Description>
             &copy; {dayjs().year()} {" "}
-            <a
-              href={pkg.author.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-accent transition-colors"
-            >
+            <a href={pkg.author.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
               {process.env.NEXT_PUBLIC_COPYRIGHT}
             </a>
             . All rights reserved.
-          </p>
+          </Description>
         </div>
         <div className="flex flex-col md:flex-row gap-2 items-center text-xs text-muted">
           {IcpLinks.map(({ image, url, label }) => (

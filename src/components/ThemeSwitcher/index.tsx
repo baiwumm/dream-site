@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-13 17:03:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-09 14:13:03
+ * @LastEditTime: 2026-03-09 15:52:07
  * @Description: 主题切换
  */
 "use client";
@@ -12,48 +12,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from 'next-themes';
 import { type FC } from "react";
 
-import { THEME_MODE, TRANSITION_DIRECTION } from '@/enums';
+import { THEME_MODE } from '@/enums';
 
 const ThemeSwitcher: FC = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === THEME_MODE.DARK;
-
-  // 是否支持 View Transition
-  const enableTransitions = () =>
-    "startViewTransition" in document &&
-    window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-
-  // View Transition + 主题切换
-  async function toggleDark() {
-    const root = document.documentElement;
-
-    // 不支持动画，直接切
-    if (!enableTransitions()) {
-      const next = isDark ? THEME_MODE.LIGHT : THEME_MODE.DARK;
-      setTheme(next);
-      return;
-    }
-
-    // ⚠️ 关键：同步修改 DOM，View Transition 才能捕获
-    await document.startViewTransition(() => {
-      const next = root.classList.contains(THEME_MODE.DARK) ? THEME_MODE.LIGHT : THEME_MODE.DARK;
-      setTheme(next); // React 状态同步 UI
-      return next;
-    }).ready;
-
-    // 自定义过渡动画
-    document.documentElement.animate(
-      {
-        clipPath: TRANSITION_DIRECTION.raw(TRANSITION_DIRECTION.LTR).clipPath as unknown as string[],
-      },
-      {
-        duration: 700,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    );
-  }
-
   return (
     <>
       <Tooltip>
@@ -62,7 +25,7 @@ const ThemeSwitcher: FC = () => {
           variant="outline"
           size='sm'
           className="size-8 rounded-full"
-          onPress={toggleDark}
+          onPress={() => setTheme(theme === THEME_MODE.DARK ? THEME_MODE.LIGHT : THEME_MODE.DARK)}
         >
           <AnimatePresence mode="wait" initial={false}>
             {isDark ? (

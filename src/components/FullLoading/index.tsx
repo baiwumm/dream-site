@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 14:14:54
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-27 10:34:08
+ * @LastEditTime: 2026-03-09 15:55:15
  * @Description: 全局 Loading
  */
 "use client"
-import { Spinner } from "@heroui/react";
+import { Description, Spinner } from "@heroui/react";
 import { type FC, type ReactNode, useEffect, useState } from 'react';
 
 type FullLoadingProps = {
@@ -27,7 +27,7 @@ const FullLoading: FC<FullLoadingProps> = ({ children }) => {
       <div className="fixed inset-0 flex w-screen h-screen justify-center items-center flex-col z-999 overflow-hidden bg-accent-foreground">
         <div className="flex flex-col items-center gap-2">
           <Spinner />
-          <span className="text-xs text-muted font-bold">加载中,请稍后...</span>
+          <Description>加载中,请稍后...</Description>
         </div>
       </div>
     );

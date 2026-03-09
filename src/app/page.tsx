@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-08 16:01:12
+ * @LastEditTime: 2026-03-09 15:53:54
  * @Description: 首页
  */
 "use client";
-import { Spinner } from '@heroui/react';
+import { Description, Spinner } from '@heroui/react';
 import { useRequest } from 'ahooks';
 import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
@@ -19,40 +19,17 @@ import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 import { get } from '@/lib/utils';
 import { getCategorysList } from '@/services/categorys';
 
-// 预计算 logoColor 的函数
-const computeLogoColor = (logoAccent: string | null | undefined): string => {
-  if (logoAccent) {
-    // 安全处理 rgba -> rgb + opacity
-    return logoAccent
-      .replace(/^rgba\(/, 'rgb(')
-      .replace(/\)$/, ', 0.85)');
-  }
-
-  return 'var(--computed-logo-color-fallback)';
-};
-
 export default function Home() {
   const supabase = getSupabaseBrowserClient();
   const router = useRouter();
 
-  const { data = [], loading, error, run } = useRequest(
+  const { data = [] as App.Category[], loading, error, run } = useRequest(
     async (params) =>
       get(await getCategorysList(params), 'data.list', []),
     {
       defaultParams: [{ pageIndex: 0, pageSize: 999 }],
     }
   );
-
-  // 用 useMemo 预处理数据，避免每次 render 重新计算
-  const processedData = useMemo(() => {
-    return (data as App.Category[]).map((category) => ({
-      ...category,
-      websites: category.websites?.map((site) => ({
-        ...site,
-        computedLogoColor: computeLogoColor(site.logoAccent),
-      })),
-    }));
-  }, [data]);
 
   const reload = () => {
     run({ pageIndex: 0, pageSize: 999 });
@@ -73,7 +50,7 @@ export default function Home() {
       <div className="w-full flex-1 flex justify-center items-center">
         <div className="flex flex-col gap-2 items-center">
           <Spinner />
-          <span className="text-xs text-muted font-bold">正在加载，请稍后...</span>
+          <Description>正在加载，请稍后...</Description>
         </div>
       </div>
     );
@@ -94,7 +71,7 @@ export default function Home() {
     );
   }
 
-  if (!processedData.length) {
+  if (!data?.length) {
     return (
       <div className="w-full flex-1 flex justify-center items-center">
         <AlertContent
@@ -110,7 +87,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      {processedData.map(({ id, name, websites }, index) => {
+      {data.map(({ id, name, websites }, index) => {
         return (
           <BlurFade key={id} inView delay={index * 0.04} className="flex flex-col gap-2">
             <h1 className="text-xl font-black">{name}</h1>
@@ -130,11 +107,7 @@ export default function Home() {
                     }}
                   >
                     {/* 👇 传入预计算好的颜色 */}
-                    <WebsiteCard
-                      data={item}
-                      logoColor={item.computedLogoColor!}
-                      handleClick={handleClick}
-                    />
+                    <WebsiteCard data={item} handleClick={handleClick} />
                   </motion.div>
                 ))}
               </div>
