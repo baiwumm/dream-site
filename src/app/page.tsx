@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-09 15:53:54
+ * @LastEditTime: 2026-03-09 17:11:14
  * @Description: 首页
  */
 "use client";
-import { Description, Spinner } from '@heroui/react';
 import { useRequest } from 'ahooks';
 import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
@@ -14,6 +13,7 @@ import { useCallback } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
+import LoadingContent from '@/components/LoadingContent';
 import WebsiteCard from '@/components/WebSiteCard';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 import { get } from '@/lib/utils';
@@ -48,10 +48,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="w-full flex-1 flex justify-center items-center">
-        <div className="flex flex-col gap-2 items-center">
-          <Spinner />
-          <Description>正在加载，请稍后...</Description>
-        </div>
+        <LoadingContent text='正在加载，请稍后...' />
       </div>
     );
   }
