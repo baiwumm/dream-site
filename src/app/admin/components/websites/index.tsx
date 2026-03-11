@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 18:08:20
+ * @LastEditTime: 2026-03-11 14:09:27
  * @Description: 网站列表
  */
 "use client"
@@ -18,7 +18,7 @@ import {
   type VisibilityState
 } from '@tanstack/react-table';
 import { useRequest, useSetState } from 'ahooks';
-import { type FC, useEffect, useState } from 'react';
+import { type FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table';
@@ -89,11 +89,11 @@ const Websites: FC = () => {
   }
 
   // 编辑回调
-  const handleEdit = (row: App.Website) => {
+  const handleEdit = useCallback((row: App.Website) => {
     setEditData(row)
     setTags(row?.tags ?? [])
     saveModalState.open()
-  }
+  }, [saveModalState])
 
   // 删除网站
   const { loading: delLoading, run: fetchDelWebsite } = useRequest(delWebsite, {
@@ -111,10 +111,10 @@ const Websites: FC = () => {
   });
 
   // 删除回调
-  const handleDel = (row: App.Website) => {
+  const handleDel = useCallback((row: App.Website) => {
     setEditData(row)
     delDialogState.open()
-  }
+  }, [delDialogState])
 
   // 确认删除回调
   const handleDelConfirm = () => {
@@ -124,7 +124,10 @@ const Websites: FC = () => {
   }
 
   // 列配置项
-  const columns = getColumns({ handleEdit, handleDel, page: get(data, 'page', 0), pageSize: get(data, 'pageSize', 0) });
+  const columns = useMemo(
+    () => getColumns({ handleEdit, handleDel, page: get(data, 'page', 0), pageSize: get(data, 'pageSize', 0) }),
+    [handleEdit, handleDel, data]
+  )
 
   // 表格实例
   const table = useReactTable({
@@ -179,7 +182,7 @@ const Websites: FC = () => {
           saveModalState={saveModalState}
         />
         <Card.Content>
-          <DataTable table={table} colSpan={columns.length} loading={loading} />
+          <DataTable table={table} loading={loading} />
         </Card.Content>
         <Card.Footer>
           <DataTablePagination table={table} total={total || 0} />

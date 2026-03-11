@@ -1,6 +1,6 @@
 'use client';
 import { Picture, Xmark } from '@gravity-ui/icons';
-import { Alert, Button, cn } from "@heroui/react";
+import { Alert, Button, cn, Description } from "@heroui/react";
 import Image from "next/image";
 import { type FC, useEffect, useState } from 'react';
 
@@ -89,9 +89,9 @@ const LogoUpload: FC<LogoUploadProps> = ({
       </div>
 
       {/* Upload Instructions */}
-      <div className="text-center text-xs text-muted-foreground">
+      <Description className="text-center">
         请上传小于 {formatBytes(maxSize)} 的图片
-      </div>
+      </Description>
 
       {/* Error Messages */}
       {errors.length > 0 && (

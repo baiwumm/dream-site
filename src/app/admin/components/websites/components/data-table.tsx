@@ -5,72 +5,68 @@
  * @LastEditTime: 2026-01-28 17:30:47
  * @Description: 数据表格
  */
-import { Spinner } from "@heroui/react";
+import { ChevronUp } from '@gravity-ui/icons';
+import { cn, Table } from "@heroui/react";
 import { flexRender, type Table as TableInstance } from '@tanstack/react-table';
 import { type FC } from 'react';
 
 import EmptyContent from '@/components/EmptyContent';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import TableLoading from '@/components/TableLoading';
+import { ADMIN_TABS } from '@/enums';
 
 type DataTableProps = {
   table: TableInstance<App.Website>;
-  colSpan: number;
   loading: boolean;
 }
 
-const DataTable: FC<DataTableProps> = ({ table, colSpan, loading = false }) => {
+const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
   return (
-    <Table className="border border-default">
-      <TableHeader>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
-            {headerGroup.headers.map((header) => {
-              return (
-                <TableHead key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                </TableHead>
-              )
-            })}
-          </TableRow>
-        ))}
-      </TableHeader>
-      <TableBody className="relative">
-        {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() && "selected"}
-            >
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
+    <div className="relative">
+      <Table>
+        <Table.ScrollContainer>
+          <Table.Content aria-label={ADMIN_TABS.label(ADMIN_TABS.WEBSITES)}>
+            <Table.Header>
+              {table.getHeaderGroups()[0]!.headers.map((header) => {
+                const sortDirection = header.column.getIsSorted()
+                return (
+                  <Table.Column
+                    key={header.id}
+                    allowsSorting={header.column.getCanSort()}
+                    id={header.id}
+                    isRowHeader
+                    onClick={header.column.getToggleSortingHandler()}
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                      {sortDirection && (
+                        <ChevronUp
+                          className={cn(
+                            "size-3 transform transition-transform duration-100 ease-out",
+                            sortDirection === "desc" ? "rotate-180" : "",
+                          )}
+                        />
+                      )}
+                    </div>
+                  </Table.Column>
+                )
+              })}
+            </Table.Header>
+            <Table.Body renderEmptyState={() => <EmptyContent />}>
+              {table.getRowModel().rows.map((row) => (
+                <Table.Row key={row.id} id={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <Table.Cell key={cell.id} className="text-center">
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
               ))}
-            </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell colSpan={colSpan}>
-              <EmptyContent />
-            </TableCell>
-          </TableRow>
-        )}
-        {loading ? (
-          <TableRow className="absolute inset-0 z-10">
-            <TableCell colSpan={colSpan} className="p-0">
-              <div className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center">
-                <Spinner />
-              </div>
-            </TableCell>
-          </TableRow>
-        ) : null}
-      </TableBody>
-    </Table>
+            </Table.Body>
+          </Table.Content>
+        </Table.ScrollContainer>
+      </Table>
+      <TableLoading loading={loading} />
+    </div>
   )
 }
 export default DataTable;
