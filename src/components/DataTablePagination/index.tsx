@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:23:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 13:36:38
+ * @LastEditTime: 2026-03-11 14:16:03
  * @Description: 渲染分页
  */
-import { ChevronLeft, ChevronRight } from '@gravity-ui/icons';
-import { Button, ListBox, Select } from "@heroui/react";
+import { Description, ListBox, Pagination, Select } from "@heroui/react";
 import { Table } from '@tanstack/react-table';
 
 type DataTablePaginationProps<TData> = {
@@ -44,9 +43,9 @@ function DataTablePagination<TData>({ table, total = 0 }: DataTablePaginationPro
 
   const pages = getPageNumbers(pageIndex, pageCount);
   return (
-    <div className="w-full grid grid-cols-[auto_1fr_auto] items-center">
+    <div className="w-full grid grid-cols-3 items-center">
       {/* 条数 */}
-      <div className="justify-self-start flex items-center gap-1 text-sm text-muted">
+      <Description className="justify-self-start flex items-center gap-1">
         <span>每页条数:</span>
         <Select
           aria-label="分页选择框"
@@ -74,51 +73,37 @@ function DataTablePagination<TData>({ table, total = 0 }: DataTablePaginationPro
             </ListBox>
           </Select.Popover>
         </Select>
+      </Description>
+      <div className="justify-self-center">
+        <Pagination size='sm'>
+          <Pagination.Content>
+            <Pagination.Item>
+              <Pagination.Previous isDisabled={!table.getCanPreviousPage()} onPress={() => table.previousPage()}>
+                <Pagination.PreviousIcon />
+              </Pagination.Previous>
+            </Pagination.Item>
+            {pages.map((p, i) =>
+              p === "..." ? (
+                <Pagination.Item key={`ellipsis-${i}`}>
+                  <Pagination.Ellipsis />
+                </Pagination.Item>
+              ) : (
+                <Pagination.Item key={p}>
+                  <Pagination.Link isActive={p === pageIndex} onPress={() => table.setPageIndex(p)}>
+                    {p + 1}
+                  </Pagination.Link>
+                </Pagination.Item>
+              ),
+            )}
+            <Pagination.Item>
+              <Pagination.Next isDisabled={!table.getCanNextPage()} onPress={() => table.nextPage()}>
+                <Pagination.NextIcon />
+              </Pagination.Next>
+            </Pagination.Item>
+          </Pagination.Content>
+        </Pagination>
       </div>
-      <div className="flex items-center justify-center gap-1 justify-self-center">
-        {/* 上一页 */}
-        <Button
-          variant="ghost"
-          size="sm"
-          isIconOnly
-          onClick={() => table.previousPage()}
-          isDisabled={!table.getCanPreviousPage()}
-          className="rounded-full"
-        >
-          <ChevronLeft />
-        </Button>
-        {/* 中间分页 */}
-        {pages.map((page, i) =>
-          page === "..." ? (
-            <span key={i} className="px-2 text-muted-foreground">
-              ...
-            </span>
-          ) : (
-            <Button
-              key={page}
-              size="sm"
-              variant={page === pageIndex ? "primary" : "ghost"}
-              onClick={() => table.setPageIndex(page)}
-              className="rounded-full"
-            >
-              {page + 1}
-            </Button>
-          )
-        )}
-        {/* 下一页 */}
-        <Button
-          variant="ghost"
-          size="sm"
-          isIconOnly
-          onClick={() => table.nextPage()}
-          isDisabled={!table.getCanNextPage()}
-          className="rounded-full"
-        >
-          <ChevronRight />
-        </Button>
-      </div>
-      {/* 总条数 */}
-      <div className="justify-self-end text-sm text-muted">共 {total} 条数据</div>
+      <Description className="justify-self-end">共 {total} 条数据</Description>
     </div>
   )
 }
