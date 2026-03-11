@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.5.1](https://github.com/baiwumm/dream-site/compare/3.5.0...3.5.1) (2026-03-11)
+
+### 💄 Styles | 风格
+
+* **FullLoading:** 样式优化 ([ecb22af](https://github.com/baiwumm/dream-site/commit/ecb22affbf94dbc0aa8c7f9fbae6fdb46cf7b3ff))
+
 ## [3.5.0](https://github.com/baiwumm/dream-site/compare/3.4.11...3.5.0) (2026-03-11)
 
 ### ✨ Features | 新功能
