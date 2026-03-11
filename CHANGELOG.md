@@ -1,5 +1,32 @@
 # Changelog
 
+## [3.5.0](https://github.com/baiwumm/dream-site/compare/3.4.11...3.5.0) (2026-03-11)
+
+### ✨ Features | 新功能
+
+* 更新 demo 图 ([bd5b6ed](https://github.com/baiwumm/dream-site/commit/bd5b6ed099391dfc7a8a0773d03bc9ebb2844556))
+* **DataTablePagination:** 分页使用 HeroUI 的 Pagination 组件 ([00fb216](https://github.com/baiwumm/dream-site/commit/00fb216af1c303ad4d6c54d2d3f9175df6666e49))
+
+### 💄 Styles | 风格
+
+* **UserAvatar:** 样式调整 ([42dc85d](https://github.com/baiwumm/dream-site/commit/42dc85de5667998154f269001c5545de998e68d0))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 禁止 Image 图片优化 ([c327ade](https://github.com/baiwumm/dream-site/commit/c327ade445de64035d53ba21a6b8618ff7b3b9e0))
+* 删除 AppSettings 组件，保持页面功能简洁 ([69449d8](https://github.com/baiwumm/dream-site/commit/69449d8390ac1866edceee25e5e2027a4d43215b))
+* 删除没用的代码 ([01ed13b](https://github.com/baiwumm/dream-site/commit/01ed13b4443592c860f61b3425679e559b423bb7))
+* 统一项目 Loading 状态 ([bec520d](https://github.com/baiwumm/dream-site/commit/bec520dd0c3352c607fab27c6e0038cf0a9d7eff))
+* 细节调整优化 ([06e4042](https://github.com/baiwumm/dream-site/commit/06e40420cf4c6ee4331efe9decf9afe6d30af8a6))
+* 细节优化 ([68f3b2b](https://github.com/baiwumm/dream-site/commit/68f3b2b6981108f1ffddb3bf01148d155cea6695))
+* **Categorys:** 优化代码逻辑 ([cd95156](https://github.com/baiwumm/dream-site/commit/cd95156303d1206cc7698e6b64193f918ebbb402))
+* **Websites:** 优化代码逻辑 ([5c54011](https://github.com/baiwumm/dream-site/commit/5c54011b014a60ec889ef1d4bc5e74b2c7c5839e))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新 heroui 版本 ([cb47b43](https://github.com/baiwumm/dream-site/commit/cb47b4366656d6884a47ae97131a98604b7a52ad))
+* 移除 zustand 包 ([0951d47](https://github.com/baiwumm/dream-site/commit/0951d4703c2c3c70c5d28b10c6d5911b27219387))
+
 ## [3.4.11](https://github.com/baiwumm/dream-site/compare/3.4.10...3.4.11) (2026-02-25)
 
 ### ✨ Features | 新功能
