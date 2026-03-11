@@ -6,13 +6,14 @@
  * @Description: 空数据
  */
 import { Tray } from '@gravity-ui/icons';
+import { Description } from "@heroui/react";
 import { type FC } from 'react';
 
 const EmptyContent: FC = () => {
   return (
-    <div className="flex flex-col gap-2 justify-center items-center text-muted py-5">
+    <div className="flex flex-col gap-2 justify-center items-center text-muted py-20">
       <Tray className="size-10" />
-      <span className="text-xs">暂无数据</span>
+      <Description>暂无数据</Description>
     </div>
   )
 }

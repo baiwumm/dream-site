@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 18:07:58
+ * @LastEditTime: 2026-03-11 14:01:08
  * @Description: 网站分类
  */
 "use client"
@@ -18,7 +18,7 @@ import {
   type VisibilityState
 } from '@tanstack/react-table';
 import { useRequest, useSetState } from 'ahooks';
-import { type FC, useEffect, useState } from 'react';
+import { type FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table';
@@ -74,10 +74,10 @@ const Categorys: FC = () => {
   }
 
   // 编辑回调
-  const handleEdit = (row: App.Category) => {
+  const handleEdit = useCallback((row: App.Category) => {
     setEditData(row)
     saveModalState.open()
-  }
+  }, [saveModalState])
 
   // 删除分类
   const { loading: delLoading, run: fetchDelCategory } = useRequest(delCategory, {
@@ -95,7 +95,7 @@ const Categorys: FC = () => {
   });
 
   // 删除回调
-  const handleDel = (row: App.Category) => {
+  const handleDel = useCallback((row: App.Category) => {
     if (row?.websites?.length) {
       toast.danger('该分类下存在关联网站，无法直接删除.', {
         indicator: <CircleXmarkFill />,
@@ -105,7 +105,7 @@ const Categorys: FC = () => {
     }
     setEditData(row)
     delDialogState.open()
-  }
+  }, [delDialogState])
 
   // 确认删除回调
   const handleDelConfirm = () => {
@@ -115,7 +115,10 @@ const Categorys: FC = () => {
   }
 
   // 列配置项
-  const columns = getColumns({ handleEdit, handleDel, page: get(data, 'page', 0), pageSize: get(data, 'pageSize', 0) });
+  const columns = useMemo(
+    () => getColumns({ handleEdit, handleDel, page: get(data, 'page', 0), pageSize: get(data, 'pageSize', 0) }),
+    [handleEdit, handleDel, data]
+  );
 
   // 表格实例
   const table = useReactTable({
@@ -169,7 +172,7 @@ const Categorys: FC = () => {
           saveModalState={saveModalState}
         />
         <Card.Content>
-          <DataTable table={table} colSpan={columns.length} loading={loading} />
+          <DataTable table={table} loading={loading} />
         </Card.Content>
         <Card.Footer>
           <DataTablePagination table={table} total={total || 0} />
