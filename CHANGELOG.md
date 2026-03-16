@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.5.2](https://github.com/baiwumm/dream-site/compare/3.5.1...3.5.2) (2026-03-16)
+
+### ⚡ Performance Improvements | 性能优化
+
+* 删除 ProgressCircle 组件 ([8287c5f](https://github.com/baiwumm/dream-site/commit/8287c5f7994eb938e5b4baa5629c80fed27737ef))
+* **BackTop:** 使用 Hero UI 的 ProgressCircle 组件，优化卡顿 ([54f1a4d](https://github.com/baiwumm/dream-site/commit/54f1a4d33f6dc121c62c15d3f3de52f259ab1475))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新 Hero UI 版本 ([0f442ce](https://github.com/baiwumm/dream-site/commit/0f442ce5f076af0bf9a78b7ba33c48eab3cdb758))
+
 ## [3.5.1](https://github.com/baiwumm/dream-site/compare/3.5.0...3.5.1) (2026-03-11)
 
 ### 💄 Styles | 风格
