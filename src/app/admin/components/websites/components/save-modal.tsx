@@ -14,13 +14,14 @@ import {
   Spinner,
   Surface,
   Switch,
+  SwitchGroup,
   TextArea,
   TextField,
   toast,
   type UseOverlayStateReturn
 } from "@heroui/react";
 import { useRequest } from "ahooks";
-import { type Dispatch, type FC, type FormEvent, Fragment, type SetStateAction, useEffect, useRef } from 'react';
+import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef } from 'react';
 
 import LogoUpload from './logo-upload';
 
@@ -147,7 +148,7 @@ const SaveModal: FC<SaveModalProps> = ({
       name: formData.get("name") as string,
       desc: (formData.get("desc") as string) ?? "",
       url: formData.get("url") as string,
-      logo: formData.get("logo") as string,
+      logo: (logoFile ? null : initialValues?.logo) ?? null,
       logoAccent: formData.get("logoAccent") as string,
 
       // number
@@ -261,12 +262,11 @@ const SaveModal: FC<SaveModalProps> = ({
                 </TextField>
                 <div className="flex flex-col gap-1">
                   <Label htmlFor="tags">网站属性</Label>
-                  <div className="grid grid-cols-4 items-center gap-4">
+                  <SwitchGroup className="overflow-x-auto" orientation="horizontal">
                     {SwitchOptions.map(({ name, label }) => (
                       <Switch key={name} name={name} defaultSelected={get(initialValues, name, false)} value="on">
                         {({ isSelected }) => (
-                          <>
-                            <Label className="text-sm">{label}</Label>
+                          <Switch.Content>
                             <Switch.Control>
                               <Switch.Thumb>
                                 <Switch.Icon>
@@ -278,11 +278,12 @@ const SaveModal: FC<SaveModalProps> = ({
                                 </Switch.Icon>
                               </Switch.Thumb>
                             </Switch.Control>
-                          </>
+                            {label}
+                          </Switch.Content>
                         )}
                       </Switch>
                     ))}
-                  </div>
+                  </SwitchGroup>
                 </div>
                 <NumberField
                   isRequired

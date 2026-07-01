@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 15:44:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-11 13:39:15
+ * @LastEditTime: 2026-07-01 15:00:25
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -65,7 +65,7 @@ const UserAvatar: FC = () => {
       <Dropdown isOpen={open} onOpenChange={setOpen}>
         <Dropdown.Trigger>
           <Badge.Anchor>
-            <Avatar className="size-8">
+            <Avatar size="sm">
               <Avatar.Image alt="在线用户" src={avatar} />
               <Avatar.Fallback>
                 <Person />

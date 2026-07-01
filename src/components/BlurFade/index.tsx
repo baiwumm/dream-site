@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  AnimatePresence,
   motion,
   MotionProps,
   useInView,

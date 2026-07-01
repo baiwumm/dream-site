@@ -114,6 +114,7 @@ export const getColumns = ({
                 key={tag}
                 color="accent"
                 variant="soft"
+                size='sm'
                 className="rounded-full"
               >
                 {tag}
@@ -158,6 +159,7 @@ export const getColumns = ({
         cell: (info) => (
           <Switch isSelected={info.getValue()} isReadOnly>
             {({ isSelected }) => (
+               <Switch.Content>
               <Switch.Control>
                 <Switch.Thumb>
                   <Switch.Icon>
@@ -169,6 +171,7 @@ export const getColumns = ({
                   </Switch.Icon>
                 </Switch.Thumb>
               </Switch.Control>
+              </Switch.Content>
             )}
           </Switch>
         )
