@@ -5,7 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import Provider from './Provider';
 
 import "./globals.css";
-import { GoogleUtilities, MicrosoftClarity, UmamiAnalytics } from '@/components/Analytics';
+import { GoogleUtilities, MicrosoftClarity } from '@/components/Analytics';
 import FullLoading from '@/components/FullLoading';
 import pkg from '#/package.json';
 
@@ -55,8 +55,6 @@ export default function RootLayout({
       <head>
         <meta name="version" content={pkg.version} />
         <link rel="stylesheet" href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css" />
-        {/* Umami 统计 */}
-        <UmamiAnalytics />
         {/* Google 统计 */}
         <GoogleUtilities />
         {/* 微软统计 */}

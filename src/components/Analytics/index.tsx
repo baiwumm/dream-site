@@ -2,20 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-21 09:16:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-03 10:22:24
+ * @LastEditTime: 2026-07-01 15:41:04
  * @Description: 统计代码
  */
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
-
-/**
- * @description: Umami 统计
- */
-export const UmamiAnalytics = () => {
-  return process.env.NEXT_PUBLIC_UMAMI_ID && process.env.NODE_ENV === 'production' ? (
-    <Script src="https://um.baiwumm.com/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID} />
-  ) : null
-}
 
 /**
  * @description: 谷歌统计
