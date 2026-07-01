@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.5.3](https://github.com/baiwumm/dream-site/compare/3.5.2...3.5.3) (2026-07-01)
+
+### ✨ Features | 新功能
+
+* 更新 demo 截图 ([f4a3e3d](https://github.com/baiwumm/dream-site/commit/f4a3e3d0dabb8e60078dd99a838290e64613b704))
+* 更新包版本 ([59d8539](https://github.com/baiwumm/dream-site/commit/59d8539de8beee30f7670e405c42913f031654a7))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复编辑时，Logo 保存丢失的问题 ([b5e8ff7](https://github.com/baiwumm/dream-site/commit/b5e8ff74ac2519ea5ec339997c80774069ffb98e))
+
+### 💄 Styles | 风格
+
+* 优化 UI 主题样式 ([31a95c3](https://github.com/baiwumm/dream-site/commit/31a95c3546ba68c8c6fc0d5e6dfd61b2a835d982))
+* **components:** 更新 Status 组件 variant 样式 ([c4a1b8d](https://github.com/baiwumm/dream-site/commit/c4a1b8dde2acaddfa59ff907fcb307352da435bd))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 删除 umami 统计代码 ([4ea16b7](https://github.com/baiwumm/dream-site/commit/4ea16b7127a762a6122ae76599deafc41f951a5b))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 更新 Hero UI 版本 ([9c2ffcb](https://github.com/baiwumm/dream-site/commit/9c2ffcbf5c11e030d786d394e1a654d75df283c2))
+* 降低 eslint 到 v9 版本 ([b354db1](https://github.com/baiwumm/dream-site/commit/b354db12be7494a139fa7d9f96cc443b3cd0e613))
+
 ## [3.5.2](https://github.com/baiwumm/dream-site/compare/3.5.1...3.5.2) (2026-03-16)
 
 ### ⚡ Performance Improvements | 性能优化
