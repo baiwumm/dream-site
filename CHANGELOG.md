@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.6.0](https://github.com/baiwumm/dream-site/compare/3.5.3...3.6.0) (2026-07-06)
+
+### ✨ Features | 新功能
+
+* 更新 demo 截图 ([c36c979](https://github.com/baiwumm/dream-site/commit/c36c9792111ef18fe0437162e122e77f6717a36a))
+* 优化首页  UI 样式排版 ([67be9ee](https://github.com/baiwumm/dream-site/commit/67be9ee2be9b0ac0c0d473a5a0c87e956f1e83d6))
+
+### 💄 Styles | 风格
+
+* 优化首页卡片加载样式 ([888d297](https://github.com/baiwumm/dream-site/commit/888d29739b313d265435ddd0cf805cebda5e825f))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 去掉 @bprogress/core 包 ([ad8dc4c](https://github.com/baiwumm/dream-site/commit/ad8dc4c3926736bd80faadeeed1875f5067b2254))
+* 去掉 query-string 包 ([a6b89dc](https://github.com/baiwumm/dream-site/commit/a6b89dc7df3a5524990dda25da1ba16140e7ea0b))
+
 ## [3.5.3](https://github.com/baiwumm/dream-site/compare/3.5.2...3.5.3) (2026-07-01)
 
 ### ✨ Features | 新功能
