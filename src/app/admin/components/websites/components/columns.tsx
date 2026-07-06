@@ -94,6 +94,7 @@ export const getColumns = ({
               width={32}
               height={32}
               alt={row.name}
+              className="rounded-lg"
             />
           </div>
         )

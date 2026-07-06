@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-01-28 14:01:47
+ * @LastEditTime: 2026-07-06 11:05:00
  * @Description: Axios 请求封装
  */
 import { CircleXmarkFill } from '@gravity-ui/icons';
 import { toast } from "@heroui/react";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import queryString from 'query-string';
 
 import { finishLoading, startLoading } from './nprogress';
 
@@ -78,16 +77,18 @@ type HttpRequestConfig = AxiosRequestConfig & {
   skipErrorHandler?: boolean;
 };
 export const httpRequest = {
-  get<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
-    const queryParams = queryString.stringify(data || {});
-    return request.get(queryParams ? `${url}?${queryParams}` : url, config);
+  get<T = unknown>(url: string, params?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
+    return request.get(url, {
+      ...config,
+      params,
+    });
   },
 
-  post<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
+  post<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.post(url, data, config);
   },
 
-  put<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
+  put<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.put(url, data, config);
   },
 
