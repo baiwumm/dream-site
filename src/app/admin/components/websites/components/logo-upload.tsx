@@ -80,7 +80,7 @@ const LogoUpload: FC<LogoUploadProps> = ({
             size="sm"
             variant="outline"
             onClick={handleRemove}
-            className="size-6 absolute end-0 top-0 rounded-full"
+            className="size-6 absolute inset-e-0 top-0 rounded-full"
             aria-label="删除 Logo"
           >
             <Xmark className="size-3.5" />

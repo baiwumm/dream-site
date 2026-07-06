@@ -62,38 +62,6 @@
 - Node.js ≥ 18.17 (推荐最新LTS版本)
 - pnpm (推荐) 或 npm/yarn
 
-### ⚙️ 环境变量
-
-在项目根目录创建 `.env`，示例：
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL="xxx"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="xxx"
-# 存储桶名称
-NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET="logos"
-
-# 项目名称
-NEXT_PUBLIC_APP_NAME = 'Dream Site'
-# 项目描述
-NEXT_PUBLIC_APP_DESC = '一个以极简设计呈现的现代化个人导航站，帮助你高效访问常用网站与优质资源。'
-# 项目关键词
-NEXT_PUBLIC_APP_KEYWORDS = 'Dream Site,极简导航,网站导航,个人站点,书签管理,资源导航,Next.js'
-# 项目域名
-NEXT_PUBLIC_APP_URL = 'https://dream.baiwumm.com'
-# 版权
-NEXT_PUBLIC_COPYRIGHT = '白雾茫茫丶'
-# 网站ICP
-NEXT_PUBLIC_ICP = '粤ICP备2023007649号'
-# 网站公网备案
-NEXT_PUBLIC_GUAN_ICP = '粤公网安备44030402006402号'
-# Umami ID
-NEXT_PUBLIC_UMAMI_ID = '87f94791-c0a5-424f-a3f4-e0171d82352b'
-# Google ID
-NEXT_PUBLIC_GOOGLE_ID = 'G-76RP7KMHMQ'
-# Clarity ID
-NEXT_PUBLIC_CLARITY_ID = 'mwtlsffbuj'
-```
-
 ### 🧑‍💻 本地开发
 ```bash
 # 克隆项目

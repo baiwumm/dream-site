@@ -32,7 +32,6 @@ declare namespace App {
     name: string; // 分类名称
     desc: string | null; // 描述
     logo: string | null; // logo
-    logoAccent: string | null;
     url: string; // 链接
     tags: string[] // 站点标签
     pinned: boolean // 是否置顶

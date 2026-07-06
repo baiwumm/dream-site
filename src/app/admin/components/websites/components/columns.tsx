@@ -110,15 +110,7 @@ export const getColumns = ({
         return (
           <div className="flex justify-center items-center gap-1">
             {tags.map(tag => (
-              <Chip
-                key={tag}
-                color="accent"
-                variant="soft"
-                size='sm'
-                className="rounded-full"
-              >
-                {tag}
-              </Chip>
+              <Chip key={tag} variant="soft" size='sm'>{tag}</Chip>
             ))}
           </div>
         )
@@ -129,7 +121,7 @@ export const getColumns = ({
       id: "category",
       header: "所属分类",
       cell: ({ row }) => (
-        <Chip color="success" variant="soft" className="rounded-full">
+        <Chip color="success" variant="soft">
           {row.original.category.name}
         </Chip>
       )
@@ -138,7 +130,7 @@ export const getColumns = ({
     columnHelper.accessor("visitCount", {
       header: "访问次数",
       cell: (info) => (
-        <Chip color="accent" variant="secondary" className="rounded-full">
+        <Chip color="accent" variant="secondary">
           {info.getValue()}
         </Chip>
       )
@@ -147,7 +139,7 @@ export const getColumns = ({
     columnHelper.accessor("sort", {
       header: "排序",
       cell: (info) => (
-        <Chip color="warning" variant="soft" className="rounded-full">
+        <Chip color="warning" variant="soft">
           {info.getValue()}
         </Chip>
       )
@@ -159,18 +151,18 @@ export const getColumns = ({
         cell: (info) => (
           <Switch isSelected={info.getValue()} isReadOnly>
             {({ isSelected }) => (
-               <Switch.Content>
-              <Switch.Control>
-                <Switch.Thumb>
-                  <Switch.Icon>
-                    {isSelected ? (
-                      <Check className="size-3 text-inherit opacity-100" />
-                    ) : (
-                      <Xmark className="size-3 text-inherit opacity-70" />
-                    )}
-                  </Switch.Icon>
-                </Switch.Thumb>
-              </Switch.Control>
+              <Switch.Content>
+                <Switch.Control>
+                  <Switch.Thumb>
+                    <Switch.Icon>
+                      {isSelected ? (
+                        <Check className="size-3 text-inherit opacity-100" />
+                      ) : (
+                        <Xmark className="size-3 text-inherit opacity-70" />
+                      )}
+                    </Switch.Icon>
+                  </Switch.Thumb>
+                </Switch.Control>
               </Switch.Content>
             )}
           </Switch>

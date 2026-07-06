@@ -149,7 +149,6 @@ const SaveModal: FC<SaveModalProps> = ({
       desc: (formData.get("desc") as string) ?? "",
       url: formData.get("url") as string,
       logo: (logoFile ? null : initialValues?.logo) ?? null,
-      logoAccent: formData.get("logoAccent") as string,
 
       // number
       sort: Number(formData.get("sort")),
@@ -250,11 +249,6 @@ const SaveModal: FC<SaveModalProps> = ({
                   <Label isRequired htmlFor="logo">Logo</Label>
                   <LogoUpload defaultAvatar={logoUrl} onFileChange={(value) => setLogoFile(value?.file || null)} />
                 </div>
-                <TextField name="logoAccent" defaultValue={initialValues?.logoAccent ?? ""}>
-                  <Label>Logo 主色</Label>
-                  <Input aria-label="Logo 主色" fullWidth variant="secondary" placeholder="请输入 Logo 主色" />
-                  <Description>用于显示边框动画，不设置默认主题色。</Description>
-                </TextField>
                 <TagInputs value={tags} onChange={setTags} />
                 <TextField name="desc" maxLength={500} defaultValue={initialValues?.desc ?? ""}>
                   <Label>网站描述</Label>

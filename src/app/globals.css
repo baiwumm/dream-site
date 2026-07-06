@@ -55,7 +55,6 @@
 
   /* Font Family */
   /* Make sure to load Inter font in your app */
-  --font-sans: var(--font-inter);
   --font-sans: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -96,40 +95,15 @@
   --warning-foreground: oklch(21.03% 0.0059 75.20);
 }
 
-@layer components {
-  .toast {
-    @apply rounded-xl shadow-lg;
-  }
-
-  .toast__content {
-    @apply gap-2;
-  }
-}
-
 @layer base {
-  /* 统一的边框动画样式 */
-  .animated-border {
-    @apply relative;
-  }
-
-  .animated-border::after {
-    @apply absolute inset-0 rounded-3xl border-2 opacity-0 pointer-events-none;
-    content: '';
-  }
-
-  /* 只在悬浮时显示进入动画 */
-  .animated-border:hover::after {
-    animation: border-spin 0.5s ease-out forwards;
-  }
-  
-  /* 只在悬浮后的元素显示退出动画 */
-  .animated-border.hovered:not(:hover)::after {
-    animation: border-unspin 0.5s ease-out forwards;
-  }
-
   .bprogress .spinner {
     width:auto !important;
     height:auto !important;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground)
   }
 
   ::-webkit-scrollbar {
@@ -194,34 +168,4 @@
 
 ::view-transition-old(blur-slide) {
   animation: var(--view-duration-exit) ease-in both blur-slide-exit;
-}
-
-@keyframes border-spin {
-  0% {
-    clip-path: inset(0 100% 100% 0);
-    opacity: 0;
-  }
-  50% {
-    clip-path: inset(0 0 100% 0);
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
-}
-
-@keyframes border-unspin {
-  0% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
-  50% {
-    clip-path: inset(100% 0 0 0);
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(100% 0 0 100%);
-    opacity: 0;
-  }
 }

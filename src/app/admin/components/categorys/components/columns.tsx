@@ -33,7 +33,7 @@ export const getColumns = ({
     columnHelper.accessor("name", {
       header: "分类名称",
       cell: ({ getValue }) => (
-        <Chip color="accent" variant="primary" className="rounded-full">
+        <Chip color="accent" variant="primary">
           {getValue()}
         </Chip>
       )
@@ -43,7 +43,7 @@ export const getColumns = ({
       id: "websites",
       header: "站点个数",
       cell: ({ row }) => (
-        <Chip color="success" variant="soft" className="rounded-full">
+        <Chip color="success" variant="soft">
           {row.original.websites?.length || 0}
         </Chip>
       )
@@ -52,7 +52,7 @@ export const getColumns = ({
     columnHelper.accessor("sort", {
       header: "排序",
       cell: ({ getValue }) => (
-        <Chip color="warning" variant="soft" className="rounded-full">
+        <Chip color="warning" variant="soft">
           {getValue()}
         </Chip>
       )

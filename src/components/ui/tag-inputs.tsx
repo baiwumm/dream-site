@@ -49,7 +49,7 @@ const TagInputs: FC<TagInputsProps> = ({ value = [], onChange }) => {
               animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
               exit={{ opacity: 0, filter: 'blur(2px)', y: 10 }}
               transition={{ duration: 0.2, }}
-              className="border border-default p-2 transition-all rounded-xl flex items-center gap-1 text-xs hover:bg-default"
+              className="border border-default p-2 transition-all rounded-full flex items-center gap-1 text-xs hover:bg-default"
             >
               <span>{tag}</span>
               <Xmark className="cursor-pointer relative z-10" onClick={() => removeTag(tag)} />
