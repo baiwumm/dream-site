@@ -20,7 +20,6 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@bprogress/core": "^1.3.4",
     "@bprogress/next": "^3.2.12",
     "@heroui/react": "3.2.1",
     "@heroui/styles": "3.2.1",

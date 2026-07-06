@@ -2,19 +2,30 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 10:30:33
+ * @LastEditTime: 2026-07-06 11:00:40
  * @Description: 上下文提供者
  */
 "use client"
-import { AppProgressProvider as ProgressProvider } from '@bprogress/next';
+import { AppProgressProvider as ProgressProvider, useProgress } from '@bprogress/next';
 import { Toast } from '@heroui/react';
 import { MotionConfig } from 'motion/react';
-import { type FC, type PropsWithChildren, ViewTransition } from 'react';
+import { type FC, type PropsWithChildren, useEffect, ViewTransition } from 'react';
 
 import BackTop from '@/components/BackTop';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { useAvailableHeight } from '@/hooks/use-available-height';
+import { setProgressInstance } from '@/lib/progress'
+
+function ProgressBridge() {
+  const progress = useProgress()
+
+  useEffect(() => {
+    setProgressInstance(progress)
+  }, [progress])
+
+  return null
+}
 
 const Providers: FC<PropsWithChildren> = ({ children }) => {
   // 计算主体内容高度
@@ -29,6 +40,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
         options={{ showSpinner: true }}
         shallowRouting
       >
+        <ProgressBridge />
         {/* 顶部 */}
         <Header />
         {/* 主体内容 */}
