@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 18:07:03
+ * @LastEditTime: 2026-07-06 18:16:53
  * @Description: 顶部导航
  */
 "use client"
@@ -38,7 +38,9 @@ const Header: FC = () => {
       {/* 左侧 Logo */}
       <Link href="/">
         <div className="flex gap-2 items-center justify-self-start">
-          <Image src='/logo.svg' width={30} height={30} alt="Logo" />
+          <div className="size-8 relative">
+            <Image src="/logo.svg" fill alt="Logo" />
+          </div>
           <ShimmeringText
             text={process.env.NEXT_PUBLIC_APP_NAME!}
             className="text-xl font-black"

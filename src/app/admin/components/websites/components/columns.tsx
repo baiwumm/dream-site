@@ -88,13 +88,12 @@ export const getColumns = ({
         if (!url) return "--"
 
         return (
-          <div className="flex justify-center">
+          <div className="flex justify-center size-8 relative">
             <Image
               src={generateLogoUrl(url)}
-              width={32}
-              height={32}
               alt={row.name}
-              className="rounded-lg"
+              fill
+              className="object-contain rounded-lg"
             />
           </div>
         )

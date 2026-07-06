@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 09:33:42
+ * @LastEditTime: 2026-07-06 18:15:57
  * @Description: 底部版权
  */
 import { Chip, cn, Description, Link, Separator } from "@heroui/react";
@@ -39,7 +39,9 @@ const Footer: FC = () => {
     <footer className="mx-auto w-full container! px-6 py-4 grid grid-cols-1 sm:grid-cols-3 items-center gap-2" id="footer">
       <div className="flex items-center justify-center gap-3 justify-self-center sm:justify-self-start">
         <div className="flex items-center gap-2">
-          <Image src='/logo.svg' width={20} height={20} alt="Logo" />
+          <div className="size-5 relative">
+            <Image src="/logo.svg" fill alt="Logo" />
+          </div>
           <ShimmeringText
             text={process.env.NEXT_PUBLIC_APP_NAME!}
             className="text-sm font-black"

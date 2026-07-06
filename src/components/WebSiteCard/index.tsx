@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-05 14:08:41
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 09:53:52
+ * @LastEditTime: 2026-07-06 18:11:30
  * @Description: 站点卡片
  */
 "use client";
@@ -33,7 +33,14 @@ const WebsiteCard: FC<WebsiteCardProps> = memo(function WebsiteCard({ data, hand
       <Card.Header>
         <Card.Title className="flex items-center gap-2">
           {logo ? (
-            <Image src={generateLogoUrl(logo)} width={40} height={40} alt={name} className='rounded-lg' />
+            <div className="size-10 relative">
+              <Image
+                src={generateLogoUrl(logo)}
+                alt={name}
+                fill
+                className="object-contain rounded-lg"
+              />
+            </div>
           ) : null}
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">

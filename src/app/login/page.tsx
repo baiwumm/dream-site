@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-09 16:13:20
+ * @LastEditTime: 2026-07-06 18:17:01
  * @Description: 登录页
  */
 "use client";
@@ -121,13 +121,9 @@ export default function Login() {
       <Card className="w-lg max-w-md shadow-md">
         <Card.Header>
           <div className="flex items-center gap-3">
-            <Image
-              src="/logo.svg"
-              width={42}
-              height={42}
-              alt="Logo"
-              className="rounded-lg"
-            />
+            <div className="size-10 relative">
+              <Image src="/logo.svg" fill alt="Logo" />
+            </div>
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
               <Description>梦开始的地方，马上登录！</Description>
