@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 10:08:48
+ * @LastEditTime: 2026-07-06 18:07:03
  * @Description: 顶部导航
  */
 "use client"
@@ -14,6 +14,7 @@ import { type FC, type ReactNode } from 'react';
 
 import { ShimmeringText } from '@/components/ShimmeringText';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import TimeAndLunar from '@/components/TimeAndLunar';
 import UserAvatar from '@/components/UserAvatar';
 import pkg from '#/package.json';
 
@@ -36,7 +37,7 @@ const Header: FC = () => {
     <header className="sticky top-0 p-4 z-20 backdrop-blur-sm container mx-auto flex justify-between items-center" id="header">
       {/* 左侧 Logo */}
       <Link href="/">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center justify-self-start">
           <Image src='/logo.svg' width={30} height={30} alt="Logo" />
           <ShimmeringText
             text={process.env.NEXT_PUBLIC_APP_NAME!}
@@ -48,8 +49,9 @@ const Header: FC = () => {
           />
         </div>
       </Link>
+      <TimeAndLunar />
       {/* 右侧区域 */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 justify-self-end">
         <ThemeSwitcher />
         {socials.map(({ name, url, icon }) => (
           <Tooltip key={name} delay={0}>
