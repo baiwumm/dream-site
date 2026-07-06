@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-09 17:11:14
+ * @LastEditTime: 2026-07-06 10:26:10
  * @Description: 首页
  */
 "use client";
@@ -13,7 +13,7 @@ import { useCallback } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
-import LoadingContent from '@/components/LoadingContent';
+import SkeletonContent from '@/components/SkeletonContent'
 import WebsiteCard from '@/components/WebSiteCard';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 import { get } from '@/lib/utils';
@@ -47,9 +47,7 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="w-full flex-1 flex justify-center items-center">
-        <LoadingContent text='正在加载，请稍后...' />
-      </div>
+      <SkeletonContent />
     );
   }
 
