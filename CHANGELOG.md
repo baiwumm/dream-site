@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.3](https://github.com/baiwumm/dream-site/compare/3.6.2...3.6.3) (2026-07-07)
+
+### ✨ Features | 新功能
+
+* 安装 react-easy-crop 包，新增 Logo 裁剪功能 ([779c476](https://github.com/baiwumm/dream-site/commit/779c476d26e6e6bb7587dafa12131293c1d54e2a))
+
 ## [3.6.2](https://github.com/baiwumm/dream-site/compare/3.6.1...3.6.2) (2026-07-07)
 
 ### ⚡ Performance Improvements | 性能优化
