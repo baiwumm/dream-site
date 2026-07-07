@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.4](https://github.com/baiwumm/dream-site/compare/3.6.3...3.6.4) (2026-07-07)
+
+### 💄 Styles | 风格
+
+* UI 调整 ([81ef0d0](https://github.com/baiwumm/dream-site/commit/81ef0d0185ec4cda66c0012ee60aa8b25cf15b3b))
+
 ## [3.6.3](https://github.com/baiwumm/dream-site/compare/3.6.2...3.6.3) (2026-07-07)
 
 ### ✨ Features | 新功能
