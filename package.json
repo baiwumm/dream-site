@@ -13,7 +13,7 @@
     "issues": "https://github.com/baiwumm/dream-site/issues"
   },
   "scripts": {
-    "dev": "next dev -p 5173",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
