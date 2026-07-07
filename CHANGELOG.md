@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.2](https://github.com/baiwumm/dream-site/compare/3.6.1...3.6.2) (2026-07-07)
+
+### ⚡ Performance Improvements | 性能优化
+
+* 样式调整，细节优化 ([3c32837](https://github.com/baiwumm/dream-site/commit/3c328376d252e338487fe4c7f08bb929fd9878e4))
+
 ## [3.6.1](https://github.com/baiwumm/dream-site/compare/3.6.0...3.6.1) (2026-07-07)
 
 ### ✨ Features | 新功能
