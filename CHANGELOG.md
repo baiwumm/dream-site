@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.6.1](https://github.com/baiwumm/dream-site/compare/3.6.0...3.6.1) (2026-07-07)
+
+### ✨ Features | 新功能
+
+* 更新 demo 截图 ([9ee34a8](https://github.com/baiwumm/dream-site/commit/9ee34a8ceed5bd9d522c11142e462436e3fe7064))
+* 新增 @number-flow/react 和 lunar-typescript 包 ([ebad052](https://github.com/baiwumm/dream-site/commit/ebad0528fbf150d00d51d057317c4e296d7b43f1))
+* **Header:** 顶部增加实时时间 ([37a2e46](https://github.com/baiwumm/dream-site/commit/37a2e46651b039c105e0f3e2755b1eb65bfe9d52))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化 Image 组件的警告 ([4fb5c2e](https://github.com/baiwumm/dream-site/commit/4fb5c2e5e4577765ce11e2794d5852a83b8af0d5))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 使用默认端口 ([5091a4f](https://github.com/baiwumm/dream-site/commit/5091a4fc932eec12e1f85fd04bc0e350bd8cce48))
+
 ## [3.6.0](https://github.com/baiwumm/dream-site/compare/3.5.3...3.6.0) (2026-07-06)
 
 ### ✨ Features | 新功能
