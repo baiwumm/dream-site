@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-13 17:03:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 09:28:09
+ * @LastEditTime: 2026-07-07 14:27:27
  * @Description: 主题切换
  */
 "use client";
@@ -14,6 +14,9 @@ import { type FC } from "react";
 
 import { THEME_MODE } from '@/enums';
 
+const MotionMoon = motion.create(Moon);
+const MotionSun = motion.create(Sun);
+
 const ThemeSwitcher: FC = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === THEME_MODE.DARK;
@@ -24,29 +27,26 @@ const ThemeSwitcher: FC = () => {
           aria-label="ThemeSwitcher"
           variant="ghost"
           size='sm'
+          isIconOnly
           onPress={() => setTheme(theme === THEME_MODE.DARK ? THEME_MODE.LIGHT : THEME_MODE.DARK)}
         >
           <AnimatePresence mode="wait" initial={false}>
             {isDark ? (
-              <motion.div
+              <MotionMoon
                 key="moon"
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.6 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-              >
-                <Moon />
-              </motion.div>
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              />
             ) : (
-              <motion.div
+              <MotionSun
                 key="sun"
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.6 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-              >
-                <Sun />
-              </motion.div>
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              />
             )}
           </AnimatePresence>
         </Button>

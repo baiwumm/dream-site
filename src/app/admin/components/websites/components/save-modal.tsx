@@ -2,7 +2,6 @@
 import { Check, CircleCheckFill, Globe, Xmark } from "@gravity-ui/icons";
 import {
   Button,
-  Description,
   FieldError,
   Form,
   Input,
@@ -21,7 +20,7 @@ import {
   type UseOverlayStateReturn
 } from "@heroui/react";
 import { useRequest } from "ahooks";
-import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef } from 'react';
+import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef, useState } from 'react';
 
 import LogoUpload from './logo-upload';
 
@@ -45,8 +44,6 @@ type SaveModalProps = {
   tags: string[];
   setTags: Dispatch<SetStateAction<string[]>>;
   categorysList: App.Category[];
-  logoFile: FileWithPreview['file'] | null;
-  setLogoFile: Dispatch<SetStateAction<FileWithPreview['file'] | null>>;
 }
 
 const SaveModal: FC<SaveModalProps> = ({
@@ -56,14 +53,14 @@ const SaveModal: FC<SaveModalProps> = ({
   tags = [],
   setTags,
   categorysList = [],
-  logoFile,
-  setLogoFile
 }) => {
   // 表单实例
   const formRef = useRef<HTMLFormElement>(null);
   const actionText = initialValues ? '编辑' : '新增';
   // Logo 链接
   const logoUrl = initialValues?.logo ? generateLogoUrl(initialValues.logo) : undefined;
+  // Logo
+  const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null);
 
   // 上传成功回调
   const onSuccess = () => {

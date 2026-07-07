@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 10:26:10
+ * @LastEditTime: 2026-07-07 16:01:26
  * @Description: 首页
  */
 "use client";
@@ -18,6 +18,8 @@ import WebsiteCard from '@/components/WebSiteCard';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 import { get } from '@/lib/utils';
 import { getCategorysList } from '@/services/categorys';
+
+const MotionWebsiteCard = motion.create(WebsiteCard);
 
 export default function Home() {
   const supabase = getSupabaseBrowserClient();
@@ -81,15 +83,15 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      {data.map(({ id, name, websites }, index) => {
+    <div className="space-y-6">
+      {data.map(({ id, name, websites }) => {
         return (
-          <BlurFade key={id} inView delay={index * 0.04} className="flex flex-col gap-2">
-            <h1 className="text-xl font-black">{name}</h1>
+          <BlurFade key={id} inView className="flex flex-col gap-2">
+            <h1 className="text-lg font-black">{name}</h1>
             {websites?.length ? (
               <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
                 {websites.map((item, idx) => (
-                  <motion.div
+                  <MotionWebsiteCard
                     key={item.id}
                     variants={{
                       hidden: { y: 20, opacity: 0, filter: 'blur(6px)' },
@@ -100,10 +102,9 @@ export default function Home() {
                       duration: 0.4,
                       ease: "easeOut"
                     }}
-                  >
-                    {/* 👇 传入预计算好的颜色 */}
-                    <WebsiteCard data={item} handleClick={handleClick} />
-                  </motion.div>
+                    data={item}
+                    handleClick={handleClick}
+                  />
                 ))}
               </div>
             ) : (

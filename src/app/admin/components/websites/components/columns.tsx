@@ -37,7 +37,7 @@ export const getColumns = ({
       id: "index",
       header: "序号",
       cell: ({ row }) => (
-        <Chip className="rounded-full">
+        <Chip>
           {(page - 1) * pageSize + row.index + 1}
         </Chip>
       )

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-11 14:09:27
+ * @LastEditTime: 2026-07-07 16:08:04
  * @Description: 网站列表
  */
 "use client"
@@ -28,7 +28,6 @@ import SaveModal from './components/save-modal';
 
 import DataTablePagination from '@/components/DataTablePagination';
 import { RESPONSE } from '@/enums';
-import { type FileWithPreview } from '@/hooks/use-file-upload';
 import { get } from '@/lib/utils';
 import { getCategorysList } from '@/services/categorys';
 import { delWebsite, getWebsitesList } from '@/services/websites';
@@ -62,8 +61,6 @@ const Websites: FC = () => {
   const [editData, setEditData] = useState<App.Website | null>(null);
   // 站点标签
   const [tags, setTags] = useState<string[]>([]);
-  // Logo
-  const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null);
 
   // 请求分类列表
   const { data: categorysList } = useRequest(async (params) => get<App.Category[]>(await getCategorysList(params), 'data.list', []), {
@@ -196,8 +193,6 @@ const Websites: FC = () => {
         tags={tags}
         setTags={setTags}
         categorysList={categorysList || []}
-        logoFile={logoFile}
-        setLogoFile={setLogoFile}
       />
       {/* 删除弹窗 */}
       <DeleteDialog state={delDialogState} loading={delLoading} handleDelConfirm={handleDelConfirm} />

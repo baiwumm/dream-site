@@ -79,11 +79,12 @@ const LogoUpload: FC<LogoUploadProps> = ({
           <Button
             size="sm"
             variant="outline"
+            isIconOnly
             onClick={handleRemove}
-            className="size-6 absolute inset-e-0 top-0 rounded-full"
+            className="absolute inset-e-0 top-0 size-6"
             aria-label="删除 Logo"
           >
-            <Xmark className="size-3.5" />
+            <Xmark />
           </Button>
         )}
       </div>

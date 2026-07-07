@@ -1,6 +1,6 @@
 "use client";
-import { Xmark } from "@gravity-ui/icons";
-import { Input, Label } from "@heroui/react";
+import { CircleXmarkFill } from "@gravity-ui/icons";
+import { Chip, Input, Label } from "@heroui/react";
 import { AnimatePresence, motion } from 'motion/react';
 import { type FC, KeyboardEvent, useRef, useState } from "react";
 
@@ -8,6 +8,8 @@ type TagInputsProps = {
   value: string[];
   onChange: (value: string[]) => void;
 }
+
+const MotionChip = motion.create(Chip);
 
 const TagInputs: FC<TagInputsProps> = ({ value = [], onChange }) => {
   const [inputValue, setInputValue] = useState("");
@@ -42,18 +44,19 @@ const TagInputs: FC<TagInputsProps> = ({ value = [], onChange }) => {
       >
         <AnimatePresence>
           {value.map((tag) => (
-            <motion.div
+            <MotionChip
               key={tag}
               layout
               initial={{ opacity: 0, filter: 'blur(2px)', y: 10 }}
               animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
               exit={{ opacity: 0, filter: 'blur(2px)', y: 10 }}
               transition={{ duration: 0.2, }}
-              className="border border-default p-2 transition-all rounded-full flex items-center gap-1 text-xs hover:bg-default"
+              size='sm'
+              variant="soft"
             >
-              <span>{tag}</span>
-              <Xmark className="cursor-pointer relative z-10" onClick={() => removeTag(tag)} />
-            </motion.div>
+              <Chip.Label>{tag}</Chip.Label>
+              <CircleXmarkFill className="cursor-pointer" onClick={() => removeTag(tag)} />
+            </MotionChip>
           ))}
         </AnimatePresence>
         <Input
@@ -63,7 +66,7 @@ const TagInputs: FC<TagInputsProps> = ({ value = [], onChange }) => {
           onKeyDown={handleKeyDown}
           placeholder="回车添加"
           variant='secondary'
-          className="w-25 text-xs"
+          className="w-25 text-xs py-1"
         />
       </div>
     </div>
