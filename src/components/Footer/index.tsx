@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 18:15:57
+ * @LastEditTime: 2026-07-07 18:16:19
  * @Description: 底部版权
  */
 import { Chip, cn, Description, Link, Separator } from "@heroui/react";
@@ -47,8 +47,8 @@ const Footer: FC = () => {
             className="text-sm font-black"
             duration={1.5}
             repeatDelay={1}
-            color="var(--accent)"
-            shimmerColor="var(--accent-foreground)"
+            color="var(--foreground)"
+            shimmerColor="var(--background)"
           />
         </div>
         <Separator className="h-4 self-center" orientation="vertical" />

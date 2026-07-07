@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 18:16:53
+ * @LastEditTime: 2026-07-07 18:16:29
  * @Description: 顶部导航
  */
 "use client"
@@ -46,8 +46,8 @@ const Header: FC = () => {
             className="text-xl font-black"
             duration={1.5}
             repeatDelay={1}
-            color="var(--accent)"
-            shimmerColor="var(--accent-foreground)"
+            color="var(--foreground)"
+            shimmerColor="var(--background)"
           />
         </div>
       </Link>
