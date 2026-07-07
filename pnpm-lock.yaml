@@ -65,6 +65,9 @@ importers:
       react-dom:
         specifier: 19.2.7
         version: 19.2.7(react@19.2.7)
+      react-easy-crop:
+        specifier: ^6.1.0
+        version: 6.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@gravity-ui/icons':
         specifier: ^2.20.0
@@ -2729,6 +2732,9 @@ packages:
     resolution: {integrity: sha512-linxNAT6M0ebEYZOx2tO6vBEFsVgnPpv+AVjk0wJHfaUIbq31Jm3T6vvZaarnOeWDh8ShnwXuaAyM7WT3RzErA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
+  normalize-wheel@1.0.1:
+    resolution: {integrity: sha512-1OnlAPZ3zgrk8B91HyRj+eVv+kS5u+Z0SCsak6Xil/kmgEia50ga7zfkumayonZrImffAxPU/5WcyGhzetHNPA==}
+
   number-flow@0.6.1:
     resolution: {integrity: sha512-5NUCwZA6J/kZeEzqApOyq7KOf1Wu/oxjpp/95HB0NBNBFlpK/Pp7i4jH8h0LIXyRDKSTewDAUaYHL7IBrk19Ew==}
 
@@ -2950,6 +2956,12 @@ packages:
     resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
       react: ^19.2.7
+
+  react-easy-crop@6.1.0:
+    resolution: {integrity: sha512-zimsbH7DLuajy2hA4UpQpTVoisV8EpeE0/CFmph8tFS3EUbr83iL5TXMVYS0xli990VN6hVepmLNVRZ3SyD05A==}
+    peerDependencies:
+      react: '>=16.4.0'
+      react-dom: '>=16.4.0'
 
   react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
@@ -6130,6 +6142,8 @@ snapshots:
       semver: 7.8.5
       validate-npm-package-license: 3.0.4
 
+  normalize-wheel@1.0.1: {}
+
   number-flow@0.6.1:
     dependencies:
       esm-env: 1.2.2
@@ -6425,6 +6439,12 @@ snapshots:
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
+
+  react-easy-crop@6.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      normalize-wheel: 1.0.1
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
 
   react-fast-compare@3.2.2: {}
 
