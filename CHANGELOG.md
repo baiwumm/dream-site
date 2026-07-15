@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.6.5](https://github.com/baiwumm/dream-site/compare/3.6.4...3.6.5) (2026-07-15)
+
+### 💄 Styles | 风格
+
+* 优化加载和错误界面 UI ([c6cf809](https://github.com/baiwumm/dream-site/commit/c6cf809ddd959e6bda1dba042433258bf2f89987))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 删除 LoadingContent 组件 ([d3ad5f8](https://github.com/baiwumm/dream-site/commit/d3ad5f87d636718615c8402d5c93b7ae74f2bd41))
+
 ## [3.6.4](https://github.com/baiwumm/dream-site/compare/3.6.3...3.6.4) (2026-07-07)
 
 ### 💄 Styles | 风格
