@@ -2,10 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-07 16:01:26
+ * @LastEditTime: 2026-07-15 16:40:39
  * @Description: 首页
  */
 "use client";
+import { DatabaseFill, Plus } from '@gravity-ui/icons';
+import { Button, Typography } from "@heroui/react";
 import { useRequest } from 'ahooks';
 import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
@@ -13,6 +15,7 @@ import { useCallback } from 'react';
 
 import AlertContent from '@/components/AlertContent';
 import BlurFade from '@/components/BlurFade';
+import ErrorContent from '@/components/ErrorContent'
 import SkeletonContent from '@/components/SkeletonContent'
 import WebsiteCard from '@/components/WebSiteCard';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
@@ -55,29 +58,26 @@ export default function Home() {
 
   if (error) {
     return (
-      <div className="w-full flex-1 flex justify-center items-center">
-        <AlertContent
-          status="danger"
-          title="请求失败"
-          description="服务暂时不可用，请稍后重试。"
-          actionText="重新加载"
-          buttonVariant="danger"
-          buttonAction={reload}
-        />
-      </div>
+      <ErrorContent refresh={reload} />
     );
   }
 
   if (!data?.length) {
     return (
-      <div className="w-full flex-1 flex justify-center items-center">
-        <AlertContent
-          status="accent"
-          title="暂无分类数据"
-          description="当前还没有任何分类，请前往后台进行添加。"
-          actionText="添加分类"
-          buttonAction={goAdmin}
-        />
+      <div className="flex-1 flex flex-col items-center justify-center">
+        <div className="flex-1 size-full max-w-xl max-h-100 border-border p-6 bg-surface rounded-2xl text-center flex justify-center items-center">
+          <div className="flex flex-col gap-2 items-center">
+            <div className="bg-default text-foreground p-4 rounded-full">
+              <DatabaseFill className="size-5" />
+            </div>
+            <Typography type="h5">一切安静如常 🕊️</Typography>
+            <Typography type="body-sm">当前还没有任何分类，请前往后台进行添加。</Typography>
+            <Button size="sm" variant="primary" onPress={goAdmin}>
+              <Plus />
+              添加分类
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
