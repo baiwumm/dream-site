@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.6](https://github.com/baiwumm/dream-site/compare/3.6.5...3.6.6) (2026-07-22)
+
+### ⚡ Performance Improvements | 性能优化
+
+* **layout:** 优化布局结构 ([5f6cae1](https://github.com/baiwumm/dream-site/commit/5f6cae181b86a84919e4e33d3def3ef73f465512))
+
 ## [3.6.5](https://github.com/baiwumm/dream-site/compare/3.6.4...3.6.5) (2026-07-15)
 
 ### 💄 Styles | 风格
