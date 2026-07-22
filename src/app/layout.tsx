@@ -1,4 +1,6 @@
+import { Toast } from '@heroui/react';
 import { Analytics } from '@vercel/analytics/next';
+import { MotionConfig } from 'motion/react';
 import type { Metadata } from "next";
 import { ThemeProvider } from 'next-themes';
 
@@ -62,13 +64,16 @@ export default function RootLayout({
         {/* Vercel 分析 */}
         <Analytics />
       </head>
-      <body>
+      <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" enableSystem={false}>
-          <FullLoading>
-            <Provider>
-              {children}
-            </Provider>
-          </FullLoading>
+          <MotionConfig reducedMotion="user">
+            <FullLoading>
+              <Provider>
+                {children}
+              </Provider>
+            </FullLoading>
+            <Toast.Provider placement='top' />
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>
