@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:15:39
+ * @LastEditTime: 2026-08-03 17:37:49
  * @Description: Axios 请求封装
  */
 import { CircleXmarkFill } from '@gravity-ui/icons'
@@ -79,7 +79,11 @@ type HttpRequestConfig = AxiosRequestConfig & {
   skipErrorHandler?: boolean
 }
 export const httpRequest = {
-  get<T = unknown>(url: string, params?: Record<string, unknown>, config?: HttpRequestConfig): Promise<IResponse<T>> {
+  get<T = unknown, P extends object = object>(
+    url: string,
+    params?: P,
+    config?: HttpRequestConfig,
+  ): Promise<IResponse<T>> {
     return request.get(url, {
       ...config,
       params,

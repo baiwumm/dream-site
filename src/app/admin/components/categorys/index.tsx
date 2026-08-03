@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:27:22
+ * @LastEditTime: 2026-08-03 17:39:14
  * @Description: 网站分类
  */
 'use client'
@@ -22,7 +22,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import DataTablePagination from '@/components/DataTablePagination'
 import { RESPONSE } from '@/enums'
 import { get } from '@/lib/utils'
-import { delCategory, getCategorysList } from '@/services/categorys'
+import { delCategory, getCategoriesList } from '@/services/categorys'
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table'
@@ -58,7 +58,7 @@ const Categorys: FC = () => {
   const [editData, setEditData] = useState<Category | null>(null)
 
   // 请求分类列表
-  const { data, loading, run } = useRequest(async params => get(await getCategorysList(params), 'data', {}), {
+  const { data, loading, run } = useRequest(async params => get(await getCategoriesList(params), 'data', {}), {
     manual: true,
     defaultParams: [searchParams],
   })

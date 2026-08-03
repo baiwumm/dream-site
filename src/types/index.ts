@@ -7,10 +7,11 @@ export type Category = Columns & {
 }
 
 /** @description: 网站分类查询参数 */
-export type CategoryQueryParams = {
+export interface CategoryQueryParams {
   pageIndex: number
   pageSize: number
-} & Pick<Category, 'name'>
+  name?: string
+}
 /** @description: 网站分类表单 */
 export type CategorySaveParams = Pick<Category, 'name' | 'sort'> & {
   id?: string

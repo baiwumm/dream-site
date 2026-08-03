@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:51:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:16:46
+ * @LastEditTime: 2026-08-03 17:39:03
  * @Description: 网站分类模块
  */
 import { httpRequest } from '@/lib/request'
@@ -28,7 +28,7 @@ export function delCategory(id: string) {
 /**
  * @description: 获取网站分类列表
  */
-export function getCategorysList(params: CategoryQueryParams) {
+export function getCategoriesList(params: CategoryQueryParams) {
   return httpRequest.get<PaginatingResponse<Category>>(BASE_URL, params)
 }
 

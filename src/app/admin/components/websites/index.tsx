@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:27:44
+ * @LastEditTime: 2026-08-03 17:39:19
  * @Description: 网站列表
  */
 'use client'
@@ -22,7 +22,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import DataTablePagination from '@/components/DataTablePagination'
 import { RESPONSE } from '@/enums'
 import { get } from '@/lib/utils'
-import { getCategorysList } from '@/services/categorys'
+import { getCategoriesList } from '@/services/categorys'
 import { delWebsite, getWebsitesList } from '@/services/websites'
 
 import { getColumns } from './components/columns'
@@ -66,7 +66,7 @@ const Websites: FC = () => {
   const [tags, setTags] = useState<string[]>([])
 
   // 请求分类列表
-  const { data: categorysList } = useRequest(async params => get<Category[]>(await getCategorysList(params), 'data.list', []), {
+  const { data: categorysList } = useRequest(async params => get<Category[]>(await getCategoriesList(params), 'data.list', []), {
     defaultParams: [{ pageIndex: 0, pageSize: 999 }],
   })
 
