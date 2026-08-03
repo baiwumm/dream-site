@@ -56,6 +56,8 @@
   /* Font Family */
   /* Make sure to load Inter font in your app */
   --font-sans: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  view-transition-name: root;
 }
 
 .dark,
