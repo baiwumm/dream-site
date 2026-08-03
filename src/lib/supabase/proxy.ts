@@ -1,11 +1,13 @@
 import { createServerClient } from '@supabase/ssr'
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
+import type { NextRequest } from 'next/server'
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
   })
-  const path = request.nextUrl.pathname;
+  const path = request.nextUrl.pathname
   // 首页或者 Api 接口直接放行
   if (path === '/') {
     return supabaseResponse
@@ -36,7 +38,7 @@ export async function updateSession(request: NextRequest) {
           cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options))
         },
       },
-    }
+    },
   )
 
   const { data } = await supabase.auth.getClaims()

@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -8,10 +8,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       new URL('https://api.baiwumm.com/**'),
       new URL('https://cdn.baiwumm.com/**'),
-      new URL('https://athbiwlqrieaoetfapxd.supabase.co/**')
+      new URL('https://athbiwlqrieaoetfapxd.supabase.co/**'),
     ],
     unoptimized: true, // 禁用 Vercel 图片优化
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

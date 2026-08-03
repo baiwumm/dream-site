@@ -1,56 +1,74 @@
-"use client";
-import { CircleCheckFill, Folder } from "@gravity-ui/icons";
-import { Button, FieldError, Form, Input, Label, Modal, NumberField, Spinner, Surface, TextField, toast, type UseOverlayStateReturn } from "@heroui/react";
-import { useRequest } from "ahooks";
-import { type FC, type FormEvent, useEffect, useRef } from 'react';
+'use client'
+import { CircleCheckFill, Folder } from '@gravity-ui/icons'
+import {
+  Button,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  Modal,
+  NumberField,
+  Spinner,
+  Surface,
+  TextField,
+  toast,
 
-import { RESPONSE } from '@/enums';
-import { addCategory, updateCategory } from '@/services/categorys';
+} from '@heroui/react'
+import { useRequest } from 'ahooks'
+import { useEffect, useRef } from 'react'
 
-type SaveModalProps = {
-  state: UseOverlayStateReturn;
-  initialValues: App.Category | null;
-  handleRefresh: VoidFunction;
+import { RESPONSE } from '@/enums'
+import { addCategory, updateCategory } from '@/services/categorys'
+
+import type { UseOverlayStateReturn } from '@heroui/react'
+import type { FC, FormEvent } from 'react'
+
+interface SaveModalProps {
+  state: UseOverlayStateReturn
+  initialValues: App.Category | null
+  handleRefresh: VoidFunction
+  onClose?: VoidFunction
 }
 
-const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh }) => {
+const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, onClose }) => {
   // 表单实例
-  const formRef = useRef<HTMLFormElement>(null);
-  const actionText = initialValues ? '编辑' : '新增';
+  const formRef = useRef<HTMLFormElement>(null)
+  const actionText = initialValues ? '编辑' : '新增'
 
   // 保存表单
   const { loading, run } = useRequest(initialValues?.id ? updateCategory : addCategory, {
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
-        state.close();
-        toast.success("提交成功", {
+        state.close()
+        toast.success('提交成功', {
           timeout: 2000,
           indicator: <CircleCheckFill />,
-        });
-        handleRefresh?.();
+        })
+        handleRefresh?.()
       }
     },
-  });
+  })
 
   // 表单提交
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
 
     const data: App.CategorySaveParams = {
-      name: formData.get("name") as string,
-      sort: Number(formData.get("sort")),
+      name: formData.get('name') as string,
+      sort: Number(formData.get('sort')),
       id: initialValues?.id,
-    };
-    run(data);
-  };
+    }
+    run(data)
+  }
 
   useEffect(() => {
-    if (!state.isOpen && formRef.current) {
-      formRef.current.reset();
+    if (!state.isOpen) {
+      formRef?.current?.reset()
+      onClose?.()
     }
-  }, [state.isOpen]);
+  }, [state.isOpen, onClose])
   return (
     <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen}>
       <Modal.Container placement="auto">
@@ -64,37 +82,37 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh }) 
           </Modal.Header>
           <Modal.Body className="py-4 px-1">
             <Surface variant="default">
-              <Form ref={formRef} id="category-form" className="flex flex-col gap-4" onSubmit={onSubmit}>
+              <Form ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
                 <TextField
-                  isRequired
                   name="name"
-                  minLength={1}
+                  isRequired
+                  defaultValue={initialValues?.name ?? ''}
                   maxLength={100}
-                  defaultValue={initialValues?.name ?? ""}
+                  minLength={1}
                   validate={(value) => {
                     if (!value) {
-                      return "请输入分类名称";
+                      return '请输入分类名称'
                     }
-                    return null;
+                    return null
                   }}
                 >
                   <Label>分类名称</Label>
-                  <Input aria-label="Name" fullWidth variant="secondary" placeholder="请输入分类名称" />
+                  <Input aria-label="Name" variant="secondary" fullWidth placeholder="请输入分类名称" />
                   <FieldError />
                 </TextField>
                 <NumberField
+                  name="sort"
+                  variant="secondary"
                   isRequired
-                  validate={(value) => {
-                    if (!value) {
-                      return "请输入排序";
-                    }
-                    return null;
-                  }}
+                  defaultValue={initialValues?.sort ?? 1}
                   maxValue={99}
                   minValue={1}
-                  name="sort"
-                  defaultValue={initialValues?.sort ?? 1}
-                  variant="secondary"
+                  validate={(value) => {
+                    if (!value) {
+                      return '请输入排序'
+                    }
+                    return null
+                  }}
                 >
                   <Label>排序</Label>
                   <NumberField.Group>
@@ -107,14 +125,14 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh }) 
             </Surface>
           </Modal.Body>
           <Modal.Footer>
-            <Button slot="close" variant="outline" isDisabled={loading}>
+            <Button variant="outline" isDisabled={loading} slot="close">
               取消
             </Button>
-            <Button type="submit" form="category-form" isPending={loading}>
+            <Button type="submit" isPending={loading} form="category-form">
               {({ isPending }) => (
                 <>
                   {isPending ? <Spinner color="current" size="sm" /> : null}
-                  {isPending ? "正在提交..." : "确定"}
+                  {isPending ? '正在提交...' : '确定'}
                 </>
               )}
             </Button>
@@ -124,4 +142,4 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh }) 
     </Modal.Backdrop>
   )
 }
-export default SaveModal;
+export default SaveModal

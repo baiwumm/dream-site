@@ -5,24 +5,33 @@
  * @LastEditTime: 2026-02-02 11:28:00
  * @Description: 顶部区域
  */
-"use client"
-import { ArrowRotateLeft, Magnifier, Plus } from '@gravity-ui/icons';
-import { Button, Card, ListBox, SearchField, Select, Spinner, useOverlayState } from "@heroui/react";
-import { type Table } from '@tanstack/react-table';
-import type { SetState } from 'ahooks/es/useSetState';
-import { type FC, type KeyboardEvent } from 'react';
+'use client'
+import { ArrowRotateLeft, Magnifier, Plus } from '@gravity-ui/icons'
+import {
+  Button,
+  Card,
+  ListBox,
+  SearchField,
+  Select,
+  Spinner,
+} from '@heroui/react'
 
-import ColumnsVisibility from '@/components/ColumnsVisibility';
+import ColumnsVisibility from '@/components/ColumnsVisibility'
 
-type HeaderContentProps = {
-  table: Table<App.Website>;
-  categorysList: App.Category[];
-  searchParams: App.WebsiteQueryParams;
-  setSearchParams: SetState<App.WebsiteQueryParams>;
-  loading: boolean;
-  handleSearch: VoidFunction;
-  handleReset: VoidFunction;
-  saveModalState: ReturnType<typeof useOverlayState>;
+import type { useOverlayState } from '@heroui/react'
+import type { Table } from '@tanstack/react-table'
+import type { SetState } from 'ahooks/es/useSetState'
+import type { FC, KeyboardEvent } from 'react'
+
+interface HeaderContentProps {
+  table: Table<App.Website>
+  categorysList: App.Category[]
+  searchParams: App.WebsiteQueryParams
+  setSearchParams: SetState<App.WebsiteQueryParams>
+  loading: boolean
+  handleSearch: VoidFunction
+  handleReset: VoidFunction
+  saveModalState: ReturnType<typeof useOverlayState>
 }
 
 const HeaderContent: FC<HeaderContentProps> = ({
@@ -33,38 +42,38 @@ const HeaderContent: FC<HeaderContentProps> = ({
   loading = false,
   handleSearch,
   handleReset,
-  saveModalState
+  saveModalState,
 }) => {
   // 回车事件
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSearch();
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleSearch()
     }
-  };
+  }
   return (
     <Card.Header className="flex justify-between items-start w-full flex-col sm:flex-row sm:items-center gap-2">
       <Card.Title className="flex items-center gap-2 flex-wrap">
         <SearchField
-          aria-label='网站名称'
-          variant='secondary'
+          aria-label="网站名称"
+          variant="secondary"
           value={searchParams.name}
           onChange={value => setSearchParams({ name: value })}
           onKeyDown={handleKeyDown}
         >
           <SearchField.Group>
             <SearchField.SearchIcon />
-            <SearchField.Input className="w-50" placeholder="网站名称" />
+            <SearchField.Input placeholder="网站名称" className="w-50" />
             <SearchField.ClearButton />
           </SearchField.Group>
         </SearchField>
         <Select
-          aria-label='所属分类'
-          className="w-60"
+          aria-label="所属分类"
+          variant="secondary"
           placeholder="所属分类"
-          variant='secondary'
           value={searchParams.category_id}
-          onChange={(id) => setSearchParams({ category_id: id as string })}
+          onChange={id => setSearchParams({ category_id: id as string })}
+          className="w-60"
         >
           <Select.Trigger>
             <Select.Value />
@@ -81,25 +90,25 @@ const HeaderContent: FC<HeaderContentProps> = ({
             </ListBox>
           </Select.Popover>
         </Select>
-        <Button isPending={loading} size='sm' onPress={handleSearch}>
+        <Button size="sm" isPending={loading} onPress={handleSearch}>
           {({ isPending }) => (
             <>
-              {isPending ? <Spinner color="current" size='sm' /> : <Magnifier />}
+              {isPending ? <Spinner color="current" size="sm" /> : <Magnifier />}
               查询
             </>
           )}
         </Button>
-        <Button variant="secondary" size='sm' onPress={handleReset} isDisabled={loading}>
+        <Button size="sm" variant="secondary" isDisabled={loading} onPress={handleReset}>
           <ArrowRotateLeft />
           重置
         </Button>
-        <Button variant="outline" size='sm' onPress={() => saveModalState.open()}>
+        <Button size="sm" variant="outline" onPress={() => saveModalState.open()}>
           <Plus />
           新增
         </Button>
       </Card.Title>
       <ColumnsVisibility table={table} />
     </Card.Header>
-  );
+  )
 }
-export default HeaderContent;
+export default HeaderContent

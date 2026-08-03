@@ -1,5 +1,5 @@
-"use client";
-import { Check, CircleCheckFill, Globe, Xmark } from "@gravity-ui/icons";
+'use client'
+import { Check, CircleCheckFill, Globe, Xmark } from '@gravity-ui/icons'
 import {
   Button,
   FieldError,
@@ -17,33 +17,37 @@ import {
   TextArea,
   TextField,
   toast,
-  type UseOverlayStateReturn
-} from "@heroui/react";
-import { useRequest } from "ahooks";
-import { type Dispatch, type FC, type FormEvent, type SetStateAction, useEffect, useRef, useState } from 'react';
 
-import LogoUpload from './logo-upload';
+} from '@heroui/react'
+import { useRequest } from 'ahooks'
+import { useEffect, useRef, useState } from 'react'
 
-import TagInputs from "@/components/ui/tag-inputs";
-import { RESPONSE } from '@/enums';
-import { type FileWithPreview } from '@/hooks/use-file-upload';
+import TagInputs from '@/components/ui/tag-inputs'
+import { RESPONSE } from '@/enums'
 import { generateLogoUrl, get } from '@/lib/utils'
-import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites';
+import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites'
+
+import LogoUpload from './logo-upload'
+
+import type { FileWithPreview } from '@/hooks/use-file-upload'
+import type { UseOverlayStateReturn } from '@heroui/react'
+import type { Dispatch, FC, FormEvent, SetStateAction } from 'react'
 
 const SwitchOptions: { name: string, label: string }[] = [
   { name: 'pinned', label: '置顶' },
   { name: 'vpn', label: 'VPN' },
   { name: 'recommend', label: '推荐' },
-  { name: 'commonlyUsed', label: '常用' }
+  { name: 'commonlyUsed', label: '常用' },
 ]
 
-type SaveModalProps = {
-  state: UseOverlayStateReturn;
-  initialValues: App.Website | null;
-  handleRefresh: VoidFunction;
-  tags: string[];
-  setTags: Dispatch<SetStateAction<string[]>>;
-  categorysList: App.Category[];
+interface SaveModalProps {
+  state: UseOverlayStateReturn
+  initialValues: App.Website | null
+  handleRefresh: VoidFunction
+  tags: string[]
+  setTags: Dispatch<SetStateAction<string[]>>
+  categorysList: App.Category[]
+  onClose?: VoidFunction
 }
 
 const SaveModal: FC<SaveModalProps> = ({
@@ -53,23 +57,24 @@ const SaveModal: FC<SaveModalProps> = ({
   tags = [],
   setTags,
   categorysList = [],
+  onClose,
 }) => {
   // 表单实例
-  const formRef = useRef<HTMLFormElement>(null);
-  const actionText = initialValues ? '编辑' : '新增';
+  const formRef = useRef<HTMLFormElement>(null)
+  const actionText = initialValues ? '编辑' : '新增'
   // Logo 链接
-  const logoUrl = initialValues?.logo ? generateLogoUrl(initialValues.logo) : undefined;
+  const logoUrl = initialValues?.logo ? generateLogoUrl(initialValues.logo) : undefined
   // Logo
-  const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null);
+  const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null)
 
   // 上传成功回调
   const onSuccess = () => {
-    state.close();
-    toast.success("提交成功", {
+    state.close()
+    toast.success('提交成功', {
       timeout: 2000,
       indicator: <CircleCheckFill />,
-    });
-    handleRefresh?.();
+    })
+    handleRefresh?.()
   }
 
   // 上传 Logo
@@ -77,10 +82,10 @@ const SaveModal: FC<SaveModalProps> = ({
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
-        onSuccess();
+        onSuccess()
       }
     },
-  });
+  })
 
   // 保存表单
   const { loading, run } = useRequest(initialValues?.id ? updateWebsite : addWebsite, {
@@ -88,96 +93,99 @@ const SaveModal: FC<SaveModalProps> = ({
     onSuccess: ({ code, data }) => {
       if (code === RESPONSE.SUCCESS) {
         if (data?.id && logoFile) {
-          const formData = new FormData();
-          formData.append('file', logoFile as File);
+          const formData = new FormData()
+          formData.append('file', logoFile as File)
           fetchUploadLogo({ id: data.id, formData })
-        } else {
-          onSuccess();
+        }
+        else {
+          onSuccess()
         }
       }
     },
-  });
+  })
 
   // url
   const validateUrl = (value: string) => {
     if (!value) {
-      return "请输入网站链接";
+      return '请输入网站链接'
     }
 
-    let url: URL;
+    let url: URL
     try {
-      url = new URL(value);
-    } catch {
-      return "请输入合法的 URL";
+      url = new URL(value)
+    }
+    catch {
+      return '请输入合法的 URL'
     }
 
-    if (url.protocol !== "https:") {
-      return "网站链接必须以 https:// 开头";
+    if (url.protocol !== 'https:') {
+      return '网站链接必须以 https:// 开头'
     }
 
-    const hostname = url.hostname;
+    const hostname = url.hostname
 
     // 允许 IP（可选）
-    const isIP =
-      /^(\d{1,3}\.){3}\d{1,3}$/.test(hostname) ||
-      /^\[[0-9a-fA-F:]+\]$/.test(hostname); // IPv6
+    const isIP
+      = /^(?:\d{1,3}\.){3}\d{1,3}$/.test(hostname)
+        || /^\[[0-9a-f:]+\]$/i.test(hostname) // IPv6
 
     // 至少包含一个点（example.com）
-    const hasDot = hostname.includes(".");
+    const hasDot = hostname.includes('.')
 
     if (!hasDot && !isIP) {
-      return "请输入有效的域名（如 https://example.com）";
+      return '请输入有效的域名（如 https://example.com）'
     }
 
-    return null;
+    return null
   }
 
   // 表单提交
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
 
     const data: App.WebsiteSaveParams = {
       id: initialValues?.id,
 
       // string
-      category_id: formData.get("category_id") as string,
-      name: formData.get("name") as string,
-      desc: (formData.get("desc") as string) ?? "",
-      url: formData.get("url") as string,
+      category_id: formData.get('category_id') as string,
+      name: formData.get('name') as string,
+      desc: (formData.get('desc') as string) ?? '',
+      url: formData.get('url') as string,
       logo: (logoFile ? null : initialValues?.logo) ?? null,
 
       // number
-      sort: Number(formData.get("sort")),
+      sort: Number(formData.get('sort')),
 
       // boolean（checkbox 选中才会存在）
-      pinned: formData.has("pinned"),
-      vpn: formData.has("vpn"),
-      recommend: formData.has("recommend"),
-      commonlyUsed: formData.has("commonlyUsed"),
+      pinned: formData.has('pinned'),
+      vpn: formData.has('vpn'),
+      recommend: formData.has('recommend'),
+      commonlyUsed: formData.has('commonlyUsed'),
 
-      tags
-    };
+      tags,
+    }
     // 新增必须上传 Logo
     if (!initialValues && !logoFile) {
-      toast.danger("请上传网站logo", {
+      toast.danger('请上传网站logo', {
         timeout: 2000,
         indicator: <Xmark />,
-      });
+      })
       return
     }
-    run({ ...data, id: initialValues?.id, tags });
-  };
+    run({ ...data, id: initialValues?.id, tags })
+  }
 
   useEffect(() => {
-    if (!state.isOpen && formRef.current) {
-      formRef.current.reset();
-      setTags([]);
-      setLogoFile(null);
+    if (!state.isOpen) {
+      formRef?.current?.reset()
+      setTags([])
+      setLogoFile(null)
+      onClose?.()
     }
-  }, [state.isOpen, setTags, setLogoFile]);
+  }, [state.isOpen, setTags, setLogoFile, onClose])
   return (
-    <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen} isDismissable={false} isKeyboardDismissDisabled>
+    <Modal.Backdrop isDismissable={false} isKeyboardDismissDisabled isOpen={state.isOpen} onOpenChange={state.setOpen}>
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-lg">
           <Modal.CloseTrigger />
@@ -189,14 +197,14 @@ const SaveModal: FC<SaveModalProps> = ({
           </Modal.Header>
           <Modal.Body className="py-4 px-1">
             <Surface variant="default">
-              <Form ref={formRef} id="category-form" className="flex flex-col gap-4" onSubmit={onSubmit}>
+              <Form ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
                 <Select
-                  name='category_id'
+                  aria-label="所属分类"
+                  name="category_id"
+                  variant="secondary"
                   isRequired
-                  aria-label='所属分类'
+                  defaultValue={initialValues?.category_id ?? ''}
                   placeholder="请选择所属分类"
-                  variant='secondary'
-                  defaultValue={initialValues?.category_id ?? ""}
                 >
                   <Label>所属分类</Label>
                   <Select.Trigger>
@@ -215,45 +223,45 @@ const SaveModal: FC<SaveModalProps> = ({
                   </Select.Popover>
                 </Select>
                 <TextField
-                  isRequired
                   name="name"
-                  minLength={1}
+                  isRequired
+                  defaultValue={initialValues?.name ?? ''}
                   maxLength={100}
-                  defaultValue={initialValues?.name ?? ""}
+                  minLength={1}
                   validate={(value) => {
                     if (!value) {
-                      return "请输入网站名称";
+                      return '请输入网站名称'
                     }
-                    return null;
+                    return null
                   }}
                 >
                   <Label>网站名称</Label>
-                  <Input aria-label="网站名称" fullWidth variant="secondary" placeholder="请输入网站名称" />
+                  <Input aria-label="网站名称" variant="secondary" fullWidth placeholder="请输入网站名称" />
                   <FieldError />
                 </TextField>
                 <TextField
-                  isRequired
                   name="url"
+                  isRequired
+                  defaultValue={initialValues?.url ?? ''}
                   minLength={1}
-                  defaultValue={initialValues?.url ?? ""}
                   validate={validateUrl}
                 >
                   <Label>网站链接</Label>
-                  <Input aria-label="网站链接" fullWidth variant="secondary" placeholder="请输入网站链接" />
+                  <Input aria-label="网站链接" variant="secondary" fullWidth placeholder="请输入网站链接" />
                   <FieldError />
                 </TextField>
                 <div className="flex flex-col gap-1">
                   <Label isRequired htmlFor="logo">Logo</Label>
-                  <LogoUpload defaultAvatar={logoUrl} onFileChange={(value) => setLogoFile(value?.file || null)} />
+                  <LogoUpload defaultAvatar={logoUrl} onFileChange={value => setLogoFile(value?.file || null)} />
                 </div>
                 <TagInputs value={tags} onChange={setTags} />
-                <TextField name="desc" maxLength={500} defaultValue={initialValues?.desc ?? ""}>
+                <TextField name="desc" defaultValue={initialValues?.desc ?? ''} maxLength={500}>
                   <Label>网站描述</Label>
-                  <TextArea aria-label="网站描述" fullWidth variant="secondary" rows={3} placeholder="请输入网站描述" />
+                  <TextArea aria-label="网站描述" variant="secondary" fullWidth placeholder="请输入网站描述" rows={3} />
                 </TextField>
                 <div className="flex flex-col gap-1">
                   <Label htmlFor="tags">网站属性</Label>
-                  <SwitchGroup className="overflow-x-auto" orientation="horizontal">
+                  <SwitchGroup orientation="horizontal" className="overflow-x-auto">
                     {SwitchOptions.map(({ name, label }) => (
                       <Switch key={name} name={name} defaultSelected={get(initialValues, name, false)} value="on">
                         {({ isSelected }) => (
@@ -261,11 +269,13 @@ const SaveModal: FC<SaveModalProps> = ({
                             <Switch.Control>
                               <Switch.Thumb>
                                 <Switch.Icon>
-                                  {isSelected ? (
-                                    <Check className="size-3 text-inherit opacity-100" />
-                                  ) : (
-                                    <Xmark className="size-3 text-inherit opacity-70" />
-                                  )}
+                                  {isSelected
+                                    ? (
+                                        <Check className="size-3 text-inherit opacity-100" />
+                                      )
+                                    : (
+                                        <Xmark className="size-3 text-inherit opacity-70" />
+                                      )}
                                 </Switch.Icon>
                               </Switch.Thumb>
                             </Switch.Control>
@@ -277,18 +287,18 @@ const SaveModal: FC<SaveModalProps> = ({
                   </SwitchGroup>
                 </div>
                 <NumberField
+                  name="sort"
+                  variant="secondary"
                   isRequired
-                  validate={(value) => {
-                    if (!value) {
-                      return "请输入排序";
-                    }
-                    return null;
-                  }}
+                  defaultValue={initialValues?.sort ?? 1}
                   maxValue={99}
                   minValue={1}
-                  name="sort"
-                  defaultValue={initialValues?.sort ?? 1}
-                  variant="secondary"
+                  validate={(value) => {
+                    if (!value) {
+                      return '请输入排序'
+                    }
+                    return null
+                  }}
                 >
                   <Label>排序</Label>
                   <NumberField.Group>
@@ -301,14 +311,14 @@ const SaveModal: FC<SaveModalProps> = ({
             </Surface>
           </Modal.Body>
           <Modal.Footer>
-            <Button slot="close" variant="outline" isDisabled={loading || uploadLoading}>
+            <Button variant="outline" isDisabled={loading || uploadLoading} slot="close">
               取消
             </Button>
-            <Button type="submit" form="category-form" isPending={loading || uploadLoading}>
+            <Button type="submit" isPending={loading || uploadLoading} form="category-form">
               {({ isPending }) => (
                 <>
                   {isPending ? <Spinner color="current" size="sm" /> : null}
-                  {loading ? "正在提交..." : uploadLoading ? '正在上传 Logo...' : "确定"}
+                  {loading ? '正在提交...' : uploadLoading ? '正在上传 Logo...' : '确定'}
                 </>
               )}
             </Button>
@@ -318,4 +328,4 @@ const SaveModal: FC<SaveModalProps> = ({
     </Modal.Backdrop>
   )
 }
-export default SaveModal;
+export default SaveModal

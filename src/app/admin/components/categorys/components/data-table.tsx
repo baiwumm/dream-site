@@ -5,18 +5,20 @@
  * @LastEditTime: 2026-03-11 13:53:01
  * @Description: 数据表格
  */
-import { ChevronUp } from '@gravity-ui/icons';
-import { cn, Table } from "@heroui/react";
-import { flexRender, type Table as TableInstance } from '@tanstack/react-table';
-import { type FC } from 'react';
+import { ChevronUp } from '@gravity-ui/icons'
+import { cn, Table } from '@heroui/react'
+import { flexRender } from '@tanstack/react-table'
 
-import EmptyContent from '@/components/EmptyContent';
-import TableLoading from '@/components/TableLoading';
-import { ADMIN_TABS } from '@/enums';
+import EmptyContent from '@/components/EmptyContent'
+import TableLoading from '@/components/TableLoading'
+import { ADMIN_TABS } from '@/enums'
 
-type DataTableProps = {
-  table: TableInstance<App.Category>;
-  loading: boolean;
+import type { Table as TableInstance } from '@tanstack/react-table'
+import type { FC } from 'react'
+
+interface DataTableProps {
+  table: TableInstance<App.Category>
+  loading: boolean
 }
 
 const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
@@ -31,9 +33,9 @@ const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
                 return (
                   <Table.Column
                     key={header.id}
-                    allowsSorting={header.column.getCanSort()}
                     id={header.id}
                     isRowHeader
+                    allowsSorting={header.column.getCanSort()}
                     onClick={header.column.getToggleSortingHandler()}
                   >
                     <div className="flex items-center justify-center gap-2">
@@ -41,8 +43,8 @@ const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
                       {sortDirection && (
                         <ChevronUp
                           className={cn(
-                            "size-3 transform transition-transform duration-100 ease-out",
-                            sortDirection === "desc" ? "rotate-180" : "",
+                            'size-3 transform transition-transform duration-100 ease-out',
+                            sortDirection === 'desc' ? 'rotate-180' : '',
                           )}
                         />
                       )}
@@ -52,9 +54,9 @@ const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
               })}
             </Table.Header>
             <Table.Body renderEmptyState={() => <EmptyContent />}>
-              {table.getRowModel().rows.map((row) => (
+              {table.getRowModel().rows.map(row => (
                 <Table.Row key={row.id} id={row.id}>
-                  {row.getVisibleCells().map((cell) => (
+                  {row.getVisibleCells().map(cell => (
                     <Table.Cell key={cell.id} className="text-center">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </Table.Cell>
@@ -69,4 +71,4 @@ const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
     </div>
   )
 }
-export default DataTable;
+export default DataTable

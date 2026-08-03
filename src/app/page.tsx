@@ -5,61 +5,61 @@
  * @LastEditTime: 2026-07-15 16:40:39
  * @Description: 首页
  */
-"use client";
-import { DatabaseFill, Plus } from '@gravity-ui/icons';
-import { Button, Typography } from "@heroui/react";
-import { useRequest } from 'ahooks';
-import { motion } from 'motion/react';
-import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+'use client'
+import { DatabaseFill, Plus } from '@gravity-ui/icons'
+import { Button, Typography } from '@heroui/react'
+import { useRequest } from 'ahooks'
+import { motion } from 'motion/react'
+import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
 
-import AlertContent from '@/components/AlertContent';
-import BlurFade from '@/components/BlurFade';
+import AlertContent from '@/components/AlertContent'
+import BlurFade from '@/components/BlurFade'
 import ErrorContent from '@/components/ErrorContent'
 import SkeletonContent from '@/components/SkeletonContent'
-import WebsiteCard from '@/components/WebSiteCard';
-import { getSupabaseBrowserClient } from '@/lib/supabase/client';
-import { get } from '@/lib/utils';
-import { getCategorysList } from '@/services/categorys';
+import WebsiteCard from '@/components/WebSiteCard'
+import { getSupabaseBrowserClient } from '@/lib/supabase/client'
+import { get } from '@/lib/utils'
+import { getCategorysList } from '@/services/categorys'
 
-const MotionWebsiteCard = motion.create(WebsiteCard);
+const MotionWebsiteCard = motion.create(WebsiteCard)
 
 export default function Home() {
-  const supabase = getSupabaseBrowserClient();
-  const router = useRouter();
+  const supabase = getSupabaseBrowserClient()
+  const router = useRouter()
 
   const { data = [] as App.Category[], loading, error, run } = useRequest(
-    async (params) =>
+    async params =>
       get(await getCategorysList(params), 'data.list', []),
     {
       defaultParams: [{ pageIndex: 0, pageSize: 999 }],
-    }
-  );
+    },
+  )
 
   const reload = () => {
-    run({ pageIndex: 0, pageSize: 999 });
-  };
+    run({ pageIndex: 0, pageSize: 999 })
+  }
 
   const goAdmin = () => {
-    router.push('/admin');
-  };
+    router.push('/admin')
+  }
 
   const handleClick = useCallback(async (id: string) => {
-    await supabase.rpc("increment_visit_count", {
+    await supabase.rpc('increment_visit_count', {
       row_id: id,
-    });
-  }, [supabase]);
+    })
+  }, [supabase])
 
   if (loading) {
     return (
       <SkeletonContent />
-    );
+    )
   }
 
   if (error) {
     return (
       <ErrorContent refresh={reload} />
-    );
+    )
   }
 
   if (!data?.length) {
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -88,40 +88,41 @@ export default function Home() {
         return (
           <BlurFade key={id} inView className="flex flex-col gap-2">
             <h1 className="text-lg font-black">{name}</h1>
-            {websites?.length ? (
-              <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
-                {websites.map((item, idx) => (
-                  <MotionWebsiteCard
-                    key={item.id}
-                    variants={{
-                      hidden: { y: 20, opacity: 0, filter: 'blur(6px)' },
-                      visible: { y: 0, opacity: 1, filter: 'none' }
-                    }}
-                    transition={{
-                      delay: 0.04 * idx,
-                      duration: 0.4,
-                      ease: "easeOut"
-                    }}
-                    data={item}
-                    handleClick={handleClick}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="flex justify-center p-4">
-                <AlertContent
-                  status="accent"
-                  title="暂无网站数据"
-                  description="该分类还没有任何网站，请前往后台进行添加。"
-                  actionText="添加网站"
-                  buttonAction={goAdmin}
-                />
-              </div>
-            )}
+            {websites?.length
+              ? (
+                  <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
+                    {websites.map((item, idx) => (
+                      <MotionWebsiteCard
+                        key={item.id}
+                        data={item}
+                        handleClick={handleClick}
+                        transition={{
+                          delay: 0.04 * idx,
+                          duration: 0.4,
+                          ease: 'easeOut',
+                        }}
+                        variants={{
+                          hidden: { y: 20, opacity: 0, filter: 'blur(6px)' },
+                          visible: { y: 0, opacity: 1, filter: 'none' },
+                        }}
+                      />
+                    ))}
+                  </div>
+                )
+              : (
+                  <div className="flex justify-center p-4">
+                    <AlertContent
+                      title="暂无网站数据"
+                      actionText="添加网站"
+                      buttonAction={goAdmin}
+                      description="该分类还没有任何网站，请前往后台进行添加。"
+                      status="accent"
+                    />
+                  </div>
+                )}
           </BlurFade>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-

@@ -1,7 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import { getSupabaseServerClient } from '@/lib/supabase/server'
 import { responseMessage } from '@/lib/utils'
+
+import type { NextRequest } from 'next/server'
 
 /**
  * @description: 上传网站 Logo
@@ -9,30 +11,30 @@ import { responseMessage } from '@/lib/utils'
  */
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const supabase = await getSupabaseServerClient();
+    const supabase = await getSupabaseServerClient()
     // 获取动态参数
-    const { id } = await params;
+    const { id } = await params
     // 解析请求体
-    const formData = await request.formData();
-    const file = formData.get('file') as File;
+    const formData = await request.formData()
+    const file = formData.get('file') as File
 
     if (!file) {
       return NextResponse.json(
-        responseMessage(null, '缺少 file 参数', -1)
+        responseMessage(null, '缺少 file 参数', -1),
       )
     }
 
     // 获取用户信息
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
       return NextResponse.json(
-        responseMessage(null, '未登录', -1)
+        responseMessage(null, '未登录', -1),
       )
     }
 
     // 文件路径
-    const bucket = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET!;
+    const bucket = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET!
     const ext = file.name.split('.').pop()
     const logoPath = `${user.id}/${id}/${crypto.randomUUID()}.${ext}`
 
@@ -44,8 +46,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         responseMessage(
           { id },
           `站点创建成功，但 Logo 上传失败: ${uploadError}`,
-          -1
-        )
+          -1,
+        ),
       )
     }
 
@@ -64,12 +66,13 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         .remove([logoPath])
 
       return NextResponse.json(
-        responseMessage(null, updateError.message, -1)
+        responseMessage(null, updateError.message, -1),
       )
     }
 
     return NextResponse.json(responseMessage(data))
-  } catch (err) {
-    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
+  }
+  catch (err) {
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1))
   }
 }

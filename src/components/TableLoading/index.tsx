@@ -5,11 +5,12 @@
  * @LastEditTime: 2026-03-09 16:37:45
  * @Description: 表格 Loading
  */
-import { Spinner } from "@heroui/react";
-import { type FC } from 'react';
+import { Spinner } from '@heroui/react'
 
-type TableLoadingProps = {
-  loading: boolean;
+import type { FC } from 'react'
+
+interface TableLoadingProps {
+  loading: boolean
 }
 
 const TableLoading: FC<TableLoadingProps> = ({ loading }) => {
@@ -20,6 +21,6 @@ const TableLoading: FC<TableLoadingProps> = ({ loading }) => {
       </div>
     )
   }
-  return null;
+  return null
 }
-export default TableLoading;
+export default TableLoading

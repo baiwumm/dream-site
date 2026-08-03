@@ -1,4 +1,4 @@
-import { Card, Skeleton } from "@heroui/react";
+import { Card, Skeleton } from '@heroui/react'
 
 export default function SkeletonContent() {
   return (
@@ -30,5 +30,5 @@ export default function SkeletonContent() {
         </div>
       ))}
     </div>
-  );
+  )
 }

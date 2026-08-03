@@ -5,14 +5,15 @@
  * @LastEditTime: 2026-02-02 18:03:41
  * @Description: 管理后台
  */
-import { Folder, Globe } from "@gravity-ui/icons";
-import { Tabs } from "@heroui/react";
-import { type FC } from 'react';
+import { Folder, Globe } from '@gravity-ui/icons'
+import { Tabs } from '@heroui/react'
+
+import { ADMIN_TABS } from '@/enums'
 
 import Categorys from './components/categorys'
 import Websites from './components/websites'
 
-import { ADMIN_TABS } from '@/enums';
+import type { FC } from 'react'
 
 const Admin: FC = () => {
   return (
@@ -40,4 +41,4 @@ const Admin: FC = () => {
     </Tabs>
   )
 }
-export default Admin;
+export default Admin

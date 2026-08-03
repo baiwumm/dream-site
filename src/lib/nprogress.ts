@@ -7,20 +7,20 @@
  */
 import { getProgress } from './progress'
 
-let requestCount = 0;
+let requestCount = 0
 
-let timer: ReturnType<typeof setTimeout>;
-export const startLoading = () => {
+let timer: ReturnType<typeof setTimeout>
+export function finishLoading() {
+  requestCount = Math.max(0, requestCount - 1)
   if (requestCount === 0) {
-    timer = setTimeout(() => getProgress()?.start(), 200);
+    clearTimeout(timer)
+    getProgress()?.stop()
   }
-  requestCount++;
-};
+}
 
-export const finishLoading = () => {
-  requestCount = Math.max(0, requestCount - 1);
+export function startLoading() {
   if (requestCount === 0) {
-    clearTimeout(timer);
-    getProgress()?.stop();
+    timer = setTimeout(() => getProgress()?.start(), 200)
   }
-};
+  requestCount++
+}

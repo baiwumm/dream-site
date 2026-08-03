@@ -1,15 +1,17 @@
-import { Toast } from '@heroui/react';
-import { Analytics } from '@vercel/analytics/next';
-import { MotionConfig } from 'motion/react';
-import type { Metadata } from "next";
-import { ThemeProvider } from 'next-themes';
+import './globals.css'
 
-import Provider from './Provider';
+import { Toast } from '@heroui/react'
+import { Analytics } from '@vercel/analytics/next'
+import { MotionConfig } from 'motion/react'
+import { ThemeProvider } from 'next-themes'
 
-import "./globals.css";
-import { GoogleUtilities, MicrosoftClarity } from '@/components/Analytics';
-import FullLoading from '@/components/FullLoading';
-import pkg from '#/package.json';
+import { GoogleUtilities, MicrosoftClarity } from '@/components/Analytics'
+import FullLoading from '@/components/FullLoading'
+import pkg from '#/package.json'
+
+import Provider from './Provider'
+
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: `${process.env.NEXT_PUBLIC_APP_SUB_TITLE} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
         url: `${process.env.NEXT_PUBLIC_APP_URL}/og.png`,
         width: 1200,
         height: 630,
-      }
+      },
     ],
     locale: 'zh_CN',
     type: 'website',
@@ -44,19 +46,19 @@ export const metadata: Metadata = {
     creator: 'baiwumm',
     images: [`${process.env.NEXT_PUBLIC_APP_URL}/og.png`],
   },
-  manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.json`
-};
+  manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.json`,
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="version" content={pkg.version} />
-        <link rel="stylesheet" href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css" />
+        <link href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css" rel="stylesheet" />
         {/* Google 统计 */}
         <GoogleUtilities />
         {/* 微软统计 */}
@@ -64,7 +66,7 @@ export default function RootLayout({
         {/* Vercel 分析 */}
         <Analytics />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground flex flex-col gap-4 min-h-screen">
         <ThemeProvider attribute="class" enableSystem={false}>
           <MotionConfig reducedMotion="user">
             <FullLoading>
@@ -72,10 +74,10 @@ export default function RootLayout({
                 {children}
               </Provider>
             </FullLoading>
-            <Toast.Provider placement='top' />
+            <Toast.Provider placement="top" />
           </MotionConfig>
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

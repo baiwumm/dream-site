@@ -1,8 +1,10 @@
 'use client'
-import { useProgress } from '@bprogress/next';
-import { type FC, useEffect } from 'react';
+import { useProgress } from '@bprogress/next'
+import { useEffect } from 'react'
 
 import { setProgressInstance } from '@/lib/progress'
+
+import type { FC } from 'react'
 
 const ProgressBridge: FC = () => {
   const progress = useProgress()
@@ -13,4 +15,4 @@ const ProgressBridge: FC = () => {
 
   return null
 }
-export default ProgressBridge;
+export default ProgressBridge

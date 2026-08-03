@@ -5,17 +5,19 @@
  * @LastEditTime: 2026-01-30 09:56:56
  * @Description: 提示框占位
  */
-import { Alert, type AlertProps, Button, type ButtonVariants } from '@heroui/react';
-import { type FC, type ReactNode } from 'react';
+import { Alert, Button } from '@heroui/react'
 
-type AlertContentProps = {
-  status: AlertProps['status'];
-  title: ReactNode;
-  description: ReactNode;
-  actionText: ReactNode;
-  buttonVariant?: ButtonVariants['variant'];
-  buttonAction?: () => void;
-  className?: string;
+import type { AlertProps, ButtonVariants } from '@heroui/react'
+import type { FC, ReactNode } from 'react'
+
+interface AlertContentProps {
+  status: AlertProps['status']
+  title: ReactNode
+  description: ReactNode
+  actionText: ReactNode
+  buttonVariant?: ButtonVariants['variant']
+  buttonAction?: () => void
+  className?: string
 }
 
 const AlertContent: FC<AlertContentProps> = ({
@@ -25,7 +27,7 @@ const AlertContent: FC<AlertContentProps> = ({
   actionText,
   buttonVariant = 'primary',
   buttonAction,
-  className = 'max-w-lg shadow-lg'
+  className = 'max-w-lg shadow-lg',
 }) => {
   return (
     <Alert status={status} className={className}>
@@ -35,14 +37,14 @@ const AlertContent: FC<AlertContentProps> = ({
         <Alert.Description className="text-xs">
           {description}
         </Alert.Description>
-        <Button className="mt-2 sm:hidden" size="sm" variant={buttonVariant} onPress={buttonAction}>
+        <Button size="sm" variant={buttonVariant} onPress={buttonAction} className="mt-2 sm:hidden">
           {actionText}
         </Button>
       </Alert.Content>
-      <Button className="hidden sm:block" size="sm" variant={buttonVariant} onPress={buttonAction}>
+      <Button size="sm" variant={buttonVariant} onPress={buttonAction} className="hidden sm:block">
         {actionText}
       </Button>
     </Alert>
   )
 }
-export default AlertContent;
+export default AlertContent

@@ -1,11 +1,11 @@
-import { Enum } from 'enum-plus';
+import { Enum } from 'enum-plus'
 
 /**
  * @description: 请求状态
  */
 export const RESPONSE = Enum({
   SUCCESS: { value: 200, label: '请求成功' },
-  ERROR: { value: 500, label: '请求失败' }
+  ERROR: { value: 500, label: '请求失败' },
 })
 
 /**
@@ -14,8 +14,8 @@ export const RESPONSE = Enum({
 export const THEME_MODE = Enum({
   LIGHT: { value: 'light', label: '亮色模式' },
   DARK: { value: 'dark', label: '暗黑模式' },
-  SYSTEM: { value: 'system', label: '跟随系统' }
-});
+  SYSTEM: { value: 'system', label: '跟随系统' },
+})
 
 /**
  * @description: OAuth Providers

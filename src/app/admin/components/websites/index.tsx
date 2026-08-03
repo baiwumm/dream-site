@@ -5,32 +5,34 @@
  * @LastEditTime: 2026-07-07 16:08:04
  * @Description: 网站列表
  */
-"use client"
-import { CircleCheckFill } from '@gravity-ui/icons';
-import { Card, toast, useOverlayState } from "@heroui/react";
+'use client'
+import { CircleCheckFill } from '@gravity-ui/icons'
+import { Card, toast, useOverlayState } from '@heroui/react'
 import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
-  type VisibilityState
-} from '@tanstack/react-table';
-import { useRequest, useSetState } from 'ahooks';
-import { type FC, useCallback, useEffect, useMemo, useState } from 'react';
+
+} from '@tanstack/react-table'
+import { useRequest, useSetState } from 'ahooks'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+
+import DataTablePagination from '@/components/DataTablePagination'
+import { RESPONSE } from '@/enums'
+import { get } from '@/lib/utils'
+import { getCategorysList } from '@/services/categorys'
+import { delWebsite, getWebsitesList } from '@/services/websites'
 
 import { getColumns } from './components/columns'
-import DataTable from './components/data-table';
-import DeleteDialog from './components/delete-dialog';
-import HeaderContent from './components/header-content';
-import SaveModal from './components/save-modal';
+import DataTable from './components/data-table'
+import DeleteDialog from './components/delete-dialog'
+import HeaderContent from './components/header-content'
+import SaveModal from './components/save-modal'
 
-import DataTablePagination from '@/components/DataTablePagination';
-import { RESPONSE } from '@/enums';
-import { get } from '@/lib/utils';
-import { getCategorysList } from '@/services/categorys';
-import { delWebsite, getWebsitesList } from '@/services/websites';
+import type { SortingState, VisibilityState } from '@tanstack/react-table'
+import type { FC } from 'react'
 
 // 初始参数
 const InitialParams: App.WebsiteQueryParams = {
@@ -38,41 +40,41 @@ const InitialParams: App.WebsiteQueryParams = {
   pageSize: 10,
   name: '',
   category_id: '',
-};
+}
 
 const Websites: FC = () => {
   // 搜索参数
-  const [searchParams, setSearchParams] = useSetState<App.WebsiteQueryParams>(InitialParams);
+  const [searchParams, setSearchParams] = useSetState<App.WebsiteQueryParams>(InitialParams)
   // 排序
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([])
   // 受控列
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     desc: false,
     vpn: false,
     commonlyUsed: false,
-    updated_at: false
+    updated_at: false,
   })
 
   // 保存弹窗
-  const saveModalState = useOverlayState();
+  const saveModalState = useOverlayState()
   // 删除弹窗
-  const delDialogState = useOverlayState();
+  const delDialogState = useOverlayState()
   // 编辑数据
-  const [editData, setEditData] = useState<App.Website | null>(null);
+  const [editData, setEditData] = useState<App.Website | null>(null)
   // 站点标签
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([])
 
   // 请求分类列表
-  const { data: categorysList } = useRequest(async (params) => get<App.Category[]>(await getCategorysList(params), 'data.list', []), {
-    defaultParams: [{ pageIndex: 0, pageSize: 999 }]
-  });
+  const { data: categorysList } = useRequest(async params => get<App.Category[]>(await getCategorysList(params), 'data.list', []), {
+    defaultParams: [{ pageIndex: 0, pageSize: 999 }],
+  })
 
   // 请求网站列表
-  const { data, loading, run } = useRequest(async (params) => get(await getWebsitesList(params), 'data', {}), {
+  const { data, loading, run } = useRequest(async params => get(await getWebsitesList(params), 'data', {}), {
     manual: true,
-    defaultParams: [searchParams]
-  });
-  const total = get(data, 'total', 0);
+    defaultParams: [searchParams],
+  })
+  const total = get(data, 'total', 0)
 
   // 发起请求
   const handleSearch = () => {
@@ -97,15 +99,15 @@ const Websites: FC = () => {
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
-        delDialogState.close();
-        toast.success("删除成功", {
+        delDialogState.close()
+        toast.success('删除成功', {
           timeout: 2000,
           indicator: <CircleCheckFill />,
-        });
-        handleSearch();
+        })
+        handleSearch()
       }
     },
-  });
+  })
 
   // 删除回调
   const handleDel = useCallback((row: App.Website) => {
@@ -123,7 +125,7 @@ const Websites: FC = () => {
   // 列配置项
   const columns = useMemo(
     () => getColumns({ handleEdit, handleDel, page: get(data, 'page', 0), pageSize: get(data, 'pageSize', 0) }),
-    [handleEdit, handleDel, data]
+    [handleEdit, handleDel, data],
   )
 
   // 表格实例
@@ -152,34 +154,22 @@ const Websites: FC = () => {
 
   useEffect(() => {
     run(searchParams)
-  }, [run, searchParams.pageIndex, searchParams.pageSize]);
-
-  useEffect(() => {
-    if (!saveModalState.isOpen) {
-      setEditData(null);
-    }
-  }, [saveModalState.isOpen]);
-
-  useEffect(() => {
-    if (!delDialogState.isOpen) {
-      setEditData(null);
-    }
-  }, [delDialogState.isOpen]);
+  }, [run, searchParams.pageIndex, searchParams.pageSize])
   return (
     <>
       <Card className="shadow-lg">
         <HeaderContent
-          table={table}
           categorysList={categorysList || []}
+          handleReset={handleReset}
+          handleSearch={handleSearch}
+          loading={loading}
+          saveModalState={saveModalState}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
-          loading={loading}
-          handleSearch={handleSearch}
-          handleReset={handleReset}
-          saveModalState={saveModalState}
+          table={table}
         />
         <Card.Content>
-          <DataTable table={table} loading={loading} />
+          <DataTable loading={loading} table={table} />
         </Card.Content>
         <Card.Footer>
           <DataTablePagination table={table} total={total || 0} />
@@ -187,16 +177,17 @@ const Websites: FC = () => {
       </Card>
       {/* 保存弹窗 */}
       <SaveModal
-        state={saveModalState}
-        initialValues={editData}
-        handleRefresh={handleSearch}
-        tags={tags}
-        setTags={setTags}
         categorysList={categorysList || []}
+        handleRefresh={handleSearch}
+        initialValues={editData}
+        setTags={setTags}
+        state={saveModalState}
+        tags={tags}
+        onClose={() => setEditData(null)}
       />
       {/* 删除弹窗 */}
-      <DeleteDialog state={delDialogState} loading={delLoading} handleDelConfirm={handleDelConfirm} />
+      <DeleteDialog handleDelConfirm={handleDelConfirm} loading={delLoading} state={delDialogState} onClose={() => setEditData(null)} />
     </>
   )
 }
-export default Websites;
+export default Websites

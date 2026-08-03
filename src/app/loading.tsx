@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-07-15 16:43:28
  * @Description: 路由加载 Loading
  */
-import { Description, Spinner } from "@heroui/react";
+import { Description, Spinner } from '@heroui/react'
 
 export default function Loading() {
   return (
@@ -15,5 +15,5 @@ export default function Loading() {
         <Description className="font-black">加载中...</Description>
       </div>
     </div>
-  );
+  )
 }

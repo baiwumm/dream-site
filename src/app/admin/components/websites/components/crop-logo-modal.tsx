@@ -6,20 +6,24 @@
  * @Description: Logo 裁剪弹窗
  */
 'use client'
-import { Crop } from '@gravity-ui/icons';
-import { Button, Modal, type UseOverlayStateReturn } from "@heroui/react"
-import { type Dispatch, type FC, type SetStateAction, useState } from 'react';
-import Cropper, { type Area, type Point } from 'react-easy-crop'
+import { Crop } from '@gravity-ui/icons'
+import { Button, Modal } from '@heroui/react'
+import { useState } from 'react'
+import Cropper from 'react-easy-crop'
 
-import { type FileWithPreview } from '@/hooks/use-file-upload';
 import { getCroppedImg } from '@/lib/crop-image'
+
+import type { FileWithPreview } from '@/hooks/use-file-upload'
+import type { UseOverlayStateReturn } from '@heroui/react'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import type { Area, Point } from 'react-easy-crop'
 
 const MIN_ZOOM = 1
 const MAX_ZOOM = 5
 const ZOOM_STEP = 0.1
 
-type CropLogoModalProps = {
-  state: UseOverlayStateReturn;
+interface CropLogoModalProps {
+  state: UseOverlayStateReturn
   image: string | null
   setInnerFile: Dispatch<SetStateAction<FileWithPreview | null>>
 }
@@ -41,20 +45,21 @@ const CropLogoModal: FC<CropLogoModalProps> = ({ state, image, setInnerFile }) =
    * @description: 确认裁剪
    */
   const handleCropConfirm = async () => {
-    if (!image || !croppedAreaPixels) return;
+    if (!image || !croppedAreaPixels)
+      return
     const file = await getCroppedImg(
       image,
-      croppedAreaPixels
-    );
-    const preview = URL.createObjectURL(file);
+      croppedAreaPixels,
+    )
+    const preview = URL.createObjectURL(file)
     const newFile: FileWithPreview = {
       id: crypto.randomUUID(),
       file,
       preview,
-    };
-    setInnerFile(newFile);
-    state.close();
-  };
+    }
+    setInnerFile(newFile)
+    state.close()
+  }
 
   const onReset = () => {
     setCrop({ x: 0, y: 0 })
@@ -62,7 +67,7 @@ const CropLogoModal: FC<CropLogoModalProps> = ({ state, image, setInnerFile }) =
     setRotation(0)
   }
   return (
-    <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen} isDismissable={false} isKeyboardDismissDisabled>
+    <Modal.Backdrop isDismissable={false} isKeyboardDismissDisabled isOpen={state.isOpen} onOpenChange={state.setOpen}>
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-lg">
           <Modal.CloseTrigger />
@@ -76,14 +81,14 @@ const CropLogoModal: FC<CropLogoModalProps> = ({ state, image, setInnerFile }) =
             <div className="relative h-100">
               {image && (
                 <Cropper
-                  image={image}
-                  crop={crop}
-                  zoom={zoom}
-                  minZoom={MIN_ZOOM}
-                  maxZoom={MAX_ZOOM}
-                  zoomSpeed={ZOOM_STEP}
-                  rotation={rotation}
                   aspect={1}
+                  crop={crop}
+                  image={image}
+                  maxZoom={MAX_ZOOM}
+                  minZoom={MIN_ZOOM}
+                  rotation={rotation}
+                  zoom={zoom}
+                  zoomSpeed={ZOOM_STEP}
                   onCropChange={setCrop}
                   onCropComplete={onCropComplete}
                   onRotationChange={setRotation}
@@ -93,8 +98,8 @@ const CropLogoModal: FC<CropLogoModalProps> = ({ state, image, setInnerFile }) =
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button slot="close" variant="outline">取消</Button>
-            <Button variant='tertiary' onPress={onReset}>重置</Button>
+            <Button variant="outline" slot="close">取消</Button>
+            <Button variant="tertiary" onPress={onReset}>重置</Button>
             <Button onPress={handleCropConfirm}>确认</Button>
           </Modal.Footer>
         </Modal.Dialog>
@@ -102,4 +107,4 @@ const CropLogoModal: FC<CropLogoModalProps> = ({ state, image, setInnerFile }) =
     </Modal.Backdrop>
   )
 }
-export default CropLogoModal;
+export default CropLogoModal

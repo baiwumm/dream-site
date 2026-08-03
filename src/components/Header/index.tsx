@@ -2,52 +2,53 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-07 18:16:29
+ * @LastEditTime: 2026-08-03 16:55:49
  * @Description: 顶部导航
  */
-"use client"
-import { HouseFill, LogoGithub } from '@gravity-ui/icons';
-import { Button, Tooltip } from '@heroui/react';
-import Image from 'next/image';
-import Link from "next/link";
-import { type FC, type ReactNode } from 'react';
+'use client'
+import { HouseFill, LogoGithub } from '@gravity-ui/icons'
+import { Button, Tooltip } from '@heroui/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { ShimmeringText } from '@/components/ShimmeringText';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
-import TimeAndLunar from '@/components/TimeAndLunar';
-import UserAvatar from '@/components/UserAvatar';
-import pkg from '#/package.json';
+import { ShimmeringText } from '@/components/ShimmeringText'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
+import TimeAndLunar from '@/components/TimeAndLunar'
+import UserAvatar from '@/components/UserAvatar'
+import pkg from '#/package.json'
 
-type Social = {
-  name: string;
-  url: string;
-  icon: ReactNode;
+import type { FC, ReactNode } from 'react'
+
+interface Social {
+  name: string
+  url: string
+  icon: ReactNode
 }
 
 const socials: Social[] = [
   {
-    name: "GitHub",
+    name: 'GitHub',
     url: pkg.git.url,
-    icon: <LogoGithub />
-  }
+    icon: <LogoGithub />,
+  },
 ]
 
 const Header: FC = () => {
   return (
-    <header className="sticky top-0 p-4 z-20 backdrop-blur-sm container mx-auto flex justify-between items-center" id="header">
+    <header className="shrink-0 sticky top-0 p-4 z-20 backdrop-blur-sm container mx-auto flex justify-between items-center">
       {/* 左侧 Logo */}
       <Link href="/">
         <div className="flex gap-2 items-center justify-self-start">
           <div className="size-8 relative">
-            <Image src="/logo.svg" fill alt="Logo" />
+            <Image alt="Logo" fill src="/logo.svg" />
           </div>
           <ShimmeringText
-            text={process.env.NEXT_PUBLIC_APP_NAME!}
-            className="text-xl font-black"
+            color="var(--foreground)"
             duration={1.5}
             repeatDelay={1}
-            color="var(--foreground)"
             shimmerColor="var(--background)"
+            text={process.env.NEXT_PUBLIC_APP_NAME!}
+            className="text-xl font-black"
           />
         </div>
       </Link>
@@ -57,8 +58,8 @@ const Header: FC = () => {
         <ThemeSwitcher />
         {socials.map(({ name, url, icon }) => (
           <Tooltip key={name} delay={0}>
-            <Link href={url} aria-label={name} target="_blank">
-              <Button variant="ghost" isIconOnly size='sm'>
+            <Link aria-label={name} href={url} target="_blank">
+              <Button size="sm" variant="ghost" isIconOnly>
                 {icon}
               </Button>
             </Link>
@@ -69,8 +70,8 @@ const Header: FC = () => {
           </Tooltip>
         ))}
         <Tooltip>
-          <Link href={pkg.author.url} aria-label="主页" target="_blank">
-            <Button variant="ghost" isIconOnly size='sm'>
+          <Link aria-label="主页" href={pkg.author.url} target="_blank">
+            <Button size="sm" variant="ghost" isIconOnly>
               <HouseFill />
             </Button>
           </Link>
@@ -82,7 +83,7 @@ const Header: FC = () => {
         {/* 登录用户信息 */}
         <UserAvatar />
       </div>
-    </header >
+    </header>
   )
 }
-export default Header;
+export default Header

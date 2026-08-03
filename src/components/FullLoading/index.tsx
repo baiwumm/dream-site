@@ -5,16 +5,17 @@
  * @LastEditTime: 2026-07-22 15:54:46
  * @Description: 全局 Loading
  */
-"use client"
-import { Description, Spinner, useIsHydrated } from "@heroui/react";
-import { type FC, type ReactNode } from 'react';
+'use client'
+import { Description, Spinner, useIsHydrated } from '@heroui/react'
 
-type FullLoadingProps = {
-  children: ReactNode;
+import type { FC, ReactNode } from 'react'
+
+interface FullLoadingProps {
+  children: ReactNode
 }
 
 const FullLoading: FC<FullLoadingProps> = ({ children }) => {
-  const hydrated = useIsHydrated();
+  const hydrated = useIsHydrated()
 
   // 判断组件是否挂载
   if (!hydrated) {
@@ -25,8 +26,8 @@ const FullLoading: FC<FullLoadingProps> = ({ children }) => {
           <Description className="font-black">加载中,请稍后...</Description>
         </div>
       </div>
-    );
+    )
   }
   return children
-};
-export default FullLoading;
+}
+export default FullLoading

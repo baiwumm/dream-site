@@ -5,23 +5,25 @@
  * @LastEditTime: 2026-07-06 11:05:00
  * @Description: Axios 请求封装
  */
-import { CircleXmarkFill } from '@gravity-ui/icons';
-import { toast } from "@heroui/react";
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { CircleXmarkFill } from '@gravity-ui/icons'
+import { toast } from '@heroui/react'
+import axios from 'axios'
 
-import { finishLoading, startLoading } from './nprogress';
+import { RESPONSE } from '@/enums'
+import { get, isSuccess } from '@/lib/utils'
 
-import { RESPONSE } from '@/enums';
-import { get, isSuccess } from '@/lib/utils';
+import { finishLoading, startLoading } from './nprogress'
 
-type Response<T = unknown> = App.IResponse<T>;
+import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+
+type Response<T = unknown> = App.IResponse<T>
 /**
  * @description: 创建 Axios 实例对象
  */
 const request: AxiosInstance = axios.create({
   baseURL: '/api',
   timeout: 30 * 1000, // 请求超时时间,默认30秒
-});
+})
 
 /**
  * @description: 请求拦截器，主要在这里处理请求发送前的一些工作，比如给 HTTP Header 添加 token ，开启 Loading 效果，设置取消请求等
@@ -29,17 +31,17 @@ const request: AxiosInstance = axios.create({
  */
 request.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
-    startLoading();
-    return config;
+    startLoading()
+    return config
   },
   (error: AxiosError) => {
     toast.danger(error.message, {
       indicator: <CircleXmarkFill />,
-      timeout: 3000
+      timeout: 3000,
     })
-    return Promise.reject(error);
+    return Promise.reject(error)
   },
-);
+)
 
 /**
  * @description: 响应拦截器
@@ -50,54 +52,54 @@ request.interceptors.request.use(
  */
 request.interceptors.response.use(
   (response: AxiosResponse) => {
-    finishLoading();
+    finishLoading()
     // 获取接口返回的结果
-    const { code, msg } = response.data as Response;
+    const { code, msg } = response.data as Response
     // 根据返回状态码，统一处理，需要前端和后端沟通确认
     // 配置 skipErrorHandler 会跳过默认的错误处理，用于项目中部分特殊的接口
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
       // 其它状态码统一提示错误信息
       toast.danger(msg || RESPONSE.label(1), {
         indicator: <CircleXmarkFill />,
-        timeout: 3000
+        timeout: 3000,
       })
     }
-    return response.data;
+    return response.data
   },
   (error: AxiosError) => {
-    finishLoading();
-    return Promise.reject(error);
+    finishLoading()
+    return Promise.reject(error)
   },
-);
+)
 
 /**
  * @description: 导出封装的请求方法
  */
 type HttpRequestConfig = AxiosRequestConfig & {
-  skipErrorHandler?: boolean;
-};
+  skipErrorHandler?: boolean
+}
 export const httpRequest = {
   get<T = unknown>(url: string, params?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.get(url, {
       ...config,
       params,
-    });
+    })
   },
 
   post<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
-    return request.post(url, data, config);
+    return request.post(url, data, config)
   },
 
   put<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
-    return request.put(url, data, config);
+    return request.put(url, data, config)
   },
 
   delete<T = unknown>(url: string, config?: HttpRequestConfig): Promise<Response<T>> {
-    return request.delete(url, config);
+    return request.delete(url, config)
   },
-};
+}
 
 /**
  * @description: 导出axios实例
  */
-export default request;
+export default request

@@ -6,10 +6,11 @@
  * @Description: 获取用户登录信息
  */
 'use client'
-import type { User } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
 
 import { getSupabaseBrowserClient } from '@/lib/supabase/client'
+
+import type { User } from '@supabase/supabase-js'
 
 export function useSupabaseUser() {
   const supabase = getSupabaseBrowserClient()
@@ -24,7 +25,8 @@ export function useSupabaseUser() {
       if (mounted) {
         if (error) {
           setUser(null)
-        } else {
+        }
+        else {
           setUser(user)
         }
         setLoading(false)
@@ -34,7 +36,8 @@ export function useSupabaseUser() {
     initUser()
 
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!mounted) return
+      if (!mounted)
+        return
       setUser(session?.user ?? null)
     })
 

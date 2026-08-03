@@ -2,7 +2,7 @@ import type { ProgressContextValue } from '@bprogress/next'
 
 let progressInstance: ProgressContextValue | null = null
 
-export const setProgressInstance = (instance: ProgressContextValue) => {
+export function setProgressInstance(instance: ProgressContextValue) {
   progressInstance = instance
 }
 
