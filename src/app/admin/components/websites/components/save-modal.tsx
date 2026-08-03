@@ -30,6 +30,7 @@ import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites'
 import LogoUpload from './logo-upload'
 
 import type { FileWithPreview } from '@/hooks/use-file-upload'
+import type { Category, Website, WebsiteSaveParams } from '@/types'
 import type { UseOverlayStateReturn } from '@heroui/react'
 import type { Dispatch, FC, FormEvent, SetStateAction } from 'react'
 
@@ -42,11 +43,11 @@ const SwitchOptions: { name: string, label: string }[] = [
 
 interface SaveModalProps {
   state: UseOverlayStateReturn
-  initialValues: App.Website | null
+  initialValues: Website | null
   handleRefresh: VoidFunction
   tags: string[]
   setTags: Dispatch<SetStateAction<string[]>>
-  categorysList: App.Category[]
+  categorysList: Category[]
   onClose?: VoidFunction
 }
 
@@ -144,7 +145,7 @@ const SaveModal: FC<SaveModalProps> = ({
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
-    const data: App.WebsiteSaveParams = {
+    const data: WebsiteSaveParams = {
       id: initialValues?.id,
 
       // string

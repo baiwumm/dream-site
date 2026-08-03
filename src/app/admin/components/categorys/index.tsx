@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 16:34:47
+ * @LastEditTime: 2026-08-03 17:27:22
  * @Description: 网站分类
  */
 'use client'
@@ -30,11 +30,12 @@ import DeleteDialog from './components/delete-dialog'
 import HeaderContent from './components/header-content'
 import SaveModal from './components/save-modal'
 
+import type { Category, CategoryQueryParams, WebsiteQueryParams } from '@/types'
 import type { SortingState, VisibilityState } from '@tanstack/react-table'
 import type { FC } from 'react'
 
 // 初始参数
-const InitialParams: App.WebsiteQueryParams = {
+const InitialParams: WebsiteQueryParams = {
   pageIndex: 0,
   pageSize: 10,
   name: '',
@@ -42,7 +43,7 @@ const InitialParams: App.WebsiteQueryParams = {
 
 const Categorys: FC = () => {
   // 搜索参数
-  const [searchParams, setSearchParams] = useSetState<App.CategoryQueryParams>(InitialParams)
+  const [searchParams, setSearchParams] = useSetState<CategoryQueryParams>(InitialParams)
   // 排序
   const [sorting, setSorting] = useState<SortingState>([])
   // 受控列
@@ -54,7 +55,7 @@ const Categorys: FC = () => {
   // 删除弹窗
   const delDialogState = useOverlayState()
   // 编辑数据
-  const [editData, setEditData] = useState<App.Category | null>(null)
+  const [editData, setEditData] = useState<Category | null>(null)
 
   // 请求分类列表
   const { data, loading, run } = useRequest(async params => get(await getCategorysList(params), 'data', {}), {
@@ -76,7 +77,7 @@ const Categorys: FC = () => {
   }
 
   // 编辑回调
-  const handleEdit = useCallback((row: App.Category) => {
+  const handleEdit = useCallback((row: Category) => {
     setEditData(row)
     saveModalState.open()
   }, [saveModalState])
@@ -97,7 +98,7 @@ const Categorys: FC = () => {
   })
 
   // 删除回调
-  const handleDel = useCallback((row: App.Category) => {
+  const handleDel = useCallback((row: Category) => {
     if (row?.websites?.length) {
       toast.danger('该分类下存在关联网站，无法直接删除.', {
         indicator: <CircleXmarkFill />,
@@ -127,7 +128,7 @@ const Categorys: FC = () => {
     data: categorysList,
     columns,
     pageCount: Math.ceil((total || 0) / searchParams.pageSize),
-    getRowId: (row: App.Category) => row.id,
+    getRowId: (row: Category) => row.id,
     state: {
       pagination: {
         pageIndex: searchParams.pageIndex,

@@ -4,6 +4,7 @@ import { RESPONSE } from '@/enums'
 import { getSupabaseServerClient } from '@/lib/supabase/server'
 import { responseMessage } from '@/lib/utils'
 
+import type { Category } from '@/types'
 import type { NextRequest } from 'next/server'
 
 /**
@@ -59,7 +60,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (data) {
-      data.forEach((category: App.Category) => {
+      data.forEach((category: Category) => {
         category?.websites.sort((a, b) => {
           // 2. 再按 pinned 降序 (true 排在前面)
           if (a.pinned !== b.pinned)

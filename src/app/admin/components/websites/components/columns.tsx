@@ -8,11 +8,13 @@ import Image from 'next/image'
 
 import { generateLogoUrl } from '@/lib/utils'
 
-const columnHelper = createColumnHelper<App.Website>()
+import type { Website } from '@/types'
+
+const columnHelper = createColumnHelper<Website>()
 
 interface ColumnsProps {
-  handleEdit: (row: App.Website) => void
-  handleDel: (row: App.Website) => void
+  handleEdit: (row: Website) => void
+  handleDel: (row: Website) => void
   page: number
   pageSize: number
 }

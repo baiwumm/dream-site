@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-02 10:19:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 11:22:22
+ * @LastEditTime: 2026-08-03 17:09:41
  * @Description: 顶部区域
  */
 'use client'
@@ -11,15 +11,16 @@ import { Button, Card, SearchField, Spinner } from '@heroui/react'
 
 import ColumnsVisibility from '@/components/ColumnsVisibility'
 
+import type { Category, CategoryQueryParams } from '@/types'
 import type { useOverlayState } from '@heroui/react'
 import type { Table } from '@tanstack/react-table'
 import type { SetState } from 'ahooks/es/useSetState'
 import type { FC, KeyboardEvent } from 'react'
 
 interface HeaderContentProps {
-  table: Table<App.Category>
-  searchParams: App.CategoryQueryParams
-  setSearchParams: SetState<App.CategoryQueryParams>
+  table: Table<Category>
+  searchParams: CategoryQueryParams
+  setSearchParams: SetState<CategoryQueryParams>
   loading: boolean
   handleSearch: VoidFunction
   handleReset: VoidFunction

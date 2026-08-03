@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:01:56
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-11 13:53:01
+ * @LastEditTime: 2026-08-03 17:06:17
  * @Description: 数据表格
  */
 import { ChevronUp } from '@gravity-ui/icons'
@@ -13,11 +13,12 @@ import EmptyContent from '@/components/EmptyContent'
 import TableLoading from '@/components/TableLoading'
 import { ADMIN_TABS } from '@/enums'
 
+import type { Category } from '@/types'
 import type { Table as TableInstance } from '@tanstack/react-table'
 import type { FC } from 'react'
 
 interface DataTableProps {
-  table: TableInstance<App.Category>
+  table: TableInstance<Category>
   loading: boolean
 }
 

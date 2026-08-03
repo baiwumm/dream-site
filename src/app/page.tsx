@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-15 16:40:39
+ * @LastEditTime: 2026-08-03 17:04:44
  * @Description: 首页
  */
 'use client'
@@ -22,13 +22,16 @@ import { getSupabaseBrowserClient } from '@/lib/supabase/client'
 import { get } from '@/lib/utils'
 import { getCategorysList } from '@/services/categorys'
 
+import type { Category } from '@/types'
+import type { PaginationState } from '@tanstack/react-table'
+
 const MotionWebsiteCard = motion.create(WebsiteCard)
 
 export default function Home() {
   const supabase = getSupabaseBrowserClient()
   const router = useRouter()
 
-  const { data = [] as App.Category[], loading, error, run } = useRequest(
+  const { data = [], loading, error, run } = useRequest<Category[], PaginationState[]>(
     async params =>
       get(await getCategorysList(params), 'data.list', []),
     {

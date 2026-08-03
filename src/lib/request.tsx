@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 11:05:00
+ * @LastEditTime: 2026-08-03 17:15:39
  * @Description: Axios 请求封装
  */
 import { CircleXmarkFill } from '@gravity-ui/icons'
@@ -14,9 +14,9 @@ import { get, isSuccess } from '@/lib/utils'
 
 import { finishLoading, startLoading } from './nprogress'
 
+import type { IResponse } from '@/types'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
-type Response<T = unknown> = App.IResponse<T>
 /**
  * @description: 创建 Axios 实例对象
  */
@@ -54,7 +54,7 @@ request.interceptors.response.use(
   (response: AxiosResponse) => {
     finishLoading()
     // 获取接口返回的结果
-    const { code, msg } = response.data as Response
+    const { code, msg } = response.data as IResponse
     // 根据返回状态码，统一处理，需要前端和后端沟通确认
     // 配置 skipErrorHandler 会跳过默认的错误处理，用于项目中部分特殊的接口
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
@@ -79,22 +79,22 @@ type HttpRequestConfig = AxiosRequestConfig & {
   skipErrorHandler?: boolean
 }
 export const httpRequest = {
-  get<T = unknown>(url: string, params?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
+  get<T = unknown>(url: string, params?: Record<string, unknown>, config?: HttpRequestConfig): Promise<IResponse<T>> {
     return request.get(url, {
       ...config,
       params,
     })
   },
 
-  post<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
+  post<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<IResponse<T>> {
     return request.post(url, data, config)
   },
 
-  put<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<Response<T>> {
+  put<T = unknown>(url: string, data?: Record<string, unknown>, config?: HttpRequestConfig): Promise<IResponse<T>> {
     return request.put(url, data, config)
   },
 
-  delete<T = unknown>(url: string, config?: HttpRequestConfig): Promise<Response<T>> {
+  delete<T = unknown>(url: string, config?: HttpRequestConfig): Promise<IResponse<T>> {
     return request.delete(url, config)
   },
 }

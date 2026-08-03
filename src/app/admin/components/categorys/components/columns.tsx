@@ -4,11 +4,13 @@ import { Button, Chip } from '@heroui/react'
 import { createColumnHelper } from '@tanstack/react-table'
 import dayjs from 'dayjs'
 
-const columnHelper = createColumnHelper<App.Category>()
+import type { Category } from '@/types'
+
+const columnHelper = createColumnHelper<Category>()
 
 interface ColumnsProps {
-  handleEdit: (row: App.Category) => void
-  handleDel: (row: App.Category) => void
+  handleEdit: (row: Category) => void
+  handleDel: (row: Category) => void
   page: number
   pageSize: number
 }

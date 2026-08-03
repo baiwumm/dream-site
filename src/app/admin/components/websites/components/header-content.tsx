@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-02 10:19:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-02-02 11:28:00
+ * @LastEditTime: 2026-08-03 17:27:58
  * @Description: 顶部区域
  */
 'use client'
@@ -18,16 +18,17 @@ import {
 
 import ColumnsVisibility from '@/components/ColumnsVisibility'
 
+import type { Category, Website, WebsiteQueryParams } from '@/types'
 import type { useOverlayState } from '@heroui/react'
 import type { Table } from '@tanstack/react-table'
 import type { SetState } from 'ahooks/es/useSetState'
 import type { FC, KeyboardEvent } from 'react'
 
 interface HeaderContentProps {
-  table: Table<App.Website>
-  categorysList: App.Category[]
-  searchParams: App.WebsiteQueryParams
-  setSearchParams: SetState<App.WebsiteQueryParams>
+  table: Table<Website>
+  categorysList: Category[]
+  searchParams: WebsiteQueryParams
+  setSearchParams: SetState<WebsiteQueryParams>
   loading: boolean
   handleSearch: VoidFunction
   handleReset: VoidFunction

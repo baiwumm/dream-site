@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-07 16:08:04
+ * @LastEditTime: 2026-08-03 17:27:44
  * @Description: 网站列表
  */
 'use client'
@@ -31,11 +31,12 @@ import DeleteDialog from './components/delete-dialog'
 import HeaderContent from './components/header-content'
 import SaveModal from './components/save-modal'
 
+import type { Category, Website, WebsiteQueryParams } from '@/types'
 import type { SortingState, VisibilityState } from '@tanstack/react-table'
 import type { FC } from 'react'
 
 // 初始参数
-const InitialParams: App.WebsiteQueryParams = {
+const InitialParams: WebsiteQueryParams = {
   pageIndex: 0,
   pageSize: 10,
   name: '',
@@ -44,7 +45,7 @@ const InitialParams: App.WebsiteQueryParams = {
 
 const Websites: FC = () => {
   // 搜索参数
-  const [searchParams, setSearchParams] = useSetState<App.WebsiteQueryParams>(InitialParams)
+  const [searchParams, setSearchParams] = useSetState<WebsiteQueryParams>(InitialParams)
   // 排序
   const [sorting, setSorting] = useState<SortingState>([])
   // 受控列
@@ -60,12 +61,12 @@ const Websites: FC = () => {
   // 删除弹窗
   const delDialogState = useOverlayState()
   // 编辑数据
-  const [editData, setEditData] = useState<App.Website | null>(null)
+  const [editData, setEditData] = useState<Website | null>(null)
   // 站点标签
   const [tags, setTags] = useState<string[]>([])
 
   // 请求分类列表
-  const { data: categorysList } = useRequest(async params => get<App.Category[]>(await getCategorysList(params), 'data.list', []), {
+  const { data: categorysList } = useRequest(async params => get<Category[]>(await getCategorysList(params), 'data.list', []), {
     defaultParams: [{ pageIndex: 0, pageSize: 999 }],
   })
 
@@ -88,7 +89,7 @@ const Websites: FC = () => {
   }
 
   // 编辑回调
-  const handleEdit = useCallback((row: App.Website) => {
+  const handleEdit = useCallback((row: Website) => {
     setEditData(row)
     setTags(row?.tags ?? [])
     saveModalState.open()
@@ -110,7 +111,7 @@ const Websites: FC = () => {
   })
 
   // 删除回调
-  const handleDel = useCallback((row: App.Website) => {
+  const handleDel = useCallback((row: Website) => {
     setEditData(row)
     delDialogState.open()
   }, [delDialogState])
@@ -133,7 +134,7 @@ const Websites: FC = () => {
     data: get(data, 'list', []),
     columns,
     pageCount: Math.ceil((total || 0) / searchParams.pageSize),
-    getRowId: (row: App.Website) => row.id,
+    getRowId: (row: Website) => row.id,
     state: {
       pagination: {
         pageIndex: searchParams.pageIndex,

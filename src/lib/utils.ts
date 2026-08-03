@@ -2,10 +2,12 @@ import dayjs from 'dayjs'
 
 import { RESPONSE } from '@/enums'
 
+import type { IResponse } from '@/types'
+
 /**
  * @description: 统一返回体
  */
-export function responseMessage(data: unknown, msg: string = RESPONSE.label(RESPONSE.SUCCESS), code: number = RESPONSE.SUCCESS): App.IResponse {
+export function responseMessage(data: unknown, msg: string = RESPONSE.label(RESPONSE.SUCCESS), code: number = RESPONSE.SUCCESS): IResponse {
   return { data, msg, code, timestamp: dayjs().valueOf() }
 }
 

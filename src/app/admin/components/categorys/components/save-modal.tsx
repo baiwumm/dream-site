@@ -12,7 +12,6 @@ import {
   Surface,
   TextField,
   toast,
-
 } from '@heroui/react'
 import { useRequest } from 'ahooks'
 import { useEffect, useRef } from 'react'
@@ -20,12 +19,13 @@ import { useEffect, useRef } from 'react'
 import { RESPONSE } from '@/enums'
 import { addCategory, updateCategory } from '@/services/categorys'
 
+import type { Category, CategorySaveParams } from '@/types'
 import type { UseOverlayStateReturn } from '@heroui/react'
 import type { FC, FormEvent } from 'react'
 
 interface SaveModalProps {
   state: UseOverlayStateReturn
-  initialValues: App.Category | null
+  initialValues: Category | null
   handleRefresh: VoidFunction
   onClose?: VoidFunction
 }
@@ -55,7 +55,7 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, on
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
-    const data: App.CategorySaveParams = {
+    const data: CategorySaveParams = {
       name: formData.get('name') as string,
       sort: Number(formData.get('sort')),
       id: initialValues?.id,

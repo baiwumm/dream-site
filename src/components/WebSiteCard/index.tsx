@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-05 14:08:41
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-07 15:55:57
+ * @LastEditTime: 2026-08-03 17:26:42
  * @Description: 站点卡片
  */
 'use client'
@@ -14,10 +14,11 @@ import { memo } from 'react'
 
 import { generateLogoUrl } from '@/lib/utils'
 
+import type { Website } from '@/types'
 import type { FC } from 'react'
 
 interface WebsiteCardProps {
-  data: App.Website
+  data: Website
   handleClick: (id: string) => Promise<void>
 }
 
