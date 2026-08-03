@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:04:44
+ * @LastEditTime: 2026-08-03 18:06:06
  * @Description: 首页
  */
 'use client'
@@ -20,7 +20,7 @@ import SkeletonContent from '@/components/SkeletonContent'
 import WebsiteCard from '@/components/WebSiteCard'
 import { getSupabaseBrowserClient } from '@/lib/supabase/client'
 import { get } from '@/lib/utils'
-import { getCategorysList } from '@/services/categorys'
+import { getCategoriesList } from '@/services/categorys'
 
 import type { Category } from '@/types'
 import type { PaginationState } from '@tanstack/react-table'
@@ -33,7 +33,7 @@ export default function Home() {
 
   const { data = [], loading, error, run } = useRequest<Category[], PaginationState[]>(
     async params =>
-      get(await getCategorysList(params), 'data.list', []),
+      get(await getCategoriesList(params), 'data.list', []),
     {
       defaultParams: [{ pageIndex: 0, pageSize: 999 }],
     },
