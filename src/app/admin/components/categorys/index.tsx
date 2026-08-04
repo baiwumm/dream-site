@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 09:40:47
+ * @LastEditTime: 2026-08-04 10:28:12
  * @Description: 网站分类
  */
 'use client'
@@ -14,9 +14,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-
 } from '@tanstack/react-table'
-import { useRequest, useSetState } from 'ahooks'
+import { useRequest } from 'ahooks'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import DataTablePagination from '@/components/DataTablePagination'
@@ -29,20 +28,18 @@ import DeleteDialog from './components/delete-dialog'
 import HeaderContent from './components/header-content'
 import SaveModal from './components/save-modal'
 
-import type { Category, CategoryQueryParams, WebsiteQueryParams } from '@/types'
-import type { SortingState, VisibilityState } from '@tanstack/react-table'
+import type { Category } from '@/types'
+import type { PaginationState, SortingState, VisibilityState } from '@tanstack/react-table'
 import type { FC } from 'react'
-
-// 初始参数
-const InitialParams: WebsiteQueryParams = {
-  pageIndex: 0,
-  pageSize: 10,
-  name: '',
-}
 
 const Categorys: FC = () => {
   // 搜索参数
-  const [searchParams, setSearchParams] = useSetState<CategoryQueryParams>(InitialParams)
+  const [name, setName] = useState('')
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  })
+  const searchParams = useMemo(() => ({ name, ...pagination }), [name, pagination])
   // 排序
   const [sorting, setSorting] = useState<SortingState>([])
   // 受控列
@@ -71,8 +68,13 @@ const Categorys: FC = () => {
 
   // 重置
   const handleReset = () => {
-    setSearchParams(InitialParams)
-    run(InitialParams)
+    setName('')
+    setPagination({ pageIndex: 0, pageSize: 10 })
+    run({
+      name: '',
+      pageIndex: 0,
+      pageSize: 10,
+    })
   }
 
   // 编辑回调
@@ -129,14 +131,11 @@ const Categorys: FC = () => {
     pageCount: Math.ceil((total || 0) / searchParams.pageSize),
     getRowId: (row: Category) => row.id,
     state: {
-      pagination: {
-        pageIndex: searchParams.pageIndex,
-        pageSize: searchParams.pageSize,
-      },
+      pagination,
       sorting,
       columnVisibility,
     },
-    onPaginationChange: setSearchParams,
+    onPaginationChange: setPagination,
     manualPagination: true,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
@@ -153,12 +152,12 @@ const Categorys: FC = () => {
     <>
       <Card className="shadow-lg">
         <HeaderContent
+          name={name}
           handleReset={handleReset}
           handleSearch={handleSearch}
           loading={loading}
           saveModalState={saveModalState}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
+          setName={setName}
           table={table}
         />
         <Card.Content>

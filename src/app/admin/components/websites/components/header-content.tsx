@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-02 10:19:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:27:58
+ * @LastEditTime: 2026-08-04 11:05:54
  * @Description: 顶部区域
  */
 'use client'
@@ -18,17 +18,18 @@ import {
 
 import ColumnsVisibility from '@/components/ColumnsVisibility'
 
-import type { Category, Website, WebsiteQueryParams } from '@/types'
+import type { Category, Website } from '@/types'
 import type { useOverlayState } from '@heroui/react'
 import type { Table } from '@tanstack/react-table'
-import type { SetState } from 'ahooks/es/useSetState'
-import type { FC, KeyboardEvent } from 'react'
+import type { Dispatch, FC, KeyboardEvent, SetStateAction } from 'react'
 
 interface HeaderContentProps {
   table: Table<Website>
   categorysList: Category[]
-  searchParams: WebsiteQueryParams
-  setSearchParams: SetState<WebsiteQueryParams>
+  name: string
+  setName: Dispatch<SetStateAction<string>>
+  categoryId: string
+  setCategoryId: Dispatch<SetStateAction<string>>
   loading: boolean
   handleSearch: VoidFunction
   handleReset: VoidFunction
@@ -38,8 +39,10 @@ interface HeaderContentProps {
 const HeaderContent: FC<HeaderContentProps> = ({
   table,
   categorysList = [],
-  searchParams,
-  setSearchParams,
+  name,
+  setName,
+  categoryId,
+  setCategoryId,
   loading = false,
   handleSearch,
   handleReset,
@@ -58,8 +61,8 @@ const HeaderContent: FC<HeaderContentProps> = ({
         <SearchField
           aria-label="网站名称"
           variant="secondary"
-          value={searchParams.name}
-          onChange={value => setSearchParams({ name: value })}
+          value={name}
+          onChange={setName}
           onKeyDown={handleKeyDown}
         >
           <SearchField.Group>
@@ -72,8 +75,8 @@ const HeaderContent: FC<HeaderContentProps> = ({
           aria-label="所属分类"
           variant="secondary"
           placeholder="所属分类"
-          value={searchParams.category_id}
-          onChange={id => setSearchParams({ category_id: id as string })}
+          value={categoryId}
+          onChange={id => setCategoryId(id as string)}
           className="w-60"
         >
           <Select.Trigger>

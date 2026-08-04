@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-02 10:19:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:09:41
+ * @LastEditTime: 2026-08-04 10:28:24
  * @Description: 顶部区域
  */
 'use client'
@@ -11,16 +11,15 @@ import { Button, Card, SearchField, Spinner } from '@heroui/react'
 
 import ColumnsVisibility from '@/components/ColumnsVisibility'
 
-import type { Category, CategoryQueryParams } from '@/types'
+import type { Category } from '@/types'
 import type { useOverlayState } from '@heroui/react'
 import type { Table } from '@tanstack/react-table'
-import type { SetState } from 'ahooks/es/useSetState'
-import type { FC, KeyboardEvent } from 'react'
+import type { Dispatch, FC, KeyboardEvent, SetStateAction } from 'react'
 
 interface HeaderContentProps {
   table: Table<Category>
-  searchParams: CategoryQueryParams
-  setSearchParams: SetState<CategoryQueryParams>
+  name: string
+  setName: Dispatch<SetStateAction<string>>
   loading: boolean
   handleSearch: VoidFunction
   handleReset: VoidFunction
@@ -29,8 +28,8 @@ interface HeaderContentProps {
 
 const HeaderContent: FC<HeaderContentProps> = ({
   table,
-  searchParams,
-  setSearchParams,
+  name,
+  setName,
   loading = false,
   handleSearch,
   handleReset,
@@ -49,8 +48,8 @@ const HeaderContent: FC<HeaderContentProps> = ({
         <SearchField
           aria-label="分类名称"
           variant="secondary"
-          value={searchParams.name}
-          onChange={value => setSearchParams({ name: value })}
+          value={name}
+          onChange={setName}
           onKeyDown={handleKeyDown}
         >
           <SearchField.Group>
