@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 16:40:51
+ * @LastEditTime: 2026-08-04 17:20:03
  * @Description: 网站分类
  */
 'use client'
@@ -15,7 +15,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import DataTablePagination from '@/components/DataTablePagination'
 import useRequest from '@/hooks/use-request'
@@ -59,6 +59,11 @@ const Categorys: FC = () => {
   })
   const total = useMemo(() => data?.total ?? 0, [data])
   const list = useMemo(() => data?.list ?? [], [data])
+  const searchParamsRef = useRef(searchParams)
+
+  useEffect(() => {
+    searchParamsRef.current = searchParams
+  }, [searchParams])
 
   // 发起请求
   const handleSearch = () => {
@@ -152,8 +157,8 @@ const Categorys: FC = () => {
   })
 
   useEffect(() => {
-    run(searchParams)
-  }, [run, searchParams.pageIndex, searchParams.pageSize])
+    run(searchParamsRef.current)
+  }, [run, pagination.pageIndex, pagination.pageSize])
   return (
     <>
       <Card className="shadow-lg">

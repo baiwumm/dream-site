@@ -268,6 +268,7 @@ export function useFileUpload(options: FileUploadOptions = {}): [FileUploadState
       clearFiles,
       onFilesChange,
       onFilesAdded,
+      onError,
     ],
   )
 

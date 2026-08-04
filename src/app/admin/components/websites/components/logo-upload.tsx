@@ -131,8 +131,8 @@ const LogoUpload: FC<LogoUploadProps> = ({
                 <Alert.Title>上传失败</Alert.Title>
                 <Alert.Description>
                   <ul className="mt-2 list-inside list-disc space-y-1 text-sm">
-                    {errors.map((error, index) => (
-                      <li key={index}>{error}</li>
+                    {errors.map(error => (
+                      <li key={error}>{error}</li>
                     ))}
                   </ul>
                 </Alert.Description>

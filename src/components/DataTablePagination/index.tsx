@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:23:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-11 14:16:03
+ * @LastEditTime: 2026-08-04 17:20:53
  * @Description: 渲染分页
  */
 import { Description, ListBox, Pagination, Select } from '@heroui/react'
@@ -14,31 +14,38 @@ interface DataTablePaginationProps<TData> {
   total: number
 }
 
+interface PaginationToken {
+  key: string
+  type: 'page' | 'ellipsis'
+  value?: number
+}
+
 function DataTablePagination<TData>({ table, total = 0 }: DataTablePaginationProps<TData>) {
   // 渲染中间分页
   const { pageIndex } = table.getState().pagination
   const pageCount = table.getPageCount()
 
   function getPageNumbers(pageIndex: number, pageCount: number, delta = 2) {
-    const pages: (number | '...')[] = []
+    const pages: PaginationToken[] = []
+    let ellipsisCount = 0
 
     const start = Math.max(0, pageIndex - delta)
     const end = Math.min(pageCount - 1, pageIndex + delta)
 
     if (start > 0) {
-      pages.push(0)
+      pages.push({ key: 'page-0', type: 'page', value: 0 })
       if (start > 1)
-        pages.push('...')
+        pages.push({ key: `ellipsis-${++ellipsisCount}`, type: 'ellipsis' })
     }
 
     for (let i = start; i <= end; i++) {
-      pages.push(i)
+      pages.push({ key: `page-${i}`, type: 'page', value: i })
     }
 
     if (end < pageCount - 1) {
       if (end < pageCount - 2)
-        pages.push('...')
-      pages.push(pageCount - 1)
+        pages.push({ key: `ellipsis-${++ellipsisCount}`, type: 'ellipsis' })
+      pages.push({ key: `page-${pageCount - 1}`, type: 'page', value: pageCount - 1 })
     }
 
     return pages
@@ -87,17 +94,17 @@ function DataTablePagination<TData>({ table, total = 0 }: DataTablePaginationPro
                 <Pagination.PreviousIcon />
               </Pagination.Previous>
             </Pagination.Item>
-            {pages.map((p, i) =>
-              p === '...'
+            {pages.map(p =>
+              p.type === 'ellipsis'
                 ? (
-                    <Pagination.Item key={`ellipsis-${i}`}>
+                    <Pagination.Item key={p.key}>
                       <Pagination.Ellipsis />
                     </Pagination.Item>
                   )
                 : (
-                    <Pagination.Item key={p}>
-                      <Pagination.Link isActive={p === pageIndex} onPress={() => table.setPageIndex(p)}>
-                        {p + 1}
+                    <Pagination.Item key={p.key}>
+                      <Pagination.Link isActive={p.value === pageIndex} onPress={() => table.setPageIndex(p.value!)}>
+                        {p.value! + 1}
                       </Pagination.Link>
                     </Pagination.Item>
                   ),
