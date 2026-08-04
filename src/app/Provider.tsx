@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 09:42:15
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 16:56:58
+ * @LastEditTime: 2026-08-04 17:51:27
  * @Description: 上下文提供者
  */
 'use client'
@@ -12,14 +12,12 @@ import { ViewTransition } from 'react'
 import BackTop from '@/components/BackTop'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import ProgressBridge from '@/components/ProgressBridge'
 
 import type { FC, PropsWithChildren } from 'react'
 
 const Providers: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ProgressProvider color="var(--accent)" options={{ showSpinner: true }} shallowRouting>
-      <ProgressBridge />
       {/* 顶部 */}
       <Header />
       {/* 主体内容 */}

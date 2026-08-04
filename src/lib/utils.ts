@@ -9,18 +9,6 @@ export const RESPONSE = {
 } as const
 
 /**
- * @description: 统一返回体
- */
-export function responseMessage(data: unknown, msg: string = '请求成功', code: number = RESPONSE.SUCCESS): IResponse {
-  return { data, msg, code, timestamp: Date.now() }
-}
-
-/**
- * @description: 判断请求是否成功
- */
-export const isSuccess = (code?: number): boolean => code === RESPONSE.SUCCESS
-
-/**
  * Dynamically get a nested value from an array or
  * object with a string.
  *
@@ -45,17 +33,10 @@ export function get<TDefault = unknown>(value: unknown, path: string, defaultVal
 }
 
 /**
- * Pick a list of properties from an object
- * into a new object
+ * @description: 统一返回体
  */
-export function pick<T extends object, TKeys extends keyof T>(obj: T, keys: TKeys[]): Pick<T, TKeys> {
-  if (!obj)
-    return {} as Pick<T, TKeys>
-  return keys.reduce((acc, key) => {
-    if (Object.hasOwn(obj, key))
-      acc[key] = obj[key]
-    return acc
-  }, {} as Pick<T, TKeys>)
+export function responseMessage(data: unknown, msg: string = '请求成功', code: number = RESPONSE.SUCCESS): IResponse {
+  return { data, msg, code, timestamp: Date.now() }
 }
 
 // 生成 Logo 链接

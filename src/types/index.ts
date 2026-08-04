@@ -6,12 +6,6 @@ export type Category = Columns & {
   websites: Website[] // 网站列表
 }
 
-/** @description: 网站分类查询参数 */
-export interface CategoryQueryParams {
-  pageIndex: number
-  pageSize: number
-  name?: string
-}
 /** @description: 网站分类表单 */
 export type CategorySaveParams = Pick<Category, 'name' | 'sort'> & {
   id?: string
@@ -58,13 +52,6 @@ export type Website = Columns & {
   category_id: string // 分类 id
   category: Category
 }
-
-/** @description: 网站查询参数 */
-export type WebsiteQueryParams = {
-  pageIndex: number
-  pageSize: number
-  category_id?: string
-} & Pick<Category, 'name'>
 
 /** @description: 网站列表表单 */
 export type WebsiteSaveParams = Omit<Website, keyof Columns | 'visitCount' | 'category'> & Pick<Website, 'sort'> & {
