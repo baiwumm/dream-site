@@ -1,5 +1,3 @@
-import dayjs from 'dayjs'
-
 import type { IResponse } from '@/types'
 
 /**
@@ -14,7 +12,7 @@ export const RESPONSE = {
  * @description: 统一返回体
  */
 export function responseMessage(data: unknown, msg: string = '请求成功', code: number = RESPONSE.SUCCESS): IResponse {
-  return { data, msg, code, timestamp: dayjs().valueOf() }
+  return { data, msg, code, timestamp: Date.now() }
 }
 
 /**
@@ -62,3 +60,29 @@ export function pick<T extends object, TKeys extends keyof T>(obj: T, keys: TKey
 
 // 生成 Logo 链接
 export const generateLogoUrl = (path: string) => `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BUCKET}/${path}`
+
+/**
+ * @description: 格式化时间
+ */
+export function formatDate(value: string | number | Date, type: 'date' | 'datetime' = 'date') {
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return ''
+  }
+
+  return new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    ...(type === 'datetime'
+      ? {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+        }
+      : {}),
+  })
+    .format(date)
+    .replace(/\//g, '-')
+}

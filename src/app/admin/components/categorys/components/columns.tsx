@@ -1,8 +1,9 @@
 'use client'
 import { PencilToSquare, TrashBin } from '@gravity-ui/icons'
-import { Button, Chip } from '@heroui/react'
+import { Button, Chip, Description } from '@heroui/react'
 import { createColumnHelper } from '@tanstack/react-table'
-import dayjs from 'dayjs'
+
+import { formatDate } from '@/lib/utils'
 
 import type { Category } from '@/types'
 
@@ -63,18 +64,18 @@ export function getColumns({
     columnHelper.accessor('created_at', {
       header: '创建时间',
       cell: ({ getValue }) => (
-        <span className="text-muted text-xs">
-          {dayjs(getValue()).format('YYYY-MM-DD HH:mm')}
-        </span>
+        <Description>
+          {formatDate(getValue(), 'datetime')}
+        </Description>
       ),
     }),
 
     columnHelper.accessor('updated_at', {
       header: '更新时间',
       cell: ({ getValue }) => (
-        <span className="text-muted text-xs">
-          {dayjs(getValue()).format('YYYY-MM-DD HH:mm')}
-        </span>
+        <Description>
+          {formatDate(getValue(), 'datetime')}
+        </Description>
       ),
     }),
 

@@ -32,7 +32,6 @@
     "@vercel/analytics": "^2.0.1",
     "ahooks": "^3.9.7",
     "axios": "^1.18.1",
-    "dayjs": "^1.11.21",
     "lunar-typescript": "^1.8.6",
     "motion": "^12.42.2",
     "next": "16.2.9",

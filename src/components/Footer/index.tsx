@@ -2,17 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 16:56:06
+ * @LastEditTime: 2026-08-04 10:00:16
  * @Description: 底部版权
  */
 import { Chip, cn, Description, Link, Separator } from '@heroui/react'
-import dayjs from 'dayjs'
 import Image from 'next/image'
 
 import { ShimmeringText } from '@/components/ShimmeringText'
 import pkg from '#/package.json'
 
 import type { FC, ReactNode } from 'react'
+
+const CURRENT_YEAR = new Date().getFullYear()
 
 interface Social {
   icon?: ReactNode
@@ -68,7 +69,7 @@ const Footer: FC = () => {
       <Description className="justify-self-center">
         &copy;
         {' '}
-        {dayjs().year()}
+        {CURRENT_YEAR}
         {' '}
         {' '}
         <a href={pkg.author.url} rel="noopener noreferrer" target="_blank" className="hover:text-accent transition-colors">
