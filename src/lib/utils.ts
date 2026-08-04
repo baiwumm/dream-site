@@ -1,13 +1,19 @@
 import dayjs from 'dayjs'
 
-import { RESPONSE } from '@/enums'
-
 import type { IResponse } from '@/types'
+
+/**
+ * @description: 请求状态
+ */
+export const RESPONSE = {
+  SUCCESS: 200,
+  ERROR: 500,
+} as const
 
 /**
  * @description: 统一返回体
  */
-export function responseMessage(data: unknown, msg: string = RESPONSE.label(RESPONSE.SUCCESS), code: number = RESPONSE.SUCCESS): IResponse {
+export function responseMessage(data: unknown, msg: string = '请求成功', code: number = RESPONSE.SUCCESS): IResponse {
   return { data, msg, code, timestamp: dayjs().valueOf() }
 }
 

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-22 14:12:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-07-06 18:17:01
+ * @LastEditTime: 2026-08-04 09:46:25
  * @Description: 登录页
  */
 'use client'
@@ -33,11 +33,15 @@ import {
 import Image from 'next/image'
 import { useState } from 'react'
 
-import { OAUTH_PROVIDERS } from '@/enums'
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabase/client'
 
 import type { FormEvent } from 'react'
+
+const Providers = [
+  { value: 'google' as const, label: '使用 Google 登录', icon: <GoogleIcon /> },
+  { value: 'github' as const, label: '使用 Github 登录', icon: <GithubIcon /> },
+]
 
 interface EmailForm {
   email: string
@@ -108,7 +112,7 @@ export default function Login() {
   }
 
   // 谷歌或者 Github 登录
-  const handleOAuthLogin = async (provider: typeof OAUTH_PROVIDERS.valueType) => {
+  const handleOAuthLogin = async (provider: 'google' | 'github') => {
     setOauthLoading(true)
     // 加一个短提示，避免跳转等待时间过长无反馈
     toast('登录中...', {
@@ -244,7 +248,7 @@ export default function Login() {
         <Separator />
         <Card.Footer className="flex-col gap-2">
           <div className="flex w-full flex-col gap-3">
-            {OAUTH_PROVIDERS.items.map(({ value, label }) => (
+            {Providers.map(({ value, label, icon }) => (
               <Button
                 key={value}
                 variant="outline"
@@ -255,7 +259,7 @@ export default function Login() {
               >
                 {({ isPending }) => (
                   <>
-                    {isPending ? <Spinner size="sm" /> : value === OAUTH_PROVIDERS.GITHUB ? <GithubIcon /> : <GoogleIcon />}
+                    {isPending ? <Spinner size="sm" /> : icon}
                     {label}
                   </>
                 )}

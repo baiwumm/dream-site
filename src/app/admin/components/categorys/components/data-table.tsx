@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 09:01:56
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:06:17
+ * @LastEditTime: 2026-08-04 09:41:20
  * @Description: 数据表格
  */
 import { ChevronUp } from '@gravity-ui/icons'
@@ -11,7 +11,6 @@ import { flexRender } from '@tanstack/react-table'
 
 import EmptyContent from '@/components/EmptyContent'
 import TableLoading from '@/components/TableLoading'
-import { ADMIN_TABS } from '@/enums'
 
 import type { Category } from '@/types'
 import type { Table as TableInstance } from '@tanstack/react-table'
@@ -27,7 +26,7 @@ const DataTable: FC<DataTableProps> = ({ table, loading = false }) => {
     <div className="relative">
       <Table>
         <Table.ScrollContainer>
-          <Table.Content aria-label={ADMIN_TABS.label(ADMIN_TABS.CATEGOTYS)}>
+          <Table.Content aria-label="网站分类">
             <Table.Header>
               {table.getHeaderGroups()[0]!.headers.map((header) => {
                 const sortDirection = header.column.getIsSorted()

@@ -44,9 +44,6 @@ importers:
       dayjs:
         specifier: ^1.11.21
         version: 1.11.21
-      enum-plus:
-        specifier: ^3.2.0
-        version: 3.2.0
       lunar-typescript:
         specifier: ^1.8.6
         version: 1.8.6
@@ -1818,10 +1815,6 @@ packages:
   entities@7.0.1:
     resolution: {integrity: sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==}
     engines: {node: '>=0.12'}
-
-  enum-plus@3.2.0:
-    resolution: {integrity: sha512-3TvwAn2SBCphe0+faApIqscPiimDCxqUNMt79qxRJDJEry4nmy8m+iP3BqKDKXwlC68+FT0Q5/NtP+nTS5tl7Q==}
-    engines: {node: '>=7.10.1'}
 
   es-define-property@1.0.1:
     resolution: {integrity: sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==}
@@ -5200,8 +5193,6 @@ snapshots:
   entities@4.5.0: {}
 
   entities@7.0.1: {}
-
-  enum-plus@3.2.0: {}
 
   es-define-property@1.0.1: {}
 

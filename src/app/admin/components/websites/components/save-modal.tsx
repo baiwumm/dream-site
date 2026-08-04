@@ -20,11 +20,10 @@ import {
 
 } from '@heroui/react'
 import { useRequest } from 'ahooks'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import TagInputs from '@/components/ui/tag-inputs'
-import { RESPONSE } from '@/enums'
-import { generateLogoUrl, get } from '@/lib/utils'
+import { generateLogoUrl, get, RESPONSE } from '@/lib/utils'
 import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites'
 
 import LogoUpload from './logo-upload'
@@ -176,17 +175,21 @@ const SaveModal: FC<SaveModalProps> = ({
     }
     run({ ...data, id: initialValues?.id, tags })
   }
-
-  useEffect(() => {
-    if (!state.isOpen) {
-      formRef?.current?.reset()
-      setTags([])
-      setLogoFile(null)
-      onClose?.()
-    }
-  }, [state.isOpen, setTags, setLogoFile, onClose])
   return (
-    <Modal.Backdrop isDismissable={false} isKeyboardDismissDisabled isOpen={state.isOpen} onOpenChange={state.setOpen}>
+    <Modal.Backdrop
+      isDismissable={false}
+      isKeyboardDismissDisabled
+      isOpen={state.isOpen}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          formRef?.current?.reset()
+          setTags([])
+          setLogoFile(null)
+          onClose?.()
+        }
+        state.setOpen(isOpen)
+      }}
+    >
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-lg">
           <Modal.CloseTrigger />

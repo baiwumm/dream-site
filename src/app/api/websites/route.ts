@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
 
-import { RESPONSE } from '@/enums'
 import { getSupabaseServerClient } from '@/lib/supabase/server'
-import { responseMessage } from '@/lib/utils'
+import { RESPONSE, responseMessage } from '@/lib/utils'
 
 import type { NextRequest } from 'next/server'
 

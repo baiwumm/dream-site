@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 16:47:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:37:49
+ * @LastEditTime: 2026-08-04 09:43:41
  * @Description: Axios 请求封装
  */
 import { CircleXmarkFill } from '@gravity-ui/icons'
 import { toast } from '@heroui/react'
 import axios from 'axios'
 
-import { RESPONSE } from '@/enums'
 import { get, isSuccess } from '@/lib/utils'
 
 import { finishLoading, startLoading } from './nprogress'
@@ -59,7 +58,7 @@ request.interceptors.response.use(
     // 配置 skipErrorHandler 会跳过默认的错误处理，用于项目中部分特殊的接口
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
       // 其它状态码统一提示错误信息
-      toast.danger(msg || RESPONSE.label(1), {
+      toast.danger(msg || '请求失败', {
         indicator: <CircleXmarkFill />,
         timeout: 3000,
       })

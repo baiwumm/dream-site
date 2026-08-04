@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 17:39:14
+ * @LastEditTime: 2026-08-04 09:40:47
  * @Description: 网站分类
  */
 'use client'
@@ -20,8 +20,7 @@ import { useRequest, useSetState } from 'ahooks'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import DataTablePagination from '@/components/DataTablePagination'
-import { RESPONSE } from '@/enums'
-import { get } from '@/lib/utils'
+import { get, RESPONSE } from '@/lib/utils'
 import { delCategory, getCategoriesList } from '@/services/categorys'
 
 import { getColumns } from './components/columns'

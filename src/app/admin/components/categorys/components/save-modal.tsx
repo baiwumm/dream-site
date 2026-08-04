@@ -14,9 +14,9 @@ import {
   toast,
 } from '@heroui/react'
 import { useRequest } from 'ahooks'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
-import { RESPONSE } from '@/enums'
+import { RESPONSE } from '@/lib/utils'
 import { addCategory, updateCategory } from '@/services/categorys'
 
 import type { Category, CategorySaveParams } from '@/types'
@@ -62,15 +62,19 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, on
     }
     run(data)
   }
-
-  useEffect(() => {
-    if (!state.isOpen) {
-      formRef?.current?.reset()
-      onClose?.()
-    }
-  }, [state.isOpen, onClose])
   return (
-    <Modal.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen}>
+    <Modal.Backdrop
+      isDismissable={false}
+      isKeyboardDismissDisabled
+      isOpen={state.isOpen}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          formRef?.current?.reset()
+          onClose?.()
+        }
+        state.setOpen(isOpen)
+      }}
+    >
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-md">
           <Modal.CloseTrigger />
