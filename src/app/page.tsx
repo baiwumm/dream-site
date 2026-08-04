@@ -2,28 +2,25 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 18:06:06
+ * @LastEditTime: 2026-08-04 14:43:37
  * @Description: 首页
  */
 'use client'
 import { DatabaseFill, Plus } from '@gravity-ui/icons'
 import { Button, Typography } from '@heroui/react'
-import { useRequest } from 'ahooks'
 import { motion } from 'motion/react'
 import { useRouter } from 'next/navigation'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import AlertContent from '@/components/AlertContent'
 import BlurFade from '@/components/BlurFade'
 import ErrorContent from '@/components/ErrorContent'
 import SkeletonContent from '@/components/SkeletonContent'
 import WebsiteCard from '@/components/WebSiteCard'
+import useRequest from '@/hooks/use-request'
 import { getSupabaseBrowserClient } from '@/lib/supabase/client'
-import { get } from '@/lib/utils'
-import { getCategoriesList } from '@/services/categorys'
 
-import type { Category } from '@/types'
-import type { PaginationState } from '@tanstack/react-table'
+import type { Category, PaginatingResponse } from '@/types'
 
 const MotionWebsiteCard = motion.create(WebsiteCard)
 
@@ -31,13 +28,10 @@ export default function Home() {
   const supabase = getSupabaseBrowserClient()
   const router = useRouter()
 
-  const { data = [], loading, error, run } = useRequest<Category[], PaginationState[]>(
-    async params =>
-      get(await getCategoriesList(params), 'data.list', []),
-    {
-      defaultParams: [{ pageIndex: 0, pageSize: 999 }],
-    },
-  )
+  const { data, loading, error, run } = useRequest<PaginatingResponse<Category>>('/categorys', {
+    params: { pageIndex: 0, pageSize: 999 },
+  })
+  const list = useMemo(() => data?.list ?? [], [data])
 
   const reload = () => {
     run({ pageIndex: 0, pageSize: 999 })
@@ -65,7 +59,7 @@ export default function Home() {
     )
   }
 
-  if (!data?.length) {
+  if (!list?.length) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center">
         <div className="flex-1 size-full max-w-xl max-h-100 border-border p-6 bg-surface rounded-2xl text-center flex justify-center items-center">
@@ -87,7 +81,7 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
-      {data.map(({ id, name, websites }) => {
+      {list.map(({ id, name, websites }) => {
         return (
           <BlurFade key={id} inView className="flex flex-col gap-2">
             <h1 className="text-lg font-black">{name}</h1>

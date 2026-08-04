@@ -30,8 +30,6 @@
     "@supabase/supabase-js": "^2.110.0",
     "@tanstack/react-table": "^8.21.3",
     "@vercel/analytics": "^2.0.1",
-    "ahooks": "^3.9.7",
-    "axios": "^1.18.1",
     "lunar-typescript": "^1.8.6",
     "motion": "^12.42.2",
     "next": "16.2.9",

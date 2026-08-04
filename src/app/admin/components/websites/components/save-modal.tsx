@@ -19,12 +19,11 @@ import {
   toast,
 
 } from '@heroui/react'
-import { useRequest } from 'ahooks'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import TagInputs from '@/components/ui/tag-inputs'
+import useRequest from '@/hooks/use-request'
 import { generateLogoUrl, get, RESPONSE } from '@/lib/utils'
-import { addWebsite, updateWebsite, uploadLogo } from '@/services/websites'
 
 import LogoUpload from './logo-upload'
 
@@ -61,11 +60,22 @@ const SaveModal: FC<SaveModalProps> = ({
 }) => {
   // 表单实例
   const formRef = useRef<HTMLFormElement>(null)
+  const wasOpenRef = useRef(false)
   const actionText = initialValues ? '编辑' : '新增'
   // Logo 链接
   const logoUrl = initialValues?.logo ? generateLogoUrl(initialValues.logo) : undefined
   // Logo
   const [logoFile, setLogoFile] = useState<FileWithPreview['file'] | null>(null)
+
+  useEffect(() => {
+    if (wasOpenRef.current && !state.isOpen) {
+      formRef?.current?.reset()
+      setTags([])
+      setLogoFile(null)
+      onClose?.()
+    }
+    wasOpenRef.current = state.isOpen
+  }, [state.isOpen, onClose, setTags])
 
   // 上传成功回调
   const onSuccess = () => {
@@ -78,7 +88,8 @@ const SaveModal: FC<SaveModalProps> = ({
   }
 
   // 上传 Logo
-  const { loading: uploadLoading, run: fetchUploadLogo } = useRequest(uploadLogo, {
+  const { loading: uploadLoading, run: fetchUploadLogo } = useRequest('/websites/:id/logo', {
+    method: 'PUT',
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
@@ -88,14 +99,15 @@ const SaveModal: FC<SaveModalProps> = ({
   })
 
   // 保存表单
-  const { loading, run } = useRequest(initialValues?.id ? updateWebsite : addWebsite, {
+  const { loading, run } = useRequest<Website>('/websites', {
+    method: initialValues?.id ? 'PUT' : 'POST',
     manual: true,
     onSuccess: ({ code, data }) => {
       if (code === RESPONSE.SUCCESS) {
         if (data?.id && logoFile) {
           const formData = new FormData()
           formData.append('file', logoFile as File)
-          fetchUploadLogo({ id: data.id, formData })
+          fetchUploadLogo(data.id, formData)
         }
         else {
           onSuccess()
@@ -145,8 +157,6 @@ const SaveModal: FC<SaveModalProps> = ({
     const formData = new FormData(e.currentTarget)
 
     const data: WebsiteSaveParams = {
-      id: initialValues?.id,
-
       // string
       category_id: formData.get('category_id') as string,
       name: formData.get('name') as string,
@@ -173,22 +183,14 @@ const SaveModal: FC<SaveModalProps> = ({
       })
       return
     }
-    run({ ...data, id: initialValues?.id, tags })
+    initialValues?.id ? await run(initialValues.id, data) : await run(data)
   }
   return (
     <Modal.Backdrop
       isDismissable={false}
       isKeyboardDismissDisabled
       isOpen={state.isOpen}
-      onOpenChange={(isOpen) => {
-        if (!isOpen) {
-          formRef?.current?.reset()
-          setTags([])
-          setLogoFile(null)
-          onClose?.()
-        }
-        state.setOpen(isOpen)
-      }}
+      onOpenChange={state.setOpen}
     >
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-lg">
@@ -201,7 +203,7 @@ const SaveModal: FC<SaveModalProps> = ({
           </Modal.Header>
           <Modal.Body className="py-4 px-1">
             <Surface variant="default">
-              <Form ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
+              <Form key={initialValues?.id ?? 'create'} ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
                 <Select
                   aria-label="所属分类"
                   name="category_id"

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 10:28:12
+ * @LastEditTime: 2026-08-04 16:40:51
  * @Description: 网站分类
  */
 'use client'
@@ -15,12 +15,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { useRequest } from 'ahooks'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import DataTablePagination from '@/components/DataTablePagination'
+import useRequest from '@/hooks/use-request'
 import { get, RESPONSE } from '@/lib/utils'
-import { delCategory, getCategoriesList } from '@/services/categorys'
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table'
@@ -28,7 +27,7 @@ import DeleteDialog from './components/delete-dialog'
 import HeaderContent from './components/header-content'
 import SaveModal from './components/save-modal'
 
-import type { Category } from '@/types'
+import type { Category, PaginatingResponse } from '@/types'
 import type { PaginationState, SortingState, VisibilityState } from '@tanstack/react-table'
 import type { FC } from 'react'
 
@@ -54,12 +53,12 @@ const Categorys: FC = () => {
   const [editData, setEditData] = useState<Category | null>(null)
 
   // 请求分类列表
-  const { data, loading, run } = useRequest(async params => get(await getCategoriesList(params), 'data', {}), {
+  const { data, loading, run } = useRequest<PaginatingResponse<Category>>('/categorys', {
     manual: true,
-    defaultParams: [searchParams],
+    params: searchParams,
   })
-  const total = get(data, 'total', 0)
-  const categorysList = get(data, 'list', [])
+  const total = useMemo(() => data?.total ?? 0, [data])
+  const list = useMemo(() => data?.list ?? [], [data])
 
   // 发起请求
   const handleSearch = () => {
@@ -83,8 +82,15 @@ const Categorys: FC = () => {
     saveModalState.open()
   }, [saveModalState])
 
+  // 新增回调
+  const handleAdd = useCallback(() => {
+    setEditData(null)
+    saveModalState.open()
+  }, [saveModalState])
+
   // 删除分类
-  const { loading: delLoading, run: fetchDelCategory } = useRequest(delCategory, {
+  const { loading: delLoading, run: fetchDelCategory } = useRequest('/categorys', {
+    method: 'DELETE',
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
@@ -126,7 +132,7 @@ const Categorys: FC = () => {
 
   // 表格实例
   const table = useReactTable({
-    data: categorysList,
+    data: list,
     columns,
     pageCount: Math.ceil((total || 0) / searchParams.pageSize),
     getRowId: (row: Category) => row.id,
@@ -153,6 +159,7 @@ const Categorys: FC = () => {
       <Card className="shadow-lg">
         <HeaderContent
           name={name}
+          handleAdd={handleAdd}
           handleReset={handleReset}
           handleSearch={handleSearch}
           loading={loading}

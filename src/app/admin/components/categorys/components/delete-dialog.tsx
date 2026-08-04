@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-28 14:04:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 15:35:46
+ * @LastEditTime: 2026-08-04 17:01:38
  * @Description: 删除弹窗
  */
 'use client'
 import { AlertDialog, Button, Spinner } from '@heroui/react'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import type { UseOverlayStateReturn } from '@heroui/react'
 import type { FC } from 'react'
@@ -20,10 +20,13 @@ interface DeleteDialogProps {
 }
 
 const DeleteDialog: FC<DeleteDialogProps> = ({ state, loading = false, handleDelConfirm, onClose }) => {
+  const wasOpenRef = useRef(false)
+
   useEffect(() => {
-    if (!state.isOpen) {
+    if (wasOpenRef.current && !state.isOpen) {
       onClose?.()
     }
+    wasOpenRef.current = state.isOpen
   }, [state.isOpen, onClose])
   return (
     <AlertDialog.Backdrop isOpen={state.isOpen} onOpenChange={state.setOpen}>

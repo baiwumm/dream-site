@@ -13,11 +13,10 @@ import {
   TextField,
   toast,
 } from '@heroui/react'
-import { useRequest } from 'ahooks'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
+import useRequest from '@/hooks/use-request'
 import { RESPONSE } from '@/lib/utils'
-import { addCategory, updateCategory } from '@/services/categorys'
 
 import type { Category, CategorySaveParams } from '@/types'
 import type { UseOverlayStateReturn } from '@heroui/react'
@@ -33,10 +32,21 @@ interface SaveModalProps {
 const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, onClose }) => {
   // 表单实例
   const formRef = useRef<HTMLFormElement>(null)
-  const actionText = initialValues ? '编辑' : '新增'
+  const wasOpenRef = useRef(false)
+  const isEdit = !!initialValues?.id
+  const actionText = isEdit ? '编辑' : '新增'
+
+  useEffect(() => {
+    if (wasOpenRef.current && !state.isOpen) {
+      formRef?.current?.reset()
+      onClose?.()
+    }
+    wasOpenRef.current = state.isOpen
+  }, [state.isOpen, onClose])
 
   // 保存表单
-  const { loading, run } = useRequest(initialValues?.id ? updateCategory : addCategory, {
+  const { loading, run } = useRequest('/categorys', {
+    method: isEdit ? 'PUT' : 'POST',
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
@@ -54,26 +64,18 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, on
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-
     const data: CategorySaveParams = {
       name: formData.get('name') as string,
       sort: Number(formData.get('sort')),
-      id: initialValues?.id,
     }
-    run(data)
+    initialValues?.id ? await run(initialValues.id, data) : await run(data)
   }
   return (
     <Modal.Backdrop
       isDismissable={false}
       isKeyboardDismissDisabled
       isOpen={state.isOpen}
-      onOpenChange={(isOpen) => {
-        if (!isOpen) {
-          formRef?.current?.reset()
-          onClose?.()
-        }
-        state.setOpen(isOpen)
-      }}
+      onOpenChange={state.setOpen}
     >
       <Modal.Container placement="auto">
         <Modal.Dialog className="sm:max-w-md">
@@ -86,7 +88,7 @@ const SaveModal: FC<SaveModalProps> = ({ state, initialValues, handleRefresh, on
           </Modal.Header>
           <Modal.Body className="py-4 px-1">
             <Surface variant="default">
-              <Form ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
+              <Form key={initialValues?.id ?? 'create'} ref={formRef} id="category-form" onSubmit={onSubmit} className="flex flex-col gap-4">
                 <TextField
                   name="name"
                   isRequired

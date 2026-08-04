@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-23 15:24:22
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 11:07:36
+ * @LastEditTime: 2026-08-04 16:41:18
  * @Description: 网站列表
  */
 'use client'
@@ -15,13 +15,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { useRequest } from 'ahooks'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import DataTablePagination from '@/components/DataTablePagination'
+import useRequest from '@/hooks/use-request'
 import { get, RESPONSE } from '@/lib/utils'
-import { getCategoriesList } from '@/services/categorys'
-import { delWebsite, getWebsitesList } from '@/services/websites'
 
 import { getColumns } from './components/columns'
 import DataTable from './components/data-table'
@@ -29,7 +27,7 @@ import DeleteDialog from './components/delete-dialog'
 import HeaderContent from './components/header-content'
 import SaveModal from './components/save-modal'
 
-import type { Category, Website } from '@/types'
+import type { Category, PaginatingResponse, Website } from '@/types'
 import type { PaginationState, SortingState, VisibilityState } from '@tanstack/react-table'
 import type { FC } from 'react'
 
@@ -62,16 +60,18 @@ const Websites: FC = () => {
   const [tags, setTags] = useState<string[]>([])
 
   // 请求分类列表
-  const { data: categorysList } = useRequest(async params => get<Category[]>(await getCategoriesList(params), 'data.list', []), {
-    defaultParams: [{ pageIndex: 0, pageSize: 999 }],
+  const { data: categorysResult } = useRequest<PaginatingResponse<Category>>('/categorys', {
+    params: { pageIndex: 0, pageSize: 999 },
   })
+  const categorysList = useMemo(() => categorysResult?.list ?? [], [categorysResult])
 
   // 请求网站列表
-  const { data, loading, run } = useRequest(async params => get(await getWebsitesList(params), 'data', {}), {
+  const { data, loading, run } = useRequest<PaginatingResponse<Website>>('/websites', {
     manual: true,
-    defaultParams: [searchParams],
+    params: searchParams,
   })
-  const total = get(data, 'total', 0)
+  const total = useMemo(() => data?.total ?? 0, [data])
+  const list = useMemo(() => data?.list ?? [], [data])
 
   // 发起请求
   const handleSearch = () => {
@@ -98,8 +98,16 @@ const Websites: FC = () => {
     saveModalState.open()
   }, [saveModalState])
 
+  // 新增回调
+  const handleAdd = useCallback(() => {
+    setEditData(null)
+    setTags([])
+    saveModalState.open()
+  }, [saveModalState])
+
   // 删除网站
-  const { loading: delLoading, run: fetchDelWebsite } = useRequest(delWebsite, {
+  const { loading: delLoading, run: fetchDelWebsite } = useRequest('/websites', {
+    method: 'DELETE',
     manual: true,
     onSuccess: ({ code }) => {
       if (code === RESPONSE.SUCCESS) {
@@ -134,7 +142,7 @@ const Websites: FC = () => {
 
   // 表格实例
   const table = useReactTable({
-    data: get(data, 'list', []),
+    data: list,
     columns,
     pageCount: Math.ceil((total || 0) / searchParams.pageSize),
     getRowId: (row: Website) => row.id,
@@ -163,6 +171,7 @@ const Websites: FC = () => {
           name={name}
           categoryId={categoryId}
           categorysList={categorysList || []}
+          handleAdd={handleAdd}
           handleReset={handleReset}
           handleSearch={handleSearch}
           loading={loading}

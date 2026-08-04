@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-02-02 10:19:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 10:28:24
+ * @LastEditTime: 2026-08-04 16:40:59
  * @Description: 顶部区域
  */
 'use client'
@@ -23,6 +23,7 @@ interface HeaderContentProps {
   loading: boolean
   handleSearch: VoidFunction
   handleReset: VoidFunction
+  handleAdd: VoidFunction
   saveModalState: ReturnType<typeof useOverlayState>
 }
 
@@ -33,7 +34,7 @@ const HeaderContent: FC<HeaderContentProps> = ({
   loading = false,
   handleSearch,
   handleReset,
-  saveModalState,
+  handleAdd,
 }) => {
   // 回车事件
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -70,7 +71,7 @@ const HeaderContent: FC<HeaderContentProps> = ({
           <ArrowRotateLeft />
           重置
         </Button>
-        <Button size="sm" variant="outline" onPress={() => saveModalState.open()}>
+        <Button size="sm" variant="outline" onPress={handleAdd}>
           <Plus />
           新增
         </Button>
