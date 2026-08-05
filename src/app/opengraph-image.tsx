@@ -14,8 +14,8 @@ const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Better Nav'
 const APP_TITLE = process.env.NEXT_PUBLIC_APP_TITLE || '一个把常用网址收拾得干干净净的小站'
 const APP_DESC = process.env.NEXT_PUBLIC_APP_DESC || '把常用网址放在一起，打开就能用。'
 const APP_HOST = APP_URL.replace(/^https?:\/\//, '').replace(/\/$/, '')
-const AUTHOR_NAME = process.env.NEXT_PUBLIC_COPYRIGHT || '白雾茫茫丶'
-const AUTHOR_ROLE = '独立开发者'
+const AUTHOR_NAME = process.env.NEXT_PUBLIC_AUTHOR_NAME || '白雾茫茫丶'
+const AUTHOR_ROLE = process.env.NEXT_PUBLIC_AUTHOR_ROLE || '独立开发者'
 
 export default function OpenGraphImage() {
   const bgUrl = new URL('/og-bg.jpg', APP_URL).toString()

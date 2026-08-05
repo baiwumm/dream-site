@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-06 17:25:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 10:00:16
+ * @LastEditTime: 2026-08-05 15:25:26
  * @Description: 底部版权
  */
 import { Chip, cn, Description, Link, Separator } from '@heroui/react'
@@ -74,7 +74,7 @@ const Footer: FC = () => {
         {' '}
         {' '}
         <a href={pkg.author.url} rel="noopener noreferrer" target="_blank" className="hover:text-accent transition-colors">
-          {process.env.NEXT_PUBLIC_COPYRIGHT}
+          {process.env.NEXT_PUBLIC_AUTHOR_NAME}
         </a>
         . All rights reserved.
       </Description>

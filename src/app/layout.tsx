@@ -13,25 +13,33 @@ import Provider from './Provider'
 
 import type { Metadata } from 'next'
 
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME
+const APP_TITLE = process.env.NEXT_PUBLIC_APP_TITLE
+const APP_DESC = process.env.NEXT_PUBLIC_APP_DESC
+const APP_KEYWORDS = process.env.NEXT_PUBLIC_APP_KEYWORDS
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL
+const OG_IMAGE_URL = `${APP_URL}/opengraph-image`
+const AUTHOR_NAME = process.env.NEXT_PUBLIC_AUTHOR_NAME
+
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_APP_TITLE} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
-  description: process.env.NEXT_PUBLIC_APP_DESC,
-  keywords: process.env.NEXT_PUBLIC_APP_KEYWORDS,
-  authors: [{ name: process.env.NEXT_PUBLIC_COPYRIGHT, url: pkg.author.url }],
-  creator: process.env.NEXT_PUBLIC_COPYRIGHT,
-  publisher: process.env.NEXT_PUBLIC_COPYRIGHT,
+  title: `${APP_TITLE} | ${APP_NAME}`,
+  description: APP_DESC,
+  keywords: APP_KEYWORDS,
+  authors: [{ name: AUTHOR_NAME, url: pkg.author.url }],
+  creator: AUTHOR_NAME,
+  publisher: AUTHOR_NAME,
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: process.env.NEXT_PUBLIC_APP_NAME,
-    description: process.env.NEXT_PUBLIC_APP_DESC,
-    url: process.env.NEXT_PUBLIC_APP_URL,
-    siteName: process.env.NEXT_PUBLIC_APP_NAME,
+    title: APP_NAME,
+    description: APP_DESC,
+    url: APP_URL,
+    siteName: APP_NAME,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image`,
+        url: OG_IMAGE_URL,
         width: 1200,
         height: 630,
       },
@@ -41,12 +49,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: process.env.NEXT_PUBLIC_APP_NAME,
-    description: process.env.NEXT_PUBLIC_APP_DESC,
+    title: APP_NAME,
+    description: APP_DESC,
     creator: 'baiwumm',
-    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image`],
+    images: [OG_IMAGE_URL],
   },
-  manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.json`,
+  manifest: `${APP_URL}/manifest.json`,
 }
 
 export default function RootLayout({
@@ -58,7 +66,7 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="version" content={pkg.version} />
-        <meta name="apple-mobile-web-app-title" content={process.env.NEXT_PUBLIC_APP_NAME} />
+        <meta name="apple-mobile-web-app-title" content={APP_NAME} />
         <link href="https://cn-font.claude-code-best.win/packages/maple-mono-cn/dist/MapleMono-CN-Regular/result.css" rel="stylesheet" />
         {/* Google 统计 */}
         <GoogleUtilities />
