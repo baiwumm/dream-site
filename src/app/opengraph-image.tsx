@@ -1,5 +1,8 @@
 /* eslint-disable next/no-img-element */
 /* eslint-disable react-refresh/only-export-components */
+import { readFile } from 'node:fs/promises'
+import { extname, join } from 'node:path'
+
 import { ImageResponse } from 'next/og'
 
 export const alt = process.env.NEXT_PUBLIC_APP_TITLE
@@ -9,7 +12,7 @@ export const size = {
 }
 export const contentType = 'image/png'
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nav.baiwumm.com'
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Better Nav'
 const APP_TITLE = process.env.NEXT_PUBLIC_APP_TITLE || '一个把常用网址收拾得干干净净的小站'
 const APP_DESC = process.env.NEXT_PUBLIC_APP_DESC || '把常用网址放在一起，打开就能用。'
@@ -17,11 +20,20 @@ const APP_HOST = APP_URL.replace(/^https?:\/\//, '').replace(/\/$/, '')
 const AUTHOR_NAME = process.env.NEXT_PUBLIC_AUTHOR_NAME || '白雾茫茫丶'
 const AUTHOR_ROLE = process.env.NEXT_PUBLIC_AUTHOR_ROLE || '独立开发者'
 
-export default function OpenGraphImage() {
-  const bgUrl = new URL('/og-bg.jpg', APP_URL).toString()
-  const logoUrl = new URL('/logo.png', APP_URL).toString()
-  const previewUrl = new URL('/og-preview.png', APP_URL).toString()
-  const avatarUrl = new URL('/avatar.jpg', APP_URL).toString()
+const ASSET_MIME_TYPES: Record<string, string> = {
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
+}
+
+export default async function OpenGraphImage() {
+  const [bgUrl, logoUrl, previewUrl, avatarUrl] = await Promise.all([
+    publicAssetToDataUrl('og-bg.jpg'),
+    publicAssetToDataUrl('logo.png'),
+    publicAssetToDataUrl('og-preview.png'),
+    publicAssetToDataUrl('avatar.jpg'),
+  ])
 
   return new ImageResponse(
     (
@@ -343,7 +355,9 @@ export default function OpenGraphImage() {
               >
                 <img
                   alt={`${APP_NAME} preview`}
+                  height={430}
                   src={previewUrl}
+                  width={560}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -363,4 +377,16 @@ export default function OpenGraphImage() {
       ...size,
     },
   )
+}
+
+async function publicAssetToDataUrl(filename: string) {
+  const filePath = join(process.cwd(), 'public', filename)
+  const mimeType = ASSET_MIME_TYPES[extname(filename).toLowerCase()]
+
+  if (!mimeType) {
+    throw new Error(`Unsupported OG asset type: ${filename}`)
+  }
+
+  const buffer = await readFile(filePath)
+  return `data:${mimeType};base64,${buffer.toString('base64')}`
 }

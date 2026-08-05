@@ -17,11 +17,12 @@ const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME
 const APP_TITLE = process.env.NEXT_PUBLIC_APP_TITLE
 const APP_DESC = process.env.NEXT_PUBLIC_APP_DESC
 const APP_KEYWORDS = process.env.NEXT_PUBLIC_APP_KEYWORDS
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nav.baiwumm.com'
 const OG_IMAGE_URL = `${APP_URL}/opengraph-image`
 const AUTHOR_NAME = process.env.NEXT_PUBLIC_AUTHOR_NAME
 
 export const metadata: Metadata = {
+  metadataBase: new URL(APP_URL),
   title: `${APP_TITLE} | ${APP_NAME}`,
   description: APP_DESC,
   keywords: APP_KEYWORDS,
