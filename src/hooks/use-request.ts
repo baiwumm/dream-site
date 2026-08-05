@@ -2,6 +2,7 @@ import { useProgress } from '@bprogress/next'
 import {
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 
@@ -55,12 +56,14 @@ export default function useRequest<
 ) {
   const {
     method = 'GET',
+    params: defaultParams,
     manual = false,
     onSuccess,
     onError,
     onFinally,
   } = options
   const { start, stop } = useProgress()
+  const defaultParamsRef = useRef(defaultParams)
   const [data, setData]
     = useState<T>()
 
@@ -69,6 +72,10 @@ export default function useRequest<
 
   const [error, setError]
     = useState<unknown>()
+
+  useEffect(() => {
+    defaultParamsRef.current = defaultParams
+  }, [defaultParams])
 
   const run = useCallback(
     (async (
@@ -92,8 +99,14 @@ export default function useRequest<
         switch (method) {
           case 'GET':
 
-            params
-              = idOrData as Record<string, unknown>
+            params = {
+              ...defaultParamsRef.current,
+              ...(idOrData as Record<string, unknown> | undefined),
+            }
+
+            if (!Object.keys(params).length) {
+              params = undefined
+            }
 
             break
 
@@ -174,7 +187,7 @@ export default function useRequest<
 
   useEffect(() => {
     if (!manual) {
-      run()
+      run().catch(() => {})
     }
   }, [
     manual,

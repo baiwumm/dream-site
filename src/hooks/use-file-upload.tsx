@@ -202,7 +202,7 @@ export function useFileUpload(options: FileUploadOptions = {}): [FileUploadState
 
           // Skip duplicate files silently
           if (isDuplicate) {
-            return
+            continue
           }
         }
 
