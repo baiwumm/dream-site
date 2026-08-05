@@ -1,5 +1,5 @@
 {
-  "name": "dream-site",
+  "name": "better-nav",
   "type": "module",
   "version": "3.6.6",
   "private": true,
@@ -9,8 +9,8 @@
     "url": "https://baiwumm.com"
   },
   "git": {
-    "url": "https://github.com/baiwumm/dream-site",
-    "issues": "https://github.com/baiwumm/dream-site/issues"
+    "url": "https://github.com/baiwumm/better-nav",
+    "issues": "https://github.com/baiwumm/better-nav/issues"
   },
   "scripts": {
     "dev": "next dev",

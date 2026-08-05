@@ -14,7 +14,7 @@ import Provider from './Provider'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_APP_SUB_TITLE} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
+  title: `${process.env.NEXT_PUBLIC_APP_TITLE} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
   description: process.env.NEXT_PUBLIC_APP_DESC,
   keywords: process.env.NEXT_PUBLIC_APP_KEYWORDS,
   authors: [{ name: process.env.NEXT_PUBLIC_COPYRIGHT, url: pkg.author.url }],

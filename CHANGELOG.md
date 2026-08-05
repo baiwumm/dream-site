@@ -1,286 +1,286 @@
 # Changelog
 
-## [3.6.6](https://github.com/baiwumm/dream-site/compare/3.6.5...3.6.6) (2026-07-22)
+## [3.6.6](https://github.com/baiwumm/better-nav/compare/3.6.5...3.6.6) (2026-07-22)
 
 ### ⚡ Performance Improvements | 性能优化
 
-* **layout:** 优化布局结构 ([5f6cae1](https://github.com/baiwumm/dream-site/commit/5f6cae181b86a84919e4e33d3def3ef73f465512))
+* **layout:** 优化布局结构 ([5f6cae1](https://github.com/baiwumm/better-nav/commit/5f6cae181b86a84919e4e33d3def3ef73f465512))
 
-## [3.6.5](https://github.com/baiwumm/dream-site/compare/3.6.4...3.6.5) (2026-07-15)
+## [3.6.5](https://github.com/baiwumm/better-nav/compare/3.6.4...3.6.5) (2026-07-15)
 
 ### 💄 Styles | 风格
 
-* 优化加载和错误界面 UI ([c6cf809](https://github.com/baiwumm/dream-site/commit/c6cf809ddd959e6bda1dba042433258bf2f89987))
+* 优化加载和错误界面 UI ([c6cf809](https://github.com/baiwumm/better-nav/commit/c6cf809ddd959e6bda1dba042433258bf2f89987))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 删除 LoadingContent 组件 ([d3ad5f8](https://github.com/baiwumm/dream-site/commit/d3ad5f87d636718615c8402d5c93b7ae74f2bd41))
+* 删除 LoadingContent 组件 ([d3ad5f8](https://github.com/baiwumm/better-nav/commit/d3ad5f87d636718615c8402d5c93b7ae74f2bd41))
 
-## [3.6.4](https://github.com/baiwumm/dream-site/compare/3.6.3...3.6.4) (2026-07-07)
+## [3.6.4](https://github.com/baiwumm/better-nav/compare/3.6.3...3.6.4) (2026-07-07)
 
 ### 💄 Styles | 风格
 
-* UI 调整 ([81ef0d0](https://github.com/baiwumm/dream-site/commit/81ef0d0185ec4cda66c0012ee60aa8b25cf15b3b))
+* UI 调整 ([81ef0d0](https://github.com/baiwumm/better-nav/commit/81ef0d0185ec4cda66c0012ee60aa8b25cf15b3b))
 
-## [3.6.3](https://github.com/baiwumm/dream-site/compare/3.6.2...3.6.3) (2026-07-07)
-
-### ✨ Features | 新功能
-
-* 安装 react-easy-crop 包，新增 Logo 裁剪功能 ([779c476](https://github.com/baiwumm/dream-site/commit/779c476d26e6e6bb7587dafa12131293c1d54e2a))
-
-## [3.6.2](https://github.com/baiwumm/dream-site/compare/3.6.1...3.6.2) (2026-07-07)
-
-### ⚡ Performance Improvements | 性能优化
-
-* 样式调整，细节优化 ([3c32837](https://github.com/baiwumm/dream-site/commit/3c328376d252e338487fe4c7f08bb929fd9878e4))
-
-## [3.6.1](https://github.com/baiwumm/dream-site/compare/3.6.0...3.6.1) (2026-07-07)
+## [3.6.3](https://github.com/baiwumm/better-nav/compare/3.6.2...3.6.3) (2026-07-07)
 
 ### ✨ Features | 新功能
 
-* 更新 demo 截图 ([9ee34a8](https://github.com/baiwumm/dream-site/commit/9ee34a8ceed5bd9d522c11142e462436e3fe7064))
-* 新增 @number-flow/react 和 lunar-typescript 包 ([ebad052](https://github.com/baiwumm/dream-site/commit/ebad0528fbf150d00d51d057317c4e296d7b43f1))
-* **Header:** 顶部增加实时时间 ([37a2e46](https://github.com/baiwumm/dream-site/commit/37a2e46651b039c105e0f3e2755b1eb65bfe9d52))
+* 安装 react-easy-crop 包，新增 Logo 裁剪功能 ([779c476](https://github.com/baiwumm/better-nav/commit/779c476d26e6e6bb7587dafa12131293c1d54e2a))
+
+## [3.6.2](https://github.com/baiwumm/better-nav/compare/3.6.1...3.6.2) (2026-07-07)
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 优化 Image 组件的警告 ([4fb5c2e](https://github.com/baiwumm/dream-site/commit/4fb5c2e5e4577765ce11e2794d5852a83b8af0d5))
+* 样式调整，细节优化 ([3c32837](https://github.com/baiwumm/better-nav/commit/3c328376d252e338487fe4c7f08bb929fd9878e4))
+
+## [3.6.1](https://github.com/baiwumm/better-nav/compare/3.6.0...3.6.1) (2026-07-07)
+
+### ✨ Features | 新功能
+
+* 更新 demo 截图 ([9ee34a8](https://github.com/baiwumm/better-nav/commit/9ee34a8ceed5bd9d522c11142e462436e3fe7064))
+* 新增 @number-flow/react 和 lunar-typescript 包 ([ebad052](https://github.com/baiwumm/better-nav/commit/ebad0528fbf150d00d51d057317c4e296d7b43f1))
+* **Header:** 顶部增加实时时间 ([37a2e46](https://github.com/baiwumm/better-nav/commit/37a2e46651b039c105e0f3e2755b1eb65bfe9d52))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化 Image 组件的警告 ([4fb5c2e](https://github.com/baiwumm/better-nav/commit/4fb5c2e5e4577765ce11e2794d5852a83b8af0d5))
 
 ### 🔧 Continuous Integration | CI 配置
 
-* 使用默认端口 ([5091a4f](https://github.com/baiwumm/dream-site/commit/5091a4fc932eec12e1f85fd04bc0e350bd8cce48))
+* 使用默认端口 ([5091a4f](https://github.com/baiwumm/better-nav/commit/5091a4fc932eec12e1f85fd04bc0e350bd8cce48))
 
-## [3.6.0](https://github.com/baiwumm/dream-site/compare/3.5.3...3.6.0) (2026-07-06)
+## [3.6.0](https://github.com/baiwumm/better-nav/compare/3.5.3...3.6.0) (2026-07-06)
 
 ### ✨ Features | 新功能
 
-* 更新 demo 截图 ([c36c979](https://github.com/baiwumm/dream-site/commit/c36c9792111ef18fe0437162e122e77f6717a36a))
-* 优化首页  UI 样式排版 ([67be9ee](https://github.com/baiwumm/dream-site/commit/67be9ee2be9b0ac0c0d473a5a0c87e956f1e83d6))
+* 更新 demo 截图 ([c36c979](https://github.com/baiwumm/better-nav/commit/c36c9792111ef18fe0437162e122e77f6717a36a))
+* 优化首页  UI 样式排版 ([67be9ee](https://github.com/baiwumm/better-nav/commit/67be9ee2be9b0ac0c0d473a5a0c87e956f1e83d6))
 
 ### 💄 Styles | 风格
 
-* 优化首页卡片加载样式 ([888d297](https://github.com/baiwumm/dream-site/commit/888d29739b313d265435ddd0cf805cebda5e825f))
+* 优化首页卡片加载样式 ([888d297](https://github.com/baiwumm/better-nav/commit/888d29739b313d265435ddd0cf805cebda5e825f))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 去掉 @bprogress/core 包 ([ad8dc4c](https://github.com/baiwumm/dream-site/commit/ad8dc4c3926736bd80faadeeed1875f5067b2254))
-* 去掉 query-string 包 ([a6b89dc](https://github.com/baiwumm/dream-site/commit/a6b89dc7df3a5524990dda25da1ba16140e7ea0b))
+* 去掉 @bprogress/core 包 ([ad8dc4c](https://github.com/baiwumm/better-nav/commit/ad8dc4c3926736bd80faadeeed1875f5067b2254))
+* 去掉 query-string 包 ([a6b89dc](https://github.com/baiwumm/better-nav/commit/a6b89dc7df3a5524990dda25da1ba16140e7ea0b))
 
-## [3.5.3](https://github.com/baiwumm/dream-site/compare/3.5.2...3.5.3) (2026-07-01)
+## [3.5.3](https://github.com/baiwumm/better-nav/compare/3.5.2...3.5.3) (2026-07-01)
 
 ### ✨ Features | 新功能
 
-* 更新 demo 截图 ([f4a3e3d](https://github.com/baiwumm/dream-site/commit/f4a3e3d0dabb8e60078dd99a838290e64613b704))
-* 更新包版本 ([59d8539](https://github.com/baiwumm/dream-site/commit/59d8539de8beee30f7670e405c42913f031654a7))
+* 更新 demo 截图 ([f4a3e3d](https://github.com/baiwumm/better-nav/commit/f4a3e3d0dabb8e60078dd99a838290e64613b704))
+* 更新包版本 ([59d8539](https://github.com/baiwumm/better-nav/commit/59d8539de8beee30f7670e405c42913f031654a7))
 
 ### 🐛 Bug Fixes | Bug 修复
 
-* 修复编辑时，Logo 保存丢失的问题 ([b5e8ff7](https://github.com/baiwumm/dream-site/commit/b5e8ff74ac2519ea5ec339997c80774069ffb98e))
+* 修复编辑时，Logo 保存丢失的问题 ([b5e8ff7](https://github.com/baiwumm/better-nav/commit/b5e8ff74ac2519ea5ec339997c80774069ffb98e))
 
 ### 💄 Styles | 风格
 
-* 优化 UI 主题样式 ([31a95c3](https://github.com/baiwumm/dream-site/commit/31a95c3546ba68c8c6fc0d5e6dfd61b2a835d982))
-* **components:** 更新 Status 组件 variant 样式 ([c4a1b8d](https://github.com/baiwumm/dream-site/commit/c4a1b8dde2acaddfa59ff907fcb307352da435bd))
+* 优化 UI 主题样式 ([31a95c3](https://github.com/baiwumm/better-nav/commit/31a95c3546ba68c8c6fc0d5e6dfd61b2a835d982))
+* **components:** 更新 Status 组件 variant 样式 ([c4a1b8d](https://github.com/baiwumm/better-nav/commit/c4a1b8dde2acaddfa59ff907fcb307352da435bd))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 删除 umami 统计代码 ([4ea16b7](https://github.com/baiwumm/dream-site/commit/4ea16b7127a762a6122ae76599deafc41f951a5b))
+* 删除 umami 统计代码 ([4ea16b7](https://github.com/baiwumm/better-nav/commit/4ea16b7127a762a6122ae76599deafc41f951a5b))
 
 ### 🔧 Continuous Integration | CI 配置
 
-* 更新 Hero UI 版本 ([9c2ffcb](https://github.com/baiwumm/dream-site/commit/9c2ffcbf5c11e030d786d394e1a654d75df283c2))
-* 降低 eslint 到 v9 版本 ([b354db1](https://github.com/baiwumm/dream-site/commit/b354db12be7494a139fa7d9f96cc443b3cd0e613))
+* 更新 Hero UI 版本 ([9c2ffcb](https://github.com/baiwumm/better-nav/commit/9c2ffcbf5c11e030d786d394e1a654d75df283c2))
+* 降低 eslint 到 v9 版本 ([b354db1](https://github.com/baiwumm/better-nav/commit/b354db12be7494a139fa7d9f96cc443b3cd0e613))
 
-## [3.5.2](https://github.com/baiwumm/dream-site/compare/3.5.1...3.5.2) (2026-03-16)
+## [3.5.2](https://github.com/baiwumm/better-nav/compare/3.5.1...3.5.2) (2026-03-16)
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 删除 ProgressCircle 组件 ([8287c5f](https://github.com/baiwumm/dream-site/commit/8287c5f7994eb938e5b4baa5629c80fed27737ef))
-* **BackTop:** 使用 Hero UI 的 ProgressCircle 组件，优化卡顿 ([54f1a4d](https://github.com/baiwumm/dream-site/commit/54f1a4d33f6dc121c62c15d3f3de52f259ab1475))
+* 删除 ProgressCircle 组件 ([8287c5f](https://github.com/baiwumm/better-nav/commit/8287c5f7994eb938e5b4baa5629c80fed27737ef))
+* **BackTop:** 使用 Hero UI 的 ProgressCircle 组件，优化卡顿 ([54f1a4d](https://github.com/baiwumm/better-nav/commit/54f1a4d33f6dc121c62c15d3f3de52f259ab1475))
 
 ### 🔧 Continuous Integration | CI 配置
 
-* 更新 Hero UI 版本 ([0f442ce](https://github.com/baiwumm/dream-site/commit/0f442ce5f076af0bf9a78b7ba33c48eab3cdb758))
+* 更新 Hero UI 版本 ([0f442ce](https://github.com/baiwumm/better-nav/commit/0f442ce5f076af0bf9a78b7ba33c48eab3cdb758))
 
-## [3.5.1](https://github.com/baiwumm/dream-site/compare/3.5.0...3.5.1) (2026-03-11)
+## [3.5.1](https://github.com/baiwumm/better-nav/compare/3.5.0...3.5.1) (2026-03-11)
 
 ### 💄 Styles | 风格
 
-* **FullLoading:** 样式优化 ([ecb22af](https://github.com/baiwumm/dream-site/commit/ecb22affbf94dbc0aa8c7f9fbae6fdb46cf7b3ff))
+* **FullLoading:** 样式优化 ([ecb22af](https://github.com/baiwumm/better-nav/commit/ecb22affbf94dbc0aa8c7f9fbae6fdb46cf7b3ff))
 
-## [3.5.0](https://github.com/baiwumm/dream-site/compare/3.4.11...3.5.0) (2026-03-11)
+## [3.5.0](https://github.com/baiwumm/better-nav/compare/3.4.11...3.5.0) (2026-03-11)
 
 ### ✨ Features | 新功能
 
-* 更新 demo 图 ([bd5b6ed](https://github.com/baiwumm/dream-site/commit/bd5b6ed099391dfc7a8a0773d03bc9ebb2844556))
-* **DataTablePagination:** 分页使用 HeroUI 的 Pagination 组件 ([00fb216](https://github.com/baiwumm/dream-site/commit/00fb216af1c303ad4d6c54d2d3f9175df6666e49))
+* 更新 demo 图 ([bd5b6ed](https://github.com/baiwumm/better-nav/commit/bd5b6ed099391dfc7a8a0773d03bc9ebb2844556))
+* **DataTablePagination:** 分页使用 HeroUI 的 Pagination 组件 ([00fb216](https://github.com/baiwumm/better-nav/commit/00fb216af1c303ad4d6c54d2d3f9175df6666e49))
 
 ### 💄 Styles | 风格
 
-* **UserAvatar:** 样式调整 ([42dc85d](https://github.com/baiwumm/dream-site/commit/42dc85de5667998154f269001c5545de998e68d0))
+* **UserAvatar:** 样式调整 ([42dc85d](https://github.com/baiwumm/better-nav/commit/42dc85de5667998154f269001c5545de998e68d0))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 禁止 Image 图片优化 ([c327ade](https://github.com/baiwumm/dream-site/commit/c327ade445de64035d53ba21a6b8618ff7b3b9e0))
-* 删除 AppSettings 组件，保持页面功能简洁 ([69449d8](https://github.com/baiwumm/dream-site/commit/69449d8390ac1866edceee25e5e2027a4d43215b))
-* 删除没用的代码 ([01ed13b](https://github.com/baiwumm/dream-site/commit/01ed13b4443592c860f61b3425679e559b423bb7))
-* 统一项目 Loading 状态 ([bec520d](https://github.com/baiwumm/dream-site/commit/bec520dd0c3352c607fab27c6e0038cf0a9d7eff))
-* 细节调整优化 ([06e4042](https://github.com/baiwumm/dream-site/commit/06e40420cf4c6ee4331efe9decf9afe6d30af8a6))
-* 细节优化 ([68f3b2b](https://github.com/baiwumm/dream-site/commit/68f3b2b6981108f1ffddb3bf01148d155cea6695))
-* **Categorys:** 优化代码逻辑 ([cd95156](https://github.com/baiwumm/dream-site/commit/cd95156303d1206cc7698e6b64193f918ebbb402))
-* **Websites:** 优化代码逻辑 ([5c54011](https://github.com/baiwumm/dream-site/commit/5c54011b014a60ec889ef1d4bc5e74b2c7c5839e))
+* 禁止 Image 图片优化 ([c327ade](https://github.com/baiwumm/better-nav/commit/c327ade445de64035d53ba21a6b8618ff7b3b9e0))
+* 删除 AppSettings 组件，保持页面功能简洁 ([69449d8](https://github.com/baiwumm/better-nav/commit/69449d8390ac1866edceee25e5e2027a4d43215b))
+* 删除没用的代码 ([01ed13b](https://github.com/baiwumm/better-nav/commit/01ed13b4443592c860f61b3425679e559b423bb7))
+* 统一项目 Loading 状态 ([bec520d](https://github.com/baiwumm/better-nav/commit/bec520dd0c3352c607fab27c6e0038cf0a9d7eff))
+* 细节调整优化 ([06e4042](https://github.com/baiwumm/better-nav/commit/06e40420cf4c6ee4331efe9decf9afe6d30af8a6))
+* 细节优化 ([68f3b2b](https://github.com/baiwumm/better-nav/commit/68f3b2b6981108f1ffddb3bf01148d155cea6695))
+* **Categorys:** 优化代码逻辑 ([cd95156](https://github.com/baiwumm/better-nav/commit/cd95156303d1206cc7698e6b64193f918ebbb402))
+* **Websites:** 优化代码逻辑 ([5c54011](https://github.com/baiwumm/better-nav/commit/5c54011b014a60ec889ef1d4bc5e74b2c7c5839e))
 
 ### 🔧 Continuous Integration | CI 配置
 
-* 更新 heroui 版本 ([cb47b43](https://github.com/baiwumm/dream-site/commit/cb47b4366656d6884a47ae97131a98604b7a52ad))
-* 移除 zustand 包 ([0951d47](https://github.com/baiwumm/dream-site/commit/0951d4703c2c3c70c5d28b10c6d5911b27219387))
+* 更新 heroui 版本 ([cb47b43](https://github.com/baiwumm/better-nav/commit/cb47b4366656d6884a47ae97131a98604b7a52ad))
+* 移除 zustand 包 ([0951d47](https://github.com/baiwumm/better-nav/commit/0951d4703c2c3c70c5d28b10c6d5911b27219387))
 
-## [3.4.11](https://github.com/baiwumm/dream-site/compare/3.4.10...3.4.11) (2026-02-25)
+## [3.4.11](https://github.com/baiwumm/better-nav/compare/3.4.10...3.4.11) (2026-02-25)
 
 ### ✨ Features | 新功能
 
-* 修改 apple 图标 ([5da1060](https://github.com/baiwumm/dream-site/commit/5da1060c2ae606b6e4ef3de7b1290f42dfd892ab))
-* TS 类型和细节优化 ([91e77b9](https://github.com/baiwumm/dream-site/commit/91e77b9f10258327a45781fcff8a071df62b2f8a))
+* 修改 apple 图标 ([5da1060](https://github.com/baiwumm/better-nav/commit/5da1060c2ae606b6e4ef3de7b1290f42dfd892ab))
+* TS 类型和细节优化 ([91e77b9](https://github.com/baiwumm/better-nav/commit/91e77b9f10258327a45781fcff8a071df62b2f8a))
 
 ### 💄 Styles | 风格
 
-* import 排序 ([6091784](https://github.com/baiwumm/dream-site/commit/609178402affe93e83b7074f3e9a8bc63b550709))
+* import 排序 ([6091784](https://github.com/baiwumm/better-nav/commit/609178402affe93e83b7074f3e9a8bc63b550709))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* **proxy:** 中间件过滤 api 接口 ([761eaec](https://github.com/baiwumm/dream-site/commit/761eaec469080cc445fad32853508b36b02856cc))
+* **proxy:** 中间件过滤 api 接口 ([761eaec](https://github.com/baiwumm/better-nav/commit/761eaec469080cc445fad32853508b36b02856cc))
 
-## [3.4.10](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.10) (2026-02-07)
+## [3.4.10](https://github.com/baiwumm/better-nav/compare/3.4.9...3.4.10) (2026-02-07)
 
 ### 🐛 Bug Fixes | Bug 修复
 
-* **Websites:** 修复编辑时 Logo 回显报错的问题 ([1977817](https://github.com/baiwumm/dream-site/commit/197781708f4de91d26ec4a18388c9d35443de31e))
+* **Websites:** 修复编辑时 Logo 回显报错的问题 ([1977817](https://github.com/baiwumm/better-nav/commit/197781708f4de91d26ec4a18388c9d35443de31e))
 
 ### 🎫 Chores | 其他更新
 
-* Release v3.4.9 ([2ceeda7](https://github.com/baiwumm/dream-site/commit/2ceeda7a8fddafd332499cde487f03fea8a11fa1))
-## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.10) (2026-02-05)
+* Release v3.4.9 ([2ceeda7](https://github.com/baiwumm/better-nav/commit/2ceeda7a8fddafd332499cde487f03fea8a11fa1))
+## [3.4.8](https://github.com/baiwumm/better-nav/compare/3.4.9...3.4.10) (2026-02-05)
 
 ### 🎫 Chores | 其他更新
 
-* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/dream-site/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
+* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/better-nav/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
 
-## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.9...3.4.9) (2026-02-05)
+## [3.4.8](https://github.com/baiwumm/better-nav/compare/3.4.9...3.4.9) (2026-02-05)
 
 ### 🎫 Chores | 其他更新
 
-* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/dream-site/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
+* Release v3.4.8 ([6c61e93](https://github.com/baiwumm/better-nav/commit/6c61e939cdd61e12b4e0d462e38600e202833696))
 
-## [3.4.8](https://github.com/baiwumm/dream-site/compare/3.4.7...3.4.8) (2026-02-05)
-
-### ✨ Features | 新功能
-
-* **store:** 添加“主题动画”配置开关 ([8df0798](https://github.com/baiwumm/dream-site/commit/8df0798a4984b196e46379bcbfe06f2b63328fa4))
-
-## [3.4.7](https://github.com/baiwumm/dream-site/compare/3.4.6...3.4.7) (2026-02-05)
+## [3.4.8](https://github.com/baiwumm/better-nav/compare/3.4.7...3.4.8) (2026-02-05)
 
 ### ✨ Features | 新功能
 
-* 更新 Logo 链接生成方式 ([20d6f81](https://github.com/baiwumm/dream-site/commit/20d6f81bcccb3cee6e9cbdbfa2954fd7a3cf59f9))
+* **store:** 添加“主题动画”配置开关 ([8df0798](https://github.com/baiwumm/better-nav/commit/8df0798a4984b196e46379bcbfe06f2b63328fa4))
 
-## [3.4.6](https://github.com/baiwumm/dream-site/compare/3.4.5...3.4.6) (2026-02-04)
+## [3.4.7](https://github.com/baiwumm/better-nav/compare/3.4.6...3.4.7) (2026-02-05)
 
 ### ✨ Features | 新功能
 
-* 新增 AppSettings 组件 ([0bd9f9f](https://github.com/baiwumm/dream-site/commit/0bd9f9f795653a70ace8091f380ee255d11e3231))
+* 更新 Logo 链接生成方式 ([20d6f81](https://github.com/baiwumm/better-nav/commit/20d6f81bcccb3cee6e9cbdbfa2954fd7a3cf59f9))
+
+## [3.4.6](https://github.com/baiwumm/better-nav/compare/3.4.5...3.4.6) (2026-02-04)
+
+### ✨ Features | 新功能
+
+* 新增 AppSettings 组件 ([0bd9f9f](https://github.com/baiwumm/better-nav/commit/0bd9f9f795653a70ace8091f380ee255d11e3231))
 
 ### 💄 Styles | 风格
 
-* 细节优化 ([3cfa41d](https://github.com/baiwumm/dream-site/commit/3cfa41d955b51ef20f0957bb4e2e38f382e5308a))
+* 细节优化 ([3cfa41d](https://github.com/baiwumm/better-nav/commit/3cfa41d955b51ef20f0957bb4e2e38f382e5308a))
 
-## [3.4.5](https://github.com/baiwumm/dream-site/compare/3.4.4...3.4.5) (2026-02-03)
-
-### ✨ Features | 新功能
-
-* **NotFound:** 添加 404 页面 ([7feafa6](https://github.com/baiwumm/dream-site/commit/7feafa6da99ab871a59cc5f5e59d246b1a311fbd))
-
-## [3.4.4](https://github.com/baiwumm/dream-site/compare/3.4.3...3.4.4) (2026-02-03)
+## [3.4.5](https://github.com/baiwumm/better-nav/compare/3.4.4...3.4.5) (2026-02-03)
 
 ### ✨ Features | 新功能
 
-* 添加统计代码 ([06f2471](https://github.com/baiwumm/dream-site/commit/06f24712611b721b0089a7159086ba336a310cd6))
-* update README.md ([ec5c534](https://github.com/baiwumm/dream-site/commit/ec5c534564894fabfddb36453fa87b1075e35b13))
+* **NotFound:** 添加 404 页面 ([7feafa6](https://github.com/baiwumm/better-nav/commit/7feafa6da99ab871a59cc5f5e59d246b1a311fbd))
 
-## [3.4.3](https://github.com/baiwumm/dream-site/compare/3.4.2...3.4.3) (2026-02-02)
+## [3.4.4](https://github.com/baiwumm/better-nav/compare/3.4.3...3.4.4) (2026-02-03)
+
+### ✨ Features | 新功能
+
+* 添加统计代码 ([06f2471](https://github.com/baiwumm/better-nav/commit/06f24712611b721b0089a7159086ba336a310cd6))
+* update README.md ([ec5c534](https://github.com/baiwumm/better-nav/commit/ec5c534564894fabfddb36453fa87b1075e35b13))
+
+## [3.4.3](https://github.com/baiwumm/better-nav/compare/3.4.2...3.4.3) (2026-02-02)
 
 ### ⚡ Performance Improvements | 性能优化
 
-* **admin:** 优化分类接口请求逻辑 ([6b2a6e9](https://github.com/baiwumm/dream-site/commit/6b2a6e97a67dddb3c8705481d0726f0349cfb383))
+* **admin:** 优化分类接口请求逻辑 ([6b2a6e9](https://github.com/baiwumm/better-nav/commit/6b2a6e97a67dddb3c8705481d0726f0349cfb383))
 
-## [3.4.2](https://github.com/baiwumm/dream-site/compare/3.4.1...3.4.2) (2026-02-02)
+## [3.4.2](https://github.com/baiwumm/better-nav/compare/3.4.1...3.4.2) (2026-02-02)
 
 ### 💄 Styles | 风格
 
-* 调整卡片主题色 ([e1ba5d7](https://github.com/baiwumm/dream-site/commit/e1ba5d7c5cef44926330587f772054dc7a3a46e3))
+* 调整卡片主题色 ([e1ba5d7](https://github.com/baiwumm/better-nav/commit/e1ba5d7c5cef44926330587f772054dc7a3a46e3))
 
-## [3.4.1](https://github.com/baiwumm/dream-site/compare/3.4.0...3.4.1) (2026-02-02)
-
-### ✨ Features | 新功能
-
-* 删除网站的同时，应该也删除该网站下的 logo 文件 ([3ce8f88](https://github.com/baiwumm/dream-site/commit/3ce8f885b080457c1c070264c4b867c6061a59be))
-* 修复中间件没有 过滤 Api 接口的问题 ([9a45213](https://github.com/baiwumm/dream-site/commit/9a45213a9d05294dd0acd0047a93a72e37f3ad1d))
-
-## [3.4.0](https://github.com/baiwumm/dream-site/compare/3.3.0...3.4.0) (2026-01-30)
+## [3.4.1](https://github.com/baiwumm/better-nav/compare/3.4.0...3.4.1) (2026-02-02)
 
 ### ✨ Features | 新功能
 
-* 动态设置边框动画颜色，细节调整 ([ad50774](https://github.com/baiwumm/dream-site/commit/ad507743da7c59f5a9f31a5e21f5d789b28e7677))
-* 完成首页网站卡片的渲染 ([9e562ce](https://github.com/baiwumm/dream-site/commit/9e562ce1e335ba7a7295aaf22b73107ea0c82d48))
-* **Home:** 添加“常用”标签 ([cbc832a](https://github.com/baiwumm/dream-site/commit/cbc832aa5136489341a60908cf8d507c841f946c))
+* 删除网站的同时，应该也删除该网站下的 logo 文件 ([3ce8f88](https://github.com/baiwumm/better-nav/commit/3ce8f885b080457c1c070264c4b867c6061a59be))
+* 修复中间件没有 过滤 Api 接口的问题 ([9a45213](https://github.com/baiwumm/better-nav/commit/9a45213a9d05294dd0acd0047a93a72e37f3ad1d))
+
+## [3.4.0](https://github.com/baiwumm/better-nav/compare/3.3.0...3.4.0) (2026-01-30)
+
+### ✨ Features | 新功能
+
+* 动态设置边框动画颜色，细节调整 ([ad50774](https://github.com/baiwumm/better-nav/commit/ad507743da7c59f5a9f31a5e21f5d789b28e7677))
+* 完成首页网站卡片的渲染 ([9e562ce](https://github.com/baiwumm/better-nav/commit/9e562ce1e335ba7a7295aaf22b73107ea0c82d48))
+* **Home:** 添加“常用”标签 ([cbc832a](https://github.com/baiwumm/better-nav/commit/cbc832aa5136489341a60908cf8d507c841f946c))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* **LogoUpload:** 代码逻辑优化 ([47dd197](https://github.com/baiwumm/dream-site/commit/47dd197a1b489bec47c1a6742f60ca95c915a263))
+* **LogoUpload:** 代码逻辑优化 ([47dd197](https://github.com/baiwumm/better-nav/commit/47dd197a1b489bec47c1a6742f60ca95c915a263))
 
-## [3.3.0](https://github.com/baiwumm/dream-site/compare/3.2.0...3.3.0) (2026-01-29)
+## [3.3.0](https://github.com/baiwumm/better-nav/compare/3.2.0...3.3.0) (2026-01-29)
 
 ### ✨ Features | 新功能
 
-* **categotys:** 细节优化 ([333a7da](https://github.com/baiwumm/dream-site/commit/333a7da85c7db2df24cc54503b7a50149edf38f4))
-* **config:** 添加 Images 配置 ([8f30bed](https://github.com/baiwumm/dream-site/commit/8f30bed41fd98b5574f5ca1bd6a44af96dbcb5c1))
-* **websites:** 完成 Logo 上传的功能 ([bbcdb85](https://github.com/baiwumm/dream-site/commit/bbcdb8520f1c204185219409e72dfe5b26118d9d))
-* **websites:** 完成《网站列表》模块的 CURD 功能开发 ([b3a2b68](https://github.com/baiwumm/dream-site/commit/b3a2b68485cc353c634b7f16567683d249e49df1))
+* **categotys:** 细节优化 ([333a7da](https://github.com/baiwumm/better-nav/commit/333a7da85c7db2df24cc54503b7a50149edf38f4))
+* **config:** 添加 Images 配置 ([8f30bed](https://github.com/baiwumm/better-nav/commit/8f30bed41fd98b5574f5ca1bd6a44af96dbcb5c1))
+* **websites:** 完成 Logo 上传的功能 ([bbcdb85](https://github.com/baiwumm/better-nav/commit/bbcdb8520f1c204185219409e72dfe5b26118d9d))
+* **websites:** 完成《网站列表》模块的 CURD 功能开发 ([b3a2b68](https://github.com/baiwumm/better-nav/commit/b3a2b68485cc353c634b7f16567683d249e49df1))
 
 ### ⚡ Performance Improvements | 性能优化
 
-* 细节调整优化 ([9303b16](https://github.com/baiwumm/dream-site/commit/9303b166758b66c22618a370b60a11b6ce5ef75a))
+* 细节调整优化 ([9303b16](https://github.com/baiwumm/better-nav/commit/9303b166758b66c22618a370b60a11b6ce5ef75a))
 
-## [3.2.0](https://github.com/baiwumm/dream-site/compare/3.1.0...3.2.0) (2026-01-28)
+## [3.2.0](https://github.com/baiwumm/better-nav/compare/3.1.0...3.2.0) (2026-01-28)
 
 ### ✨ Features | 新功能
 
-* **Categorys:** 完成《网站分类》的 CURD 逻辑 ([8254ff5](https://github.com/baiwumm/dream-site/commit/8254ff5a8c6255dd4e3f43928fc3e35dcb977dfd))
-* **Categorys:** 完善网站分类列表排版逻辑 ([0a13aef](https://github.com/baiwumm/dream-site/commit/0a13aef83b90ecc8d553b2568ebb3163bcbfba9c))
-* **DataTablePagination:** 新增表格分页组件 ([c93ba97](https://github.com/baiwumm/dream-site/commit/c93ba97e4f6872e68ccf821422de55fc2c80b9a2))
+* **Categorys:** 完成《网站分类》的 CURD 逻辑 ([8254ff5](https://github.com/baiwumm/better-nav/commit/8254ff5a8c6255dd4e3f43928fc3e35dcb977dfd))
+* **Categorys:** 完善网站分类列表排版逻辑 ([0a13aef](https://github.com/baiwumm/better-nav/commit/0a13aef83b90ecc8d553b2568ebb3163bcbfba9c))
+* **DataTablePagination:** 新增表格分页组件 ([c93ba97](https://github.com/baiwumm/better-nav/commit/c93ba97e4f6872e68ccf821422de55fc2c80b9a2))
 
 ### 💄 Styles | 风格
 
-* 主题配色调整 ([2b34cfd](https://github.com/baiwumm/dream-site/commit/2b34cfd7e51198d7e86aef88d2b7ad9249d6a68b))
+* 主题配色调整 ([2b34cfd](https://github.com/baiwumm/better-nav/commit/2b34cfd7e51198d7e86aef88d2b7ad9249d6a68b))
 
-## [3.1.0](https://github.com/baiwumm/dream-site/compare/3.0.0...3.1.0) (2026-01-27)
+## [3.1.0](https://github.com/baiwumm/better-nav/compare/3.0.0...3.1.0) (2026-01-27)
 
 ### ✨ Features | 新功能
 
-* 安装 Shadcn UI 库 ([5dc659e](https://github.com/baiwumm/dream-site/commit/5dc659e6ab340817dc460cc17acaa47dd0e83234))
-* 更改 supabase 调用方式 ([580e338](https://github.com/baiwumm/dream-site/commit/580e338d64e303f4916cd85f3d5d8595654674dd))
-* 完成《网站分类》模块的接口开发 ([55d2c7c](https://github.com/baiwumm/dream-site/commit/55d2c7c6c451102eb7e04a6f331c08ab3e762239))
-* 完成登录逻辑 ([b437f4e](https://github.com/baiwumm/dream-site/commit/b437f4e0a04ff7b0c648a4ba1590df231ca2794b))
-* 完善 SEO 元信息 ([a51cdec](https://github.com/baiwumm/dream-site/commit/a51cdec0b09d2cf7ceaaf03e68fa752d9f3e611d))
-* **layout:** 完成页面的基本布局排版 ([a3f3d07](https://github.com/baiwumm/dream-site/commit/a3f3d0785db9682a5664eedf32b4bed2703dc8dd))
+* 安装 Shadcn UI 库 ([5dc659e](https://github.com/baiwumm/better-nav/commit/5dc659e6ab340817dc460cc17acaa47dd0e83234))
+* 更改 supabase 调用方式 ([580e338](https://github.com/baiwumm/better-nav/commit/580e338d64e303f4916cd85f3d5d8595654674dd))
+* 完成《网站分类》模块的接口开发 ([55d2c7c](https://github.com/baiwumm/better-nav/commit/55d2c7c6c451102eb7e04a6f331c08ab3e762239))
+* 完成登录逻辑 ([b437f4e](https://github.com/baiwumm/better-nav/commit/b437f4e0a04ff7b0c648a4ba1590df231ca2794b))
+* 完善 SEO 元信息 ([a51cdec](https://github.com/baiwumm/better-nav/commit/a51cdec0b09d2cf7ceaaf03e68fa752d9f3e611d))
+* **layout:** 完成页面的基本布局排版 ([a3f3d07](https://github.com/baiwumm/better-nav/commit/a3f3d0785db9682a5664eedf32b4bed2703dc8dd))
 
 ### 🐛 Bug Fixes | Bug 修复
 
-* 修复 OAuth 登录失败的问题 ([abdcf3f](https://github.com/baiwumm/dream-site/commit/abdcf3faa60777f7af671092d415486fed536c54))
+* 修复 OAuth 登录失败的问题 ([abdcf3f](https://github.com/baiwumm/better-nav/commit/abdcf3faa60777f7af671092d415486fed536c54))
 
 ### 💄 Styles | 风格
 
-* UI 更换为 Hero UI ([45bf572](https://github.com/baiwumm/dream-site/commit/45bf5725298dd7959d913338f1e55b34283112b5))
+* UI 更换为 Hero UI ([45bf572](https://github.com/baiwumm/better-nav/commit/45bf5725298dd7959d913338f1e55b34283112b5))
 
 ### ♻ Code Refactoring | 代码重构
 
-* 使用 Next.js16.x 重构 ([ebb4d51](https://github.com/baiwumm/dream-site/commit/ebb4d51bfe42e743a3553eea64993d57f13d4ec0))
+* 使用 Next.js16.x 重构 ([ebb4d51](https://github.com/baiwumm/better-nav/commit/ebb4d51bfe42e743a3553eea64993d57f13d4ec0))

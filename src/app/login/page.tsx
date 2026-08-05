@@ -156,7 +156,7 @@ export default function Login() {
             </div>
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-              <Description>梦开始的地方，马上登录！</Description>
+              <Description>{process.env.NEXT_PUBLIC_APP_TITLE}</Description>
             </div>
           </div>
         </Card.Header>
