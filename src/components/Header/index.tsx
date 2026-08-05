@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 17:57:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 16:55:49
+ * @LastEditTime: 2026-08-05 15:04:06
  * @Description: 顶部导航
  */
 'use client'
@@ -40,7 +40,8 @@ const Header: FC = () => {
       <Link href="/">
         <div className="flex gap-2 items-center justify-self-start">
           <div className="size-8 relative">
-            <Image alt="Logo" fill src="/logo.svg" />
+            <Image alt="Logo" fill src="/logo.svg" className="object-contain dark:hidden" />
+            <Image alt="Logo" fill src="/logo-dark.svg" className="hidden object-contain dark:block" />
           </div>
           <ShimmeringText
             color="var(--foreground)"
@@ -58,24 +59,28 @@ const Header: FC = () => {
         <ThemeSwitcher />
         {socials.map(({ name, url, icon }) => (
           <Tooltip key={name} delay={0}>
-            <Link aria-label={name} href={url} target="_blank">
-              <Button size="sm" variant="ghost" isIconOnly>
-                {icon}
-              </Button>
-            </Link>
-            <Tooltip.Content showArrow>
+            <Tooltip.Trigger>
+              <Link aria-label={name} href={url} target="_blank">
+                <Button size="sm" variant="ghost" isIconOnly>
+                  {icon}
+                </Button>
+              </Link>
+            </Tooltip.Trigger>
+            <Tooltip.Content offset={8} placement="bottom" showArrow>
               <Tooltip.Arrow />
               {name}
             </Tooltip.Content>
           </Tooltip>
         ))}
-        <Tooltip>
-          <Link aria-label="主页" href={pkg.author.url} target="_blank">
-            <Button size="sm" variant="ghost" isIconOnly>
-              <HouseFill />
-            </Button>
-          </Link>
-          <Tooltip.Content showArrow>
+        <Tooltip delay={0}>
+          <Tooltip.Trigger>
+            <Link aria-label="主页" href={pkg.author.url} target="_blank">
+              <Button size="sm" variant="ghost" isIconOnly>
+                <HouseFill />
+              </Button>
+            </Link>
+          </Tooltip.Trigger>
+          <Tooltip.Content offset={8} placement="bottom" showArrow>
             <Tooltip.Arrow />
             个人主页
           </Tooltip.Content>

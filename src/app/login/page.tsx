@@ -152,7 +152,8 @@ export default function Login() {
         <Card.Header>
           <div className="flex items-center gap-3">
             <div className="size-10 relative">
-              <Image alt="Logo" fill src="/logo.svg" />
+              <Image alt="Logo" fill src="/logo.svg" className="object-contain dark:hidden" />
+              <Image alt="Logo" fill src="/logo-dark.svg" className="hidden object-contain dark:block" />
             </div>
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>

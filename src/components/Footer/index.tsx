@@ -42,7 +42,8 @@ const Footer: FC = () => {
       <div className="flex items-center justify-center gap-3 justify-self-center sm:justify-self-start">
         <div className="flex items-center gap-2">
           <div className="size-5 relative">
-            <Image alt="Logo" fill src="/logo.svg" />
+            <Image alt="Logo" fill src="/logo.svg" className="object-contain dark:hidden" />
+            <Image alt="Logo" fill src="/logo-dark.svg" className="hidden object-contain dark:block" />
           </div>
           <ShimmeringText
             color="var(--foreground)"

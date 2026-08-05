@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: process.env.NEXT_PUBLIC_APP_NAME,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/og.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image`,
         width: 1200,
         height: 630,
       },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: process.env.NEXT_PUBLIC_APP_NAME,
     description: process.env.NEXT_PUBLIC_APP_DESC,
     creator: 'baiwumm',
-    images: [`${process.env.NEXT_PUBLIC_APP_URL}/og.png`],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image`],
   },
   manifest: `${process.env.NEXT_PUBLIC_APP_URL}/manifest.json`,
 }
@@ -58,7 +58,8 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="version" content={pkg.version} />
-        <link href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css" rel="stylesheet" />
+        <meta name="apple-mobile-web-app-title" content={process.env.NEXT_PUBLIC_APP_NAME} />
+        <link href="https://cn-font.claude-code-best.win/packages/maple-mono-cn/dist/MapleMono-CN-Regular/result.css" rel="stylesheet" />
         {/* Google 统计 */}
         <GoogleUtilities />
         {/* 微软统计 */}
@@ -66,7 +67,7 @@ export default function RootLayout({
         {/* Vercel 分析 */}
         <Analytics />
       </head>
-      <body className="bg-background text-foreground flex flex-col gap-4 min-h-screen">
+      <body className="bg-background text-foreground flex min-h-screen flex-col">
         <ThemeProvider attribute="class" enableSystem={false}>
           <MotionConfig reducedMotion="user">
             <FullLoading>
