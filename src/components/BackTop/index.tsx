@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-20 14:09:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-03 16:39:45
+ * @LastEditTime: 2026-08-05 13:45:23
  * @Description: 回到顶部
  */
 'use client'
@@ -77,7 +77,7 @@ const BackTop: FC<BackTopProps> = ({ visibilityHeight = 150 }) => {
       {visible && (
         <MotionProgressCircle
           aria-label="回到顶部"
-          color="accent"
+          color="default"
           size="lg"
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.6 }}
@@ -98,7 +98,7 @@ const BackTop: FC<BackTopProps> = ({ visibilityHeight = 150 }) => {
                       exit={{ opacity: 0, y: 6, scale: 0.8 }}
                       initial={{ opacity: 0, y: 6, scale: 0.8 }}
                       transition={{ duration: 0.2 }}
-                      className="text-accent"
+                      className="text-foreground"
                     />
                   )
                 : (
@@ -108,7 +108,7 @@ const BackTop: FC<BackTopProps> = ({ visibilityHeight = 150 }) => {
                       exit={{ opacity: 0, y: -6, scale: 0.8 }}
                       initial={{ opacity: 0, y: -6, scale: 0.8 }}
                       transition={{ duration: 0.2 }}
-                      className="text-xs text-muted"
+                      className="text-xs text-foreground"
                     >
                       {scrollPercentage}
                     </motion.div>
