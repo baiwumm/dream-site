@@ -1,5 +1,45 @@
 # Changelog
 
+## [3.7.0](https://github.com/baiwumm/better-nav/compare/3.6.6...3.7.0) (2026-08-05)
+
+### ⚠ BREAKING CHANGES
+
+* 移除了ProgressBridge组件和相关API
+```
+
+* ``` ([214b8ca](https://github.com/baiwumm/better-nav/commit/214b8cacf2052924d10cde11e62bbc175932ccae))
+
+### ✨ Features | 新功能
+
+* **app:** 重命名应用、新增暗色模式适配与动态OpenGraph图片 ([a97b275](https://github.com/baiwumm/better-nav/commit/a97b2757d570e4571e6f7fc884b4da30dca41f4c))
+* **heroui-react:** 新增HeroUI v3 React组件库技能工具集 ([c61a263](https://github.com/baiwumm/better-nav/commit/c61a2634814d538741e2eea305a6f1b6d0eb22d9))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **home:** 优化首页初始加载状态的判断逻辑 ([266634d](https://github.com/baiwumm/better-nav/commit/266634d613625f9320984eb6dd3d7efdaf81f2e7))
+* **proxy:** 调整api路由认证处理与代理配置 ([a2d6a0f](https://github.com/baiwumm/better-nav/commit/a2d6a0fb701d2828c05c7ab9a1f7af917aef7008))
+
+### 🎫 Chores | 其他更新
+
+* **project:** 重命名项目为better-nav并更新全局配置 ([9f0eadb](https://github.com/baiwumm/better-nav/commit/9f0eadb59b1512c3a23efd2ca82eb7c7bca7973f))
+
+### 📝 Documentation | 文档
+
+* **readme:** 重命名项目为Better Nav并精简文档内容 ([d76dd09](https://github.com/baiwumm/better-nav/commit/d76dd094e36634ac13fe2d295fc97f833d95fd57))
+
+### 💄 Styles | 风格
+
+* **BackTop:** 调整组件配色，统一使用前景色与默认色 ([605b97b](https://github.com/baiwumm/better-nav/commit/605b97b00da8b549d019432d47d889e8107f5e4f))
+* **eslint:** 使用 @antfu/eslint-config 统一代码风格 ([407066e](https://github.com/baiwumm/better-nav/commit/407066e1d4ab3d8f93a24f4919f273d250961bb4))
+
+### ♻ Code Refactoring | 代码重构
+
+* 拆分版权环境变量并优化元数据配置 ([00ee6cd](https://github.com/baiwumm/better-nav/commit/00ee6cde5278f2fb759efa4c5d5211a6bf9baa34))
+
+### 👷‍ Build System | 构建
+
+* **next-config:** 移除baiwumm图片远程域名配置 ([2a39223](https://github.com/baiwumm/better-nav/commit/2a392239597c761c974009f7f44eb659d7413f6b))
+
 ## [3.6.6](https://github.com/baiwumm/better-nav/compare/3.6.5...3.6.6) (2026-07-22)
 
 ### ⚡ Performance Improvements | 性能优化
