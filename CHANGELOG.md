@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.1](https://github.com/baiwumm/better-nav/compare/3.7.0...3.7.1) (2026-08-05)
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **globals.css:** 修正全局主题的OKLCH色彩配置 ([df637c0](https://github.com/baiwumm/better-nav/commit/df637c0dbae5df50de5685e9d3eea26da842daac))
+* **layout, og-image:** 修复站点URL配置并优化OpenGraph图片生成 ([5ad223a](https://github.com/baiwumm/better-nav/commit/5ad223a358fc235f2d909afc7d62c9b86e93428d))
+
 ## [3.7.0](https://github.com/baiwumm/better-nav/compare/3.6.6...3.7.0) (2026-08-05)
 
 ### ⚠ BREAKING CHANGES
