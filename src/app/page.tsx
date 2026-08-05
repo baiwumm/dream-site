@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-01-21 16:33:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-08-04 14:43:37
+ * @LastEditTime: 2026-08-05 09:24:46
  * @Description: 首页
  */
 'use client'
@@ -32,6 +32,7 @@ export default function Home() {
     params: { pageIndex: 0, pageSize: 999 },
   })
   const list = useMemo(() => data?.list ?? [], [data])
+  const isInitialLoading = loading || (!data && !error)
 
   const reload = () => {
     run({ pageIndex: 0, pageSize: 999 })
@@ -47,7 +48,7 @@ export default function Home() {
     })
   }, [supabase])
 
-  if (loading) {
+  if (isInitialLoading) {
     return (
       <SkeletonContent />
     )
